@@ -1,3 +1,7 @@
 export default function Home() {
-  return <main>audiophile</main>
+  return (
+    <main>
+      <h1>audiophile</h1>
+    </main>
+  )
 }
