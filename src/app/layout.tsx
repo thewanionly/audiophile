@@ -4,12 +4,12 @@ const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
 
 export const metadata = {
   title: 'Audiophile',
-  description: 'An e-commerce web application'
+  description: 'An e-commerce web application',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={manrope.className}>{children}</body>
     </html>
   )
