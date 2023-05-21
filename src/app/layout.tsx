@@ -1,7 +1,7 @@
 import { Manrope } from 'next/font/google'
 
 import StyledComponentsRegistry from '@/lib/styledComponentsRegistry'
-import { GlobalStyles } from '@/styles'
+import { GlobalStyles, Theme } from '@/styles'
 
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
 
@@ -14,8 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={manrope.className}>
-        <GlobalStyles />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <Theme>
+          <GlobalStyles />
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </Theme>
       </body>
     </html>
   )
