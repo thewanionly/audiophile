@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
 import StyledComponentsRegistry from '@/lib/styledComponentsRegistry'
+import EmotionMantineRegistry from '@/lib/emotionMantineRegistry'
 import { GlobalStyles, Theme } from '@/styles'
 
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
@@ -37,7 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={manrope.className}>
         <Theme>
           <GlobalStyles />
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <StyledComponentsRegistry>
+            <EmotionMantineRegistry>{children}</EmotionMantineRegistry>
+          </StyledComponentsRegistry>
         </Theme>
       </body>
     </html>
