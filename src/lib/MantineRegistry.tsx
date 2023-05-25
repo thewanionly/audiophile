@@ -4,7 +4,9 @@ import { CacheProvider } from '@emotion/react'
 import { useEmotionCache, MantineProvider } from '@mantine/core'
 import { useServerInsertedHTML } from 'next/navigation'
 
-export default function EmotionMantineRegistry({ children }: { children: React.ReactNode }) {
+import { GlobalStyles, theme } from '@/styles'
+
+export const MantineRegistry = ({ children }: { children: React.ReactNode }) => {
   const cache = useEmotionCache()
   cache.compat = true
 
@@ -19,7 +21,8 @@ export default function EmotionMantineRegistry({ children }: { children: React.R
 
   return (
     <CacheProvider value={cache}>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={{ other: theme }}>
+        <GlobalStyles />
         {children}
       </MantineProvider>
     </CacheProvider>

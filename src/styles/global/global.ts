@@ -1,9 +1,7 @@
-'use client'
+import { Theme, css } from '@emotion/react'
 
-import { createGlobalStyle } from 'styled-components'
-
-export const GlobalStyles = createGlobalStyle`
- *,
+export const globalStyles = (theme: Theme) => css`
+  *,
   *::before,
   *::after {
     margin: 0;
@@ -24,8 +22,8 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 62.5%;
 
     & * {
-      font-size: ${({ theme: { fontSizes } }) => fontSizes.regular};
-      font-weight: ${({ theme: { fontWeights } }) => fontWeights.regular};
+      font-size: ${theme.other.fontSizes.regular};
+      font-weight: ${theme.other.fontWeights.regular};
     }
   }
 
@@ -36,42 +34,41 @@ export const GlobalStyles = createGlobalStyle`
   h5,
   h6 {
     text-transform: uppercase;
-    font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
+    font-weight: ${theme.other.fontWeights.bold};
   }
 
   h1 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.xxxl};
+    font-size: ${theme.other.fontSizes.xxxl};
     line-height: 5.8rem;
     letter-spacing: 0.2rem;
   }
 
   h2 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.xxl};
+    font-size: ${theme.other.fontSizes.xxl};
     line-height: 4.4rem;
     letter-spacing: 0.15rem;
   }
 
   h3 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.xl};
+    font-size: ${theme.other.fontSizes.xl};
     line-height: 3.6rem;
     letter-spacing: 0.115rem;
   }
 
   h4 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.lg};
+    font-size: ${theme.other.fontSizes.lg};
     line-height: 3.8rem;
     letter-spacing: 0.2rem;
   }
 
-
   h5 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.med2};
+    font-size: ${theme.other.fontSizes.med2};
     line-height: 3.3rem;
     letter-spacing: 0.17rem;
   }
 
   h6 {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.med1};
+    font-size: ${theme.other.fontSizes.med1};
     line-height: 2.5rem;
     letter-spacing: 0.13rem;
   }
