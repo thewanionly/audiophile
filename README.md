@@ -7,9 +7,10 @@ An e-commerce web application built with NextJS.
 1. NextJS
 2. React
 3. TypeScript
-4. Styled Components
-5. Jest
-6. RTL
+4. Mantine
+5. Emotion
+6. Jest
+7. RTL
 
 ## Running the app
 
