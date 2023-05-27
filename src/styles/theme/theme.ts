@@ -3,10 +3,14 @@ import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '@/styles/variables'
 export const theme = {
   colors: {
     appBg: COLORS.alabaster,
+
     headerBg: COLORS.black,
     heroSectionBg: COLORS.onyx,
     categoryTitleSectionBg: COLORS.onyx,
     footerBg: COLORS.onyx,
+
+    navLink: COLORS.white,
+    navLinkHover: COLORS.rawSienna,
 
     primaryButtonMain: COLORS.rawSienna,
     primaryButtonLighter: COLORS.hitPink,

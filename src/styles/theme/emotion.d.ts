@@ -12,6 +12,8 @@ declare module '@emotion/react' {
         heroSectionBg: string
         categoryTitleSectionBg: string
         footerBg: string
+        navLink: string
+        navLinkHover: string
         primaryButtonMain: string
         primaryButtonLighter: string
         neutralButtonMain: string

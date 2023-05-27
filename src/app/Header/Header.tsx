@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 
+import { NavBar, NavItem } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
@@ -25,6 +26,10 @@ const S = {
 
     display: flex;
     align-items: center;
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+      justify-content: space-between;
+    }
   `,
   HeaderLogo: styled(Link)`
     margin: 0 auto;
@@ -45,17 +50,44 @@ const S = {
     width: 14.3rem;
     position: relative;
   `,
+  HeaderNavBar: styled(NavBar)`
+    display: none;
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+      display: block;
+    }
+  `,
 }
+
+const navItems: NavItem[] = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: 'Headphones',
+    href: '/headphones',
+  },
+  {
+    label: 'Speakers',
+    href: '/speakers',
+  },
+  {
+    label: 'Earphones',
+    href: '/earphones',
+  },
+]
 
 export const Header = () => {
   return (
     <S.Header>
       <S.HeaderContainer>
-        <S.HeaderLogo href="">
+        <S.HeaderLogo href="/">
           <S.HeaderLogoContainer>
             <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
           </S.HeaderLogoContainer>
         </S.HeaderLogo>
+        <S.HeaderNavBar items={navItems} />
       </S.HeaderContainer>
     </S.Header>
   )

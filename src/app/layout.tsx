@@ -3,6 +3,7 @@ import { Manrope } from 'next/font/google'
 
 import { MantineRegistry } from '@/lib'
 import { Header } from './Header'
+import { Main } from './Main'
 
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
 
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={manrope.className}>
         <MantineRegistry>
           <Header />
-          {children}
+          <Main>{children}</Main>
         </MantineRegistry>
       </body>
     </html>

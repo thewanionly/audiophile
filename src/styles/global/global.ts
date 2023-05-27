@@ -10,6 +10,7 @@ export const globalStyles = (theme: Theme) => css`
   }
 
   html {
+    background-color: ${theme.other.colors.appBg};
     box-sizing: border-box;
 
     /**
