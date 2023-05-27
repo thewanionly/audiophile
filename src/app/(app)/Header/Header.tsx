@@ -59,26 +59,11 @@ const S = {
   `,
 }
 
-const navItems: NavItem[] = [
-  {
-    label: 'Home',
-    href: '/',
-  },
-  {
-    label: 'Headphones',
-    href: '/headphones',
-  },
-  {
-    label: 'Speakers',
-    href: '/speakers',
-  },
-  {
-    label: 'Earphones',
-    href: '/earphones',
-  },
-]
+type HeaderProps = {
+  navItems: NavItem[]
+}
 
-export const Header = () => {
+export const Header = ({ navItems }: HeaderProps) => {
   return (
     <S.Header>
       <S.HeaderContainer>

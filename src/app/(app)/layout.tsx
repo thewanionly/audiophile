@@ -2,11 +2,15 @@ import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
 import { MantineRegistry } from '@/lib'
+import { client } from 'cms/sanity/lib/client'
+
 import { Header } from './Header'
 import { Main } from './Main'
 
+// Fonts
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
 
+// Metadata
 export const metadata: Metadata = {
   title: 'Audiophile',
   description: 'An e-commerce web application',
@@ -32,12 +36,33 @@ export const metadata: Metadata = {
   manifest: '/favicon/site.webmanifest',
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// CMS
+async function getNavLinks() {
+  const navLinksQuery = `*\[_type == "navLink"\] {
+    label,
+    href,
+    order,
+  }`
+
+  const data = await client.fetch(navLinksQuery)
+
+  return data
+}
+
+interface NavLink {
+  label: string
+  href: string
+  order: number
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const navLinks: NavLink[] = await getNavLinks()
+
   return (
     <html lang="en">
       <body className={manrope.className}>
         <MantineRegistry>
-          <Header />
+          <Header navItems={navLinks} />
           <Main>{children}</Main>
         </MantineRegistry>
       </body>

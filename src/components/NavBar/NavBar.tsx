@@ -23,9 +23,10 @@ const S = {
   `,
 }
 
-export type NavItem = {
+export interface NavItem {
   label: string
   href: string
+  order: number
 }
 
 type NavBarProps = {
@@ -37,11 +38,13 @@ export const NavBar = ({ className = '', items }: NavBarProps) => {
   return (
     <S.NavBar className={className}>
       <S.NavList>
-        {items.map(({ label, href }) => (
-          <li key={label}>
-            <S.NavLink href={href}>{label}</S.NavLink>
-          </li>
-        ))}
+        {items
+          .sort(({ order: item1Order }, { order: item2Order }) => item1Order - item2Order)
+          .map(({ label, href }) => (
+            <li key={label}>
+              <S.NavLink href={href}>{label}</S.NavLink>
+            </li>
+          ))}
       </S.NavList>
     </S.NavBar>
   )

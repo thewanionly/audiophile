@@ -29,7 +29,7 @@ const navItems: NavItem[] = [
 
 describe('Header', () => {
   it('displays the logo', () => {
-    render(<Header />)
+    render(<Header navItems={navItems} />)
 
     const logoImg = screen.getByAltText(logo.alt)
 
@@ -38,7 +38,7 @@ describe('Header', () => {
   })
 
   it('contains link to Home page in the logo', () => {
-    render(<Header />)
+    render(<Header navItems={navItems} />)
 
     const logoLink = screen.getByRole('link', { name: logo.alt })
 
@@ -46,7 +46,7 @@ describe('Header', () => {
   })
 
   it('displays navigation links', () => {
-    render(<Header />)
+    render(<Header navItems={navItems} />)
 
     navItems.forEach(({ label, href }) => {
       const navItem = screen.getByRole('link', { name: label })
