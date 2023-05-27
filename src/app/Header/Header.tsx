@@ -1,0 +1,65 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import styled from '@emotion/styled'
+
+import { mediaQuery } from '@/styles/utils'
+
+const S = {
+  Header: styled.header`
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    background-color: ${({ theme }) => theme.other.colors.headerBg};
+    height: 8.9rem;
+    display: flex;
+    align-items: center;
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+      height: 9.6rem;
+    }
+  `,
+  HeaderContainer: styled.div`
+    /* create reusable css utility */
+    width: 85%;
+    max-width: 120rem;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+  `,
+  HeaderLogo: styled(Link)`
+    margin: 0 auto;
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+      margin: 0 0 0 5.8rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+      margin: 0;
+    }
+  `,
+  HeaderLogoContainer: styled.div`
+    user-select: none;
+    cursor: pointer;
+
+    height: 2.5rem;
+    width: 14.3rem;
+    position: relative;
+  `,
+}
+
+export const Header = () => {
+  return (
+    <S.Header>
+      <S.HeaderContainer>
+        <S.HeaderLogo href="">
+          <S.HeaderLogoContainer>
+            <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
+          </S.HeaderLogoContainer>
+        </S.HeaderLogo>
+      </S.HeaderContainer>
+    </S.Header>
+  )
+}

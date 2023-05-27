@@ -3,7 +3,7 @@ import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '@/styles/variables'
 export const theme = {
   colors: {
     appBg: COLORS.alabaster,
-    headerBg: COLORS.onyx,
+    headerBg: COLORS.black,
     heroSectionBg: COLORS.onyx,
     categoryTitleSectionBg: COLORS.onyx,
     footerBg: COLORS.onyx,
