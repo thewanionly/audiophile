@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 
-import { mediaQuery } from '@/styles/utils'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
   Header: styled.header`
@@ -21,10 +21,7 @@ const S = {
     }
   `,
   HeaderContainer: styled.div`
-    /* create reusable css utility */
-    width: 85%;
-    max-width: 120rem;
-    margin: 0 auto;
+    ${({ theme }) => appSectionContainer(theme)}
 
     display: flex;
     align-items: center;
