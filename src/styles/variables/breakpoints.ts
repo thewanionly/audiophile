@@ -3,7 +3,9 @@
 export const BREAKPOINTS = {
   mobile: '(max-width: 37.5em)', // < 600px
   tabletPortrait: '(min-width: 37.5em)', // >= 600px
-  tabletLandscape: '(min-width: 48em)', // > 768px
-  desktop: '(min-width: 62em)', // > 992px
-  desktopLarge: '(min-width: 75em)', // > 1200px
+  tabletLandscape: '(min-width: 48em)', // >= 768px
+  desktop: '(min-width: 62em)', // >= 992px
+  desktopLarge: '(min-width: 75em)', // >= 1200px
 } as const
+
+export type BreakpointsValues = (typeof BREAKPOINTS)[keyof typeof BREAKPOINTS]

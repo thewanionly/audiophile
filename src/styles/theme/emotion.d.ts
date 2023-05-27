@@ -1,6 +1,8 @@
 import '@emotion/react'
 import type { MantineTheme } from '@mantine/core'
 
+import { BreakpointsValues } from '../variables'
+
 declare module '@emotion/react' {
   export interface Theme extends MantineTheme {
     other: {
@@ -34,11 +36,11 @@ declare module '@emotion/react' {
         bold: number
       }
       breakPoints: {
-        mobile: string
-        tabletPortrait: string
-        tabletLandscape: string
-        desktop: string
-        desktopLarge: string
+        mobile: BreakpointsValues
+        tabletPortrait: BreakpointsValues
+        tabletLandscape: BreakpointsValues
+        desktop: BreakpointsValues
+        desktopLarge: BreakpointsValues
       }
     }
   }
