@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
-import { StyleRegistry } from '@/lib'
+import { StyleRegistry } from '@/lib/styleRegistry'
 import { GlobalStyles } from '@/styles'
-import { client } from 'cms/sanity/lib/client'
+import { client } from '@/lib/cms'
 
 import { Header } from './Header'
 import { Main } from './Main'
