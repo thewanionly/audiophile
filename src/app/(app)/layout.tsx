@@ -5,8 +5,8 @@ import { StyleRegistry } from '@/lib/styleRegistry'
 import { GlobalStyles } from '@/styles'
 import { client } from '@/lib/cms'
 
-import { Header } from './Header'
-import { Main } from './Main'
+import { Header } from './layout/Header'
+import { Main } from './layout/Main'
 
 // Fonts
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
