@@ -1,14 +1,20 @@
 import { ReactElement } from 'react'
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 
-import { MantineRegistry } from '@/lib'
+import { StyleRegistry } from '@/lib'
+import { GlobalStyles } from '@/styles'
 
 type RootWrapperProps = {
   children?: React.ReactNode
 }
 
 const RootWrapper = ({ children }: RootWrapperProps) => {
-  return <MantineRegistry>{children}</MantineRegistry>
+  return (
+    <StyleRegistry>
+      <GlobalStyles />
+      {children}
+    </StyleRegistry>
+  )
 }
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult =>

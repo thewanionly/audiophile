@@ -1,1 +1,1 @@
-export * from './MantineRegistry'
+export * from './styleRegistry'

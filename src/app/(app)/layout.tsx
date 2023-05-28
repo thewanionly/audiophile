@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
-import { MantineRegistry } from '@/lib'
+import { StyleRegistry } from '@/lib'
+import { GlobalStyles } from '@/styles'
 import { client } from 'cms/sanity/lib/client'
 
 import { Header } from './Header'
@@ -61,10 +62,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={manrope.className}>
-        <MantineRegistry>
+        <StyleRegistry>
+          <GlobalStyles />
           <Header navItems={navLinks} />
           <Main>{children}</Main>
-        </MantineRegistry>
+        </StyleRegistry>
       </body>
     </html>
   )
