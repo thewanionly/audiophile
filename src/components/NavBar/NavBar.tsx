@@ -23,11 +23,8 @@ const S = {
   `,
 }
 
-export interface NavItem {
-  label: string
-  href: string
-  order: number
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NavItem extends NavLink {}
 
 type NavBarProps = {
   className?: string

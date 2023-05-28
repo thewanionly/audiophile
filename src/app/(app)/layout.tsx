@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
 import { StyleRegistry } from '@/lib/styleRegistry'
+import { getNavLinks } from '@/services/cms'
 import { GlobalStyles } from '@/styles'
-import { client } from '@/lib/cms'
 
 import { Header } from './layout/Header'
 import { Main } from './layout/Main'
@@ -37,27 +37,8 @@ export const metadata: Metadata = {
   manifest: '/favicon/site.webmanifest',
 }
 
-// CMS
-async function getNavLinks() {
-  const navLinksQuery = `*\[_type == "navLink"\] {
-    label,
-    href,
-    order,
-  }`
-
-  const data = await client.fetch(navLinksQuery)
-
-  return data
-}
-
-interface NavLink {
-  label: string
-  href: string
-  order: number
-}
-
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const navLinks: NavLink[] = await getNavLinks()
+  const navLinks = await getNavLinks()
 
   return (
     <html lang="en">

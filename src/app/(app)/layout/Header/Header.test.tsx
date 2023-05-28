@@ -11,19 +11,13 @@ const logo = {
 const navItems: NavItem[] = [
   {
     label: 'Home',
-    href: '/',
+    href: 'home',
+    order: 1,
   },
   {
-    label: 'Headphones',
-    href: '/headphones',
-  },
-  {
-    label: 'Speakers',
-    href: '/speakers',
-  },
-  {
-    label: 'Earphones',
-    href: '/earphones',
+    label: 'Test',
+    href: 'test',
+    order: 2,
   },
 ]
 

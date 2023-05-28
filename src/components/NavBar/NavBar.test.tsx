@@ -5,10 +5,12 @@ const navItems: NavItem[] = [
   {
     label: 'Home',
     href: 'home',
+    order: 1,
   },
   {
     label: 'Test',
     href: 'test',
+    order: 2,
   },
 ]
 
