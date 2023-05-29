@@ -3,8 +3,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from '@emotion/styled'
+import { useMediaQuery } from '@mantine/hooks'
 
 import { NavBar, NavItem } from '@/components'
+import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
@@ -50,13 +52,7 @@ const S = {
     width: 14.3rem;
     position: relative;
   `,
-  HeaderNavBar: styled(NavBar)`
-    display: none;
-
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
-      display: block;
-    }
-  `,
+  HeaderNavBar: styled(NavBar)``,
 }
 
 type HeaderProps = {
@@ -64,6 +60,8 @@ type HeaderProps = {
 }
 
 export const Header = ({ navItems }: HeaderProps) => {
+  const isDesktop = useMediaQuery(theme.breakPoints.desktop)
+
   return (
     <S.Header>
       <S.HeaderContainer>
@@ -72,7 +70,7 @@ export const Header = ({ navItems }: HeaderProps) => {
             <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
           </S.HeaderLogoContainer>
         </S.HeaderLogo>
-        <S.HeaderNavBar items={navItems} />
+        {isDesktop && <S.HeaderNavBar items={navItems} />}
       </S.HeaderContainer>
     </S.Header>
   )
