@@ -8,12 +8,14 @@ declare module '@emotion/react' {
     other: {
       colors: {
         appBg: string
+        primary: string
         headerBg: string
+        navLink: string
+        navLinkHover: string
+        menuIcon: string
         heroSectionBg: string
         categoryTitleSectionBg: string
         footerBg: string
-        navLink: string
-        navLinkHover: string
         primaryButtonMain: string
         primaryButtonLighter: string
         neutralButtonMain: string

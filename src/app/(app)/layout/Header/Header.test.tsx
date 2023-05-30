@@ -116,4 +116,32 @@ describe('Header', () => {
       })
     })
   })
+
+  describe('Menu Icon', () => {
+    it('displays menu icon in mobile', () => {
+      renderMobileSize()
+      render(<Header navItems={navItems} />)
+
+      const menuUIcon = screen.getByRole('button', { name: 'menu close' })
+
+      expect(menuUIcon).toBeInTheDocument()
+    })
+
+    it('displays menu icon in tablet', () => {
+      renderTabletSize()
+      render(<Header navItems={navItems} />)
+
+      const menuUIcon = screen.getByRole('button', { name: 'menu close' })
+
+      expect(menuUIcon).toBeInTheDocument()
+    })
+
+    it('hides menu icon in desktop', () => {
+      render(<Header navItems={navItems} />)
+
+      const menuUIcon = screen.queryByRole('button', { name: 'menu close' })
+
+      expect(menuUIcon).not.toBeInTheDocument()
+    })
+  })
 })
