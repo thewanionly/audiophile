@@ -21,6 +21,11 @@ const S = {
     height: 8.9rem;
     display: flex;
     align-items: center;
+    border-bottom: 0.1rem solid ${({ theme }) => theme.other.colors.headerDivider};
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+      border-bottom: none;
+    }
 
     ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
       height: 9.6rem;
@@ -31,6 +36,11 @@ const S = {
 
     display: flex;
     align-items: center;
+
+    ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+      height: 100%;
+      border-bottom: 0.1rem solid ${({ theme }) => theme.other.colors.headerDivider};
+    }
 
     ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
       justify-content: space-between;

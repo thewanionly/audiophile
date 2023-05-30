@@ -1,4 +1,5 @@
 import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '@/styles/variables'
+import { rgba } from 'polished'
 
 export const theme = {
   colors: {
@@ -11,6 +12,7 @@ export const theme = {
     navLink: COLORS.white,
     navLinkHover: COLORS.rawSienna,
     menuIcon: COLORS.white,
+    headerDivider: rgba(COLORS.white, 0.1),
 
     heroSectionBg: COLORS.onyx,
     categoryTitleSectionBg: COLORS.onyx,
