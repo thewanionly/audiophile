@@ -14,6 +14,8 @@ declare module '@emotion/react' {
         navLinkHover: string
         menuIcon: string
         headerDivider: string
+        cartIcon: string
+        cartIconHover: string
         heroSectionBg: string
         categoryTitleSectionBg: string
         footerBg: string

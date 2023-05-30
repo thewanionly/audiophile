@@ -10,6 +10,7 @@ import { NavBar, NavItem } from '@/components'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
+import CartIcon from 'public/icons/cart.svg'
 import { HeaderMenuIcon } from './HeaderMenuIcon'
 
 const S = {
@@ -36,14 +37,11 @@ const S = {
 
     display: flex;
     align-items: center;
+    position: relative;
 
     ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
       height: 100%;
       border-bottom: 0.1rem solid ${({ theme }) => theme.other.colors.headerDivider};
-    }
-
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
-      justify-content: space-between;
     }
   `,
   HeaderMenuIcon: styled(HeaderMenuIcon)`
@@ -70,7 +68,25 @@ const S = {
     width: 14.3rem;
     position: relative;
   `,
-  HeaderNavBar: styled(NavBar)``,
+  HeaderNavBar: styled(NavBar)`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  `,
+  HeaderCartIconContainer: styled.button`
+    position: absolute;
+    right: 0;
+    background: transparent;
+    width: 2.3rem;
+    height: 2rem;
+    color: ${({ theme }) => theme.other.colors.cartIcon};
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.other.colors.cartIconHover};
+    }
+  `,
 }
 
 type HeaderProps = {
@@ -99,6 +115,9 @@ export const Header = ({ navItems }: HeaderProps) => {
           </S.HeaderLogoContainer>
         </S.HeaderLogo>
         {isDesktop && <S.HeaderNavBar items={navItems} />}
+        <S.HeaderCartIconContainer>
+          <CartIcon />
+        </S.HeaderCartIconContainer>
       </S.HeaderContainer>
     </S.Header>
   )

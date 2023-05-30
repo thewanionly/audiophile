@@ -13,6 +13,8 @@ export const theme = {
     navLinkHover: COLORS.rawSienna,
     menuIcon: COLORS.white,
     headerDivider: rgba(COLORS.white, 0.1),
+    cartIcon: COLORS.white,
+    cartIconHover: COLORS.rawSienna,
 
     heroSectionBg: COLORS.onyx,
     categoryTitleSectionBg: COLORS.onyx,
