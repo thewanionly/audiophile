@@ -1,10 +1,11 @@
 import { render, screen } from '@/tests'
-import { NavItem } from '@/components'
+
 import * as mantineHooks from '@mantine/hooks'
 
 import { theme } from '@/styles'
 
 import { Header } from './Header'
+import { logo, navItems } from '@/tests/__mocks__/data'
 
 /*
  * Mock of @mantine/hooks setup START
@@ -42,25 +43,6 @@ const renderDesktopSize = () => {
 }
 
 /** Mock of common/hooks setup END */
-
-// Mock data
-const logo = {
-  src: '/icons/logo.svg',
-  alt: 'logo of audiophile',
-}
-
-const navItems: NavItem[] = [
-  {
-    label: 'Home',
-    href: 'home',
-    order: 1,
-  },
-  {
-    label: 'Test',
-    href: 'test',
-    order: 2,
-  },
-]
 
 beforeEach(() => {
   renderDesktopSize()
