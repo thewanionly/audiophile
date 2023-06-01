@@ -1,5 +1,4 @@
 import '@emotion/react'
-import type { MantineTheme } from '@mantine/core'
 
 import { BreakpointsValues } from '../variables'
 
