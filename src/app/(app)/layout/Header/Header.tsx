@@ -6,11 +6,10 @@ import Link from 'next/link'
 import styled from '@emotion/styled'
 import { useMediaQuery } from '@mantine/hooks'
 
-import { NavBar, NavItem } from '@/components'
+import { Icon, IconName, NavBar, NavItem } from '@/components'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
-import CartIcon from 'public/icons/cart.svg'
 import { HeaderMenuIcon } from './HeaderMenuIcon'
 
 const S = {
@@ -116,7 +115,7 @@ export const Header = ({ navItems }: HeaderProps) => {
         </S.HeaderLogo>
         {isDesktop && <S.HeaderNavBar items={navItems} />}
         <S.HeaderCartIconContainer>
-          <CartIcon />
+          <Icon name={IconName.Cart} />
         </S.HeaderCartIconContainer>
       </S.HeaderContainer>
     </S.Header>

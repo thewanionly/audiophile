@@ -126,4 +126,14 @@ describe('Header', () => {
       expect(menuUIcon).not.toBeInTheDocument()
     })
   })
+
+  describe('Cart icon', () => {
+    it('displays cart icon', () => {
+      render(<Header navItems={navItems} />)
+
+      const cartIcon = screen.getByLabelText('cart icon')
+
+      expect(cartIcon).toBeInTheDocument()
+    })
+  })
 })
