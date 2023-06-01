@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from '@emotion/styled'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { Icon, IconName, NavBar, NavItem } from '@/components'
 import { theme } from '@/styles'
@@ -93,8 +94,7 @@ type HeaderProps = {
 
 export const Header = ({ navItems }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  // const isDesktop = useMediaQuery(theme.breakPoints.desktop)
-  const isDesktop = true
+  const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
   const closeNavMenu = useCallback(() => {
     setIsMenuOpen(false)

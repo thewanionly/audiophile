@@ -1,46 +1,44 @@
-import { render, screen } from '@/tests'
-
-// import * as mantineHooks from '@mantine/hooks'
+import * as useMediaQueryHook from '@mui/material/useMediaQuery'
 
 import { theme } from '@/styles'
-
-import { Header } from './Header'
+import { render, screen } from '@/tests'
 import { logo, navItems } from '@/tests/__mocks__/data'
 
-const mantineHooks = {}
+import { Header } from './Header'
+
 /*
- * Mock of @mantine/hooks setup START
+ * Mock of @mui/material/useMediaQuery setup START
  * Setup mock this way so it can be overridden per test
  * Many thanks to this blog: https://mikeborozdin.com/post/changing-jest-mocks-between-tests/
  */
-const mockedMantineHooks = mantineHooks as {
-  useMediaQuery: (query: string) => boolean
+const mockUseMediaQueryHook = useMediaQueryHook as {
+  default: (query: string) => boolean
 }
 
 // By default desktop size is rendered
 const useMediaQueryMock = (query: string) => query === theme.breakPoints.desktop
 
-// jest.mock('@mantine/hooks', () => ({
-//   __esModule: true,
-//   useMediaQuery: jest.fn((query: string) => useMediaQueryMock(query)),
-// }))
+jest.mock('@mui/material/useMediaQuery', () => ({
+  __esModule: true,
+  default: jest.fn((query: string) => useMediaQueryMock(query)),
+}))
 
 // Override to return false, indicating screen is not desktop
 const renderMobileSize = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  mockedMantineHooks.useMediaQuery = () => useMediaQueryMock(theme.breakPoints.mobile)
+  mockUseMediaQueryHook.default = () => useMediaQueryMock(theme.breakPoints.mobile)
 }
 
 // Override to return false, indicating screen is not desktop
 const renderTabletSize = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  mockedMantineHooks.useMediaQuery = () => useMediaQueryMock(theme.breakPoints.tabletLandscape)
+  mockUseMediaQueryHook.default = () => useMediaQueryMock(theme.breakPoints.tabletLandscape)
 }
 
 // Default
 const renderDesktopSize = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  mockedMantineHooks.useMediaQuery = () => useMediaQueryMock(theme.breakPoints.desktop)
+  mockUseMediaQueryHook.default = () => useMediaQueryMock(theme.breakPoints.desktop)
 }
 
 /** Mock of common/hooks setup END */
@@ -49,7 +47,7 @@ beforeEach(() => {
   renderDesktopSize()
 })
 
-xdescribe('Header', () => {
+describe('Header', () => {
   describe('Logo', () => {
     it('displays the logo', () => {
       render(<Header navItems={navItems} />)
