@@ -10,15 +10,15 @@ const S = {
     gap: 3.4rem;
   `,
   NavLink: styled(Link)`
-    font-weight: ${(props) => props.theme.other.fontWeights.bold};
-    font-size: ${(props) => props.theme.other.fontSizes.sm1};
+    font-weight: ${(props) => props.theme.fontWeights.bold};
+    font-size: ${(props) => props.theme.fontSizes.sm1};
     line-height: 2.5rem;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    color: ${(props) => props.theme.other.colors.navLink};
+    color: ${(props) => props.theme.colors.navLink};
 
     &:hover {
-      color: ${(props) => props.theme.other.colors.navLinkHover};
+      color: ${(props) => props.theme.colors.navLinkHover};
     }
   `,
 }

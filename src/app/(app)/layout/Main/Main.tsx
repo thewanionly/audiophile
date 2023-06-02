@@ -8,7 +8,7 @@ const S = {
   Main: styled.main`
     padding-top: 8.9rem;
 
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       padding-top: 9.6rem;
     }
   `,

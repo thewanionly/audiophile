@@ -10,7 +10,7 @@ export const globalStyles = (theme: Theme) => css`
   }
 
   html {
-    background-color: ${theme.other.colors.appBg};
+    background-color: ${theme.colors.appBg};
     box-sizing: border-box;
 
     /**
@@ -23,8 +23,8 @@ export const globalStyles = (theme: Theme) => css`
     font-size: 62.5%;
 
     & * {
-      font-size: ${theme.other.fontSizes.regular};
-      font-weight: ${theme.other.fontWeights.regular};
+      font-size: ${theme.fontSizes.regular};
+      font-weight: ${theme.fontWeights.regular};
     }
   }
 
@@ -35,41 +35,41 @@ export const globalStyles = (theme: Theme) => css`
   h5,
   h6 {
     text-transform: uppercase;
-    font-weight: ${theme.other.fontWeights.bold};
+    font-weight: ${theme.fontWeights.bold};
   }
 
   h1 {
-    font-size: ${theme.other.fontSizes.xxxl};
+    font-size: ${theme.fontSizes.xxxl};
     line-height: 5.8rem;
     letter-spacing: 0.2rem;
   }
 
   h2 {
-    font-size: ${theme.other.fontSizes.xxl};
+    font-size: ${theme.fontSizes.xxl};
     line-height: 4.4rem;
     letter-spacing: 0.15rem;
   }
 
   h3 {
-    font-size: ${theme.other.fontSizes.xl};
+    font-size: ${theme.fontSizes.xl};
     line-height: 3.6rem;
     letter-spacing: 0.115rem;
   }
 
   h4 {
-    font-size: ${theme.other.fontSizes.lg};
+    font-size: ${theme.fontSizes.lg};
     line-height: 3.8rem;
     letter-spacing: 0.2rem;
   }
 
   h5 {
-    font-size: ${theme.other.fontSizes.med2};
+    font-size: ${theme.fontSizes.med2};
     line-height: 3.3rem;
     letter-spacing: 0.17rem;
   }
 
   h6 {
-    font-size: ${theme.other.fontSizes.med1};
+    font-size: ${theme.fontSizes.med1};
     line-height: 2.5rem;
     letter-spacing: 0.13rem;
   }

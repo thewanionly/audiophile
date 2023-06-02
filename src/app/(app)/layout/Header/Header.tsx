@@ -17,17 +17,17 @@ const S = {
     position: fixed;
     z-index: 1;
     width: 100%;
-    background-color: ${({ theme }) => theme.other.colors.headerBg};
+    background-color: ${({ theme }) => theme.colors.headerBg};
     height: 8.9rem;
     display: flex;
     align-items: center;
-    border-bottom: 0.1rem solid ${({ theme }) => theme.other.colors.headerDivider};
+    border-bottom: 0.1rem solid ${({ theme }) => theme.colors.headerDivider};
 
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       border-bottom: none;
     }
 
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       height: 9.6rem;
     }
   `,
@@ -38,9 +38,9 @@ const S = {
     align-items: center;
     position: relative;
 
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       height: 100%;
-      border-bottom: 0.1rem solid ${({ theme }) => theme.other.colors.headerDivider};
+      border-bottom: 0.1rem solid ${({ theme }) => theme.colors.headerDivider};
     }
   `,
   HeaderMenuIcon: styled(HeaderMenuIcon)`
@@ -50,12 +50,12 @@ const S = {
     margin: 0 auto;
     padding: 0px 3rem;
 
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       margin: 0 0 0 5.8rem;
       padding: 0;
     }
 
-    ${({ theme }) => mediaQuery(theme.other.breakPoints.desktop)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       margin: 0;
     }
   `,
@@ -78,12 +78,12 @@ const S = {
     background: transparent;
     width: 2.3rem;
     height: 2rem;
-    color: ${({ theme }) => theme.other.colors.cartIcon};
+    color: ${({ theme }) => theme.colors.cartIcon};
     cursor: pointer;
     transition: all 0.2s ease-out;
 
     &:hover {
-      color: ${({ theme }) => theme.other.colors.cartIconHover};
+      color: ${({ theme }) => theme.colors.cartIconHover};
     }
   `,
 }

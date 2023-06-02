@@ -1,7 +1,9 @@
-import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '@/styles/variables'
+import { Theme } from '@emotion/react'
 import { rgba } from 'polished'
 
-export const theme = {
+import { BREAKPOINTS, COLORS, TYPOGRAPHY } from '@/styles/variables'
+
+export const theme: Theme = {
   colors: {
     // Global
     appBg: COLORS.alabaster,

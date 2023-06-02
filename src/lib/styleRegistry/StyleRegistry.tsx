@@ -3,6 +3,7 @@
 import { useServerInsertedHTML } from 'next/navigation'
 import createCache from '@emotion/cache'
 import { CacheProvider, ThemeProvider } from '@emotion/react'
+import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
 
 import { theme } from '@/styles'
 
@@ -21,9 +22,18 @@ export const StyleRegistry = ({ children }: { children: React.ReactNode }) => {
     />
   ))
 
+  /**
+   * Notes on theming:
+   * 1. Need to wrap with ThemeProvider from emotion to access custom theme in the components.
+   * 2. Now that we are wrapping a ThemeProvider from emotion, the MUI components would not work.
+   *    To resolve, need to wrap with ThemeProvider from MUI with empty createTheme to retain its default theme.
+   */
+
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={{ other: theme }}>{children}</ThemeProvider>
+      <MuiThemeProvider theme={createTheme()}>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </MuiThemeProvider>
     </CacheProvider>
   )
 }

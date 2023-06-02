@@ -6,7 +6,7 @@ import { css } from '@emotion/react'
 const S = {
   HeaderMenuButton: styled.button<HeaderMenuIconProps>`
     background: transparent;
-    color: ${({ theme }) => theme.other.colors.menuIcon};
+    color: ${({ theme }) => theme.colors.menuIcon};
     width: 1.6rem;
     height: 2.5rem;
     overflow: hidden;
@@ -15,12 +15,12 @@ const S = {
       .header-menu-icon {
         & {
           background-color: ${({ theme, isOpen }) =>
-            isOpen ? 'transparent' : theme.other.colors.primary};
+            isOpen ? 'transparent' : theme.colors.primary};
         }
 
         &::before,
         &::after {
-          background-color: ${({ theme }) => theme.other.colors.primary};
+          background-color: ${({ theme }) => theme.colors.primary};
         }
       }
     }
@@ -38,7 +38,7 @@ const S = {
     &::before,
     &::after {
       display: block;
-      background-color: ${({ theme }) => theme.other.colors.menuIcon};
+      background-color: ${({ theme }) => theme.colors.menuIcon};
       content: '';
       height: 0.3rem;
       width: 1.6rem;

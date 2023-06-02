@@ -8,11 +8,11 @@ export const appSectionContainer = (theme: Theme) => css`
   min-width: 24.5rem;
   margin: 0 auto;
 
-  ${mediaQuery(theme.other.breakPoints.tabletLandscape)} {
+  ${mediaQuery(theme.breakPoints.tabletLandscape)} {
     width: 89.7%;
   }
 
-  ${mediaQuery(theme.other.breakPoints.desktop)} {
+  ${mediaQuery(theme.breakPoints.desktop)} {
     width: 90%;
   }
 `
