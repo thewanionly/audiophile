@@ -8,6 +8,7 @@ export const theme: Theme = {
     // Global
     appBg: COLORS.alabaster,
     primary: COLORS.rawSienna,
+    darkTitle: COLORS.black,
 
     // Header
     headerBg: COLORS.black,
@@ -17,6 +18,9 @@ export const theme: Theme = {
     headerDivider: rgba(COLORS.white, 0.1),
     cartIcon: COLORS.white,
     cartIconHover: COLORS.rawSienna,
+
+    categoryCardBg: COLORS.seaShell,
+    categoryCardLink: rgba(COLORS.black, 0.5),
 
     heroSectionBg: COLORS.onyx,
     categoryTitleSectionBg: COLORS.onyx,

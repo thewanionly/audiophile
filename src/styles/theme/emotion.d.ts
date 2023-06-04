@@ -7,6 +7,7 @@ declare module '@emotion/react' {
     colors: {
       appBg: string
       primary: string
+      darkTitle: string
       headerBg: string
       navLink: string
       navLinkHover: string
@@ -14,6 +15,8 @@ declare module '@emotion/react' {
       headerDivider: string
       cartIcon: string
       cartIconHover: string
+      categoryCardBg: string
+      categoryCardLink: string
       heroSectionBg: string
       categoryTitleSectionBg: string
       footerBg: string
