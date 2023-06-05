@@ -6,19 +6,27 @@ import Link from 'next/link'
 
 const S = {
   CategoryCard: styled.div`
+    display: grid;
+    justify-items: center;
+  `,
+  CategoryCardImageContainer: styled.div`
+    width: 100px;
+    height: 100px;
+    position: relative;
+    grid-area: 1 / 1 / 3 / 2;
+  `,
+  CategoryCardImage: styled(Image)``,
+  CategoryCardBottomContainer: styled.div`
     background-color: ${({ theme }) => theme.colors.categoryCardBg};
     border-radius: 0.8rem;
     padding: 2.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 8.8rem;
+    grid-area: 2 / 1 / 4 / 2;
+    width: 100%;
   `,
-  CategoryCardImageContainer: styled.div`
-    width: 100px;
-    height: 100px;
-    position: relative;
-  `,
-  CategoryCardImage: styled(Image)``,
   CategoryCardName: styled.span`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.regular};
@@ -55,8 +63,10 @@ export const CategoryCard = ({ image, name, href }: CategoryCardProps) => {
       <S.CategoryCardImageContainer>
         <S.CategoryCardImage src={image} alt={name} fill />
       </S.CategoryCardImageContainer>
-      <S.CategoryCardName>{name}</S.CategoryCardName>
-      <S.CategoryCardLink href={href}>Shop</S.CategoryCardLink>
+      <S.CategoryCardBottomContainer>
+        <S.CategoryCardName>{name}</S.CategoryCardName>
+        <S.CategoryCardLink href={href}>Shop</S.CategoryCardLink>
+      </S.CategoryCardBottomContainer>
     </S.CategoryCard>
   )
 }

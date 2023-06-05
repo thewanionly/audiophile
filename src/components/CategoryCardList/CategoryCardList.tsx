@@ -9,6 +9,7 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+    padding: 2rem;
   `,
 }
 
