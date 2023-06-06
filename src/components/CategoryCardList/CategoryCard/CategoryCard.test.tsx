@@ -3,7 +3,7 @@ import { CategoryCard } from './CategoryCard'
 import { ImageProps } from 'next/image'
 
 const mockedCategory = {
-  image: '/images/desktop/image-xx99-mark-one-headphones.jpg',
+  image: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
   name: 'Headphones',
   href: '/headphones',
 }

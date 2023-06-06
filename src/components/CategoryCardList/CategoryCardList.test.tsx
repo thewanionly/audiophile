@@ -4,9 +4,9 @@ import { Category, CategoryCardList } from './CategoryCardList'
 const mockedCategories: Category[] = [
   {
     image: {
-      desktop: '/images/desktop/image-xx99-mark-one-headphones.jpg',
-      tablet: '/images/desktop/image-xx99-mark-one-headphones.jpg',
-      mobile: '/images/desktop/image-xx99-mark-one-headphones.jpg',
+      desktop: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
+      tablet: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
+      mobile: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
     },
     name: 'Headphones',
     href: '/headphones',

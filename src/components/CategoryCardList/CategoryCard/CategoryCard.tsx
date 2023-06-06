@@ -12,22 +12,31 @@ const S = {
     justify-items: center;
   `,
   CategoryCardImageContainer: styled.div`
-    width: 100px;
-    height: 100px;
+    top: 1.2rem;
+    width: 12rem;
+    height: 12rem;
     position: relative;
     grid-area: 1 / 1 / 3 / 2;
   `,
-  CategoryCardImage: styled(Image)``,
-  CategoryCardBottomContainer: styled.div`
+  CategoryCardImage: styled(Image)`
+    object-fit: contain;
+  `,
+  CategoryCardFilledContainer: styled.div`
     background-color: ${({ theme }) => theme.colors.categoryCardBg};
     border-radius: 0.8rem;
+
+    grid-area: 2 / 1 / 4 / 2;
+    width: 100%;
+  `,
+  CategoryCardTextContainer: styled.div`
+    grid-area: 3 / 1 / 4 / 2;
+    width: 100%;
+
     padding: 2.2rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 8.8rem;
-    grid-area: 2 / 1 / 4 / 2;
-    width: 100%;
   `,
   CategoryCardName: styled.span`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
@@ -71,13 +80,14 @@ export const CategoryCard = ({ image, name, href }: CategoryCardProps) => {
       <S.CategoryCardImageContainer>
         <S.CategoryCardImage src={image} alt={name} fill />
       </S.CategoryCardImageContainer>
-      <S.CategoryCardBottomContainer>
+      <S.CategoryCardFilledContainer />
+      <S.CategoryCardTextContainer>
         <S.CategoryCardName>{name}</S.CategoryCardName>
         <S.CategoryCardShopLink href={href}>
           Shop
           <Icon name={IconName.ArrowRight} />
         </S.CategoryCardShopLink>
-      </S.CategoryCardBottomContainer>
+      </S.CategoryCardTextContainer>
     </S.CategoryCard>
   )
 }
