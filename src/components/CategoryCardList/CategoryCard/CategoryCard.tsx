@@ -4,6 +4,8 @@ import styled from '@emotion/styled'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Icon, IconName } from '@/components'
+
 const S = {
   CategoryCard: styled.div`
     display: grid;
@@ -37,13 +39,19 @@ const S = {
 
     margin-bottom: 1.7rem;
   `,
-  CategoryCardLink: styled(Link)`
+
+  CategoryCardShopLink: styled(Link)`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.sm1};
     line-height: 1.8rem;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.categoryCardLink};
+    transition: all 0.3s ease-out;
 
     &:hover {
       color: ${({ theme }) => theme.colors.primary};
@@ -65,7 +73,10 @@ export const CategoryCard = ({ image, name, href }: CategoryCardProps) => {
       </S.CategoryCardImageContainer>
       <S.CategoryCardBottomContainer>
         <S.CategoryCardName>{name}</S.CategoryCardName>
-        <S.CategoryCardLink href={href}>Shop</S.CategoryCardLink>
+        <S.CategoryCardShopLink href={href}>
+          Shop
+          <Icon name={IconName.ArrowRight} />
+        </S.CategoryCardShopLink>
       </S.CategoryCardBottomContainer>
     </S.CategoryCard>
   )

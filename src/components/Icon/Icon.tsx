@@ -1,12 +1,15 @@
 import styled from '@emotion/styled'
 
+import ArrowRight from 'public/icons/arrow-right.svg'
 import CartIcon from 'public/icons/cart.svg'
 
 export enum IconName {
+  ArrowRight = 'arrow_right',
   Cart = 'cart',
 }
 
 const IconMap = {
+  [IconName.ArrowRight]: ArrowRight,
   [IconName.Cart]: CartIcon,
 } as const
 
