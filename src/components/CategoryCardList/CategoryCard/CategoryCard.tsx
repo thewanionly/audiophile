@@ -76,7 +76,7 @@ type CategoryCardProps = {
 
 export const CategoryCard = ({ image, name, href }: CategoryCardProps) => {
   return (
-    <S.CategoryCard data-testid="category-card">
+    <S.CategoryCard className="category-card" data-testid="category-card">
       <S.CategoryCardImageContainer>
         <S.CategoryCardImage src={image} alt={name} fill />
       </S.CategoryCardImageContainer>
