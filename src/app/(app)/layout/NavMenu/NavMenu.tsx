@@ -59,7 +59,7 @@ export const NavMenu = () => {
   const { isNavMenuOpen, closeNavMenu } = useLayoutContext()
 
   return (
-    <S.Modal open={isNavMenuOpen} onClose={() => console.log('close this modal')}>
+    <S.Modal open={isNavMenuOpen}>
       <S.ModalContent>
         <CategoryCardList
           categories={mockedCategories.map((category) => ({
