@@ -15,6 +15,7 @@ const S = {
     .category-card {
       flex: 1;
       width: min(100%, 32.7rem);
+      min-width: 24.5rem;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
@@ -22,7 +23,8 @@ const S = {
       gap: 1rem;
 
       .category-card {
-        max-width: none;
+        max-width: unset;
+        min-width: unset;
       }
     }
 

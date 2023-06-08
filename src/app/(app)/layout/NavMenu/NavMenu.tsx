@@ -1,15 +1,27 @@
 'use client'
 
+import Modal from '@mui/material/Modal'
 import styled from '@emotion/styled'
 
+import { mediaQuery } from '@/styles/utils'
 import { CategoryCardList } from '@/components'
-import { appSectionContainer } from '@/styles/utils'
+import { useLayoutContext } from '../Layout.context'
 
 const S = {
-  CategoryCardListSection: styled.section`
-    ${({ theme }) => appSectionContainer(theme)}
+  Modal: styled(Modal)`
+    &,
+    .MuiBackdrop-root {
+      margin-top: 8.9rem;
 
-    margin-top: 4rem;
+      ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+        margin-top: 9.6rem;
+      }
+    }
+  `,
+  ModalContent: styled.div`
+    background-color: white;
+    border-radius: 0 0 0.8rem 0.8rem;
+    padding: 3.2rem 2.4rem 3.5rem;
   `,
 }
 
@@ -43,12 +55,14 @@ const mockedCategories = [
   },
 ]
 
-export const Home = () => {
+export const NavMenu = () => {
+  const { isNavMenuOpen } = useLayoutContext()
+
   return (
-    <>
-      <S.CategoryCardListSection>
+    <S.Modal open={isNavMenuOpen} onClose={() => console.log('close this modal')}>
+      <S.ModalContent>
         <CategoryCardList categories={mockedCategories} />
-      </S.CategoryCardListSection>
-    </>
+      </S.ModalContent>
+    </S.Modal>
   )
 }
