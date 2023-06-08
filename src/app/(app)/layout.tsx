@@ -5,8 +5,7 @@ import { StyleRegistry } from '@/lib/styleRegistry'
 import { getNavLinks } from '@/services/cms'
 import { GlobalStyles } from '@/styles'
 
-import { Header } from './layout/Header'
-import { Main } from './layout/Main'
+import { Layout } from './layout/Layout'
 
 // Fonts
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
@@ -45,8 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={manrope.className}>
         <StyleRegistry>
           <GlobalStyles />
-          <Header navItems={navLinks} />
-          <Main>{children}</Main>
+          <Layout navLinks={navLinks}>{children}</Layout>
         </StyleRegistry>
       </body>
     </html>

@@ -1,6 +1,5 @@
 'use client'
 
-import { useCallback, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from '@emotion/styled'
@@ -11,6 +10,7 @@ import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { HeaderMenuIcon } from './HeaderMenuIcon'
+import { useLayoutContext } from '../Layout.context'
 
 const S = {
   Header: styled.header`
@@ -93,21 +93,13 @@ type HeaderProps = {
 }
 
 export const Header = ({ navItems }: HeaderProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { isNavMenuOpen, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
-
-  const closeNavMenu = useCallback(() => {
-    setIsMenuOpen(false)
-  }, [])
-
-  const toggleNavMenu = useCallback(() => {
-    setIsMenuOpen((prevValue) => !prevValue)
-  }, [])
 
   return (
     <S.Header>
       <S.HeaderContainer>
-        <S.HeaderMenuIcon isOpen={isMenuOpen} isVisible={!isDesktop} onClick={toggleNavMenu} />
+        <S.HeaderMenuIcon isOpen={isNavMenuOpen} isVisible={!isDesktop} onClick={toggleNavMenu} />
         <S.HeaderLogo href="/">
           <S.HeaderLogoContainer>
             <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
