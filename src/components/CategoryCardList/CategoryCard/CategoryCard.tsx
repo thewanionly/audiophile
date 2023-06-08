@@ -72,9 +72,10 @@ type CategoryCardProps = {
   image: string
   name: string
   href: string
+  onLinkClick?: () => void
 }
 
-export const CategoryCard = ({ image, name, href }: CategoryCardProps) => {
+export const CategoryCard = ({ image, name, href, onLinkClick }: CategoryCardProps) => {
   return (
     <S.CategoryCard className="category-card" data-testid="category-card">
       <S.CategoryCardImageContainer>
@@ -83,7 +84,7 @@ export const CategoryCard = ({ image, name, href }: CategoryCardProps) => {
       <S.CategoryCardFilledContainer />
       <S.CategoryCardTextContainer>
         <S.CategoryCardName>{name}</S.CategoryCardName>
-        <S.CategoryCardShopLink href={href}>
+        <S.CategoryCardShopLink href={href} onClick={onLinkClick}>
           Shop
           <Icon name={IconName.ArrowRight} />
         </S.CategoryCardShopLink>

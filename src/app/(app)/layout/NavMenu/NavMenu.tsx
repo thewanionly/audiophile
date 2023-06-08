@@ -56,12 +56,17 @@ const mockedCategories = [
 ]
 
 export const NavMenu = () => {
-  const { isNavMenuOpen } = useLayoutContext()
+  const { isNavMenuOpen, closeNavMenu } = useLayoutContext()
 
   return (
     <S.Modal open={isNavMenuOpen} onClose={() => console.log('close this modal')}>
       <S.ModalContent>
-        <CategoryCardList categories={mockedCategories} />
+        <CategoryCardList
+          categories={mockedCategories.map((category) => ({
+            ...category,
+            onLinkClick: closeNavMenu,
+          }))}
+        />
       </S.ModalContent>
     </S.Modal>
   )

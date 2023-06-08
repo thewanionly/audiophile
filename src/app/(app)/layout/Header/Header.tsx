@@ -93,14 +93,14 @@ type HeaderProps = {
 }
 
 export const Header = ({ navItems }: HeaderProps) => {
-  const { isNavMenuOpen, toggleNavMenu } = useLayoutContext()
+  const { isNavMenuOpen, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
   return (
     <S.Header>
       <S.HeaderContainer>
         <S.HeaderMenuIcon isOpen={isNavMenuOpen} isVisible={!isDesktop} onClick={toggleNavMenu} />
-        <S.HeaderLogo href="/">
+        <S.HeaderLogo href="/" onClick={closeNavMenu}>
           <S.HeaderLogoContainer>
             <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
           </S.HeaderLogoContainer>
