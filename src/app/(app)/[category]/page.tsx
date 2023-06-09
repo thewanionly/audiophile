@@ -1,7 +1,5 @@
-export default function Category({ params }: { params: { category: string } }) {
-  return (
-    <>
-      <section>{params.category}</section>
-    </>
-  )
+import { Category } from './page/Category'
+
+export default function CategoryPage({ params }: { params: { category: string } }) {
+  return <Category name={params.category} />
 }

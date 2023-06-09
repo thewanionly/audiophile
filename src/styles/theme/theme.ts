@@ -9,6 +9,7 @@ export const theme: Theme = {
     appBg: COLORS.alabaster,
     primary: COLORS.rawSienna,
     darkTitle: COLORS.black,
+    lightTitle: COLORS.white,
 
     // Header
     headerBg: COLORS.black,
@@ -23,8 +24,10 @@ export const theme: Theme = {
     categoryCardLink: rgba(COLORS.black, 0.5),
 
     heroSectionBg: COLORS.onyx,
-    categoryTitleSectionBg: COLORS.onyx,
     footerBg: COLORS.onyx,
+
+    // CLP
+    categoryHeaderBg: COLORS.black,
 
     primaryButtonMain: COLORS.rawSienna,
     primaryButtonLighter: COLORS.hitPink,
