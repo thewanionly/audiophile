@@ -24,6 +24,8 @@ export const theme: Theme = {
     categoryCardLink: rgba(COLORS.black, 0.5),
 
     heroSectionBg: COLORS.onyx,
+
+    // Footer
     footerBg: COLORS.onyx,
 
     // CLP

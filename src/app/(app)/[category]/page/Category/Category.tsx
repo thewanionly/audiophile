@@ -48,7 +48,7 @@ const S = {
     margin: 12rem auto;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin: 16rem 0;
+      margin: 16rem auto;
     }
   `,
 }

@@ -10,6 +10,7 @@ const S = {
     ${({ theme }) => appSectionContainer(theme)}
 
     margin-top: 4rem;
+    margin-bottom: 12rem;
   `,
 }
 

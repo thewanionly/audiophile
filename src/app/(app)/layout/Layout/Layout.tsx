@@ -1,10 +1,12 @@
 'use client'
 
 import { NavItem } from '@/components'
+
 import { Header } from '../Header'
 import { Main } from '../Main'
 import { NavMenu } from '../NavMenu'
 import { LayoutProvider } from '../Layout.context'
+import { Footer } from '../Footer'
 
 type LayoutProps = {
   navLinks: NavItem[]
@@ -17,6 +19,7 @@ export const Layout = ({ navLinks, children }: LayoutProps) => {
       <Header navItems={navLinks} />
       <NavMenu />
       <Main>{children}</Main>
+      <Footer />
     </LayoutProvider>
   )
 }
