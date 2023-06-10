@@ -2,15 +2,12 @@
 
 import styled from '@emotion/styled'
 
-import { mediaQuery } from '@/styles/utils'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
   CategoryHeader: styled.section`
     height: 10.2rem;
     background-color: ${({ theme }) => theme.colors.categoryHeaderBg};
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       height: 24.6rem;
@@ -20,6 +17,14 @@ const S = {
       height: 23.9rem;
     }
   `,
+  CategoryHeaderContainer: styled.div`
+    ${({ theme }) => appSectionContainer(theme)}
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `,
   CatrgoryHeadingText: styled.h1`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.lg};
@@ -27,6 +32,7 @@ const S = {
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.lightTitle};
+    text-align: center;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       font-size: ${({ theme }) => theme.fontSizes.xxl};
@@ -44,7 +50,9 @@ export const Category = ({ name }: CategoryProps) => {
   return (
     <>
       <S.CategoryHeader>
-        <S.CatrgoryHeadingText>{name}</S.CatrgoryHeadingText>
+        <S.CategoryHeaderContainer>
+          <S.CatrgoryHeadingText>{name}</S.CatrgoryHeadingText>
+        </S.CategoryHeaderContainer>
       </S.CategoryHeader>
     </>
   )
