@@ -2,7 +2,9 @@
 
 import styled from '@emotion/styled'
 
+import { CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { mockedCategories } from '@/tests/__mocks__/data'
 
 const S = {
   CategoryHeader: styled.section`
@@ -40,6 +42,15 @@ const S = {
       letter-spacing: 0.14rem;
     }
   `,
+  CategoryCardListSection: styled.section`
+    ${({ theme }) => appSectionContainer(theme)}
+
+    margin: 12rem auto;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin: 16rem 0;
+    }
+  `,
 }
 
 type CategoryProps = {
@@ -54,6 +65,9 @@ export const Category = ({ name }: CategoryProps) => {
           <S.CatrgoryHeadingText>{name}</S.CatrgoryHeadingText>
         </S.CategoryHeaderContainer>
       </S.CategoryHeader>
+      <S.CategoryCardListSection>
+        <CategoryCardList categories={mockedCategories} />
+      </S.CategoryCardListSection>
     </>
   )
 }
