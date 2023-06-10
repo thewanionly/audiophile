@@ -55,7 +55,7 @@ type CategoryCardListProps = {
 
 export const CategoryCardList = ({ className = '', categories }: CategoryCardListProps) => {
   return (
-    <S.CategoryCardList className={className}>
+    <S.CategoryCardList className={className} data-testid="category-card-list">
       {categories.map(({ image, name, href, onLinkClick }) => (
         <CategoryCard
           key={name}
