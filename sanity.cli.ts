@@ -4,7 +4,21 @@
  **/
 import { defineCliConfig } from 'sanity/cli'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+// Audiophile Content
+const contentProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const contentDataset = process.env.NEXT_PUBLIC_SANITY_DATASET
 
-export default defineCliConfig({ api: { projectId, dataset } })
+const contentCLIConfig = defineCliConfig({
+  api: { projectId: contentProjectId, dataset: contentDataset },
+})
+
+// Audiophile Products
+const productsProjectId = process.env.NEXT_PUBLIC_SANITY_PRODUCTS_PROJECT_ID
+const productsDataset = process.env.NEXT_PUBLIC_SANITY_PRODUCTS_DATASET
+
+const productsCLIConfig = defineCliConfig({
+  api: { projectId: productsProjectId, dataset: productsDataset },
+})
+
+// Export the two project's CLI config
+export { contentCLIConfig, productsCLIConfig }
