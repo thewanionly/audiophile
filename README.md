@@ -1,6 +1,6 @@
 # audiophile
 
-An e-commerce web application built with NextJS.
+An e-commerce web application built with NextJS13 using the app directory.
 
 ## Technologies used
 
@@ -11,6 +11,7 @@ An e-commerce web application built with NextJS.
 5. Emotion
 6. Jest
 7. RTL
+8. Sanity (for CMS)
 
 ## Running the app
 

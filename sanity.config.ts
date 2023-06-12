@@ -6,26 +6,21 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
-import { apiVersion, dataset, projectId, schema } from '@/lib/cms'
-import {
-  apiVersion as apiVersionProducts,
-  dataset as datasetProducts,
-  projectId as projectIdProducts,
-  schema as schemaProducts,
-} from '@/lib/cms/products'
+import * as cmsContent from '@/lib/cms/content'
+import * as productsContent from '@/lib/cms/products'
 
 // Audiophile Content
 const contentStudioConfig = defineConfig({
   name: 'audiophile-content-studio',
-  basePath: '/sanity-studio',
-  projectId,
-  dataset,
-  schema,
+  basePath: '/audiophile-content-studio',
+  projectId: cmsContent.projectId,
+  dataset: cmsContent.dataset,
+  schema: cmsContent.schema,
   plugins: [
     deskTool(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersion }),
+    visionTool({ defaultApiVersion: cmsContent.apiVersion }),
   ],
 })
 
@@ -33,14 +28,14 @@ const contentStudioConfig = defineConfig({
 const productsStudioConfig = defineConfig({
   name: 'audiophile-products-studio',
   basePath: '/audiophile-products-studio',
-  projectId: projectIdProducts,
-  dataset: datasetProducts,
-  schema: schemaProducts,
+  projectId: productsContent.projectId,
+  dataset: productsContent.dataset,
+  schema: productsContent.schema,
   plugins: [
     deskTool(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersionProducts }),
+    visionTool({ defaultApiVersion: productsContent.apiVersion }),
   ],
 })
 

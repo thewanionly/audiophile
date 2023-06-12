@@ -5,8 +5,8 @@
 import { defineCliConfig } from 'sanity/cli'
 
 // Audiophile Content
-const contentProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const contentDataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+const contentProjectId = process.env.NEXT_PUBLIC_SANITY_CONTENT_PROJECT_ID
+const contentDataset = process.env.NEXT_PUBLIC_SANITY_CONTENT_DATASET
 
 const contentCLIConfig = defineCliConfig({
   api: { projectId: contentProjectId, dataset: contentDataset },

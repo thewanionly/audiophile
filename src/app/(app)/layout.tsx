@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
 import { StyleRegistry } from '@/lib/styleRegistry'
-import { getNavLinks } from '@/services/cms'
+import { getNavLinks } from '@/services/cms/content'
 import { GlobalStyles } from '@/styles'
 
 import { Layout } from './layout/Layout'

@@ -1,4 +1,4 @@
-import { client } from '@/lib/cms'
+import { client } from '@/lib/cms/content'
 
 export const getNavLinks = async (): Promise<NavLink[]> => {
   try {
