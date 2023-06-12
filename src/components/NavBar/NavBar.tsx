@@ -34,7 +34,7 @@ type NavBarProps = {
 export const NavBar = ({ className = '', items }: NavBarProps) => {
   return (
     <S.NavBar className={className}>
-      <S.NavList>
+      <S.NavList className="navbar-list">
         {items
           .sort(({ order: item1Order }, { order: item2Order }) => item1Order - item2Order)
           .map(({ label, href }) => (

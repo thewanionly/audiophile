@@ -49,7 +49,7 @@ beforeEach(() => {
 
 describe('Header', () => {
   describe('Logo', () => {
-    it('displays the logo', () => {
+    it('displays the app logo', () => {
       render(<Header navItems={navItems} />)
 
       const logoImg = screen.getByAltText(logo.alt)

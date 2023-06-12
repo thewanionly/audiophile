@@ -19,7 +19,7 @@ export const Layout = ({ navLinks, children }: LayoutProps) => {
       <Header navItems={navLinks} />
       <NavMenu />
       <Main>{children}</Main>
-      <Footer />
+      <Footer navItems={navLinks} />
     </LayoutProvider>
   )
 }
