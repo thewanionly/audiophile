@@ -1,22 +1,22 @@
 export const navLink = {
+  title: 'Nav link',
   name: 'navLink',
   type: 'document',
-  title: 'Nav link',
   fields: [
     {
+      title: 'Label',
       name: 'label',
       type: 'string',
-      title: 'Label',
     },
     {
+      title: 'URL',
       name: 'href',
       type: 'string',
-      title: 'URL',
     },
     {
+      title: 'Display order',
       name: 'order',
       type: 'number',
-      title: 'Display order',
     },
   ],
 }

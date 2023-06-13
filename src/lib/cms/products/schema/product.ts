@@ -1,27 +1,27 @@
 export const product = {
+  title: 'Product',
   name: 'product',
   type: 'document',
-  title: 'Product',
   fields: [
     {
+      title: 'Id',
       name: 'id',
       type: 'number',
-      title: 'Id',
     },
     {
+      title: 'Slug',
       name: 'slug',
       type: 'string',
-      title: 'Slug',
     },
     {
+      title: 'Name',
       name: 'name',
       type: 'string',
-      title: 'Name',
     },
     {
+      title: 'Category',
       name: 'category',
       type: 'string',
-      title: 'Category',
     },
   ],
 }
