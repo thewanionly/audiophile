@@ -48,3 +48,11 @@ export const mockedCategories = [
     href: '/earphones',
   },
 ]
+
+export const mockedFooterData: Footer = {
+  website_desc: 'Audiophile is an amazing company',
+  copyright: {
+    line_1: 'Copyright',
+    line_2: 'All rights reserved',
+  },
+}

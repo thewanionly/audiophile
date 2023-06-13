@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 
 import { StyleRegistry } from '@/lib/styleRegistry'
-import { getNavLinks } from '@/services/cms/content'
+import { getFooter, getNavLinks } from '@/services/cms/content'
 import { GlobalStyles } from '@/styles'
 
 import { Layout } from './layout/Layout'
@@ -38,13 +38,16 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const navLinks = await getNavLinks()
+  const footer = await getFooter()
 
   return (
     <html lang="en">
       <body className={manrope.className}>
         <StyleRegistry>
           <GlobalStyles />
-          <Layout navLinks={navLinks}>{children}</Layout>
+          <Layout navLinks={navLinks} footer={footer}>
+            {children}
+          </Layout>
         </StyleRegistry>
       </body>
     </html>

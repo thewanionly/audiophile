@@ -30,6 +30,7 @@ export const theme: Theme = {
 
     // Footer
     footerBg: COLORS.onyx,
+    footerWebsiteDesc: rgba(COLORS.white, 0.5),
 
     // CLP
     categoryHeaderBg: COLORS.black,

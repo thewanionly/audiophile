@@ -15,9 +15,14 @@ const S = {
     ${({ theme }) => appSectionContainer(theme)}
     position: relative;
     padding: 5.2rem 0 3.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-areas:
+      'logo'
+      'navbar'
+      'website-desc'
+      'copyright'
+      'socials';
+    justify-items: center;
 
     &::before {
       content: '';
@@ -31,7 +36,12 @@ const S = {
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      align-items: flex-start;
+      grid-template-areas:
+        'logo logo'
+        'navbar navbar'
+        'website-desc website-desc'
+        'copyright socials';
+      justify-items: flex-start;
       padding: 6rem 0 4.6rem;
 
       &::before {
@@ -41,12 +51,19 @@ const S = {
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      grid-template-areas:
+        'logo navbar'
+        'website-desc socials'
+        'copyright copyright';
+
       padding: 7.5rem 0 4.8rem;
       flex-direction: row;
       justify-content: space-between;
     }
   `,
-  FooterLogo: styled(Link)``,
+  FooterLogo: styled(Link)`
+    grid-area: logo;
+  `,
   FooterLogoContainer: styled.div`
     user-select: none;
     cursor: pointer;
@@ -56,6 +73,7 @@ const S = {
     position: relative;
   `,
   FooterNavBar: styled(NavBar)`
+    grid-area: navbar;
     margin-top: 4.8rem;
 
     .navbar-list {
@@ -78,14 +96,37 @@ const S = {
       margin-top: 0;
     }
   `,
+  FooterWebsiteDesc: styled.p`
+    grid-area: website-desc;
+    margin-top: 4.8rem;
+
+    font-weight: ${(props) => props.theme.fontWeights.medium};
+    font-size: ${(props) => props.theme.fontSizes.regular};
+    line-height: 2.5rem;
+    text-align: center;
+    color: ${(props) => props.theme.colors.footerWebsiteDesc};
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 3.2rem;
+      text-align: start;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin-top: 3.6rem;
+      max-width: 54rem;
+    }
+  `,
 }
 
 type FooterProps = {
   className?: string
+  data: Footer
   navItems: NavItem[]
 }
 
-export const Footer = ({ className = '', navItems }: FooterProps) => {
+export const Footer = ({ className = '', data, navItems }: FooterProps) => {
+  const { website_desc } = data
+
   return (
     <S.Footer className={className}>
       <S.FooterContainer>
@@ -95,6 +136,7 @@ export const Footer = ({ className = '', navItems }: FooterProps) => {
           </S.FooterLogoContainer>
         </S.FooterLogo>
         <S.FooterNavBar items={navItems} />
+        <S.FooterWebsiteDesc>{website_desc}</S.FooterWebsiteDesc>
       </S.FooterContainer>
     </S.Footer>
   )

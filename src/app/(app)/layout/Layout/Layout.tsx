@@ -10,16 +10,17 @@ import { Footer } from '../Footer'
 
 type LayoutProps = {
   navLinks: NavItem[]
+  footer: Footer
   children: React.ReactNode
 }
 
-export const Layout = ({ navLinks, children }: LayoutProps) => {
+export const Layout = ({ navLinks, footer, children }: LayoutProps) => {
   return (
     <LayoutProvider>
       <Header navItems={navLinks} />
       <NavMenu />
       <Main>{children}</Main>
-      <Footer navItems={navLinks} />
+      <Footer navItems={navLinks} data={footer} />
     </LayoutProvider>
   )
 }
