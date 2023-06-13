@@ -19,7 +19,7 @@ const S = {
     }
   `,
   ModalContent: styled.div`
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.modalBg};
     border-radius: 0 0 0.8rem 0.8rem;
     padding: 3.2rem 2.4rem 3.5rem;
   `,

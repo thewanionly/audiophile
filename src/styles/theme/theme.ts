@@ -11,6 +11,9 @@ export const theme: Theme = {
     darkTitle: COLORS.black,
     lightTitle: COLORS.white,
 
+    // Modal
+    modalBg: COLORS.white,
+
     // Header
     headerBg: COLORS.black,
     navLink: COLORS.white,
