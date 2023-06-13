@@ -14,7 +14,7 @@ export const getNavLinks = async (): Promise<NavLink[]> => {
   }
 }
 
-export const getFooter = async (): Promise<Footer[]> => {
+export const getFooter = async (): Promise<Footer> => {
   try {
     const query = `*\[_type == "footer"\][0] {
       website_desc,
