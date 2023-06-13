@@ -104,7 +104,7 @@ const S = {
     font-size: ${(props) => props.theme.fontSizes.regular};
     line-height: 2.5rem;
     text-align: center;
-    color: ${(props) => props.theme.colors.footerWebsiteDesc};
+    color: ${(props) => props.theme.colors.bodyLighterText};
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       margin-top: 3.2rem;
@@ -116,6 +116,25 @@ const S = {
       max-width: 54rem;
     }
   `,
+  FooterCopyright: styled.span`
+    grid-area: copyright;
+    margin-top: 4.8rem;
+
+    & > span {
+      font-weight: ${(props) => props.theme.fontWeights.bold};
+      font-size: ${(props) => props.theme.fontSizes.regular};
+      line-height: 2.5rem;
+      color: ${(props) => props.theme.colors.bodyLighterText};
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 8rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin-top: 5.6rem;
+    }
+  `,
 }
 
 type FooterProps = {
@@ -125,7 +144,7 @@ type FooterProps = {
 }
 
 export const Footer = ({ className = '', data, navItems }: FooterProps) => {
-  const { website_desc } = data
+  const { website_desc, copyright } = data
 
   return (
     <S.Footer className={className}>
@@ -137,6 +156,12 @@ export const Footer = ({ className = '', data, navItems }: FooterProps) => {
         </S.FooterLogo>
         <S.FooterNavBar items={navItems} />
         <S.FooterWebsiteDesc>{website_desc}</S.FooterWebsiteDesc>
+        <S.FooterCopyright>
+          <span>
+            {copyright.line_1} {new Date().getFullYear()}.{' '}
+          </span>
+          <span>{copyright.line_2}</span>
+        </S.FooterCopyright>
       </S.FooterContainer>
     </S.Footer>
   )

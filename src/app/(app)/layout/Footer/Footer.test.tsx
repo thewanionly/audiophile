@@ -44,4 +44,14 @@ describe('Footer', () => {
     const websiteDesc = screen.getByText(mockedFooterData.website_desc)
     expect(websiteDesc).toBeInTheDocument()
   })
+
+  it('displays copyright text', () => {
+    setup()
+
+    const copyRightTextLine1 = screen.getByText(new RegExp(mockedFooterData.copyright.line_1))
+    const copyRightTextLine2 = screen.getByText(new RegExp(mockedFooterData.copyright.line_2))
+
+    expect(copyRightTextLine1).toBeInTheDocument()
+    expect(copyRightTextLine2).toBeInTheDocument()
+  })
 })

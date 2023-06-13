@@ -9,6 +9,7 @@ declare module '@emotion/react' {
       primary: string
       darkTitle: string
       lightTitle: string
+      bodyLighterText: string
       modalBg: string
       headerBg: string
       navLink: string
@@ -21,7 +22,6 @@ declare module '@emotion/react' {
       categoryCardLink: string
       heroSectionBg: string
       footerBg: string
-      footerWebsiteDesc: string
       categoryHeaderBg: string
       primaryButtonMain: string
       primaryButtonLighter: string

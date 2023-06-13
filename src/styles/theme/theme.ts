@@ -10,6 +10,7 @@ export const theme: Theme = {
     primary: COLORS.rawSienna,
     darkTitle: COLORS.black,
     lightTitle: COLORS.white,
+    bodyLighterText: rgba(COLORS.white, 0.5),
 
     // Modal
     modalBg: COLORS.white,
@@ -30,7 +31,6 @@ export const theme: Theme = {
 
     // Footer
     footerBg: COLORS.onyx,
-    footerWebsiteDesc: rgba(COLORS.white, 0.5),
 
     // CLP
     categoryHeaderBg: COLORS.black,
