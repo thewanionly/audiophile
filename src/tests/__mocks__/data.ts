@@ -1,4 +1,4 @@
-import { NavItem } from '@/components'
+import { IconName, NavItem } from '@/components'
 
 // Mock data
 export const logo = {
@@ -55,4 +55,16 @@ export const mockedFooterData: Footer = {
     line_1: 'Copyright',
     line_2: 'All rights reserved',
   },
+  socials: [
+    {
+      name: 'facebook',
+      icon: IconName.Facebook,
+      link: 'https://www.facebook.com/',
+    },
+    {
+      name: 'twitter',
+      icon: IconName.Twitter,
+      link: 'https://twitter.com/',
+    },
+  ],
 }

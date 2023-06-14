@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import styled from '@emotion/styled'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { NavBar, NavItem } from '@/components'
+import { Icon, IconName, NavBar, NavItem } from '@/components'
 
 const S = {
   Footer: styled.footer`
@@ -135,6 +135,32 @@ const S = {
       margin-top: 5.6rem;
     }
   `,
+  FooterSocials: styled.ul`
+    grid-area: socials;
+    margin-top: 4.8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 8rem;
+      align-self: end;
+      justify-self: end;
+    }
+  `,
+  SocialIconLink: styled(Link)`
+    cursor: pointer;
+    width: 2.4rem;
+    height: auto;
+    background: transparent;
+    color: ${({ theme }) => theme.colors.footerSocials};
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  `,
 }
 
 type FooterProps = {
@@ -144,7 +170,7 @@ type FooterProps = {
 }
 
 export const Footer = ({ className = '', data, navItems }: FooterProps) => {
-  const { website_desc, copyright } = data
+  const { website_desc, copyright, socials } = data
 
   return (
     <S.Footer className={className}>
@@ -162,6 +188,15 @@ export const Footer = ({ className = '', data, navItems }: FooterProps) => {
           </span>
           <span>{copyright.line_2}</span>
         </S.FooterCopyright>
+        <S.FooterSocials>
+          {socials.map(({ icon, link }) => (
+            <li key={icon}>
+              <S.SocialIconLink href={link} target="_blank">
+                <Icon name={icon} />
+              </S.SocialIconLink>
+            </li>
+          ))}
+        </S.FooterSocials>
       </S.FooterContainer>
     </S.Footer>
   )

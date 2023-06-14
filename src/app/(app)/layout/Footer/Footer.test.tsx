@@ -54,4 +54,15 @@ describe('Footer', () => {
     expect(copyRightTextLine1).toBeInTheDocument()
     expect(copyRightTextLine2).toBeInTheDocument()
   })
+
+  it('displays social icons/links', () => {
+    setup()
+
+    mockedFooterData.socials.forEach(({ icon, link }) => {
+      const socialItem = screen.getByRole('link', { name: `${icon} icon` })
+
+      expect(socialItem).toBeInTheDocument()
+      expect(socialItem).toHaveAttribute('href', link)
+    })
+  })
 })

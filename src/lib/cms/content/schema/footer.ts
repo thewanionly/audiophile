@@ -27,5 +27,21 @@ export const footer = {
         },
       ],
     },
+    {
+      title: 'Socials',
+      name: 'socials',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'social',
+          fields: [
+            { type: 'string', name: 'name' },
+            { type: 'string', name: 'icon' },
+            { type: 'string', name: 'link' },
+          ],
+        },
+      ],
+    },
   ],
 }

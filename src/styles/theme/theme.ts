@@ -22,7 +22,6 @@ export const theme: Theme = {
     menuIcon: COLORS.white,
     headerDivider: rgba(COLORS.white, 0.1),
     cartIcon: COLORS.white,
-    cartIconHover: COLORS.rawSienna,
 
     categoryCardBg: COLORS.seaShell,
     categoryCardLink: rgba(COLORS.black, 0.5),
@@ -31,6 +30,7 @@ export const theme: Theme = {
 
     // Footer
     footerBg: COLORS.onyx,
+    footerSocials: COLORS.white,
 
     // CLP
     categoryHeaderBg: COLORS.black,

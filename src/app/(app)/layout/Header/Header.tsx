@@ -83,7 +83,7 @@ const S = {
     transition: all 0.2s ease-out;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.cartIconHover};
+      color: ${({ theme }) => theme.colors.primary};
     }
   `,
 }

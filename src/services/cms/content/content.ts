@@ -19,6 +19,7 @@ export const getFooter = async (): Promise<Footer> => {
     const query = `*\[_type == "footer"\][0] {
       website_desc,
       copyright,
+      socials,
     }`
 
     return await client.fetch(query)

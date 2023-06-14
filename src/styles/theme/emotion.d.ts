@@ -17,11 +17,11 @@ declare module '@emotion/react' {
       menuIcon: string
       headerDivider: string
       cartIcon: string
-      cartIconHover: string
       categoryCardBg: string
       categoryCardLink: string
       heroSectionBg: string
       footerBg: string
+      footerSocials: string
       categoryHeaderBg: string
       primaryButtonMain: string
       primaryButtonLighter: string
