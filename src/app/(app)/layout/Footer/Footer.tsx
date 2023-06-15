@@ -104,7 +104,7 @@ const S = {
     font-size: ${(props) => props.theme.fontSizes.regular};
     line-height: 2.5rem;
     text-align: center;
-    color: ${(props) => props.theme.colors.bodyLighterText};
+    color: ${(props) => props.theme.colors.bodyTextLight};
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       margin-top: 3.2rem;
@@ -124,7 +124,7 @@ const S = {
       font-weight: ${(props) => props.theme.fontWeights.bold};
       font-size: ${(props) => props.theme.fontSizes.regular};
       line-height: 2.5rem;
-      color: ${(props) => props.theme.colors.bodyLighterText};
+      color: ${(props) => props.theme.colors.bodyTextLight};
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {

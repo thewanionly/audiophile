@@ -2,8 +2,8 @@
 
 import styled from '@emotion/styled'
 
-import { CategoryCardList } from '@/components'
-import { appSectionContainer } from '@/styles/utils'
+import { AboutTheBrandSection, CategoryCardList } from '@/components'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
   CategoryCardListSection: styled.section`
@@ -11,6 +11,30 @@ const S = {
 
     margin-top: 4rem;
     margin-bottom: 12rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 9.6rem;
+      margin-bottom: 9.6rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin-top: 12rem;
+      margin-bottom: 16.8rem;
+    }
+  `,
+  AboutTheBrandSection: styled(AboutTheBrandSection)`
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 9.6rem;
+      margin-bottom: 9.6rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin-top: 20rem;
+      margin-bottom: 20rem;
+    }
   `,
 }
 
@@ -50,6 +74,10 @@ export const Home = () => {
       <S.CategoryCardListSection>
         <CategoryCardList categories={mockedCategories} />
       </S.CategoryCardListSection>
+      <S.AboutTheBrandSection
+        heading="Bringing you the best audio gear"
+        description="Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment."
+      />
     </>
   )
 }

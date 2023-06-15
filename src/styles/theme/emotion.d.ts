@@ -9,7 +9,8 @@ declare module '@emotion/react' {
       primary: string
       darkTitle: string
       lightTitle: string
-      bodyLighterText: string
+      bodyTextLight: string
+      bodyTextDark: string
       modalBg: string
       headerBg: string
       navLink: string

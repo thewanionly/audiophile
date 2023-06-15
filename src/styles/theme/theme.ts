@@ -10,7 +10,8 @@ export const theme: Theme = {
     primary: COLORS.rawSienna,
     darkTitle: COLORS.black,
     lightTitle: COLORS.white,
-    bodyLighterText: rgba(COLORS.white, 0.5),
+    bodyTextLight: rgba(COLORS.white, 0.5),
+    bodyTextDark: rgba(COLORS.black, 0.5),
 
     // Modal
     modalBg: COLORS.white,

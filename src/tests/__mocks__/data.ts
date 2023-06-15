@@ -19,6 +19,11 @@ export const navItems: NavItem[] = [
   },
 ]
 
+export const mockedBrandDetails = {
+  heading: 'About the brand',
+  description: 'Lorem ipsum sit dolor etc etc',
+}
+
 export const mockedCategories = [
   {
     image: {
