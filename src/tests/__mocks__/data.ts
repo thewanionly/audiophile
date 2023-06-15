@@ -19,7 +19,7 @@ export const navItems: NavItem[] = [
   },
 ]
 
-export const mockedBrandDetails = {
+export const mockedBrandDetails: AboutTheBrand = {
   heading: 'About the brand',
   description: 'Lorem ipsum sit dolor etc etc',
 }

@@ -1,3 +1,8 @@
+interface AboutTheBrand {
+  heading: string
+  description: string
+}
+
 interface NavLink {
   label: string
   href: string
