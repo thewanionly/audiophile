@@ -1,6 +1,7 @@
 interface AboutTheBrand {
   heading: string
   description: string
+  image: ResponsiveImage
 }
 
 interface NavLink {

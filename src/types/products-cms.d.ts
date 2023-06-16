@@ -1,9 +1,3 @@
-interface ResponsiveImage {
-  mobile: string
-  tablet: string
-  desktop: string
-}
-
 interface Inclusion {
   quantity: number
   item: string
