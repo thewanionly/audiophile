@@ -1,20 +1,11 @@
 import { render, screen } from '@/tests'
 import { CategoryCard } from './CategoryCard'
-import { ImageProps } from 'next/image'
 
 const mockedCategory = {
   image: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
   name: 'Headphones',
   href: '/headphones',
 }
-
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt }: ImageProps) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src as string} alt={alt} />
-  },
-}))
 
 const setup = () => {
   render(
