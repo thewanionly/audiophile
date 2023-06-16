@@ -12,17 +12,26 @@ const setup = () => {
 }
 
 describe('AboutTheBrandSection', () => {
-  it('displays brand heading', () => {
+  it('displays brand section heading', () => {
     setup()
 
-    const brandHeading = screen.getByRole('heading', { name: mockedBrandDetails.heading })
-    expect(brandHeading).toBeInTheDocument()
+    const heading = screen.getByRole('heading', { name: mockedBrandDetails.heading })
+    expect(heading).toBeInTheDocument()
   })
 
-  it('displays brand description', () => {
+  it('displays brand section description', () => {
     setup()
 
-    const brandHeading = screen.getByText(mockedBrandDetails.description)
-    expect(brandHeading).toBeInTheDocument()
+    const description = screen.getByText(mockedBrandDetails.description)
+    expect(description).toBeInTheDocument()
+  })
+
+  it('displays brand section image', () => {
+    setup()
+
+    const image = screen.getByAltText(mockedBrandDetails.image.desktop.alt)
+
+    expect(image).toBeInTheDocument()
+    expect(image).toHaveAttribute('src', mockedBrandDetails.image.desktop.src)
   })
 })
