@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import styled from '@emotion/styled'
-
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { theme } from '@/styles'
 
 const mockedBrandDetails: AboutTheBrand = {
   heading: 'About the brand',
@@ -27,6 +28,14 @@ const mockedBrandDetails: AboutTheBrand = {
 const S = {
   AboutTheBrandSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8rem;
+    }
   `,
   BrandSectionTextContainer: styled.div`
     text-align: center;
@@ -42,6 +51,7 @@ const S = {
       text-align: start;
       margin: 0;
       max-width: unset;
+      flex-basis: 40%;
     }
   `,
   BrandSectionHeading: styled.h2`
@@ -67,12 +77,19 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
   BrandSectionImageContainer: styled.div`
-    width: 32.7rem;
+    width: 100%;
     height: 30rem;
     position: relative;
+    border-radius: 0.8rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      height: 58.8rem;
+      width: 54rem;
+    }
   `,
   BrandSectionImage: styled(Image)`
-    object-fit: contain;
+    border-radius: 0.8rem;
+    object-fit: cover;
   `,
 }
 
@@ -87,19 +104,28 @@ export const AboutTheBrandSection = ({
   heading,
   description,
 }: AboutTheBrandSectionProps) => {
+  const isMobile = useMediaQuery(theme.breakPoints.mobile)
+  const isTablet = useMediaQuery(theme.breakPoints.tabletPortrait)
+  const isDesktop = useMediaQuery(theme.breakPoints.desktop)
+
+  const brandSectionImage: ImageType = {
+    src: mockedBrandDetails.image[
+      isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'
+    ].src,
+    alt: mockedBrandDetails.image[
+      isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'
+    ].alt,
+  }
+
   return (
     <S.AboutTheBrandSection className={className}>
+      <S.BrandSectionImageContainer>
+        <S.BrandSectionImage src={brandSectionImage.src} alt={brandSectionImage.alt} fill />
+      </S.BrandSectionImageContainer>
       <S.BrandSectionTextContainer>
         <S.BrandSectionHeading>{heading}</S.BrandSectionHeading>
         <S.BrandSectionDescription>{description}</S.BrandSectionDescription>
       </S.BrandSectionTextContainer>
-      <S.BrandSectionImageContainer>
-        <S.BrandSectionImage
-          src={mockedBrandDetails.image.desktop.src}
-          alt={mockedBrandDetails.image.desktop.alt}
-          fill
-        />
-      </S.BrandSectionImageContainer>
     </S.AboutTheBrandSection>
   )
 }
