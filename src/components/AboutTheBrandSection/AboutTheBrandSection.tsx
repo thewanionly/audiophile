@@ -77,10 +77,15 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
   BrandSectionImageContainer: styled.div`
-    width: 100%;
+    width: 32.7rem;
     height: 30rem;
+    margin: 0 auto;
     position: relative;
     border-radius: 0.8rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletPortrait)} {
+      width: 100%;
+    }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       height: 58.8rem;
