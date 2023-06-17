@@ -1,4 +1,5 @@
 import { client } from '@/lib/cms/content'
+import { urlForImage } from '@/lib/cms/content/image'
 
 export const getAboutTheBrand = async (): Promise<AboutTheBrand> => {
   try {
@@ -8,7 +9,20 @@ export const getAboutTheBrand = async (): Promise<AboutTheBrand> => {
       image,
     }`
 
-    return await client.fetch(query)
+    const results: AboutTheBrand = await client.fetch(query)
+
+    return {
+      ...results,
+      image: Object.fromEntries(
+        Object.entries(results.image).map(([key, value]) => [
+          key,
+          {
+            alt: value.alt,
+            src: urlForImage(value.asset._ref).url(),
+          },
+        ])
+      ) as unknown as ResponsiveImage,
+    }
   } catch (error) {
     throw error
   }

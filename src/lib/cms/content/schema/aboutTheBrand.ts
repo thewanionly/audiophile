@@ -21,13 +21,8 @@ export const aboutTheBrand = {
         {
           title: 'Mobile',
           name: 'mobile',
-          type: 'object',
+          type: 'image',
           fields: [
-            {
-              title: 'Image source',
-              name: 'src',
-              type: 'string',
-            },
             {
               title: 'Alt text',
               name: 'alt',
@@ -38,13 +33,8 @@ export const aboutTheBrand = {
         {
           title: 'Tablet',
           name: 'tablet',
-          type: 'object',
+          type: 'image',
           fields: [
-            {
-              title: 'Image source',
-              name: 'src',
-              type: 'string',
-            },
             {
               title: 'Alt text',
               name: 'alt',
@@ -55,13 +45,8 @@ export const aboutTheBrand = {
         {
           title: 'Desktop',
           name: 'desktop',
-          type: 'object',
+          type: 'image',
           fields: [
-            {
-              title: 'Image source',
-              name: 'src',
-              type: 'string',
-            },
             {
               title: 'Alt text',
               name: 'alt',
