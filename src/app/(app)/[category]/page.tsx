@@ -1,5 +1,8 @@
+import { getAboutTheBrand } from '@/services/cms/content'
 import { Category } from './page/Category'
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  return <Category name={params.category} />
+export default async function CategoryPage({ params }: { params: { category: string } }) {
+  const aboutTheBrand = await getAboutTheBrand()
+
+  return <Category name={params.category} aboutTheBrand={aboutTheBrand} />
 }

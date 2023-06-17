@@ -2,7 +2,7 @@
 
 import styled from '@emotion/styled'
 
-import { CategoryCardList } from '@/components'
+import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { mockedCategories } from '@/tests/__mocks__/data'
 
@@ -51,13 +51,23 @@ const S = {
       margin: 16rem auto;
     }
   `,
+  AboutTheBrandSection: styled(AboutTheBrandSection)`
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin-top: 16rem;
+      margin-bottom: 16rem;
+    }
+  `,
 }
 
 type CategoryProps = {
   name: string
+  aboutTheBrand: AboutTheBrand
 }
 
-export const Category = ({ name }: CategoryProps) => {
+export const Category = ({ name, aboutTheBrand }: CategoryProps) => {
   return (
     <>
       <S.CategoryHeader>
@@ -68,6 +78,11 @@ export const Category = ({ name }: CategoryProps) => {
       <S.CategoryCardListSection>
         <CategoryCardList categories={mockedCategories} />
       </S.CategoryCardListSection>
+      <S.AboutTheBrandSection
+        heading={aboutTheBrand.heading}
+        description={aboutTheBrand.description}
+        image={aboutTheBrand.image}
+      />
     </>
   )
 }
