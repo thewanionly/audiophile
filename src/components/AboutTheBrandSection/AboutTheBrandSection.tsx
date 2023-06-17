@@ -6,25 +6,6 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { theme } from '@/styles'
 
-const mockedBrandDetails: AboutTheBrand = {
-  heading: 'About the brand',
-  description: 'Lorem ipsum sit dolor etc etc',
-  image: {
-    desktop: {
-      src: '/images/desktop/best-gear.jpg',
-      alt: 'man with headphones facing to his left holding his headphones with his right hand',
-    },
-    mobile: {
-      src: '/images/mobile/best-gear.jpg',
-      alt: 'man with headphones facing to his left holding his headphones with his right hand',
-    },
-    tablet: {
-      src: '/images/tablet/best-gear.jpg',
-      alt: 'man with headphones facing to his left holding his headphones with his right hand',
-    },
-  },
-}
-
 const S = {
   AboutTheBrandSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
@@ -102,24 +83,22 @@ type AboutTheBrandSectionProps = {
   className?: string
   heading: string
   description: string
+  image: ResponsiveImage
 }
 
 export const AboutTheBrandSection = ({
   className = '',
   heading,
   description,
+  image,
 }: AboutTheBrandSectionProps) => {
   const isMobile = useMediaQuery(theme.breakPoints.mobile)
   const isTablet = useMediaQuery(theme.breakPoints.tabletPortrait)
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
   const brandSectionImage: ImageType = {
-    src: mockedBrandDetails.image[
-      isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'
-    ].src,
-    alt: mockedBrandDetails.image[
-      isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'
-    ].alt,
+    src: image[isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'].src,
+    alt: image[isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'].alt,
   }
 
   return (

@@ -5,6 +5,7 @@ export const getAboutTheBrand = async (): Promise<AboutTheBrand> => {
     const query = `*\[_type == "aboutTheBrand"\][0] {
       heading,
       description,
+      image,
     }`
 
     return await client.fetch(query)

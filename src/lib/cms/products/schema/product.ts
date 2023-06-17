@@ -2,17 +2,53 @@ const responsiveImageFields = [
   {
     title: 'Mobile',
     name: 'mobile',
-    type: 'string',
+    type: 'object',
+    fields: [
+      {
+        title: 'Image source',
+        name: 'src',
+        type: 'string',
+      },
+      {
+        title: 'Alt text',
+        name: 'alt',
+        type: 'string',
+      },
+    ],
   },
   {
     title: 'Tablet',
     name: 'tablet',
-    type: 'string',
+    type: 'object',
+    fields: [
+      {
+        title: 'Image source',
+        name: 'src',
+        type: 'string',
+      },
+      {
+        title: 'Alt text',
+        name: 'alt',
+        type: 'string',
+      },
+    ],
   },
   {
     title: 'Desktop',
     name: 'desktop',
-    type: 'string',
+    type: 'object',
+    fields: [
+      {
+        title: 'Image source',
+        name: 'src',
+        type: 'string',
+      },
+      {
+        title: 'Alt text',
+        name: 'alt',
+        type: 'string',
+      },
+    ],
   },
 ]
 

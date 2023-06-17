@@ -7,6 +7,7 @@ const setup = () => {
     <AboutTheBrandSection
       heading={mockedBrandDetails.heading}
       description={mockedBrandDetails.description}
+      image={mockedBrandDetails.image}
     />
   )
 }

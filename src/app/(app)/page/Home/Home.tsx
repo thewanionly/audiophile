@@ -81,6 +81,7 @@ export const Home = ({ aboutTheBrand }: HomeProps) => {
       <S.AboutTheBrandSection
         heading={aboutTheBrand.heading}
         description={aboutTheBrand.description}
+        image={aboutTheBrand.image}
       />
     </>
   )
