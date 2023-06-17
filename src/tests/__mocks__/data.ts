@@ -24,16 +24,16 @@ export const mockedBrandDetails: AboutTheBrand = {
   description: 'Lorem ipsum sit dolor etc etc',
   image: {
     desktop: {
-      src: '/images/desktop/best-gear.jpg',
-      alt: 'man with headphones facing to his left holding his headphones with his right hand',
+      src: '/test-image.jpg',
+      alt: 'test alt',
     },
     mobile: {
-      src: '/images/mobile/best-gear.jpg',
-      alt: 'man with headphones facing to his left holding his headphones with his right hand',
+      src: '/test-image.jpg',
+      alt: 'test alt',
     },
     tablet: {
-      src: '/images/tablet/best-gear.jpg',
-      alt: 'man with headphones facing to his left holding his headphones with his right hand',
+      src: '/test-image.jpg',
+      alt: 'test alt',
     },
   },
 }
