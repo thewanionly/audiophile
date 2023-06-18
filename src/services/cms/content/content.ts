@@ -1,6 +1,35 @@
 import { client } from '@/lib/cms/content'
 import { urlForImage } from '@/lib/cms/content/image'
 
+const emptyResponsiveImage: ResponsiveImage = {
+  mobile: {
+    src: '',
+    alt: '',
+  },
+  desktop: {
+    src: '',
+    alt: '',
+  },
+  tablet: {
+    src: '',
+    alt: '',
+  },
+}
+
+const postProcessImage = (image: ResponsiveImage): ResponsiveImage | null => {
+  if (!image) return null
+
+  return Object.fromEntries(
+    Object.entries(image).map(([key, value]) => [
+      key,
+      {
+        alt: value.alt,
+        src: urlForImage(value.asset._ref).url(),
+      },
+    ])
+  ) as unknown as ResponsiveImage
+}
+
 export const getAboutTheBrand = async (): Promise<AboutTheBrand> => {
   try {
     const query = `*\[_type == "aboutTheBrand"\][0] {
@@ -13,15 +42,7 @@ export const getAboutTheBrand = async (): Promise<AboutTheBrand> => {
 
     return {
       ...results,
-      image: Object.fromEntries(
-        Object.entries(results.image).map(([key, value]) => [
-          key,
-          {
-            alt: value.alt,
-            src: urlForImage(value.asset._ref).url(),
-          },
-        ])
-      ) as unknown as ResponsiveImage,
+      image: postProcessImage(results.image) || emptyResponsiveImage,
     }
   } catch (error) {
     throw error
