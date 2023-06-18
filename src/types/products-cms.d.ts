@@ -4,18 +4,18 @@ interface Inclusion {
 }
 
 interface Gallery {
-  first: ResponsiveImage
-  second: ResponsiveImage
-  third: ResponsiveImage
+  first: ResponsiveImageType
+  second: ResponsiveImageType
+  third: ResponsiveImageType
 }
 
 interface Product {
   id: number
   slug: string
   name: string
-  image: ResponsiveImage
+  image: ResponsiveImageType
   category: string
-  categoryImage: ResponsiveImage
+  categoryImage: ResponsiveImageType
   new: boolean
   price: number
   description: string
@@ -23,5 +23,5 @@ interface Product {
   includes: Inclusion[]
   gallery: Gallery[]
   others: string[]
-  thumbnailImage: ResponsiveImage
+  thumbnailImage: ResponsiveImageType
 }

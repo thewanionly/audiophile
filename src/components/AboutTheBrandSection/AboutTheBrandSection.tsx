@@ -1,12 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import styled from '@emotion/styled'
-import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { theme } from '@/styles'
+
 import { BrandHeadingPortableText } from './BrandHeadingPortableText'
+import { ResponsiveImage } from '../ResponsiveImage'
 
 const S = {
   AboutTheBrandSection: styled.section`
@@ -82,7 +81,7 @@ const S = {
       width: 54rem;
     }
   `,
-  BrandSectionImage: styled(Image)`
+  BrandSectionImage: styled(ResponsiveImage)`
     border-radius: 0.8rem;
     object-fit: cover;
   `,
@@ -92,7 +91,7 @@ type AboutTheBrandSectionProps = {
   className?: string
   heading: BlockText
   description: string
-  image: ResponsiveImage
+  image: ResponsiveImageType
 }
 
 export const AboutTheBrandSection = ({
@@ -101,19 +100,10 @@ export const AboutTheBrandSection = ({
   description,
   image,
 }: AboutTheBrandSectionProps) => {
-  const isMobile = useMediaQuery(theme.breakPoints.mobile)
-  const isTablet = useMediaQuery(theme.breakPoints.tabletPortrait)
-  const isDesktop = useMediaQuery(theme.breakPoints.desktop)
-
-  const brandSectionImage: ImageType = {
-    src: image[isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'].src,
-    alt: image[isMobile ? 'mobile' : isDesktop ? 'desktop' : isTablet ? 'tablet' : 'desktop'].alt,
-  }
-
   return (
     <S.AboutTheBrandSection className={className}>
       <S.BrandSectionImageContainer>
-        <S.BrandSectionImage src={brandSectionImage.src} alt={brandSectionImage.alt} fill />
+        <S.BrandSectionImage image={image} alt={image.desktop.alt} fill />
       </S.BrandSectionImageContainer>
       <S.BrandSectionTextContainer>
         <S.BrandSectionHeading>

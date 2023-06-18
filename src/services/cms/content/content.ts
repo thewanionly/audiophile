@@ -1,7 +1,7 @@
 import { client } from '@/lib/cms/content'
 import { urlForImage } from '@/lib/cms/content/image'
 
-const emptyResponsiveImage: ResponsiveImage = {
+const emptyResponsiveImage: ResponsiveImageType = {
   mobile: {
     src: '',
     alt: '',
@@ -16,7 +16,7 @@ const emptyResponsiveImage: ResponsiveImage = {
   },
 }
 
-const postProcessImage = (image: ResponsiveImage): ResponsiveImage | null => {
+const postProcessImage = (image: ResponsiveImageType): ResponsiveImageType | null => {
   if (!image) return null
 
   return Object.fromEntries(
@@ -27,7 +27,7 @@ const postProcessImage = (image: ResponsiveImage): ResponsiveImage | null => {
         src: urlForImage(value.asset._ref).url(),
       },
     ])
-  ) as unknown as ResponsiveImage
+  ) as unknown as ResponsiveImageType
 }
 
 export const getAboutTheBrand = async (): Promise<AboutTheBrand> => {
