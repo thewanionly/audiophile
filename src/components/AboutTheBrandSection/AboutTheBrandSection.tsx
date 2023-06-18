@@ -3,8 +3,10 @@
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import useMediaQuery from '@mui/material/useMediaQuery'
+
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { theme } from '@/styles'
+import { BrandHeadingPortableText } from './BrandHeadingPortableText'
 
 const S = {
   AboutTheBrandSection: styled.section`
@@ -36,19 +38,26 @@ const S = {
     }
   `,
   BrandSectionHeading: styled.h2`
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
-    font-size: ${({ theme }) => theme.fontSizes.lg};
-    line-height: 3.8rem;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.darkTitle};
+    &,
+    & > .primary-text {
+      font-weight: ${({ theme }) => theme.fontWeights.bold};
+      font-size: ${({ theme }) => theme.fontSizes.lg};
+      line-height: 3.8rem;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: ${({ theme }) => theme.colors.darkTitle};
 
-    margin-bottom: 3.2rem;
+      margin-bottom: 3.2rem;
 
-    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      font-size: ${({ theme }) => theme.fontSizes.xxl};
-      line-height: 4.4rem;
-      letter-spacing: 0.143rem;
+      ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+        font-size: ${({ theme }) => theme.fontSizes.xxl};
+        line-height: 4.4rem;
+        letter-spacing: 0.143rem;
+      }
+    }
+
+    .primary-text {
+      color: ${({ theme }) => theme.colors.primary};
     }
   `,
   BrandSectionDescription: styled.p`
@@ -81,7 +90,7 @@ const S = {
 
 type AboutTheBrandSectionProps = {
   className?: string
-  heading: string
+  heading: BlockText
   description: string
   image: ResponsiveImage
 }
@@ -107,7 +116,9 @@ export const AboutTheBrandSection = ({
         <S.BrandSectionImage src={brandSectionImage.src} alt={brandSectionImage.alt} fill />
       </S.BrandSectionImageContainer>
       <S.BrandSectionTextContainer>
-        <S.BrandSectionHeading>{heading}</S.BrandSectionHeading>
+        <S.BrandSectionHeading>
+          <BrandHeadingPortableText heading={heading} />
+        </S.BrandSectionHeading>
         <S.BrandSectionDescription>{description}</S.BrandSectionDescription>
       </S.BrandSectionTextContainer>
     </S.AboutTheBrandSection>

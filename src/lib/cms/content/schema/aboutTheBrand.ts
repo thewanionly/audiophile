@@ -1,3 +1,5 @@
+import { blockTypeDecorators, blockTypeStyles } from '../custom/block/fields'
+
 export const aboutTheBrand = {
   title: 'About The Brand',
   name: 'aboutTheBrand',
@@ -6,7 +8,16 @@ export const aboutTheBrand = {
     {
       title: 'Brand section heading',
       name: 'heading',
-      type: 'string',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: blockTypeStyles,
+          marks: {
+            decorators: blockTypeDecorators,
+          },
+        },
+      ],
     },
     {
       title: 'Brand section description',

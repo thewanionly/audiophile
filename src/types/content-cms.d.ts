@@ -1,5 +1,5 @@
 interface AboutTheBrand {
-  heading: string
+  heading: BlockText
   description: string
   image: ResponsiveImage
 }

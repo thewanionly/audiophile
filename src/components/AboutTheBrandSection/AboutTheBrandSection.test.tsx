@@ -1,3 +1,5 @@
+import { toPlainText } from '@portabletext/react'
+
 import { render, screen } from '@/tests'
 import { AboutTheBrandSection } from './AboutTheBrandSection'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
@@ -16,7 +18,7 @@ describe('AboutTheBrandSection', () => {
   it('displays brand section heading', () => {
     setup()
 
-    const heading = screen.getByRole('heading', { name: mockedBrandDetails.heading })
+    const heading = screen.getByRole('heading', { name: toPlainText(mockedBrandDetails.heading) })
     expect(heading).toBeInTheDocument()
   })
 

@@ -20,7 +20,17 @@ export const navItems: NavItem[] = [
 ]
 
 export const mockedBrandDetails: AboutTheBrand = {
-  heading: 'About the brand',
+  heading: {
+    children: [
+      {
+        marks: [],
+        text: 'Sample header',
+        _type: 'span',
+      },
+    ],
+    style: 'normal',
+    _type: 'block',
+  },
   description: 'Lorem ipsum sit dolor etc etc',
   image: {
     desktop: {
