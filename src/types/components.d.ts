@@ -15,8 +15,13 @@ interface ImageType {
   alt: string
 }
 
+interface ResponsiveImageSrc {
+  mobile: string
+  tablet: string
+  desktop: string
+}
+
 interface ResponsiveImageType {
-  mobile: ImageType
-  tablet: ImageType
-  desktop: ImageType
+  src: ResponsiveImageSrc
+  alt: string
 }

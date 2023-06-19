@@ -33,18 +33,12 @@ export const mockedBrandDetails: AboutTheBrand = {
   },
   description: 'Lorem ipsum sit dolor etc etc',
   image: {
-    desktop: {
-      src: '/test-image.jpg',
-      alt: 'test alt',
+    src: {
+      mobile: '/test-image.jpg',
+      tablet: '/test-image.jpg',
+      desktop: '/test-image.jpg',
     },
-    mobile: {
-      src: '/test-image.jpg',
-      alt: 'test alt',
-    },
-    tablet: {
-      src: '/test-image.jpg',
-      alt: 'test alt',
-    },
+    alt: 'test alt',
   },
 }
 

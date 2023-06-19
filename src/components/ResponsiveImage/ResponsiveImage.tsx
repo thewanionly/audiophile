@@ -4,14 +4,15 @@ import { theme } from '@/styles'
 
 type ResponsiveImageProps = Omit<ImageProps, 'src'> & {
   className?: string
-  image: ResponsiveImageType
+  src: ResponsiveImageSrc
+  alt: string
 }
 
-export const ResponsiveImage = ({ className = '', image, alt, ...rest }: ResponsiveImageProps) => (
+export const ResponsiveImage = ({ className = '', src, alt, ...rest }: ResponsiveImageProps) => (
   <picture>
-    <source media={theme.breakPoints.mobile} srcSet={image.mobile.src} />
-    <source media={theme.breakPoints.desktop} srcSet={image.desktop.src} />
-    <source media={theme.breakPoints.tabletPortrait} srcSet={image.tablet.src} />
-    <Image className={className} {...rest} src={image.desktop.src} alt={alt} />
+    <source media={theme.breakPoints.mobile} srcSet={src.mobile} />
+    <source media={theme.breakPoints.desktop} srcSet={src.desktop} />
+    <source media={theme.breakPoints.tabletPortrait} srcSet={src.tablet} />
+    <Image className={className} {...rest} src={src.desktop} alt={alt} />
   </picture>
 )

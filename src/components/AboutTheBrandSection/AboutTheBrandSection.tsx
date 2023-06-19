@@ -103,7 +103,7 @@ export const AboutTheBrandSection = ({
   return (
     <S.AboutTheBrandSection className={className}>
       <S.BrandSectionImageContainer>
-        <S.BrandSectionImage image={image} alt={image.desktop.alt} fill />
+        <S.BrandSectionImage src={image.src} alt={image.alt} fill />
       </S.BrandSectionImageContainer>
       <S.BrandSectionTextContainer>
         <S.BrandSectionHeading>

@@ -30,40 +30,31 @@ export const aboutTheBrand = {
       type: 'object',
       fields: [
         {
-          title: 'Mobile',
-          name: 'mobile',
-          type: 'image',
+          title: 'Source',
+          name: 'src',
+          type: 'object',
           fields: [
             {
-              title: 'Alt text',
-              name: 'alt',
-              type: 'string',
+              title: 'Mobile',
+              name: 'mobile',
+              type: 'image',
+            },
+            {
+              title: 'Tablet',
+              name: 'tablet',
+              type: 'image',
+            },
+            {
+              title: 'Desktop',
+              name: 'desktop',
+              type: 'image',
             },
           ],
         },
         {
-          title: 'Tablet',
-          name: 'tablet',
-          type: 'image',
-          fields: [
-            {
-              title: 'Alt text',
-              name: 'alt',
-              type: 'string',
-            },
-          ],
-        },
-        {
-          title: 'Desktop',
-          name: 'desktop',
-          type: 'image',
-          fields: [
-            {
-              title: 'Alt text',
-              name: 'alt',
-              type: 'string',
-            },
-          ],
+          title: 'Alternative text',
+          name: 'alt',
+          type: 'string',
         },
       ],
     },

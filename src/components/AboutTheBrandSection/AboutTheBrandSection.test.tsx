@@ -32,9 +32,9 @@ describe('AboutTheBrandSection', () => {
   it('displays brand section image', () => {
     setup()
 
-    const image = screen.getByAltText(mockedBrandDetails.image.desktop.alt)
+    const image = screen.getByAltText(mockedBrandDetails.image.alt)
 
     expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute('src', mockedBrandDetails.image.desktop.src)
+    expect(image).toHaveAttribute('src', mockedBrandDetails.image.src.desktop)
   })
 })
