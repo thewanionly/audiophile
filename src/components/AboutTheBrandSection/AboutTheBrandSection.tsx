@@ -3,9 +3,8 @@
 import styled from '@emotion/styled'
 
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { BrandHeadingPortableText } from './BrandHeadingPortableText'
-import { ResponsiveImage } from '../ResponsiveImage'
 
 const S = {
   AboutTheBrandSection: styled.section`
