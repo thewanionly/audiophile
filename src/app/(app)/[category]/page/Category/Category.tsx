@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 
 import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { mockedCategories } from '@/tests/__mocks__/data'
 
 const S = {
   CategoryHeader: styled.section`
@@ -65,9 +64,10 @@ const S = {
 type CategoryProps = {
   name: string
   aboutTheBrand: AboutTheBrand
+  categories: Category[]
 }
 
-export const Category = ({ name, aboutTheBrand }: CategoryProps) => {
+export const Category = ({ name, aboutTheBrand, categories }: CategoryProps) => {
   return (
     <>
       <S.CategoryHeader>
@@ -76,7 +76,7 @@ export const Category = ({ name, aboutTheBrand }: CategoryProps) => {
         </S.CategoryHeaderContainer>
       </S.CategoryHeader>
       <S.CategoryCardListSection>
-        <CategoryCardList categories={mockedCategories} />
+        <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
       <S.AboutTheBrandSection
         heading={aboutTheBrand.heading}

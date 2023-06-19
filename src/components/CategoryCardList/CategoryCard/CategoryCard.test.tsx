@@ -1,18 +1,16 @@
 import { render, screen } from '@/tests'
+import { mockedCategories } from '@/tests/__mocks__/data'
+
 import { CategoryCard } from './CategoryCard'
 
-const mockedCategory = {
-  image: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
-  name: 'Headphones',
-  href: '/headphones',
-}
+const mockedCategory = mockedCategories[0]
 
 const setup = () => {
   render(
     <CategoryCard
       image={mockedCategory.image}
       name={mockedCategory.name}
-      href={mockedCategory.href}
+      href={mockedCategory.slug}
     />
   )
 }
@@ -21,10 +19,10 @@ describe('CategoryCard', () => {
   it('displays category image', () => {
     setup()
 
-    const categoryImg = screen.getByAltText(mockedCategory.name)
+    const categoryImg = screen.getByAltText(mockedCategory.image.alt)
 
     expect(categoryImg).toBeInTheDocument()
-    expect(categoryImg).toHaveAttribute('src', mockedCategory.image)
+    expect(categoryImg).toHaveAttribute('src', mockedCategory.image.src.desktop)
   })
 
   it('displays category name', () => {
@@ -41,6 +39,6 @@ describe('CategoryCard', () => {
     const categoryLink = screen.getByRole('link', { name: /shop/i })
 
     expect(categoryLink).toBeInTheDocument()
-    expect(categoryLink).toHaveAttribute('href', mockedCategory.href)
+    expect(categoryLink).toHaveAttribute('href', mockedCategory.slug)
   })
 })

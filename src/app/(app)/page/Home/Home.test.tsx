@@ -1,12 +1,12 @@
 import { toPlainText } from '@portabletext/react'
 
 import { render, screen } from '@/tests'
-import { mockedBrandDetails } from '@/tests/__mocks__/data'
+import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
 
 import { Home } from './Home'
 
 const setup = () => {
-  render(<Home aboutTheBrand={mockedBrandDetails} />)
+  render(<Home aboutTheBrand={mockedBrandDetails} categories={mockedCategories} />)
 }
 
 describe('Home', () => {

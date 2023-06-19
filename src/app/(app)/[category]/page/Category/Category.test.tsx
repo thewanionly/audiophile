@@ -1,14 +1,18 @@
 import { toPlainText } from '@portabletext/react'
 import { render, screen } from '@/tests'
 import { Category } from './Category'
-import { mockedBrandDetails } from '@/tests/__mocks__/data'
+import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
 
-const mockedCategory = {
-  name: 'headphones',
-}
+const mockedCategory = mockedCategories[0]
 
 const setup = () => {
-  render(<Category name={mockedCategory.name} aboutTheBrand={mockedBrandDetails} />)
+  render(
+    <Category
+      name={mockedCategory.name}
+      aboutTheBrand={mockedBrandDetails}
+      categories={mockedCategories}
+    />
+  )
 }
 
 describe('Category', () => {

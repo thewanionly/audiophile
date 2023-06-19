@@ -34,16 +34,6 @@ const S = {
   `,
 }
 
-export interface Category {
-  image: {
-    desktop: string
-    tablet: string
-    mobile: string
-  }
-  name: string
-  href: string
-}
-
 interface CategoryItem extends Category {
   onLinkClick?: () => void
 }
@@ -56,14 +46,8 @@ type CategoryCardListProps = {
 export const CategoryCardList = ({ className = '', categories }: CategoryCardListProps) => {
   return (
     <S.CategoryCardList className={className} data-testid="category-card-list">
-      {categories.map(({ image, name, href, onLinkClick }) => (
-        <CategoryCard
-          key={name}
-          image={image.desktop}
-          name={name}
-          href={href}
-          onLinkClick={onLinkClick}
-        />
+      {categories.map(({ image, name, slug, onLinkClick }) => (
+        <CategoryCard key={name} image={image} name={name} href={slug} onLinkClick={onLinkClick} />
       ))}
     </S.CategoryCardList>
   )

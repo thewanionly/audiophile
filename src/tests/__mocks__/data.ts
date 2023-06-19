@@ -42,33 +42,42 @@ export const mockedBrandDetails: AboutTheBrand = {
   },
 }
 
-export const mockedCategories = [
+export const mockedCategories: Category[] = [
   {
     image: {
-      desktop: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
-      tablet: '/images/tablet/xx99-mark-one-headphones-no-bg.png',
-      mobile: '/images/mobile/xx99-mark-one-headphones-no-bg.png',
+      src: {
+        mobile: '/headphones-image.jpg',
+        tablet: '/headphones-image.jpg',
+        desktop: '/headphones-image.jpg',
+      },
+      alt: 'headphones alt',
     },
     name: 'Headphones',
-    href: '/headphones',
+    slug: 'headphones',
   },
   {
     image: {
-      desktop: '/images/desktop/zx9-speaker-no-bg.png',
-      tablet: '/images/tablet/zx9-speaker-no-bg.png',
-      mobile: '/images/mobile/zx9-speaker-no-bg.png',
+      src: {
+        mobile: '/speakers-image.jpg',
+        tablet: '/speakers-image.jpg',
+        desktop: '/speakers-image.jpg',
+      },
+      alt: 'speakers alt',
     },
     name: 'Speakers',
-    href: '/speakers',
+    slug: 'speakers',
   },
   {
     image: {
-      desktop: '/images/desktop/yx1-wireless-earphones-no-bg.png',
-      tablet: '/images/tablet/yx1-wireless-earphones-no-bg.png',
-      mobile: '/images/mobile/yx1-wireless-earphones-no-bg.png',
+      src: {
+        mobile: '/earphones-image.jpg',
+        tablet: '/earphones-image.jpg',
+        desktop: '/earphones-image.jpg',
+      },
+      alt: 'earphones alt',
     },
     name: 'Earphones',
-    href: '/earphones',
+    slug: 'earphones',
   },
 ]
 

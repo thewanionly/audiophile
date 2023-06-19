@@ -1,10 +1,10 @@
 'use client'
 
 import styled from '@emotion/styled'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { Icon, IconName } from '@/components'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 
 const S = {
   CategoryCard: styled.div`
@@ -18,7 +18,7 @@ const S = {
     position: relative;
     grid-area: 1 / 1 / 3 / 2;
   `,
-  CategoryCardImage: styled(Image)`
+  CategoryCardImage: styled(ResponsiveImage)`
     object-fit: contain;
   `,
   CategoryCardFilledContainer: styled.div`
@@ -69,7 +69,7 @@ const S = {
 }
 
 type CategoryCardProps = {
-  image: string
+  image: ResponsiveImageType
   name: string
   href: string
   onLinkClick?: () => void
@@ -79,7 +79,7 @@ export const CategoryCard = ({ image, name, href, onLinkClick }: CategoryCardPro
   return (
     <S.CategoryCard className="category-card" data-testid="category-card">
       <S.CategoryCardImageContainer>
-        <S.CategoryCardImage src={image} alt={name} fill />
+        <S.CategoryCardImage src={image.src} alt={image.alt} fill />
       </S.CategoryCardImageContainer>
       <S.CategoryCardFilledContainer />
       <S.CategoryCardTextContainer>

@@ -1,17 +1,6 @@
 import { render, screen } from '@/tests'
-import { Category, CategoryCardList } from './CategoryCardList'
-
-const mockedCategories: Category[] = [
-  {
-    image: {
-      desktop: '/images/desktop/xx99-mark-one-headphones-no-bg.png',
-      tablet: '/images/tablet/xx99-mark-one-headphones-no-bg.png',
-      mobile: '/images/mobile/xx99-mark-one-headphones-no-bg.png',
-    },
-    name: 'Headphones',
-    href: '/headphones',
-  },
-]
+import { CategoryCardList } from './CategoryCardList'
+import { mockedCategories } from '@/tests/__mocks__/data'
 
 describe('CategoryCardList', () => {
   it(`displays ${mockedCategories.length} category cards`, () => {
