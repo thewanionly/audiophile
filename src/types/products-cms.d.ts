@@ -25,3 +25,9 @@ interface Product {
   others: string[]
   thumbnailImage: ResponsiveImageType
 }
+
+interface Category {
+  name: string
+  slug: string
+  image: ResponsiveImageType
+}
