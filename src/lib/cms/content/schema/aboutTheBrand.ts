@@ -1,4 +1,5 @@
-import { blockTypeDecorators, blockTypeStyles } from '../custom/block/fields'
+import { responsiveImageFields } from '@/lib/cms/common/fields'
+import { blockTypeDecorators, blockTypeStyles } from '@/lib/cms/content/custom/block/fields'
 
 export const aboutTheBrand = {
   title: 'About The Brand',
@@ -28,35 +29,7 @@ export const aboutTheBrand = {
       title: 'Brand section image',
       name: 'image',
       type: 'object',
-      fields: [
-        {
-          title: 'Source',
-          name: 'src',
-          type: 'object',
-          fields: [
-            {
-              title: 'Mobile',
-              name: 'mobile',
-              type: 'image',
-            },
-            {
-              title: 'Tablet',
-              name: 'tablet',
-              type: 'image',
-            },
-            {
-              title: 'Desktop',
-              name: 'desktop',
-              type: 'image',
-            },
-          ],
-        },
-        {
-          title: 'Alternative text',
-          name: 'alt',
-          type: 'string',
-        },
-      ],
+      fields: responsiveImageFields,
     },
   ],
 }
