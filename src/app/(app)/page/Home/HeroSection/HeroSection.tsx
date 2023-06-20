@@ -14,29 +14,33 @@ const S = {
   HeroSectionContentContainer: styled.div`
     max-width: 38rem;
     margin: 0 auto;
+    text-align: center;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       margin: 0;
+      text-align: start;
     }
   `,
   HeroProductName: styled.h2`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.xxl};
     line-height: 4rem;
-    text-align: center;
     letter-spacing: 0.1286rem;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.lightTitle};
+    margin-bottom: 2.4rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       font-size: ${({ theme }) => theme.fontSizes.xxxl};
       line-height: 5.8rem;
       letter-spacing: 0.2rem;
     }
-
-    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      text-align: start;
-    }
+  `,
+  HeroMessage: styled.p`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    color: ${({ theme }) => theme.colors.bodyTextLighter};
   `,
 }
 
@@ -53,6 +57,7 @@ export const HeroSection = ({ product, message }: HeroSectionProps) => {
       <S.HeroSectionContainer>
         <S.HeroSectionContentContainer>
           <S.HeroProductName>{name}</S.HeroProductName>
+          <S.HeroMessage>{message}</S.HeroMessage>
         </S.HeroSectionContentContainer>
       </S.HeroSectionContainer>
     </S.HeroSection>

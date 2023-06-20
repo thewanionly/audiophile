@@ -18,4 +18,11 @@ describe('Home - Hero Section', () => {
     })
     expect(heroProductName).toBeInTheDocument()
   })
+
+  it('displays hero message', () => {
+    setup()
+
+    const heroMessage = screen.getByText(mockedHeroSectionData.message)
+    expect(heroMessage).toBeInTheDocument()
+  })
 })

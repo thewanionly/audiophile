@@ -11,6 +11,7 @@ export const theme: Theme = {
     darkTitle: COLORS.black,
     lightTitle: COLORS.white,
     bodyTextLight: rgba(COLORS.white, 0.5),
+    bodyTextLighter: rgba(COLORS.white, 0.75),
     bodyTextDark: rgba(COLORS.black, 0.5),
 
     // Modal
