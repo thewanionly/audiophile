@@ -4,12 +4,26 @@ import { render, screen } from '@/tests'
 import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
 
 import { Home } from './Home'
+import { mockedHeroSectionData } from '@/tests/__mocks__/data/home'
 
 const setup = () => {
-  render(<Home aboutTheBrand={mockedBrandDetails} categories={mockedCategories} />)
+  render(
+    <Home
+      aboutTheBrand={mockedBrandDetails}
+      categories={mockedCategories}
+      heroSection={mockedHeroSectionData}
+    />
+  )
 }
 
 describe('Home', () => {
+  it('displays hero section', () => {
+    setup()
+
+    const heroSection = screen.getByRole('heading', { name: mockedHeroSectionData.product.name })
+    expect(heroSection).toBeInTheDocument()
+  })
+
   it('displays category card list section', () => {
     setup()
 

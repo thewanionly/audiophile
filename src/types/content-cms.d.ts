@@ -1,3 +1,13 @@
+interface HeroSection {
+  slug: string
+  message: string
+}
+
+interface HeroSectionData {
+  product: ProductLite
+  message: string
+}
+
 interface AboutTheBrand {
   heading: BlockText
   description: string
