@@ -6,6 +6,7 @@ import { getFooter, getNavLinks } from '@/services/cms/content'
 import { GlobalStyles } from '@/styles'
 
 import { Layout } from './layout/Layout'
+import { getCategories } from '@/services/cms/products'
 
 // Fonts
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const categories = await getCategories()
   const navLinks = await getNavLinks()
   const footer = await getFooter()
 
@@ -45,7 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={manrope.className}>
         <StyleRegistry>
           <GlobalStyles />
-          <Layout navLinks={navLinks} footer={footer}>
+          <Layout categories={categories} navLinks={navLinks} footer={footer}>
             {children}
           </Layout>
         </StyleRegistry>

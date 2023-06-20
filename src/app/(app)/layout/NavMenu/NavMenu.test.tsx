@@ -1,5 +1,6 @@
 import { render, screen } from '@/tests'
 import { NavMenu } from './NavMenu'
+import { mockedCategories } from '@/tests/__mocks__/data'
 
 // Mock "useLayoutContext"
 jest.mock('../Layout.context', () => ({
@@ -11,7 +12,7 @@ jest.mock('../Layout.context', () => ({
 
 describe('NavMenu', () => {
   it('displays category card list', () => {
-    render(<NavMenu />)
+    render(<NavMenu categories={mockedCategories} />)
 
     const categoryCardList = screen.getByTestId('category-card-list')
     const categoryCards = screen.getAllByTestId('category-card')

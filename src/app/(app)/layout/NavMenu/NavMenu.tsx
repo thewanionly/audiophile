@@ -26,14 +26,18 @@ const S = {
   `,
 }
 
-export const NavMenu = () => {
+type NavMenuProps = {
+  categories: Category[]
+}
+
+export const NavMenu = ({ categories }: NavMenuProps) => {
   const { isNavMenuOpen, closeNavMenu } = useLayoutContext()
 
   return (
     <S.Modal open={isNavMenuOpen}>
       <S.ModalContent>
         <CategoryCardList
-          categories={mockedCategories.map((category) => ({
+          categories={categories.map((category) => ({
             ...category,
             onLinkClick: closeNavMenu,
           }))}
