@@ -1,7 +1,9 @@
 'use client'
 
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import styled from '@emotion/styled'
+
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { NEW_PRODUCT } from '@/utils/constants'
 
 const S = {
   HeroSection: styled.section`
@@ -20,6 +22,16 @@ const S = {
       margin: 0;
       text-align: start;
     }
+  `,
+  HeroNewProductText: styled.span`
+    display: inline-block;
+    font-weight: ${({ theme }) => theme.fontWeights.regular};
+    font-size: ${({ theme }) => theme.fontSizes.sm2};
+    line-height: 1.9rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.bodyTextLight};
+    margin-bottom: 1.6rem;
   `,
   HeroProductName: styled.h2`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
@@ -50,12 +62,13 @@ type HeroSectionProps = {
 }
 
 export const HeroSection = ({ product, message }: HeroSectionProps) => {
-  const { name } = product
+  const { name, new: isNew } = product
 
   return (
     <S.HeroSection>
       <S.HeroSectionContainer>
         <S.HeroSectionContentContainer>
+          {isNew ? <S.HeroNewProductText>{NEW_PRODUCT}</S.HeroNewProductText> : null}
           <S.HeroProductName>{name}</S.HeroProductName>
           <S.HeroMessage>{message}</S.HeroMessage>
         </S.HeroSectionContentContainer>
