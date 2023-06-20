@@ -3,7 +3,7 @@
 import Modal from '@mui/material/Modal'
 import styled from '@emotion/styled'
 
-import { mediaQuery } from '@/styles/utils'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CategoryCardList } from '@/components'
 import { useLayoutContext } from '../Layout.context'
 
@@ -21,7 +21,10 @@ const S = {
   ModalContent: styled.div`
     background-color: ${({ theme }) => theme.colors.modalBg};
     border-radius: 0 0 0.8rem 0.8rem;
-    padding: 3.2rem 2.4rem 3.5rem;
+    padding: 3.2rem 0 3.5rem;
+  `,
+  CategoryCardListSection: styled.section`
+    ${({ theme }) => appSectionContainer(theme)}
   `,
 }
 
@@ -35,12 +38,14 @@ export const NavMenu = ({ categories }: NavMenuProps) => {
   return (
     <S.Modal open={isNavMenuOpen}>
       <S.ModalContent>
-        <CategoryCardList
-          categories={categories.map((category) => ({
-            ...category,
-            onLinkClick: closeNavMenu,
-          }))}
-        />
+        <S.CategoryCardListSection>
+          <CategoryCardList
+            categories={categories.map((category) => ({
+              ...category,
+              onLinkClick: closeNavMenu,
+            }))}
+          />
+        </S.CategoryCardListSection>
       </S.ModalContent>
     </S.Modal>
   )
