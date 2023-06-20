@@ -8,6 +8,7 @@ export const getCategories = async (): Promise<Category[]> => {
         name,
         slug,
         image,
+        displayOrder,
       }`
 
     const results: Category[] = await productClient.fetch(query)

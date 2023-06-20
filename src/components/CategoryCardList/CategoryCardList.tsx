@@ -46,9 +46,20 @@ type CategoryCardListProps = {
 export const CategoryCardList = ({ className = '', categories }: CategoryCardListProps) => {
   return (
     <S.CategoryCardList className={className} data-testid="category-card-list">
-      {categories.map(({ image, name, slug, onLinkClick }) => (
-        <CategoryCard key={name} image={image} name={name} href={slug} onLinkClick={onLinkClick} />
-      ))}
+      {categories
+        .sort(
+          ({ displayOrder: item1DisplayOrder }, { displayOrder: item2DisplayOrder }) =>
+            item1DisplayOrder - item2DisplayOrder
+        )
+        .map(({ image, name, slug, onLinkClick }) => (
+          <CategoryCard
+            key={name}
+            image={image}
+            name={name}
+            href={slug}
+            onLinkClick={onLinkClick}
+          />
+        ))}
     </S.CategoryCardList>
   )
 }

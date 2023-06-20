@@ -21,5 +21,10 @@ export const category = {
       type: 'object',
       fields: responsiveImageFields,
     },
+    {
+      title: 'Display order',
+      name: 'displayOrder',
+      type: 'number',
+    },
   ],
 }

@@ -54,6 +54,7 @@ export const mockedCategories: Category[] = [
     },
     name: 'Headphones',
     slug: 'headphones',
+    displayOrder: 1,
   },
   {
     image: {
@@ -66,6 +67,7 @@ export const mockedCategories: Category[] = [
     },
     name: 'Speakers',
     slug: 'speakers',
+    displayOrder: 2,
   },
   {
     image: {
@@ -78,6 +80,7 @@ export const mockedCategories: Category[] = [
     },
     name: 'Earphones',
     slug: 'earphones',
+    displayOrder: 3,
   },
 ]
 
