@@ -27,7 +27,8 @@ export const theme: Theme = {
     categoryCardBg: COLORS.seaShell,
     categoryCardLink: rgba(COLORS.black, 0.5),
 
-    heroSectionBg: COLORS.onyx,
+    // Home
+    heroSectionBg: COLORS.black,
 
     // Footer
     footerBg: COLORS.onyx,

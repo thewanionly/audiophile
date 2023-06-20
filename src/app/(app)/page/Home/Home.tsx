@@ -4,6 +4,9 @@ import styled from '@emotion/styled'
 
 import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { mockedHeroSectionData } from '@/tests/__mocks__/data/home'
+
+import { HeroSection } from './HeroSection'
 
 const S = {
   CategoryCardListSection: styled.section`
@@ -46,6 +49,10 @@ type HomeProps = {
 export const Home = ({ aboutTheBrand, categories }: HomeProps) => {
   return (
     <>
+      <HeroSection
+        product={mockedHeroSectionData.product}
+        message={mockedHeroSectionData.message}
+      />
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
