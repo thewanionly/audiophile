@@ -6,7 +6,6 @@ import styled from '@emotion/styled'
 import { mediaQuery } from '@/styles/utils'
 import { CategoryCardList } from '@/components'
 import { useLayoutContext } from '../Layout.context'
-import { mockedCategories } from '@/tests/__mocks__/data'
 
 const S = {
   Modal: styled(Modal)`
