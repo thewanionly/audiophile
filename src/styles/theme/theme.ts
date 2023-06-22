@@ -42,6 +42,7 @@ export const theme: Theme = {
     primaryButtonLighter: COLORS.hitPink,
     neutralButtonMain: COLORS.black,
     neutralButtonLighter: COLORS.liver,
+    buttonText: COLORS.white,
 
     fieldError: COLORS.persianRed,
   },

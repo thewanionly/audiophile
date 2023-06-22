@@ -1,9 +1,11 @@
 'use client'
 
+import Link from 'next/link'
+
 import styled from '@emotion/styled'
 
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { NEW_PRODUCT } from '@/utils/constants'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
 const S = {
   HeroSection: styled.section`
@@ -53,6 +55,28 @@ const S = {
     font-size: ${({ theme }) => theme.fontSizes.regular};
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextLighter};
+    margin-bottom: 2.8rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-bottom: 4rem;
+    }
+  `,
+  HeroProductLink: styled(Link)`
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    text-transform: uppercase;
+    background-color: ${({ theme }) => theme.colors.primaryButtonMain};
+    color: ${({ theme }) => theme.colors.buttonText};
+
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.primaryButtonLighter};
+    }
   `,
 }
 
@@ -71,6 +95,7 @@ export const HeroSection = ({ product, message }: HeroSectionProps) => {
           {isNew ? <S.HeroNewProductText>{NEW_PRODUCT}</S.HeroNewProductText> : null}
           <S.HeroProductName>{name}</S.HeroProductName>
           <S.HeroMessage>{message}</S.HeroMessage>
+          <S.HeroProductLink href={product.slug}>{SEE_PRODUCT}</S.HeroProductLink>
         </S.HeroSectionContentContainer>
       </S.HeroSectionContainer>
     </S.HeroSection>

@@ -2,7 +2,7 @@ import { render, screen } from '@/tests'
 
 import { HeroSection } from './HeroSection'
 import { mockedHeroSectionData } from '@/tests/__mocks__/data/home'
-import { NEW_PRODUCT } from '@/utils/constants'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
 const setup = () => {
   render(
@@ -32,5 +32,12 @@ describe('Home - Hero Section', () => {
 
     const heroMessage = screen.getByText(mockedHeroSectionData.message)
     expect(heroMessage).toBeInTheDocument()
+  })
+
+  it(`displays ${SEE_PRODUCT} button`, () => {
+    setup()
+
+    const seeProductButton = screen.getByRole('link', { name: SEE_PRODUCT })
+    expect(seeProductButton).toHaveAttribute('href', mockedHeroSectionData.product.slug)
   })
 })

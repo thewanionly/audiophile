@@ -29,6 +29,7 @@ declare module '@emotion/react' {
       primaryButtonLighter: string
       neutralButtonMain: string
       neutralButtonLighter: string
+      buttonText: string
       fieldError: string
     }
     fontSizes: {
