@@ -1,4 +1,4 @@
-export const mockedHeroSectionData = {
+export const mockedHeroSectionData: HeroSectionData = {
   product: {
     id: 4,
     slug: 'xx99-mark-two-headphones',
@@ -11,6 +11,7 @@ export const mockedHeroSectionData = {
       },
       alt: 'headphones alt',
     },
+    category: 'headphones',
     new: true,
   },
   message:

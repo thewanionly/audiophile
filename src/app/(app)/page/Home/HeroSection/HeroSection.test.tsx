@@ -38,6 +38,9 @@ describe('Home - Hero Section', () => {
     setup()
 
     const seeProductButton = screen.getByRole('link', { name: SEE_PRODUCT })
-    expect(seeProductButton).toHaveAttribute('href', mockedHeroSectionData.product.slug)
+    expect(seeProductButton).toHaveAttribute(
+      'href',
+      `${mockedHeroSectionData.product.category}/${mockedHeroSectionData.product.slug}`
+    )
   })
 })

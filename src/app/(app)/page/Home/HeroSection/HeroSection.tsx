@@ -68,7 +68,7 @@ type HeroSectionProps = {
 }
 
 export const HeroSection = ({ product, message }: HeroSectionProps) => {
-  const { name, new: isNew } = product
+  const { name, new: isNew, category, slug } = product
 
   return (
     <S.HeroSection>
@@ -77,7 +77,7 @@ export const HeroSection = ({ product, message }: HeroSectionProps) => {
           {isNew ? <S.HeroNewProductText>{NEW_PRODUCT}</S.HeroNewProductText> : null}
           <S.HeroProductName>{name}</S.HeroProductName>
           <S.HeroMessage>{message}</S.HeroMessage>
-          <Button asLink href={product.slug}>
+          <Button asLink href={`${category}/${slug}`}>
             {SEE_PRODUCT}
           </Button>
         </S.HeroSectionContentContainer>
