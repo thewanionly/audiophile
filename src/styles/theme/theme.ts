@@ -8,6 +8,11 @@ export const theme: Theme = {
     // Global
     appBg: COLORS.alabaster,
     primary: COLORS.rawSienna,
+    primaryLight: COLORS.hitPink,
+    textOnPrimary: COLORS.white,
+    secondary: COLORS.black,
+    secondaryLight: COLORS.liver,
+    textOnSecondary: COLORS.black,
     darkTitle: COLORS.black,
     lightTitle: COLORS.white,
     bodyTextLight: rgba(COLORS.white, 0.5),
@@ -37,12 +42,6 @@ export const theme: Theme = {
 
     // CLP
     categoryHeaderBg: COLORS.black,
-
-    primaryButtonMain: COLORS.rawSienna,
-    primaryButtonLighter: COLORS.hitPink,
-    neutralButtonMain: COLORS.black,
-    neutralButtonLighter: COLORS.liver,
-    buttonText: COLORS.white,
 
     fieldError: COLORS.persianRed,
   },

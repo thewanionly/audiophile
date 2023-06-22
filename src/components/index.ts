@@ -1,4 +1,5 @@
 export * from './AboutTheBrandSection'
+export * from './Button'
 export * from './CategoryCardList'
 export * from './Icon'
 export * from './NavBar'

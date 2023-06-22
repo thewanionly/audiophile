@@ -7,6 +7,11 @@ declare module '@emotion/react' {
     colors: {
       appBg: string
       primary: string
+      primaryLight: string
+      textOnPrimary: string
+      secondary: string
+      secondaryLight: string
+      textOnSecondary: string
       darkTitle: string
       lightTitle: string
       bodyTextLight: string
@@ -25,11 +30,6 @@ declare module '@emotion/react' {
       footerBg: string
       footerSocials: string
       categoryHeaderBg: string
-      primaryButtonMain: string
-      primaryButtonLighter: string
-      neutralButtonMain: string
-      neutralButtonLighter: string
-      buttonText: string
       fieldError: string
     }
     fontSizes: {
