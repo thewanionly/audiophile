@@ -4,7 +4,8 @@ import { type SchemaTypeDefinition } from 'sanity'
 import { aboutTheBrand } from './aboutTheBrand'
 import { footer } from './footer'
 import { navLink } from './navLink'
+import { home } from './home'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [aboutTheBrand, footer, navLink],
+  types: [home, aboutTheBrand, footer, navLink],
 }

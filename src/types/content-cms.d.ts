@@ -1,9 +1,23 @@
-interface HeroSection {
-  slug: string
-  message: string
+interface Home {
+  hero: ProductSection
+  primaryFeaturedProduct: ProductSection
+  secondaryFeaturedProduct: ProductSection
+  tertiaryFeaturedProduct: ProductSection
 }
 
-interface HeroSectionData {
+interface ProductSection {
+  slug: string
+  message?: string
+}
+
+interface HomeData {
+  hero: ProductSectionData
+  primaryFeaturedProduct: ProductSectionData
+  secondaryFeaturedProduct: ProductSectionData
+  tertiaryFeaturedProduct: ProductSectionData
+}
+
+interface ProductSectionData {
   product: ProductLite
   message: string
 }

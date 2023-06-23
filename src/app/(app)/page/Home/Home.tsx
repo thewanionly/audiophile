@@ -43,7 +43,7 @@ const S = {
 type HomeProps = {
   aboutTheBrand: AboutTheBrand
   categories: Category[]
-  heroSection: HeroSectionData
+  heroSection: ProductSectionData
 }
 
 export const Home = ({ aboutTheBrand, categories, heroSection }: HomeProps) => {

@@ -1,4 +1,4 @@
-export const mockedHeroSectionData: HeroSectionData = {
+export const mockedHeroSectionData: ProductSectionData = {
   product: {
     id: 4,
     slug: 'xx99-mark-two-headphones',
