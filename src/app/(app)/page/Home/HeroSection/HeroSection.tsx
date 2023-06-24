@@ -10,7 +10,6 @@ import { ResponsiveImage } from '@/components/ResponsiveImage'
 const S = {
   HeroSection: styled.section`
     background-color: ${({ theme }) => theme.colors.heroSectionBg};
-
     display: grid;
   `,
   HeroSectionImage: styled(ResponsiveImage)`
@@ -38,14 +37,19 @@ const S = {
     ${({ theme }) => appSectionContainer(theme)}
     position: relative;
     grid-area: 1 / 1 / 2 / 2;
-    padding: 10rem 0;
   `,
   HeroSectionContentContainer: styled.div`
+    padding: 10.8rem 0 11.2rem 0;
     max-width: 38rem;
     margin: 0 auto;
     text-align: center;
 
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      padding: 12.6rem 0 16.7rem 0;
+    }
+
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      padding: 12.8rem 0 15.8rem 0;
       margin: 0;
       text-align: start;
     }
