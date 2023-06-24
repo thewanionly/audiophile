@@ -1,25 +1,27 @@
 interface Home {
   hero: ProductSection
   primaryFeaturedProduct: ProductSection
-  secondaryFeaturedProduct: Pick<ProductSection, 'slug'>
-  tertiaryFeaturedProduct: Pick<ProductSection, 'slug'>
+  secondaryFeaturedProduct: Omit<ProductSection, 'message'>
+  tertiaryFeaturedProduct: Omit<ProductSection, 'message'>
 }
 
 interface ProductSection {
   slug: string
   message: string
+  sectionImage: ResponsiveImageType
 }
 
 interface HomeData {
   hero: ProductSectionData
   primaryFeaturedProduct: ProductSectionData
-  secondaryFeaturedProduct: Pick<ProductSectionData, 'product'>
-  tertiaryFeaturedProduct: Pick<ProductSectionData, 'product'>
+  secondaryFeaturedProduct: Omit<ProductSectionData, 'message'>
+  tertiaryFeaturedProduct: Omit<ProductSectionData, 'message'>
 }
 
 interface ProductSectionData {
   product: ProductLite
   message: string
+  sectionImage: ResponsiveImageType
 }
 
 interface AboutTheBrand {

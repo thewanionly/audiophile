@@ -5,14 +5,22 @@ import styled from '@emotion/styled'
 import { Button } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 
 const S = {
   HeroSection: styled.section`
     background-color: ${({ theme }) => theme.colors.heroSectionBg};
     padding: 10rem 0;
+    position: relative;
+  `,
+  HeroSectionImage: styled(ResponsiveImage)`
+    position: absolute;
+    object-fit: cover;
+    object-position: bottom;
   `,
   HeroSectionContainer: styled.div`
     ${({ theme }) => appSectionContainer(theme)}
+    position: relative;
   `,
   HeroSectionContentContainer: styled.div`
     max-width: 38rem;
@@ -62,16 +70,14 @@ const S = {
   `,
 }
 
-type HeroSectionProps = {
-  product: ProductLite
-  message: string
-}
+type HeroSectionProps = ProductSectionData
 
-export const HeroSection = ({ product, message }: HeroSectionProps) => {
+export const HeroSection = ({ product, message, sectionImage }: HeroSectionProps) => {
   const { name, new: isNew, category, slug } = product
 
   return (
     <S.HeroSection>
+      <S.HeroSectionImage src={sectionImage.src} alt={sectionImage.alt} fill priority />
       <S.HeroSectionContainer>
         <S.HeroSectionContentContainer>
           {isNew ? <S.HeroNewProductText>{NEW_PRODUCT}</S.HeroNewProductText> : null}

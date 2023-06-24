@@ -1,4 +1,6 @@
 import { productClient } from '@/lib/cms/products'
+import { urlForImage } from '@/lib/cms/products/image'
+import { postProcessImage } from '@/utils/cms/image'
 
 // Get all products
 export const getProducts = async (): Promise<Product[]> => {
@@ -29,7 +31,12 @@ export const getProduct = async (slug: string): Promise<Product> => {
         description
       }`
 
-    return await productClient.fetch(query)
+    const results: Product = await productClient.fetch(query)
+
+    return {
+      ...results,
+      image: postProcessImage(results.image, urlForImage),
+    }
   } catch (error) {
     throw error
   }

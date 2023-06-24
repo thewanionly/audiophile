@@ -1,3 +1,5 @@
+import { responsiveImageFields } from '@/lib/cms/common/fields'
+
 export const home = {
   title: 'Home',
   name: 'home',
@@ -18,6 +20,12 @@ export const home = {
           name: 'message',
           type: 'string',
         },
+        {
+          title: 'Section image',
+          name: 'sectionImage',
+          type: 'object',
+          fields: responsiveImageFields,
+        },
       ],
     },
     {
@@ -35,6 +43,12 @@ export const home = {
           name: 'message',
           type: 'string',
         },
+        {
+          title: 'Section image',
+          name: 'sectionImage',
+          type: 'object',
+          fields: responsiveImageFields,
+        },
       ],
     },
     {
@@ -47,6 +61,12 @@ export const home = {
           name: 'slug',
           type: 'string',
         },
+        {
+          title: 'Section image',
+          name: 'sectionImage',
+          type: 'object',
+          fields: responsiveImageFields,
+        },
       ],
     },
     {
@@ -58,6 +78,12 @@ export const home = {
           title: 'Product Slug',
           name: 'slug',
           type: 'string',
+        },
+        {
+          title: 'Section image',
+          name: 'sectionImage',
+          type: 'object',
+          fields: responsiveImageFields,
         },
       ],
     },

@@ -26,8 +26,8 @@ interface Product {
   thumbnailImage: ResponsiveImageType
 }
 
-type ProductLite = Pick<Product, 'id' | 'name' | 'image' | 'slug' | 'category'> &
-  Partial<Pick<Product, 'new' | 'description'>>
+type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
+  Partial<Pick<Product, 'image' | 'new' | 'description'>>
 
 interface Category {
   name: string

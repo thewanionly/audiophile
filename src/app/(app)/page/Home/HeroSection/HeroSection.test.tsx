@@ -6,7 +6,11 @@ import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
 const setup = () => {
   render(
-    <HeroSection product={mockedHeroSectionData.product} message={mockedHeroSectionData.message} />
+    <HeroSection
+      product={mockedHeroSectionData.product}
+      message={mockedHeroSectionData.message}
+      sectionImage={mockedHeroSectionData.sectionImage}
+    />
   )
 }
 

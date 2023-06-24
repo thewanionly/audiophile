@@ -49,7 +49,11 @@ type HomeProps = {
 export const Home = ({ aboutTheBrand, categories, heroSection }: HomeProps) => {
   return (
     <>
-      <HeroSection product={heroSection.product} message={heroSection.message} />
+      <HeroSection
+        product={heroSection.product}
+        message={heroSection.message}
+        sectionImage={heroSection.sectionImage}
+      />
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
