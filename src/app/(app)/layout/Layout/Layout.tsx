@@ -3,7 +3,6 @@
 import { NavItem } from '@/components'
 
 import { Header } from '../Header'
-import { Main } from '../Main'
 import { NavMenu } from '../NavMenu'
 import { LayoutProvider } from '../Layout.context'
 import { Footer } from '../Footer'
@@ -20,7 +19,7 @@ export const Layout = ({ categories, navLinks, footer, children }: LayoutProps) 
     <LayoutProvider>
       <Header navItems={navLinks} />
       <NavMenu categories={categories} />
-      <Main>{children}</Main>
+      <main>{children}</main>
       <Footer navItems={navLinks} data={footer} />
     </LayoutProvider>
   )
