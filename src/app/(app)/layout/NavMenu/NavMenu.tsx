@@ -11,7 +11,7 @@ const S = {
   Modal: styled(Modal)`
     &,
     .MuiBackdrop-root {
-      margin-top: 8.9rem;
+      margin-top: 9rem;
 
       ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
         margin-top: 9.6rem;

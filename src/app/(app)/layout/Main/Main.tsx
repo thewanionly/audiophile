@@ -6,7 +6,7 @@ import { mediaQuery } from '@/styles/utils'
 
 const S = {
   Main: styled.main`
-    padding-top: 8.9rem;
+    padding-top: 9rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       padding-top: 9.6rem;

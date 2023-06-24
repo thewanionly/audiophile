@@ -18,7 +18,7 @@ const S = {
     z-index: 1;
     width: 100%;
     background-color: ${({ theme }) => theme.colors.headerBg};
-    height: 8.9rem;
+    height: 9rem;
     display: flex;
     align-items: center;
     border-bottom: 0.1rem solid ${({ theme }) => theme.colors.headerDivider};
