@@ -119,6 +119,7 @@ const S = {
   FooterCopyright: styled.span`
     grid-area: copyright;
     margin-top: 4.8rem;
+    text-align: center;
 
     & > span {
       font-weight: ${(props) => props.theme.fontWeights.bold};
