@@ -47,4 +47,13 @@ describe('Home - Hero Section', () => {
       `${mockedHeroSectionData.product.category}/${mockedHeroSectionData.product.slug}`
     )
   })
+
+  it('displays hero section image', () => {
+    setup()
+
+    const sectionImage = screen.getByAltText(mockedHeroSectionData.sectionImage.alt)
+
+    expect(sectionImage).toBeInTheDocument()
+    expect(sectionImage).toHaveAttribute('src', mockedHeroSectionData.sectionImage.src.desktop)
+  })
 })
