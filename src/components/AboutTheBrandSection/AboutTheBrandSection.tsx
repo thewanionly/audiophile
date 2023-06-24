@@ -39,7 +39,7 @@ const S = {
     &,
     & > .primary-text {
       font-weight: ${({ theme }) => theme.fontWeights.bold};
-      font-size: ${({ theme }) => theme.fontSizes.lg};
+      font-size: ${({ theme }) => theme.fontSizes.med3};
       line-height: 3.8rem;
       letter-spacing: 0.1rem;
       text-transform: uppercase;
@@ -48,7 +48,7 @@ const S = {
       margin-bottom: 3.2rem;
 
       ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-        font-size: ${({ theme }) => theme.fontSizes.xxl};
+        font-size: ${({ theme }) => theme.fontSizes.lg3};
         line-height: 4.4rem;
         letter-spacing: 0.143rem;
       }

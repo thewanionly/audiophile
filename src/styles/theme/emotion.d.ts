@@ -39,10 +39,11 @@ declare module '@emotion/react' {
       regular: string
       med1: string
       med2: string
-      lg: string
+      med3: string
+      lg1: string
+      lg2: string
+      lg3: string
       xl: string
-      xxl: string
-      xxxl: string
     }
     fontWeights: {
       regular: number

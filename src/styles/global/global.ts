@@ -39,25 +39,25 @@ export const globalStyles = (theme: Theme) => css`
   }
 
   h1 {
-    font-size: ${theme.fontSizes.xxxl};
+    font-size: ${theme.fontSizes.xl};
     line-height: 5.8rem;
     letter-spacing: 0.2rem;
   }
 
   h2 {
-    font-size: ${theme.fontSizes.xxl};
+    font-size: ${theme.fontSizes.lg3};
     line-height: 4.4rem;
     letter-spacing: 0.15rem;
   }
 
   h3 {
-    font-size: ${theme.fontSizes.xl};
+    font-size: ${theme.fontSizes.lg1};
     line-height: 3.6rem;
     letter-spacing: 0.115rem;
   }
 
   h4 {
-    font-size: ${theme.fontSizes.lg};
+    font-size: ${theme.fontSizes.med3};
     line-height: 3.8rem;
     letter-spacing: 0.2rem;
   }

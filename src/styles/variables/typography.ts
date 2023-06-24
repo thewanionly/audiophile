@@ -6,10 +6,11 @@ export const TYPOGRAPHY = {
   fontSizeRegular: '1.5rem',
   fontSizeMed1: '1.8rem',
   fontSizeMed2: '2.4rem',
-  fontSizeLg: '2.8rem',
-  fontSizeXl: '3.2rem',
-  fontSizeXxl: '4rem',
-  fontSizeXxxl: '5.6rem',
+  fontSizeMed3: '2.8rem',
+  fontSizeLg1: '3.2rem',
+  fontSizeLg2: '3.6rem',
+  fontSizeLg3: '4rem',
+  fontSizeXl: '5.6rem',
 
   /* Font weights */
   fontWeightRegular: 400,

@@ -66,7 +66,7 @@ const S = {
   `,
   HeroProductName: styled.h2`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
-    font-size: ${({ theme }) => theme.fontSizes.xxl};
+    font-size: ${({ theme }) => theme.fontSizes.lg2};
     line-height: 4rem;
     letter-spacing: 0.1286rem;
     text-transform: uppercase;
@@ -74,7 +74,7 @@ const S = {
     margin-bottom: 2.4rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      font-size: ${({ theme }) => theme.fontSizes.xxxl};
+      font-size: ${({ theme }) => theme.fontSizes.xl};
       line-height: 5.8rem;
       letter-spacing: 0.2rem;
     }
