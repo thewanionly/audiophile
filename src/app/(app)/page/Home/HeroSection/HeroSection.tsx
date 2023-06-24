@@ -10,17 +10,35 @@ import { ResponsiveImage } from '@/components/ResponsiveImage'
 const S = {
   HeroSection: styled.section`
     background-color: ${({ theme }) => theme.colors.heroSectionBg};
-    padding: 10rem 0;
-    position: relative;
+
+    display: grid;
   `,
   HeroSectionImage: styled(ResponsiveImage)`
-    position: absolute;
-    object-fit: cover;
-    object-position: bottom;
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100%;
+    max-width: 144rem;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+
+    .image {
+      object-fit: cover;
+      object-position: bottom;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      height: 64rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      height: 63.3rem;
+    }
   `,
   HeroSectionContainer: styled.div`
     ${({ theme }) => appSectionContainer(theme)}
     position: relative;
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 10rem 0;
   `,
   HeroSectionContentContainer: styled.div`
     max-width: 38rem;

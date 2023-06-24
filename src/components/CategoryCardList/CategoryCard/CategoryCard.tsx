@@ -12,7 +12,7 @@ const S = {
     display: grid;
     justify-items: center;
   `,
-  CategoryCardImageContainer: styled.div`
+  CategoryCardImage: styled(ResponsiveImage)`
     top: 2rem;
     width: 14rem;
     height: 14rem;
@@ -24,9 +24,10 @@ const S = {
       width: 16rem;
       height: 16rem;
     }
-  `,
-  CategoryCardImage: styled(ResponsiveImage)`
-    object-fit: contain;
+
+    .image {
+      object-fit: contain;
+    }
   `,
   CategoryCardFilledContainer: styled.div`
     background-color: ${({ theme }) => theme.colors.categoryCardBg};
@@ -100,9 +101,7 @@ type CategoryCardProps = {
 export const CategoryCard = ({ image, name, href, onLinkClick }: CategoryCardProps) => {
   return (
     <S.CategoryCard className="category-card" data-testid="category-card">
-      <S.CategoryCardImageContainer>
-        <S.CategoryCardImage src={image.src} alt={image.alt} fill />
-      </S.CategoryCardImageContainer>
+      <S.CategoryCardImage src={image.src} alt={image.alt} fill />
       <S.CategoryCardFilledContainer />
       <S.CategoryCardTextContainer>
         <S.CategoryCardName>{name}</S.CategoryCardName>

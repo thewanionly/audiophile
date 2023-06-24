@@ -64,14 +64,20 @@ const S = {
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
-  BrandSectionImageContainer: styled.div`
-    width: 32.7rem;
+  BrandSectionImage: styled(ResponsiveImage)`
+    max-width: 32.7rem;
     height: 30rem;
     margin: 0 auto;
     position: relative;
     border-radius: 0.8rem;
 
+    .image {
+      border-radius: 0.8rem;
+      object-fit: cover;
+    }
+
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletPortrait)} {
+      max-width: none;
       width: 100%;
     }
 
@@ -79,10 +85,6 @@ const S = {
       height: 58.8rem;
       width: 54rem;
     }
-  `,
-  BrandSectionImage: styled(ResponsiveImage)`
-    border-radius: 0.8rem;
-    object-fit: cover;
   `,
 }
 
@@ -101,9 +103,7 @@ export const AboutTheBrandSection = ({
 }: AboutTheBrandSectionProps) => {
   return (
     <S.AboutTheBrandSection className={className}>
-      <S.BrandSectionImageContainer>
-        <S.BrandSectionImage src={image.src} alt={image.alt} fill />
-      </S.BrandSectionImageContainer>
+      <S.BrandSectionImage src={image.src} alt={image.alt} fill />
       <S.BrandSectionTextContainer>
         <S.BrandSectionHeading>
           <BrandHeadingPortableText heading={heading} />
