@@ -1,20 +1,20 @@
 interface Home {
   hero: ProductSection
   primaryFeaturedProduct: ProductSection
-  secondaryFeaturedProduct: ProductSection
-  tertiaryFeaturedProduct: ProductSection
+  secondaryFeaturedProduct: Pick<ProductSection, 'slug'>
+  tertiaryFeaturedProduct: Pick<ProductSection, 'slug'>
 }
 
 interface ProductSection {
   slug: string
-  message?: string
+  message: string
 }
 
 interface HomeData {
   hero: ProductSectionData
   primaryFeaturedProduct: ProductSectionData
-  secondaryFeaturedProduct: ProductSectionData
-  tertiaryFeaturedProduct: ProductSectionData
+  secondaryFeaturedProduct: Pick<ProductSectionData, 'product'>
+  tertiaryFeaturedProduct: Pick<ProductSectionData, 'product'>
 }
 
 interface ProductSectionData {
