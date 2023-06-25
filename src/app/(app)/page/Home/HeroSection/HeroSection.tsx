@@ -1,11 +1,14 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 
 import { Button } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { useIntersectionObserver } from '@/hooks'
+import { LayoutProvider, useLayoutContext } from '@/app/(app)/layout/Layout.context'
 
 const S = {
   HeroSection: styled.section`
@@ -95,21 +98,38 @@ const S = {
 type HeroSectionProps = ProductSectionData
 
 export const HeroSection = ({ product, message, sectionImage }: HeroSectionProps) => {
+  const { setIsHeroSectionVisible } = useLayoutContext()
+  const ref = useRef<HTMLDivElement | null>(null)
+  const entry = useIntersectionObserver(ref, { rootMargin: '-90px' })
+  const isVisible = !!entry?.isIntersecting
+
   const { name, new: isNew, category, slug } = product
 
+  useEffect(() => {
+    if (isVisible) {
+      setIsHeroSectionVisible(true)
+    } else {
+      setIsHeroSectionVisible(false)
+    }
+
+    return () => setIsHeroSectionVisible(false)
+  }, [isVisible, setIsHeroSectionVisible])
+
   return (
-    <S.HeroSection>
-      <S.HeroSectionImage src={sectionImage.src} alt={sectionImage.alt} fill priority />
-      <S.HeroSectionContainer>
-        <S.HeroSectionContentContainer>
-          {isNew ? <S.HeroNewProductText>{NEW_PRODUCT}</S.HeroNewProductText> : null}
-          <S.HeroProductName>{name}</S.HeroProductName>
-          <S.HeroMessage>{message}</S.HeroMessage>
-          <Button asLink href={`${category}/${slug}`}>
-            {SEE_PRODUCT}
-          </Button>
-        </S.HeroSectionContentContainer>
-      </S.HeroSectionContainer>
-    </S.HeroSection>
+    <LayoutProvider>
+      <S.HeroSection ref={ref}>
+        <S.HeroSectionImage src={sectionImage.src} alt={sectionImage.alt} fill priority />
+        <S.HeroSectionContainer>
+          <S.HeroSectionContentContainer>
+            {isNew ? <S.HeroNewProductText>{NEW_PRODUCT}</S.HeroNewProductText> : null}
+            <S.HeroProductName>{name}</S.HeroProductName>
+            <S.HeroMessage>{message}</S.HeroMessage>
+            <Button asLink href={`${category}/${slug}`}>
+              {SEE_PRODUCT}
+            </Button>
+          </S.HeroSectionContentContainer>
+        </S.HeroSectionContainer>
+      </S.HeroSection>
+    </LayoutProvider>
   )
 }

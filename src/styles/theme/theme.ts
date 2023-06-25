@@ -24,6 +24,7 @@ export const theme: Theme = {
 
     // Header
     headerBg: COLORS.black,
+    headerHeroBg: COLORS.codGray,
     navLink: COLORS.white,
     navLinkHover: COLORS.rawSienna,
     menuIcon: COLORS.white,
@@ -34,7 +35,7 @@ export const theme: Theme = {
     categoryCardLink: rgba(COLORS.black, 0.5),
 
     // Home
-    heroSectionBg: COLORS.black,
+    heroSectionBg: COLORS.codGray,
 
     // Footer
     footerBg: COLORS.onyx,

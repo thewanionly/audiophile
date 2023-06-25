@@ -9,6 +9,7 @@ export const COLORS = {
   alabaster: 'hsl(0, 0%, 98%)', // #FAFAFA
   white: 'hsl(0, 0%, 100%)', // #FFFFFF
   black: 'hsl(0, 0%, 0%)', // #000000
+  codGray: 'hsl(0, 0%, 10%)', // #191919
   liver: 'hsl(0, 0%, 30%)', // #4C4C4C
 
   /* Utility colors */

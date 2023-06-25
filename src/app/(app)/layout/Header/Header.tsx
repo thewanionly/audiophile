@@ -13,12 +13,13 @@ import { HeaderMenuIcon } from './HeaderMenuIcon'
 import { useLayoutContext } from '../Layout.context'
 
 const S = {
-  Header: styled.header`
-    position: sticky;
+  Header: styled.header<HeaderStyleProps>`
+    position: ${({ heroSectionVisible }) => (heroSectionVisible ? 'relative' : 'sticky')};
     top: 0;
     z-index: 1;
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.headerBg};
+    background-color: ${({ theme, heroSectionVisible }) =>
+      heroSectionVisible ? theme.colors.headerHeroBg : theme.colors.headerBg};
     height: 9rem;
     display: flex;
     align-items: center;
@@ -89,16 +90,20 @@ const S = {
   `,
 }
 
+type HeaderStyleProps = {
+  heroSectionVisible: boolean
+}
+
 type HeaderProps = {
   navItems: NavItem[]
 }
 
 export const Header = ({ navItems }: HeaderProps) => {
-  const { isNavMenuOpen, closeNavMenu, toggleNavMenu } = useLayoutContext()
+  const { isNavMenuOpen, isHeroSectionVisible, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
   return (
-    <S.Header>
+    <S.Header heroSectionVisible={isHeroSectionVisible}>
       <S.HeaderContainer>
         <S.HeaderMenuIcon isOpen={isNavMenuOpen} isVisible={!isDesktop} onClick={toggleNavMenu} />
         <S.HeaderLogo href="/" onClick={closeNavMenu}>

@@ -19,6 +19,7 @@ declare module '@emotion/react' {
       bodyTextDark: string
       modalBg: string
       headerBg: string
+      headerHeroBg: string
       navLink: string
       navLinkHover: string
       menuIcon: string
