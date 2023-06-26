@@ -38,7 +38,7 @@ describe('Home - Hero Section', () => {
     expect(heroMessage).toBeInTheDocument()
   })
 
-  it(`displays ${SEE_PRODUCT} button`, () => {
+  it(`displays ${SEE_PRODUCT} button with link to the product detail page`, () => {
     setup()
 
     const seeProductButton = screen.getByRole('link', { name: SEE_PRODUCT })

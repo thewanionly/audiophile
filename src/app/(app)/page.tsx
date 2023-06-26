@@ -9,5 +9,12 @@ export default async function HomePage() {
   const categories = await getCategories()
   const aboutTheBrand = await getAboutTheBrand()
 
-  return <Home aboutTheBrand={aboutTheBrand} categories={categories} heroSection={home.hero} />
+  return (
+    <Home
+      aboutTheBrand={aboutTheBrand}
+      categories={categories}
+      heroSection={home.hero}
+      primaryFPSection={home.primaryFeaturedProduct}
+    />
+  )
 }

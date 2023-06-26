@@ -4,7 +4,7 @@ import { render, screen } from '@/tests'
 import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
 
 import { Home } from './Home'
-import { mockedHeroSectionData } from '@/tests/__mocks__/data/home'
+import { mockedHeroSectionData, mockedPrimaryFPSectionData } from '@/tests/__mocks__/data/home'
 
 const setup = () => {
   render(
@@ -12,6 +12,7 @@ const setup = () => {
       aboutTheBrand={mockedBrandDetails}
       categories={mockedCategories}
       heroSection={mockedHeroSectionData}
+      primaryFPSection={mockedPrimaryFPSectionData}
     />
   )
 }
@@ -32,6 +33,15 @@ describe('Home', () => {
 
     expect(categoryCardList).toBeInTheDocument()
     expect(categoryCards.length).toBeGreaterThan(0)
+  })
+
+  it('displays primary featured product section', () => {
+    setup()
+
+    const primaryFeaturedProductSection = screen.getByRole('heading', {
+      name: mockedPrimaryFPSectionData.product.name,
+    })
+    expect(primaryFeaturedProductSection).toBeInTheDocument()
   })
 
   it('displays about the brand section', () => {

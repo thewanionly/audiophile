@@ -6,6 +6,7 @@ import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { HeroSection } from './HeroSection'
+import { PrimaryFeaturedProductSection } from './FeaturedProductSection'
 
 const S = {
   CategoryCardListSection: styled.section`
@@ -44,9 +45,10 @@ type HomeProps = {
   aboutTheBrand: AboutTheBrand
   categories: Category[]
   heroSection: ProductSectionData
+  primaryFPSection: ProductSectionData
 }
 
-export const Home = ({ aboutTheBrand, categories, heroSection }: HomeProps) => {
+export const Home = ({ aboutTheBrand, categories, heroSection, primaryFPSection }: HomeProps) => {
   return (
     <>
       <HeroSection
@@ -57,6 +59,11 @@ export const Home = ({ aboutTheBrand, categories, heroSection }: HomeProps) => {
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
+      <PrimaryFeaturedProductSection
+        product={primaryFPSection.product}
+        message={primaryFPSection.message}
+        sectionImage={primaryFPSection.sectionImage}
+      />
       <S.AboutTheBrandSection
         heading={aboutTheBrand.heading}
         description={aboutTheBrand.description}
