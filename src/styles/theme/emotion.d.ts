@@ -11,7 +11,8 @@ declare module '@emotion/react' {
       textOnPrimary: string
       secondary: string
       secondaryLight: string
-      textOnSecondary: string
+      textOnSecondaryContained: string
+      textOnSecondaryOutlined: string
       darkTitle: string
       lightTitle: string
       bodyTextLight: string

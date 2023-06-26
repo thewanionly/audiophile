@@ -58,7 +58,7 @@ const colorVariantStyles = (
     [ButtonColor.SECONDARY]: {
       [ButtonVariant.CONTAINED]: css`
         background-color: ${theme.colors.secondary};
-        color: ${theme.colors.textOnSecondary};
+        color: ${theme.colors.textOnSecondaryContained};
 
         &:hover {
           background-color: ${theme.colors.secondaryLight};
@@ -67,10 +67,11 @@ const colorVariantStyles = (
       [ButtonVariant.OUTLINED]: css`
         background-color: transparent;
         border: 0.1rem solid ${theme.colors.secondary};
-        color: ${theme.colors.secondary};
+        color: ${theme.colors.textOnSecondaryOutlined};
 
         &:hover {
-          background-color: ${theme.colors.secondaryLight};
+          background-color: ${theme.colors.secondary};
+          color: ${theme.colors.textOnSecondaryContained};
         }
       `,
     },
