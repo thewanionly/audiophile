@@ -3,6 +3,7 @@
 import styled from '@emotion/styled'
 
 import { Button, ButtonColor } from '@/components'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { SEE_PRODUCT } from '@/utils/constants'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
@@ -15,19 +16,40 @@ const S = {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 3.2rem;
+    gap: 3.5rem;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       padding: 5.2rem 9.5rem 6.4rem;
-      gap: 6.4rem;
+      gap: 6.7rem;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      padding: 0 9.5rem 0 11.75rem;
       text-align: start;
       flex-direction: row;
-      gap: 13.8rem;
       justify-content: space-around;
+    }
+  `,
+  SectionImage: styled(ResponsiveImage)`
+    position: relative;
+    width: 100%;
+    height: 20.7rem;
+
+    .image {
+      object-fit: contain;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      height: 23.7rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      height: 49.3rem;
+      width: 41rem;
+      bottom: -5rem;
     }
   `,
   ContentContainer: styled.div`
@@ -40,7 +62,7 @@ const S = {
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin: 0;
+      margin: 13.3rem 0 12.4rem;
     }
   `,
   ProductName: styled.h2`
@@ -80,8 +102,11 @@ export const PrimaryFeaturedProductSection = ({
 }: FeaturedProductSectionProps) => {
   const { name, category, slug } = product
 
+  console.log('sectionIamge', sectionImage)
+
   return (
     <S.PrimaryFeaturedProductSection>
+      <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill priority />
       <S.ContentContainer>
         <S.ProductName>{name}</S.ProductName>
         <S.SectionMessage>{message}</S.SectionMessage>

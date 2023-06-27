@@ -1,7 +1,7 @@
 import { render, screen } from '@/tests'
 
 import { mockedPrimaryFPSectionData } from '@/tests/__mocks__/data/home'
-import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
+import { SEE_PRODUCT } from '@/utils/constants'
 import { PrimaryFeaturedProductSection } from './PrimaryFeaturedProductSection'
 
 const setup = () => {
@@ -41,7 +41,7 @@ describe('Home - Primary Featured Product Section', () => {
     )
   })
 
-  xit('displays primary featured product section image', () => {
+  it('displays primary featured product section image', () => {
     setup()
 
     const sectionImage = screen.getByAltText(mockedPrimaryFPSectionData.sectionImage.alt)
