@@ -10,6 +10,10 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 const S = {
   PrimaryFeaturedProductSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
+    background-image: url('/icons/pattern-circles.svg');
+    background-size: cover;
+    background-position: center -11.8rem;
+    background-repeat: no-repeat;
     padding: 5.6rem 2.4rem;
     border-radius: 0.8rem;
     background-color: ${({ theme }) => theme.colors.primary};
@@ -22,11 +26,16 @@ const S = {
     overflow: hidden;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      background-size: 138%;
+      background-position-y: -29rem;
       padding: 5.2rem 9.5rem 6.4rem;
       gap: 6.7rem;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      background-size: 81%;
+      background-position-y: -1rem;
+      background-position-x: -12rem;
       padding: 0 9.5rem 0 11.75rem;
       text-align: start;
       flex-direction: row;
