@@ -29,6 +29,7 @@ declare module '@emotion/react' {
       categoryCardBg: string
       categoryCardLink: string
       heroSectionBg: string
+      tertiaryFPSectionBg: string
       footerBg: string
       footerSocials: string
       categoryHeaderBg: string

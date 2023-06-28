@@ -16,6 +16,7 @@ export default async function HomePage() {
       heroSection={home.hero}
       primaryFPSection={home.primaryFeaturedProduct}
       secondaryFPSection={home.secondaryFeaturedProduct}
+      tertiaryFPSection={home.tertiaryFeaturedProduct}
     />
   )
 }

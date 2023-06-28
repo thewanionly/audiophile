@@ -8,6 +8,7 @@ import {
   mockedHeroSectionData,
   mockedPrimaryFPSectionData,
   mockedSecondaryFPSectionData,
+  mockedTertiaryFPSectionData,
 } from '@/tests/__mocks__/data/home'
 
 const setup = () => {
@@ -18,6 +19,7 @@ const setup = () => {
       heroSection={mockedHeroSectionData}
       primaryFPSection={mockedPrimaryFPSectionData}
       secondaryFPSection={mockedSecondaryFPSectionData}
+      tertiaryFPSection={mockedTertiaryFPSectionData}
     />
   )
 }

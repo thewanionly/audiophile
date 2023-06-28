@@ -37,6 +37,7 @@ export const theme: Theme = {
 
     // Home
     heroSectionBg: COLORS.codGray,
+    tertiaryFPSectionBg: COLORS.seaShell,
 
     // Footer
     footerBg: COLORS.onyx,

@@ -9,6 +9,7 @@ import { HeroSection } from './HeroSection'
 import {
   PrimaryFeaturedProductSection,
   SecondaryFeaturedProductSection,
+  TertiaryFeaturedProductSection,
 } from './FeaturedProductSection'
 
 const S = {
@@ -50,6 +51,7 @@ type HomeProps = {
   heroSection: ProductSectionData
   primaryFPSection: ProductSectionData
   secondaryFPSection: Omit<ProductSectionData, 'message'>
+  tertiaryFPSection: Omit<ProductSectionData, 'message'>
 }
 
 export const Home = ({
@@ -58,6 +60,7 @@ export const Home = ({
   heroSection,
   primaryFPSection,
   secondaryFPSection,
+  tertiaryFPSection,
 }: HomeProps) => {
   return (
     <>
@@ -77,6 +80,10 @@ export const Home = ({
       <SecondaryFeaturedProductSection
         product={secondaryFPSection.product}
         sectionImage={secondaryFPSection.sectionImage}
+      />
+      <TertiaryFeaturedProductSection
+        product={tertiaryFPSection.product}
+        sectionImage={tertiaryFPSection.sectionImage}
       />
       <S.AboutTheBrandSection
         heading={aboutTheBrand.heading}
