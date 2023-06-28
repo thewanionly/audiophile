@@ -4,7 +4,11 @@ import { render, screen } from '@/tests'
 import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
 
 import { Home } from './Home'
-import { mockedHeroSectionData, mockedPrimaryFPSectionData } from '@/tests/__mocks__/data/home'
+import {
+  mockedHeroSectionData,
+  mockedPrimaryFPSectionData,
+  mockedSecondaryFPSectionData,
+} from '@/tests/__mocks__/data/home'
 
 const setup = () => {
   render(
@@ -13,6 +17,7 @@ const setup = () => {
       categories={mockedCategories}
       heroSection={mockedHeroSectionData}
       primaryFPSection={mockedPrimaryFPSectionData}
+      secondaryFPSection={mockedSecondaryFPSectionData}
     />
   )
 }

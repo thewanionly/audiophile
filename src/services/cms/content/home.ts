@@ -26,6 +26,8 @@ export const getHomeData = async (): Promise<HomeData> => {
 
     const heroProduct = await getProduct(home.hero.slug)
     const primaryFeaturedProduct = await getProduct(home.primaryFeaturedProduct.slug)
+    const secondaryFeaturedProduct = await getProduct(home.secondaryFeaturedProduct.slug)
+    const tertiaryFeaturedProduct = await getProduct(home.tertiaryFeaturedProduct.slug)
 
     return {
       hero: {
@@ -39,11 +41,11 @@ export const getHomeData = async (): Promise<HomeData> => {
         sectionImage: home.primaryFeaturedProduct.sectionImage,
       },
       secondaryFeaturedProduct: {
-        product: heroProduct,
+        product: secondaryFeaturedProduct,
         sectionImage: home.secondaryFeaturedProduct.sectionImage,
       },
       tertiaryFeaturedProduct: {
-        product: heroProduct,
+        product: tertiaryFeaturedProduct,
         sectionImage: home.tertiaryFeaturedProduct.sectionImage,
       },
     }

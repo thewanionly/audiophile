@@ -35,7 +35,7 @@ export const getProduct = async (slug: string): Promise<Product> => {
 
     return {
       ...results,
-      image: postProcessImage(results.image, urlForImage),
+      ...(results?.image ? { image: postProcessImage(results.image, urlForImage) } : {}),
     }
   } catch (error) {
     throw error

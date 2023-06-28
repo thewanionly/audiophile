@@ -24,12 +24,14 @@ const S = {
     align-items: center;
     position: relative;
     overflow: hidden;
+    margin-bottom: 2.4rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       background-size: 138%;
       background-position-y: -29rem;
       padding: 5.2rem 9.5rem 6.4rem;
       gap: 6.7rem;
+      margin-bottom: 3.2rem;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
@@ -40,6 +42,7 @@ const S = {
       text-align: start;
       flex-direction: row;
       justify-content: space-around;
+      margin-bottom: 4.8rem;
     }
   `,
   SectionImage: styled(ResponsiveImage)`
@@ -102,16 +105,14 @@ const S = {
   `,
 }
 
-type FeaturedProductSectionProps = ProductSectionData
+type PrimaryFeaturedProductSectionProps = ProductSectionData
 
 export const PrimaryFeaturedProductSection = ({
   product,
   message,
   sectionImage,
-}: FeaturedProductSectionProps) => {
+}: PrimaryFeaturedProductSectionProps) => {
   const { name, category, slug } = product
-
-  console.log('sectionIamge', sectionImage)
 
   return (
     <S.PrimaryFeaturedProductSection>
