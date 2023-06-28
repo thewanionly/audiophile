@@ -76,7 +76,7 @@ const S = {
       object-fit: cover;
     }
 
-    ${({ theme }) => mediaQuery(theme.breakPoints.tabletPortrait)} {
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       max-width: none;
       width: 100%;
     }
