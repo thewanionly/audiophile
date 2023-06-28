@@ -8,7 +8,6 @@ import { Category } from './page/Category'
 type CategoryPageProps = { params: { category: string } }
 
 export default async function CategoryPage({ params: { category } }: CategoryPageProps) {
-  const aboutTheBrand = await getAboutTheBrand()
   const categories = await getCategories()
 
   const isValidCategory = categories.some(({ slug }) => slug === category)
@@ -18,6 +17,7 @@ export default async function CategoryPage({ params: { category } }: CategoryPag
     notFound()
   }
 
+  const aboutTheBrand = await getAboutTheBrand()
   const categoryProducts = await getCategoryProducts(category)
 
   return <Category name={category} aboutTheBrand={aboutTheBrand} categories={categories} />
