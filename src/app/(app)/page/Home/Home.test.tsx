@@ -51,6 +51,24 @@ describe('Home', () => {
     expect(primaryFeaturedProductSection).toBeInTheDocument()
   })
 
+  it('displays secondary featured product section', () => {
+    setup()
+
+    const secondaryFeaturedProductSection = screen.getByRole('heading', {
+      name: mockedSecondaryFPSectionData.product.name,
+    })
+    expect(secondaryFeaturedProductSection).toBeInTheDocument()
+  })
+
+  it('displays tertiary featured product section', () => {
+    setup()
+
+    const tertiaryFeaturedProductSection = screen.getByRole('heading', {
+      name: mockedTertiaryFPSectionData.product.name,
+    })
+    expect(tertiaryFeaturedProductSection).toBeInTheDocument()
+  })
+
   it('displays about the brand section', () => {
     setup()
 
