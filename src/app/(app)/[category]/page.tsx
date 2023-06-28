@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { getAboutTheBrand } from '@/services/cms/content'
-import { getCategories } from '@/services/cms/products'
+import { getCategories, getCategoryProducts } from '@/services/cms/products'
 
 import { Category } from './page/Category'
 
@@ -17,6 +17,8 @@ export default async function CategoryPage({ params: { category } }: CategoryPag
     // Redirect to not-found page if category is not valid
     notFound()
   }
+
+  const categoryProducts = await getCategoryProducts(category)
 
   return <Category name={category} aboutTheBrand={aboutTheBrand} categories={categories} />
 }

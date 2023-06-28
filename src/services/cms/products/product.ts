@@ -41,3 +41,29 @@ export const getProduct = async (slug: string): Promise<Product> => {
     throw error
   }
 }
+
+// Get all products of a category
+export const getCategoryProducts = async (category: string): Promise<Product[]> => {
+  try {
+    const query = `*\[_type == "product" && category == "${category}"\] {
+        id,
+        slug,
+        name,
+        category,
+        categoryImage,
+        new,
+        description,
+      }`
+
+    const results: Product[] = await productClient.fetch(query)
+
+    return results.map((result) => ({
+      ...result,
+      ...(result?.categoryImage
+        ? { categoryImage: postProcessImage(result.categoryImage, urlForImage) }
+        : {}),
+    }))
+  } catch (error) {
+    throw error
+  }
+}
