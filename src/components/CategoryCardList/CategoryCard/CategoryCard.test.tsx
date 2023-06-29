@@ -1,5 +1,5 @@
 import { render, screen } from '@/tests'
-import { mockedCategories } from '@/tests/__mocks__/data'
+import { mockedCategories } from '@/tests/__mocks__/data/category'
 
 import { CategoryCard } from './CategoryCard'
 

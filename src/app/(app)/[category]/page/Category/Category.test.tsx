@@ -1,7 +1,8 @@
 import { toPlainText } from '@portabletext/react'
 import { render, screen } from '@/tests'
 import { Category } from './Category'
-import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
+import { mockedBrandDetails } from '@/tests/__mocks__/data'
+import { mockedCategories, mockedCategoryProducts } from '@/tests/__mocks__/data/category'
 
 const mockedCategory = mockedCategories[0]
 
@@ -11,6 +12,7 @@ const setup = () => {
       name={mockedCategory.name}
       aboutTheBrand={mockedBrandDetails}
       categories={mockedCategories}
+      products={mockedCategoryProducts}
     />
   )
 }

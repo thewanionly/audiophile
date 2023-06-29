@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 
 import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { CategoryProductCard } from './CategoryProductCard'
 
 const S = {
   CategoryHeader: styled.section`
@@ -26,7 +27,7 @@ const S = {
     align-items: center;
     justify-content: center;
   `,
-  CatrgoryHeadingText: styled.h1`
+  CategoryHeadingText: styled.h1`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.med3};
     line-height: 3.8rem;
@@ -40,6 +41,17 @@ const S = {
       line-height: 4.4rem;
       letter-spacing: 0.14rem;
     }
+  `,
+  CategoryCardProductsSection: styled.section`
+    ${({ theme }) => appSectionContainer(theme)}
+
+    margin: 6.4rem auto 12rem;
+  `,
+  CategoryCardProductsList: styled.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12rem;
   `,
   CategoryCardListSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
@@ -65,16 +77,26 @@ type CategoryProps = {
   name: string
   aboutTheBrand: AboutTheBrand
   categories: Category[]
+  products: CategoryProduct[]
 }
 
-export const Category = ({ name, aboutTheBrand, categories }: CategoryProps) => {
+export const Category = ({ name, aboutTheBrand, categories, products }: CategoryProps) => {
   return (
     <>
       <S.CategoryHeader>
         <S.CategoryHeaderContainer>
-          <S.CatrgoryHeadingText>{name}</S.CatrgoryHeadingText>
+          <S.CategoryHeadingText>{name}</S.CategoryHeadingText>
         </S.CategoryHeaderContainer>
       </S.CategoryHeader>
+      <S.CategoryCardProductsSection>
+        <S.CategoryCardProductsList>
+          {products.map(({ id, name, description, new: isNew }) => (
+            <li key={id}>
+              <CategoryProductCard name={name} description={description} isNew={isNew} />
+            </li>
+          ))}
+        </S.CategoryCardProductsList>
+      </S.CategoryCardProductsSection>
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>

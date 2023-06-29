@@ -43,7 +43,7 @@ export const getProduct = async (slug: string): Promise<Product> => {
 }
 
 // Get all products of a category
-export const getCategoryProducts = async (category: string): Promise<Product[]> => {
+export const getCategoryProducts = async (category: string): Promise<CategoryProduct[]> => {
   try {
     const query = `*\[_type == "product" && category == "${category}"\] {
         id,
@@ -55,7 +55,7 @@ export const getCategoryProducts = async (category: string): Promise<Product[]> 
         description,
       }`
 
-    const results: Product[] = await productClient.fetch(query)
+    const results: CategoryProduct[] = await productClient.fetch(query)
 
     return results.map((result) => ({
       ...result,

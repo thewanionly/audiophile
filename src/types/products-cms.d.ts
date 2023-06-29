@@ -35,3 +35,8 @@ interface Category {
   image: ResponsiveImageType
   displayOrder: number
 }
+
+type CategoryProduct = Pick<
+  Product,
+  'id' | 'name' | 'slug' | 'category' | 'categoryImage' | 'new' | 'description'
+>

@@ -20,5 +20,12 @@ export default async function CategoryPage({ params: { category } }: CategoryPag
   const aboutTheBrand = await getAboutTheBrand()
   const categoryProducts = await getCategoryProducts(category)
 
-  return <Category name={category} aboutTheBrand={aboutTheBrand} categories={categories} />
+  return (
+    <Category
+      name={category}
+      products={categoryProducts}
+      aboutTheBrand={aboutTheBrand}
+      categories={categories}
+    />
+  )
 }

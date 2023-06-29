@@ -1,7 +1,7 @@
 import { toPlainText } from '@portabletext/react'
 
 import { render, screen } from '@/tests'
-import { mockedBrandDetails, mockedCategories } from '@/tests/__mocks__/data'
+import { mockedBrandDetails } from '@/tests/__mocks__/data'
 
 import { Home } from './Home'
 import {
@@ -10,6 +10,7 @@ import {
   mockedSecondaryFPSectionData,
   mockedTertiaryFPSectionData,
 } from '@/tests/__mocks__/data/home'
+import { mockedCategories } from '@/tests/__mocks__/data/category'
 
 const setup = () => {
   render(

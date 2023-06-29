@@ -1,6 +1,6 @@
 import { render, screen } from '@/tests'
 import { CategoryCardList } from './CategoryCardList'
-import { mockedCategories } from '@/tests/__mocks__/data'
+import { mockedCategories } from '@/tests/__mocks__/data/category'
 
 describe('CategoryCardList', () => {
   it(`displays ${mockedCategories.length} category cards`, () => {
