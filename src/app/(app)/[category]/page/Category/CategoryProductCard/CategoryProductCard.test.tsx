@@ -2,12 +2,20 @@ import { render, screen } from '@/tests'
 import { mockedCategoryProducts } from '@/tests/__mocks__/data/category'
 
 import { CategoryProductCard } from './CategoryProductCard'
-import { NEW_PRODUCT } from '@/utils/constants'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
-const { name, description, new: isNew } = mockedCategoryProducts[0]
+const { name, description, new: isNew, category, slug } = mockedCategoryProducts[0]
 
 const setup = () => {
-  render(<CategoryProductCard name={name} description={description} isNew={isNew} />)
+  render(
+    <CategoryProductCard
+      name={name}
+      description={description}
+      isNew={isNew}
+      category={category}
+      slug={slug}
+    />
+  )
 }
 
 describe('CategoryProductCard', () => {
@@ -33,5 +41,12 @@ describe('CategoryProductCard', () => {
 
     const productDescription = screen.getByText(description)
     expect(productDescription).toBeInTheDocument()
+  })
+
+  it(`displays ${SEE_PRODUCT} button with link to the product detail page`, () => {
+    setup()
+
+    const seeProductButton = screen.getByRole('link', { name: SEE_PRODUCT })
+    expect(seeProductButton).toHaveAttribute('href', `${category}/${slug}`)
   })
 })

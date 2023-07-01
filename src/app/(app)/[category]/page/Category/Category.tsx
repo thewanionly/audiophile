@@ -90,9 +90,15 @@ export const Category = ({ name, aboutTheBrand, categories, products }: Category
       </S.CategoryHeader>
       <S.CategoryCardProductsSection>
         <S.CategoryCardProductsList>
-          {products.map(({ id, name, description, new: isNew }) => (
+          {products.map(({ id, name, description, new: isNew, category, slug }) => (
             <li key={id}>
-              <CategoryProductCard name={name} description={description} isNew={isNew} />
+              <CategoryProductCard
+                name={name}
+                description={description}
+                isNew={isNew}
+                category={category}
+                slug={slug}
+              />
             </li>
           ))}
         </S.CategoryCardProductsList>

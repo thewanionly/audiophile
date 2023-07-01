@@ -1,7 +1,8 @@
 'use client'
 
+import { Button } from '@/components/Button'
 import { mediaQuery } from '@/styles/utils'
-import { NEW_PRODUCT } from '@/utils/constants'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 import styled from '@emotion/styled'
 
 const S = {
@@ -66,15 +67,26 @@ type CategoryProductCardProps = {
   name: string
   description: string
   isNew: boolean
+  category: string
+  slug: string
 }
 
-export const CategoryProductCard = ({ name, description, isNew }: CategoryProductCardProps) => {
+export const CategoryProductCard = ({
+  name,
+  description,
+  isNew,
+  category,
+  slug,
+}: CategoryProductCardProps) => {
   return (
     <S.CategoryProductCard>
       <S.ContentContainer>
         {isNew ? <S.ProductNewText>{NEW_PRODUCT}</S.ProductNewText> : null}
         <S.ProductName>{name}</S.ProductName>
         <S.ProductDescription>{description}</S.ProductDescription>
+        <Button asLink href={`${category}/${slug}`}>
+          {SEE_PRODUCT}
+        </Button>
       </S.ContentContainer>
     </S.CategoryProductCard>
   )
