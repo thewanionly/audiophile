@@ -5,11 +5,10 @@ import styled from '@emotion/styled'
 import { Button, ButtonColor } from '@/components'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { SEE_PRODUCT } from '@/utils/constants'
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { mediaQuery } from '@/styles/utils'
 
 const S = {
-  PrimaryFeaturedProduct: styled.section`
-    ${({ theme }) => appSectionContainer(theme)}
+  PrimaryFeaturedProduct: styled.article`
     background-image: url('/icons/pattern-circles.svg');
     background-size: cover;
     background-position: center -11.8rem;

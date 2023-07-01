@@ -1,12 +1,17 @@
 'use client'
 
 import styled from '@emotion/styled'
+
+import { appSectionContainer } from '@/styles/utils'
+
 import { PrimaryFeaturedProduct } from './PrimaryFeaturedProduct'
 import { SecondaryFeaturedProduct } from './SecondaryFeaturedProduct'
 import { TertiaryFeaturedProduct } from './TertiaryFeaturedProduct'
 
 const S = {
-  FeaturedProductSection: styled.section``,
+  FeaturedProductSection: styled.section`
+    ${({ theme }) => appSectionContainer(theme)}
+  `,
 }
 
 type FeaturedProductSectionProps = {

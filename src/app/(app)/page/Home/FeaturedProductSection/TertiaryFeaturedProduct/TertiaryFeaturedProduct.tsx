@@ -4,12 +4,11 @@ import styled from '@emotion/styled'
 
 import { Button, ButtonColor, ButtonVariant } from '@/components'
 import { SEE_PRODUCT } from '@/utils/constants'
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { mediaQuery } from '@/styles/utils'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 
 const S = {
-  TertiaryFeaturedProduct: styled.section`
-    ${({ theme }) => appSectionContainer(theme)}
+  TertiaryFeaturedProduct: styled.article`
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
