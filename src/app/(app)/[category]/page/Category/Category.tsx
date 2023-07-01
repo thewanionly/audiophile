@@ -46,11 +46,23 @@ const S = {
     ${({ theme }) => appSectionContainer(theme)}
 
     margin: 6.4rem auto 12rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin: 12rem auto;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin: 16rem auto;
+    }
   `,
   CategoryCardProductsList: styled.ul`
     display: flex;
     flex-direction: column;
     gap: 12rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      gap: 16rem;
+    }
   `,
   CategoryProductCard: styled(CategoryProductCard)<{ imageLastOnDesktop: boolean }>`
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
