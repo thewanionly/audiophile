@@ -67,7 +67,7 @@ export const SecondaryFeaturedProductSection = ({
 
   return (
     <S.SecondaryFeaturedProductSection>
-      <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill priority />
+      <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill />
       <S.ContentContainer>
         <S.ProductName>{name}</S.ProductName>
         <Button

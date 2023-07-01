@@ -116,7 +116,7 @@ export const PrimaryFeaturedProductSection = ({
 
   return (
     <S.PrimaryFeaturedProductSection>
-      <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill priority />
+      <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill />
       <S.ContentContainer>
         <S.ProductName>{name}</S.ProductName>
         <S.SectionMessage>{message}</S.SectionMessage>

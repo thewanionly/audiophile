@@ -178,7 +178,7 @@ export const Footer = ({ className = '', data, navItems }: FooterProps) => {
       <S.FooterContainer>
         <S.FooterLogo href="/">
           <S.FooterLogoContainer>
-            <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
+            <Image src="/icons/logo.svg" alt="logo of audiophile" fill />
           </S.FooterLogoContainer>
         </S.FooterLogo>
         <S.FooterNavBar items={navItems} />
