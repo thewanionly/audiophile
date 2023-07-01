@@ -110,6 +110,7 @@ type CategoryProductCardProps = {
   category: string
   slug: string
   image: ResponsiveImageType
+  preLoadImage?: boolean
 }
 
 export const CategoryProductCard = ({
@@ -120,10 +121,11 @@ export const CategoryProductCard = ({
   category,
   slug,
   image,
+  preLoadImage = false,
 }: CategoryProductCardProps) => {
   return (
     <S.CategoryProductCard className={className}>
-      <S.ProductImage src={image.src} alt={image.alt} fill />
+      <S.ProductImage src={image.src} alt={image.alt} fill priority={preLoadImage} />
       <S.ContentContainer>
         {isNew ? <S.ProductNewText>{NEW_PRODUCT}</S.ProductNewText> : null}
         <S.ProductName>{name}</S.ProductName>

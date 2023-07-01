@@ -117,6 +117,7 @@ export const Category = ({ name, aboutTheBrand, categories, products }: Category
                   category={category}
                   slug={slug}
                   image={categoryImage}
+                  preLoadImage={index === 0}
                 />
               </li>
             )
