@@ -42,48 +42,6 @@ export const mockedBrandDetails: AboutTheBrand = {
   },
 }
 
-export const mockedCategories: Category[] = [
-  {
-    image: {
-      src: {
-        mobile: '/headphones-image.jpg',
-        tablet: '/headphones-image.jpg',
-        desktop: '/headphones-image.jpg',
-      },
-      alt: 'headphones alt',
-    },
-    name: 'Headphones',
-    slug: 'headphones',
-    displayOrder: 1,
-  },
-  {
-    image: {
-      src: {
-        mobile: '/speakers-image.jpg',
-        tablet: '/speakers-image.jpg',
-        desktop: '/speakers-image.jpg',
-      },
-      alt: 'speakers alt',
-    },
-    name: 'Speakers',
-    slug: 'speakers',
-    displayOrder: 2,
-  },
-  {
-    image: {
-      src: {
-        mobile: '/earphones-image.jpg',
-        tablet: '/earphones-image.jpg',
-        desktop: '/earphones-image.jpg',
-      },
-      alt: 'earphones alt',
-    },
-    name: 'Earphones',
-    slug: 'earphones',
-    displayOrder: 3,
-  },
-]
-
 export const mockedFooterData: Footer = {
   website_desc: 'Audiophile is an amazing company',
   copyright: {
