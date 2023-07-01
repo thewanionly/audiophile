@@ -25,6 +25,14 @@ describe('Category', () => {
     expect(categoryHeading).toBeInTheDocument()
   })
 
+  it('displays category products section', () => {
+    setup()
+
+    const categoryProducts = screen.getAllByTestId('category-product-card')
+
+    expect(categoryProducts.length).toBe(mockedCategoryProducts.length)
+  })
+
   it('displays category card list section', () => {
     setup()
 
@@ -32,7 +40,7 @@ describe('Category', () => {
     const categoryCards = screen.getAllByTestId('category-card')
 
     expect(categoryCardList).toBeInTheDocument()
-    expect(categoryCards.length).toBeGreaterThan(0)
+    expect(categoryCards.length).toBe(mockedCategories.length)
   })
 
   it('displays about the brand section', () => {
