@@ -124,7 +124,7 @@ export const CategoryProductCard = ({
   preLoadImage = false,
 }: CategoryProductCardProps) => {
   return (
-    <S.CategoryProductCard className={className}>
+    <S.CategoryProductCard className={className} data-testid="category-product-card">
       <S.ProductImage src={image.src} alt={image.alt} fill priority={preLoadImage} />
       <S.ContentContainer>
         {isNew ? <S.ProductNewText>{NEW_PRODUCT}</S.ProductNewText> : null}
