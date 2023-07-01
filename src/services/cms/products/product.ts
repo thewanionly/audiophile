@@ -57,12 +57,24 @@ export const getCategoryProducts = async (category: string): Promise<CategoryPro
 
     const results: CategoryProduct[] = await productClient.fetch(query)
 
-    return results.map((result) => ({
-      ...result,
-      ...(result?.categoryImage
-        ? { categoryImage: postProcessImage(result.categoryImage, urlForImage) }
-        : {}),
-    }))
+    return results
+      .map((result) => ({
+        ...result,
+        ...(result?.categoryImage
+          ? { categoryImage: postProcessImage(result.categoryImage, urlForImage) }
+          : {}),
+      }))
+      .sort((product1, product2) => {
+        // Sort by "new" property first (new = true comes first before new = false)
+        if (product1.new && !product2.new) {
+          return -1
+        } else if (!product1.new && product2.new) {
+          return 1
+        } else {
+          // Sort alphabetically if "new" properties are equal
+          return product1.name.localeCompare(product2.name)
+        }
+      })
   } catch (error) {
     throw error
   }
