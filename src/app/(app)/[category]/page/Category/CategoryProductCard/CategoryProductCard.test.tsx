@@ -4,7 +4,7 @@ import { mockedCategoryProducts } from '@/tests/__mocks__/data/category'
 import { CategoryProductCard } from './CategoryProductCard'
 import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
-const { name, description, new: isNew, category, slug } = mockedCategoryProducts[0]
+const { name, description, new: isNew, category, slug, categoryImage } = mockedCategoryProducts[0]
 
 const setup = () => {
   render(
@@ -14,11 +14,21 @@ const setup = () => {
       isNew={isNew}
       category={category}
       slug={slug}
+      image={categoryImage}
     />
   )
 }
 
 describe('CategoryProductCard', () => {
+  it('displays category product image', () => {
+    setup()
+
+    const productImage = screen.getByAltText(categoryImage.alt)
+
+    expect(productImage).toBeInTheDocument()
+    expect(productImage).toHaveAttribute('src', categoryImage.src.desktop)
+  })
+
   it(`displays ${NEW_PRODUCT} if category product is new`, () => {
     setup()
 

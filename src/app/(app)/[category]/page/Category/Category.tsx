@@ -50,8 +50,12 @@ const S = {
   CategoryCardProductsList: styled.ul`
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 12rem;
+  `,
+  CategoryProductCard: styled(CategoryProductCard)<{ imageLastOnDesktop: boolean }>`
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      flex-direction: ${({ imageLastOnDesktop }) => (imageLastOnDesktop ? 'row-reverse' : 'row')};
+    }
   `,
   CategoryCardListSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
@@ -90,17 +94,21 @@ export const Category = ({ name, aboutTheBrand, categories, products }: Category
       </S.CategoryHeader>
       <S.CategoryCardProductsSection>
         <S.CategoryCardProductsList>
-          {products.map(({ id, name, description, new: isNew, category, slug }) => (
-            <li key={id}>
-              <CategoryProductCard
-                name={name}
-                description={description}
-                isNew={isNew}
-                category={category}
-                slug={slug}
-              />
-            </li>
-          ))}
+          {products.map(
+            ({ id, name, description, new: isNew, category, slug, categoryImage }, index) => (
+              <li key={id}>
+                <S.CategoryProductCard
+                  imageLastOnDesktop={Boolean(index % 2)}
+                  name={name}
+                  description={description}
+                  isNew={isNew}
+                  category={category}
+                  slug={slug}
+                  image={categoryImage}
+                />
+              </li>
+            )
+          )}
         </S.CategoryCardProductsList>
       </S.CategoryCardProductsSection>
       <S.CategoryCardListSection>

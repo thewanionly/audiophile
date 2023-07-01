@@ -1,18 +1,57 @@
 'use client'
 
-import { Button } from '@/components/Button'
-import { mediaQuery } from '@/styles/utils'
-import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 import styled from '@emotion/styled'
 
+import { Button } from '@/components/Button'
+import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { mediaQuery } from '@/styles/utils'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
+
 const S = {
-  CategoryProductCard: styled.article``,
+  CategoryProductCard: styled.article`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.2rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      gap: 5.2rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10rem;
+    }
+  `,
+  ProductImage: styled(ResponsiveImage)`
+    position: relative;
+    height: 35.2rem;
+    width: 100%;
+    max-width: 35rem;
+
+    .image {
+      border-radius: 0.8rem;
+      object-fit: cover;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      max-width: none;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      height: 56rem;
+      flex-basis: 50%;
+    }
+  `,
   ContentContainer: styled.div`
     max-width: 57.2rem;
     text-align: center;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       text-align: start;
+      flex-basis: 50%;
     }
   `,
   ProductNewText: styled.span`
@@ -64,22 +103,27 @@ const S = {
 }
 
 type CategoryProductCardProps = {
+  className?: string
   name: string
   description: string
   isNew: boolean
   category: string
   slug: string
+  image: ResponsiveImageType
 }
 
 export const CategoryProductCard = ({
+  className = '',
   name,
   description,
   isNew,
   category,
   slug,
+  image,
 }: CategoryProductCardProps) => {
   return (
-    <S.CategoryProductCard>
+    <S.CategoryProductCard className={className}>
+      <S.ProductImage src={image.src} alt={image.alt} fill />
       <S.ContentContainer>
         {isNew ? <S.ProductNewText>{NEW_PRODUCT}</S.ProductNewText> : null}
         <S.ProductName>{name}</S.ProductName>
