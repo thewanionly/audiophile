@@ -8,7 +8,7 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 
 const S = {
-  SecondaryFeaturedProductSection: styled.section`
+  SecondaryFeaturedProduct: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
     border-radius: 0.8rem;
     margin-bottom: 2.4rem;
@@ -57,16 +57,16 @@ const S = {
   `,
 }
 
-type SecondaryFeaturedProductSectionProps = Omit<ProductSectionData, 'message'>
+type SecondaryFeaturedProductProps = Omit<ProductSectionData, 'message'>
 
-export const SecondaryFeaturedProductSection = ({
+export const SecondaryFeaturedProduct = ({
   product,
   sectionImage,
-}: SecondaryFeaturedProductSectionProps) => {
+}: SecondaryFeaturedProductProps) => {
   const { name, category, slug } = product
 
   return (
-    <S.SecondaryFeaturedProductSection>
+    <S.SecondaryFeaturedProduct>
       <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill />
       <S.ContentContainer>
         <S.ProductName>{name}</S.ProductName>
@@ -79,6 +79,6 @@ export const SecondaryFeaturedProductSection = ({
           {SEE_PRODUCT}
         </Button>
       </S.ContentContainer>
-    </S.SecondaryFeaturedProductSection>
+    </S.SecondaryFeaturedProduct>
   )
 }

@@ -29,7 +29,7 @@ export const home = {
       ],
     },
     {
-      title: 'Primary Featured Product Section',
+      title: 'Primary Featured Product',
       name: 'primaryFeaturedProduct',
       type: 'object',
       fields: [
@@ -52,7 +52,7 @@ export const home = {
       ],
     },
     {
-      title: 'Secondary Featured Product Section',
+      title: 'Secondary Featured Product',
       name: 'secondaryFeaturedProduct',
       type: 'object',
       fields: [
@@ -70,7 +70,7 @@ export const home = {
       ],
     },
     {
-      title: 'Tertiary Featured Product Section',
+      title: 'Tertiary Featured Product',
       name: 'tertiaryFeaturedProduct',
       type: 'object',
       fields: [

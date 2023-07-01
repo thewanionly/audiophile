@@ -8,7 +8,7 @@ import { SEE_PRODUCT } from '@/utils/constants'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
-  PrimaryFeaturedProductSection: styled.section`
+  PrimaryFeaturedProduct: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
     background-image: url('/icons/pattern-circles.svg');
     background-size: cover;
@@ -105,17 +105,17 @@ const S = {
   `,
 }
 
-type PrimaryFeaturedProductSectionProps = ProductSectionData
+type PrimaryFeaturedProductProps = ProductSectionData
 
-export const PrimaryFeaturedProductSection = ({
+export const PrimaryFeaturedProduct = ({
   product,
   message,
   sectionImage,
-}: PrimaryFeaturedProductSectionProps) => {
+}: PrimaryFeaturedProductProps) => {
   const { name, category, slug } = product
 
   return (
-    <S.PrimaryFeaturedProductSection>
+    <S.PrimaryFeaturedProduct>
       <S.SectionImage src={sectionImage.src} alt={sectionImage.alt} fill />
       <S.ContentContainer>
         <S.ProductName>{name}</S.ProductName>
@@ -124,6 +124,6 @@ export const PrimaryFeaturedProductSection = ({
           {SEE_PRODUCT}
         </Button>
       </S.ContentContainer>
-    </S.PrimaryFeaturedProductSection>
+    </S.PrimaryFeaturedProduct>
   )
 }

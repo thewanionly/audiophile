@@ -1,15 +1,15 @@
 import { render, screen } from '@/tests'
 
-import { mockedPrimaryFPSectionData } from '@/tests/__mocks__/data/home'
+import { mockedPrimaryFPData } from '@/tests/__mocks__/data/home'
 import { SEE_PRODUCT } from '@/utils/constants'
-import { PrimaryFeaturedProductSection } from './PrimaryFeaturedProductSection'
+import { PrimaryFeaturedProduct } from './PrimaryFeaturedProduct'
 
 const setup = () => {
   render(
-    <PrimaryFeaturedProductSection
-      product={mockedPrimaryFPSectionData.product}
-      message={mockedPrimaryFPSectionData.message}
-      sectionImage={mockedPrimaryFPSectionData.sectionImage}
+    <PrimaryFeaturedProduct
+      product={mockedPrimaryFPData.product}
+      message={mockedPrimaryFPData.message}
+      sectionImage={mockedPrimaryFPData.sectionImage}
     />
   )
 }
@@ -19,7 +19,7 @@ describe('Home - Primary Featured Product Section', () => {
     setup()
 
     const primaryFPName = screen.getByRole('heading', {
-      name: mockedPrimaryFPSectionData.product.name,
+      name: mockedPrimaryFPData.product.name,
     })
     expect(primaryFPName).toBeInTheDocument()
   })
@@ -27,7 +27,7 @@ describe('Home - Primary Featured Product Section', () => {
   it('displays primary featured product message', () => {
     setup()
 
-    const primaryFPSectionMessage = screen.getByText(mockedPrimaryFPSectionData.message)
+    const primaryFPSectionMessage = screen.getByText(mockedPrimaryFPData.message)
     expect(primaryFPSectionMessage).toBeInTheDocument()
   })
 
@@ -37,16 +37,16 @@ describe('Home - Primary Featured Product Section', () => {
     const seeProductButton = screen.getByRole('link', { name: SEE_PRODUCT })
     expect(seeProductButton).toHaveAttribute(
       'href',
-      `${mockedPrimaryFPSectionData.product.category}/${mockedPrimaryFPSectionData.product.slug}`
+      `${mockedPrimaryFPData.product.category}/${mockedPrimaryFPData.product.slug}`
     )
   })
 
   it('displays primary featured product section image', () => {
     setup()
 
-    const sectionImage = screen.getByAltText(mockedPrimaryFPSectionData.sectionImage.alt)
+    const sectionImage = screen.getByAltText(mockedPrimaryFPData.sectionImage.alt)
 
     expect(sectionImage).toBeInTheDocument()
-    expect(sectionImage).toHaveAttribute('src', mockedPrimaryFPSectionData.sectionImage.src.desktop)
+    expect(sectionImage).toHaveAttribute('src', mockedPrimaryFPData.sectionImage.src.desktop)
   })
 })

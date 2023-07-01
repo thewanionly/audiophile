@@ -18,7 +18,7 @@ export const mockedHeroSectionData: ProductSectionData = {
   },
 }
 
-export const mockedPrimaryFPSectionData: ProductSectionData = {
+export const mockedPrimaryFPData: ProductSectionData = {
   product: {
     id: 6,
     slug: 'zx9-speaker',
@@ -38,7 +38,7 @@ export const mockedPrimaryFPSectionData: ProductSectionData = {
   },
 }
 
-export const mockedSecondaryFPSectionData: Omit<ProductSectionData, 'message'> = {
+export const mockedSecondaryFPData: Omit<ProductSectionData, 'message'> = {
   product: {
     id: 5,
     slug: 'zx7-speaker',
@@ -56,7 +56,7 @@ export const mockedSecondaryFPSectionData: Omit<ProductSectionData, 'message'> =
   },
 }
 
-export const mockedTertiaryFPSectionData: Omit<ProductSectionData, 'message'> = {
+export const mockedTertiaryFPData: Omit<ProductSectionData, 'message'> = {
   product: {
     id: 1,
     slug: 'yx1-earphones',

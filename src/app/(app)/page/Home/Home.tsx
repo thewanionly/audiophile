@@ -6,11 +6,7 @@ import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { HeroSection } from './HeroSection'
-import {
-  PrimaryFeaturedProductSection,
-  SecondaryFeaturedProductSection,
-  TertiaryFeaturedProductSection,
-} from './FeaturedProductSection'
+import { FeaturedProductSection } from './FeaturedProductSection'
 
 const S = {
   CategoryCardListSection: styled.section`
@@ -49,18 +45,18 @@ type HomeProps = {
   aboutTheBrand: AboutTheBrand
   categories: Category[]
   heroSection: ProductSectionData
-  primaryFPSection: ProductSectionData
-  secondaryFPSection: Omit<ProductSectionData, 'message'>
-  tertiaryFPSection: Omit<ProductSectionData, 'message'>
+  primaryFeaturedProduct: ProductSectionData
+  secondaryFeaturedProduct: Omit<ProductSectionData, 'message'>
+  tertiaryFeaturedProduct: Omit<ProductSectionData, 'message'>
 }
 
 export const Home = ({
   aboutTheBrand,
   categories,
   heroSection,
-  primaryFPSection,
-  secondaryFPSection,
-  tertiaryFPSection,
+  primaryFeaturedProduct,
+  secondaryFeaturedProduct,
+  tertiaryFeaturedProduct,
 }: HomeProps) => {
   return (
     <>
@@ -72,18 +68,10 @@ export const Home = ({
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
-      <PrimaryFeaturedProductSection
-        product={primaryFPSection.product}
-        message={primaryFPSection.message}
-        sectionImage={primaryFPSection.sectionImage}
-      />
-      <SecondaryFeaturedProductSection
-        product={secondaryFPSection.product}
-        sectionImage={secondaryFPSection.sectionImage}
-      />
-      <TertiaryFeaturedProductSection
-        product={tertiaryFPSection.product}
-        sectionImage={tertiaryFPSection.sectionImage}
+      <FeaturedProductSection
+        primary={primaryFeaturedProduct}
+        secondary={secondaryFeaturedProduct}
+        tertiary={tertiaryFeaturedProduct}
       />
       <S.AboutTheBrandSection
         heading={aboutTheBrand.heading}

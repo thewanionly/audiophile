@@ -6,9 +6,9 @@ import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { Home } from './Home'
 import {
   mockedHeroSectionData,
-  mockedPrimaryFPSectionData,
-  mockedSecondaryFPSectionData,
-  mockedTertiaryFPSectionData,
+  mockedPrimaryFPData,
+  mockedSecondaryFPData,
+  mockedTertiaryFPData,
 } from '@/tests/__mocks__/data/home'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
 
@@ -18,9 +18,9 @@ const setup = () => {
       aboutTheBrand={mockedBrandDetails}
       categories={mockedCategories}
       heroSection={mockedHeroSectionData}
-      primaryFPSection={mockedPrimaryFPSectionData}
-      secondaryFPSection={mockedSecondaryFPSectionData}
-      tertiaryFPSection={mockedTertiaryFPSectionData}
+      primaryFeaturedProduct={mockedPrimaryFPData}
+      secondaryFeaturedProduct={mockedSecondaryFPData}
+      tertiaryFeaturedProduct={mockedTertiaryFPData}
     />
   )
 }
@@ -47,7 +47,7 @@ describe('Home', () => {
     setup()
 
     const primaryFeaturedProductSection = screen.getByRole('heading', {
-      name: mockedPrimaryFPSectionData.product.name,
+      name: mockedPrimaryFPData.product.name,
     })
     expect(primaryFeaturedProductSection).toBeInTheDocument()
   })
@@ -56,7 +56,7 @@ describe('Home', () => {
     setup()
 
     const secondaryFeaturedProductSection = screen.getByRole('heading', {
-      name: mockedSecondaryFPSectionData.product.name,
+      name: mockedSecondaryFPData.product.name,
     })
     expect(secondaryFeaturedProductSection).toBeInTheDocument()
   })
@@ -65,7 +65,7 @@ describe('Home', () => {
     setup()
 
     const tertiaryFeaturedProductSection = screen.getByRole('heading', {
-      name: mockedTertiaryFPSectionData.product.name,
+      name: mockedTertiaryFPData.product.name,
     })
     expect(tertiaryFeaturedProductSection).toBeInTheDocument()
   })
