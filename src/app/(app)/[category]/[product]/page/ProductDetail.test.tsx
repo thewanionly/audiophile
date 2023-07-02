@@ -3,11 +3,18 @@ import { render, screen } from '@/tests'
 
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
+import { mockedProduct } from '@/tests/__mocks__/data/product'
 
 import { ProductDetail } from './ProductDetail'
 
 const setup = () => {
-  render(<ProductDetail aboutTheBrand={mockedBrandDetails} categories={mockedCategories} />)
+  render(
+    <ProductDetail
+      product={mockedProduct}
+      aboutTheBrand={mockedBrandDetails}
+      categories={mockedCategories}
+    />
+  )
 }
 
 describe('Product Detail Page', () => {

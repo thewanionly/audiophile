@@ -21,10 +21,12 @@ interface Product {
   description: string
   features: string
   includes: Inclusion[]
-  gallery: Gallery[]
+  gallery: Gallery
   others: string[]
   thumbnailImage: ResponsiveImageType
 }
+
+type ProductDetail = Omit<Product, 'categoryImage', 'thumbnailImage'>
 
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
   Partial<Pick<Product, 'image' | 'new' | 'description'>>
