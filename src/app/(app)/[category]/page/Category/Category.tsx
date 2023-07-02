@@ -53,12 +53,10 @@ const S = {
     }
   `,
   AboutTheBrandSection: styled(AboutTheBrandSection)`
-    margin-top: 12rem;
-    margin-bottom: 12rem;
+    margin: 12rem auto;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin-top: 16rem;
-      margin-bottom: 16rem;
+      margin: 16rem auto;
     }
   `,
 }

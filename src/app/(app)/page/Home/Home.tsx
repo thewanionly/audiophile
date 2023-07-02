@@ -26,17 +26,14 @@ const S = {
     }
   `,
   AboutTheBrandSection: styled(AboutTheBrandSection)`
-    margin-top: 12rem;
-    margin-bottom: 12rem;
+    margin: 12rem auto;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      margin-top: 9.6rem;
-      margin-bottom: 9.6rem;
+      margin: 9.6rem auto;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin-top: 20rem;
-      margin-bottom: 20rem;
+      margin: 20rem auto;
     }
   `,
 }
