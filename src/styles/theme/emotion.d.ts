@@ -33,6 +33,7 @@ declare module '@emotion/react' {
       footerBg: string
       footerSocials: string
       categoryHeaderBg: string
+      imageBg: string
       fieldError: string
     }
     fontSizes: {

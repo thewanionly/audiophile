@@ -20,6 +20,15 @@ const setup = () => {
 }
 
 describe('Main Detail Section', () => {
+  it('displays  product image', () => {
+    setup()
+
+    const productImage = screen.getByAltText(image.alt)
+
+    expect(productImage).toBeInTheDocument()
+    expect(productImage).toHaveAttribute('src', image.src.desktop)
+  })
+
   it('displays product name', () => {
     setup()
 

@@ -46,6 +46,9 @@ export const theme: Theme = {
     // CLP
     categoryHeaderBg: COLORS.black,
 
+    // PDP
+    imageBg: COLORS.seaShell,
+
     fieldError: COLORS.persianRed,
   },
   fontSizes: {
