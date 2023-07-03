@@ -59,7 +59,7 @@ const S = {
 }
 
 type ProductDetailProps = {
-  product: Product
+  product: ProductDetail
   aboutTheBrand: AboutTheBrand
   categories: Category[]
 }

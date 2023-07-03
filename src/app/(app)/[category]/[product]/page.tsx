@@ -1,8 +1,7 @@
-import { getCategories } from '@/services/cms/products'
+import { getAboutTheBrand } from '@/services/cms/content'
+import { getCategories, getProductDetail } from '@/services/cms/products'
 
 import { ProductDetail } from './page/ProductDetail'
-import { getAboutTheBrand } from '@/services/cms/content'
-import { mockedProduct } from '@/tests/__mocks__/data/product'
 
 type ProductDetailPageProps = {
   params: { category: string; product: string }
@@ -11,15 +10,9 @@ type ProductDetailPageProps = {
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const categories = await getCategories()
   const aboutTheBrand = await getAboutTheBrand()
+  const productDetail = await getProductDetail(params.product)
 
   return (
-    <ProductDetail
-      product={{
-        ...mockedProduct,
-        name: params.product.replaceAll('-', ' '),
-      }}
-      aboutTheBrand={aboutTheBrand}
-      categories={categories}
-    />
+    <ProductDetail product={productDetail} aboutTheBrand={aboutTheBrand} categories={categories} />
   )
 }

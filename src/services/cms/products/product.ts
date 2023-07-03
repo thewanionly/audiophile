@@ -29,6 +29,42 @@ export const getProduct = async (slug: string, fields: ProductField[]): Promise<
   }
 }
 
+// Get a single product to be presented in the Product Detail Page
+export const getProductDetail = async (slug: string): Promise<ProductDetail> => {
+  try {
+    const results: ProductDetail = await getProduct(slug, [
+      'id',
+      'slug',
+      'name',
+      'image',
+      'category',
+      'new',
+      'price',
+      'description',
+      'features',
+      'includes',
+      'gallery',
+      'others',
+    ])
+
+    return {
+      ...results,
+      ...(results?.image ? { image: postProcessImage(results.image, urlForImage) } : {}),
+      ...(results?.gallery
+        ? {
+            gallery: {
+              first: postProcessImage(results.gallery.first, urlForImage),
+              second: postProcessImage(results.gallery.second, urlForImage),
+              third: postProcessImage(results.gallery.third, urlForImage),
+            },
+          }
+        : {}),
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
 // Get a single product to be presented in one of the sections of the Home Page
 export const getHomeProduct = async (slug: string): Promise<ProductLite> => {
   try {

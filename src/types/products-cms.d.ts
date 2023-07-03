@@ -28,7 +28,7 @@ interface Product {
 
 type ProductField = keyof Product
 
-type ProductDetail = Omit<Product, 'categoryImage', 'thumbnailImage'>
+type ProductDetail = Omit<Product, 'categoryImage' | 'thumbnailImage'>
 
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
   Partial<Pick<Product, 'image' | 'new' | 'description'>>
