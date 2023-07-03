@@ -2,7 +2,7 @@ import { client } from '@/lib/cms/content'
 import { urlForImage } from '@/lib/cms/content/image'
 import { postProcessImage } from '@/utils/cms/image'
 
-import { getProduct } from '../products'
+import { getHomeProduct } from '../products'
 
 export const getHomeData = async (): Promise<HomeData> => {
   try {
@@ -24,10 +24,10 @@ export const getHomeData = async (): Promise<HomeData> => {
       ])
     ) as Home
 
-    const heroProduct = await getProduct(home.hero.slug)
-    const primaryFeaturedProduct = await getProduct(home.primaryFeaturedProduct.slug)
-    const secondaryFeaturedProduct = await getProduct(home.secondaryFeaturedProduct.slug)
-    const tertiaryFeaturedProduct = await getProduct(home.tertiaryFeaturedProduct.slug)
+    const heroProduct = await getHomeProduct(home.hero.slug)
+    const primaryFeaturedProduct = await getHomeProduct(home.primaryFeaturedProduct.slug)
+    const secondaryFeaturedProduct = await getHomeProduct(home.secondaryFeaturedProduct.slug)
+    const tertiaryFeaturedProduct = await getHomeProduct(home.tertiaryFeaturedProduct.slug)
 
     return {
       hero: {

@@ -19,19 +19,28 @@ export const getProducts = async (): Promise<Product[]> => {
 }
 
 // Get a single product
-export const getProduct = async (slug: string): Promise<Product> => {
+export const getProduct = async (slug: string, fields: ProductField[]): Promise<Product> => {
   try {
-    const query = `*\[_type == "product" && slug == "${slug}"\][0] {
-        id,
-        slug,
-        name,
-        category,
-        image,
-        new,
-        description
-      }`
+    const query = `*\[_type == "product" && slug == "${slug}"\][0] { ${fields.join(',')} }`
 
-    const results: Product = await productClient.fetch(query)
+    return await productClient.fetch(query)
+  } catch (error) {
+    throw error
+  }
+}
+
+// Get a single product to be presented in one of the sections of the Home Page
+export const getHomeProduct = async (slug: string): Promise<ProductLite> => {
+  try {
+    const results: ProductLite = await getProduct(slug, [
+      'id',
+      'slug',
+      'name',
+      'category',
+      'image',
+      'new',
+      'description',
+    ])
 
     return {
       ...results,

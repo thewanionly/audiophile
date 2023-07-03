@@ -26,6 +26,8 @@ interface Product {
   thumbnailImage: ResponsiveImageType
 }
 
+type ProductField = keyof Product
+
 type ProductDetail = Omit<Product, 'categoryImage', 'thumbnailImage'>
 
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
