@@ -30,7 +30,7 @@ export const getProduct = async (slug: string, fields: ProductField[]): Promise<
 }
 
 // Get a single product to be presented in the Product Detail Page
-export const getProductDetail = async (slug: string): Promise<ProductDetail> => {
+export const getProductDetail = async (slug: string): Promise<ProductDetail | null> => {
   try {
     const results: ProductDetail = await getProduct(slug, [
       'id',
@@ -46,6 +46,8 @@ export const getProductDetail = async (slug: string): Promise<ProductDetail> => 
       'gallery',
       'others',
     ])
+
+    if (!results) return null
 
     return {
       ...results,
