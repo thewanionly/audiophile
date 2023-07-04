@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { NEW_PRODUCT } from '@/utils/constants'
+import { formatPrice } from '@/utils/helpers'
 
 const S = {
   MainDetailSection: styled.section`
@@ -121,8 +122,23 @@ const S = {
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextDark};
 
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-bottom: 3.2rem;
+    }
+  `,
+  ProductPrice: styled.span`
+    display: block;
+    margin-bottom: 3.1rem;
+
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.med1};
+    line-height: normal;
+    letter-spacing: 0.1286rem;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.price};
+
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin-bottom: 4rem;
+      margin-bottom: 4.7rem;
     }
   `,
 }
@@ -134,6 +150,7 @@ export const MainDetailSection = ({
   image,
   new: isNew,
   description,
+  price,
 }: MainDetailSectionProps) => {
   return (
     <S.MainDetailSection>
@@ -142,6 +159,7 @@ export const MainDetailSection = ({
         {isNew ? <S.ProductNewText>{NEW_PRODUCT}</S.ProductNewText> : null}
         <S.ProductName>{name}</S.ProductName>
         <S.ProductDescription>{description}</S.ProductDescription>
+        <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
       </S.ContentContainer>
     </S.MainDetailSection>
   )

@@ -3,6 +3,7 @@ import { render, screen } from '@/tests'
 import { MainDetailSection } from './MainDetailSection'
 import { mockedProduct } from '@/tests/__mocks__/data/product'
 import { NEW_PRODUCT } from '@/utils/constants'
+import { formatPrice } from '@/utils/helpers'
 
 const { slug, name, image, category, new: isNew, price, description } = mockedProduct
 
@@ -54,5 +55,12 @@ describe('Main Detail Section', () => {
 
     const productDescription = screen.getByText(description)
     expect(productDescription).toBeInTheDocument()
+  })
+
+  it('displays product price', () => {
+    setup()
+
+    const productPrice = screen.getByText(formatPrice(price))
+    expect(productPrice).toBeInTheDocument()
   })
 })

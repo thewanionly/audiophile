@@ -48,6 +48,7 @@ export const theme: Theme = {
 
     // PDP
     imageBg: COLORS.seaShell,
+    price: COLORS.black,
 
     fieldError: COLORS.persianRed,
   },
