@@ -153,7 +153,7 @@ export const MainDetailSection = ({
   price,
 }: MainDetailSectionProps) => {
   return (
-    <S.MainDetailSection>
+    <S.MainDetailSection data-testid="main-detail-section">
       <S.ProductImage src={image.src} alt={image.alt} fill priority />
       <S.ContentContainer>
         {isNew ? <S.ProductNewText>{NEW_PRODUCT}</S.ProductNewText> : null}

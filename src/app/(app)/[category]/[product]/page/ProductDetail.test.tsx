@@ -18,6 +18,13 @@ const setup = () => {
 }
 
 describe('Product Detail Page', () => {
+  it('displays main detail section', () => {
+    setup()
+
+    const mainDetailSection = screen.getByTestId('main-detail-section')
+    expect(mainDetailSection).toBeInTheDocument()
+  })
+
   it('displays category card list section', () => {
     setup()
 
