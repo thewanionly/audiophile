@@ -27,8 +27,11 @@ describe('Home - Hero Section', () => {
   it(`displays ${NEW_PRODUCT} if hero product is new`, () => {
     setup()
 
-    const newProductText = screen.getByText(NEW_PRODUCT)
-    expect(newProductText).toBeInTheDocument()
+    if (mockedHeroSectionData.product.new) {
+      expect(screen.getByText(NEW_PRODUCT)).toBeInTheDocument()
+    } else {
+      expect(screen.queryByText(NEW_PRODUCT)).not.toBeInTheDocument()
+    }
   })
 
   it('displays hero message', () => {

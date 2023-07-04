@@ -2,6 +2,7 @@ import { render, screen } from '@/tests'
 
 import { MainDetailSection } from './MainDetailSection'
 import { mockedProduct } from '@/tests/__mocks__/data/product'
+import { NEW_PRODUCT } from '@/utils/constants'
 
 const { slug, name, image, category, new: isNew, price, description } = mockedProduct
 
@@ -29,6 +30,16 @@ describe('Main Detail Section', () => {
     expect(productImage).toHaveAttribute('src', image.src.desktop)
   })
 
+  it(`displays ${NEW_PRODUCT} if category product is new`, () => {
+    setup()
+
+    if (isNew) {
+      expect(screen.getByText(NEW_PRODUCT)).toBeInTheDocument()
+    } else {
+      expect(screen.queryByText(NEW_PRODUCT)).not.toBeInTheDocument()
+    }
+  })
+
   it('displays product name', () => {
     setup()
 
@@ -36,5 +47,12 @@ describe('Main Detail Section', () => {
       name,
     })
     expect(productName).toBeInTheDocument()
+  })
+
+  it('displays product description', () => {
+    setup()
+
+    const productDescription = screen.getByText(description)
+    expect(productDescription).toBeInTheDocument()
   })
 })
