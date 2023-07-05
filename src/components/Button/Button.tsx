@@ -54,6 +54,28 @@ const colorVariantStyles = (
           }
         `}
       `,
+      [ButtonVariant.TERTIARY]: css`
+        background-color: transparent;
+        text-transform: none;
+        border: none;
+        padding: 0;
+
+        color: ${theme.colors.buttonTertiary};
+
+        &:hover {
+          color: ${theme.colors.buttonTertiaryHover};
+        }
+
+        ${disabled &&
+        css`
+          color: ${theme.colors.buttonTertiaryDisabled};
+          cursor: not-allowed;
+
+          &:hover {
+            color: ${theme.colors.buttonTertiaryDisabled};
+          }
+        `}
+      `,
     },
     [ButtonColor.SECONDARY]: {
       [ButtonVariant.CONTAINED]: css`
@@ -73,6 +95,28 @@ const colorVariantStyles = (
           background-color: ${theme.colors.secondary};
           color: ${theme.colors.textOnSecondaryContained};
         }
+      `,
+      [ButtonVariant.TERTIARY]: css`
+        background-color: transparent;
+        text-transform: none;
+        border: none;
+        padding: 0;
+
+        color: ${theme.colors.buttonTertiary};
+
+        &:hover {
+          color: ${theme.colors.buttonTertiaryHover};
+        }
+
+        ${disabled &&
+        css`
+          color: ${theme.colors.buttonTertiaryDisabled};
+          cursor: not-allowed;
+
+          &:hover {
+            color: ${theme.colors.buttonTertiaryDisabled};
+          }
+        `}
       `,
     },
   }[color][variant])
@@ -102,6 +146,7 @@ export enum ButtonColor {
 export enum ButtonVariant {
   CONTAINED = 'contained',
   OUTLINED = 'outlined',
+  TERTIARY = 'tertiary',
 }
 
 type ButtonProps = {

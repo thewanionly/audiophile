@@ -20,6 +20,11 @@ export const theme: Theme = {
     bodyTextLighter: rgba(COLORS.white, 0.75),
     bodyTextDark: rgba(COLORS.black, 0.5),
 
+    // Button
+    buttonTertiary: rgba(COLORS.black, 0.5),
+    buttonTertiaryHover: COLORS.rawSienna,
+    buttonTertiaryDisabled: rgba(COLORS.black, 0.3),
+
     // Modal
     modalBg: COLORS.white,
 

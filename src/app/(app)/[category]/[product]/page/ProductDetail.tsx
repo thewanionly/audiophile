@@ -1,13 +1,34 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import styled from '@emotion/styled'
 
-import { AboutTheBrandSection, CategoryCardList } from '@/components'
+import { AboutTheBrandSection, Button, ButtonVariant, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { MainDetailSection } from './MainDetailSection'
 
 const S = {
+  BackButtonContainer: styled.div`
+    ${({ theme }) => appSectionContainer(theme)}
+
+    margin: 1.6rem auto 2.4rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin: 3.3rem auto 2.4rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin: 7.9rem auto 5.6rem;
+    }
+  `,
+  BackButton: styled(Button)`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    letter-spacing: unset;
+  `,
   CategoryCardListSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
 
@@ -33,10 +54,20 @@ type ProductDetailProps = {
 }
 
 export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDetailProps) => {
+  const router = useRouter()
   const { slug, name, image, category, new: isNew, price, description } = product
+
+  const handleGoBack = () => {
+    router.back()
+  }
 
   return (
     <>
+      <S.BackButtonContainer>
+        <S.BackButton variant={ButtonVariant.TERTIARY} onClick={handleGoBack}>
+          Go Back
+        </S.BackButton>
+      </S.BackButtonContainer>
       <MainDetailSection
         slug={slug}
         name={name}
