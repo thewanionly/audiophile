@@ -6,7 +6,7 @@ import { mockedCategories } from '@/tests/__mocks__/data/category'
 import { mockedProduct } from '@/tests/__mocks__/data/product'
 
 import { ProductDetail } from './ProductDetail'
-import { FEATURES_SECTION_HEADING, GO_BACK } from '../utils/constants'
+import { FEATURES_SECTION_HEADING, GO_BACK, IN_THE_BOX_SECTION_HEADING } from '../utils/constants'
 
 jest.mock('next/navigation', () => {
   return {
@@ -47,6 +47,13 @@ describe('Product Detail Page', () => {
 
     const featuresSection = screen.getByRole('heading', { name: FEATURES_SECTION_HEADING })
     expect(featuresSection).toBeInTheDocument()
+  })
+
+  it('displays in the box section', () => {
+    setup()
+
+    const inTheBoxSection = screen.getByRole('heading', { name: IN_THE_BOX_SECTION_HEADING })
+    expect(inTheBoxSection).toBeInTheDocument()
   })
 
   it('displays category card list section', () => {

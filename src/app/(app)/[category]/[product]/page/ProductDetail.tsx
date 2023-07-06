@@ -10,6 +10,7 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { MainDetailSection } from './MainDetailSection'
 import { FeaturesSection } from './FeaturesSection/FeaturesSection'
 import { GO_BACK } from '../utils/constants'
+import { InTheBoxSection } from './InTheBoxSection'
 
 const S = {
   BackButtonContainer: styled.div`
@@ -57,7 +58,17 @@ type ProductDetailProps = {
 
 export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDetailProps) => {
   const router = useRouter()
-  const { slug, name, image, category, new: isNew, price, description, features } = product
+  const {
+    slug,
+    name,
+    image,
+    category,
+    new: isNew,
+    price,
+    description,
+    features,
+    includes,
+  } = product
 
   const handleGoBack = () => {
     router.back()
@@ -80,6 +91,7 @@ export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDet
         description={description}
       />
       <FeaturesSection data={features} />
+      <InTheBoxSection data={includes} />
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
