@@ -50,6 +50,7 @@ const S = {
       margin: 16rem auto;
 
       flex-direction: row;
+      align-items: flex-start;
       gap: 12.5rem;
     }
   `,

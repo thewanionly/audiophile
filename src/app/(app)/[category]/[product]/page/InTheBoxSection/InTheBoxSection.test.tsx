@@ -18,4 +18,13 @@ describe('In The Box Section', () => {
     })
     expect(sectionHeading).toBeInTheDocument()
   })
+
+  it('displays list of items included in the box', () => {
+    setup()
+
+    expect(screen.getByRole('list')).toBeInTheDocument()
+    expect(screen.getAllByRole('listitem')).toHaveLength(mockedProduct.includes.length)
+
+    mockedProduct.includes.forEach(({ item }) => expect(screen.getByText(item)).toBeInTheDocument())
+  })
 })
