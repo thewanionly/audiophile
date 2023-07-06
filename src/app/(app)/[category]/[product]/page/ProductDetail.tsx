@@ -32,6 +32,27 @@ const S = {
     line-height: 2.5rem;
     letter-spacing: unset;
   `,
+  FeaturesInTheBoxContainer: styled.div`
+    ${({ theme }) => appSectionContainer(theme)}
+    margin: 8.8rem auto 12.1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8.8rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin: 12rem auto;
+
+      gap: 12rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin: 16rem auto;
+
+      flex-direction: row;
+      gap: 12.5rem;
+    }
+  `,
   CategoryCardListSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
 
@@ -90,8 +111,10 @@ export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDet
         price={price}
         description={description}
       />
-      <FeaturesSection data={features} />
-      <InTheBoxSection data={includes} />
+      <S.FeaturesInTheBoxContainer>
+        <FeaturesSection data={features} />
+        <InTheBoxSection data={includes} />
+      </S.FeaturesInTheBoxContainer>
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>

@@ -1,22 +1,14 @@
 'use client'
 
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { mediaQuery } from '@/styles/utils'
 import styled from '@emotion/styled'
 
 import { IN_THE_BOX_SECTION_HEADING } from '../../utils/constants'
 
 const S = {
   InTheBoxSection: styled.section`
-    ${({ theme }) => appSectionContainer(theme)}
-
-    margin: 8.8rem auto 12.1rem;
-
-    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      margin: 12rem auto;
-    }
-
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin: 16rem auto;
+      flex-basis: 35%;
     }
   `,
   InTheBoxHeading: styled.h2`
