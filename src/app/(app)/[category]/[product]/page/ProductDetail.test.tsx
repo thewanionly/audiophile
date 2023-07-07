@@ -56,6 +56,13 @@ describe('Product Detail Page', () => {
     expect(inTheBoxSection).toBeInTheDocument()
   })
 
+  it('displays gallery section', () => {
+    setup()
+
+    const gallerySection = screen.getByTestId('gallery-section')
+    expect(gallerySection).toBeInTheDocument()
+  })
+
   it('displays category card list section', () => {
     setup()
 

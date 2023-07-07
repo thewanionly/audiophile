@@ -40,27 +40,27 @@ export const mockedProduct: ProductDetail = {
   gallery: {
     first: {
       src: {
-        mobile: '/headphones-image.jpg',
-        tablet: '/headphones-image.jpg',
-        desktop: '/headphones-image.jpg',
+        mobile: '/headphones-image-1.jpg',
+        tablet: '/headphones-image-1.jpg',
+        desktop: '/headphones-image-1.jpg',
       },
-      alt: 'headphones alt',
+      alt: 'headphones-image-1 alt',
     },
     second: {
       src: {
-        mobile: '/headphones-image.jpg',
-        tablet: '/headphones-image.jpg',
-        desktop: '/headphones-image.jpg',
+        mobile: '/headphones-image-2.jpg',
+        tablet: '/headphones-image-2.jpg',
+        desktop: '/headphones-image-2.jpg',
       },
-      alt: 'headphones alt',
+      alt: 'headphones-image-2 alt',
     },
     third: {
       src: {
-        mobile: '/headphones-image.jpg',
-        tablet: '/headphones-image.jpg',
-        desktop: '/headphones-image.jpg',
+        mobile: '/headphones-image-3.jpg',
+        tablet: '/headphones-image-3.jpg',
+        desktop: '/headphones-image-3.jpg',
       },
-      alt: 'headphones alt',
+      alt: 'headphones-image-3 alt',
     },
   },
   others: ['one-headphones', 'two-headphones', 'three-headphones'],

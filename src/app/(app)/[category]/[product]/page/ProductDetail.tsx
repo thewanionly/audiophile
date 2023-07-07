@@ -9,8 +9,9 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { MainDetailSection } from './MainDetailSection'
 import { FeaturesSection } from './FeaturesSection/FeaturesSection'
-import { GO_BACK } from '../utils/constants'
 import { InTheBoxSection } from './InTheBoxSection'
+import { GallerySection } from './GallerySection'
+import { GO_BACK } from '../utils/constants'
 
 const S = {
   BackButtonContainer: styled.div`
@@ -90,6 +91,7 @@ export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDet
     description,
     features,
     includes,
+    gallery,
   } = product
 
   const handleGoBack = () => {
@@ -116,6 +118,7 @@ export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDet
         <FeaturesSection data={features} />
         <InTheBoxSection data={includes} />
       </S.FeaturesInTheBoxContainer>
+      <GallerySection data={gallery} />
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
