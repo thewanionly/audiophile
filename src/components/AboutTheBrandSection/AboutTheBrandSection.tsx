@@ -65,8 +65,8 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
   BrandSectionImage: styled(ResponsiveImage)`
-    max-width: 32.7rem;
-    height: 30rem;
+    width: 100%;
+    aspect-ratio: 1.09;
     margin: 0 auto;
     position: relative;
     border-radius: 0.8rem;
@@ -77,14 +77,13 @@ const S = {
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      max-width: none;
-      width: 100%;
+      aspect-ratio: 2.3;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       margin: 0;
-      height: 58.8rem;
-      width: 54rem;
+      width: 55%;
+      aspect-ratio: 0.92;
     }
   `,
 }
