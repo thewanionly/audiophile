@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+
 import styled from '@emotion/styled'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
@@ -9,8 +10,8 @@ import { Icon, IconName, NavBar, NavItem } from '@/components'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
-import { HeaderMenuIcon } from './HeaderMenuIcon'
 import { useLayoutContext } from '../Layout.context'
+import { HeaderMenuIcon } from './HeaderMenuIcon'
 
 const S = {
   Header: styled.header<HeaderStyleProps>`

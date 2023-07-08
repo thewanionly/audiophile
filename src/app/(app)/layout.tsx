@@ -3,10 +3,10 @@ import { Manrope } from 'next/font/google'
 
 import { StyleRegistry } from '@/lib/styleRegistry'
 import { getFooter, getNavLinks } from '@/services/cms/content'
+import { getCategories } from '@/services/cms/products'
 import { GlobalStyles } from '@/styles'
 
 import { Layout } from './layout/Layout'
-import { getCategories } from '@/services/cms/products'
 
 // Fonts
 const manrope = Manrope({ subsets: ['latin'], display: 'swap' })

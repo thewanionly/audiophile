@@ -2,10 +2,10 @@
 
 import { NavItem } from '@/components'
 
-import { Header } from '../Header'
-import { NavMenu } from '../NavMenu'
-import { LayoutProvider } from '../Layout.context'
 import { Footer } from '../Footer'
+import { Header } from '../Header'
+import { LayoutProvider } from '../Layout.context'
+import { NavMenu } from '../NavMenu'
 
 type LayoutProps = {
   categories: Category[]

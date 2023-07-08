@@ -1,7 +1,9 @@
 'use client'
 
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import styled from '@emotion/styled'
+
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
+
 import { CategoryProductCard } from './CategoryProductCard'
 
 const S = {

@@ -5,8 +5,8 @@ import styled from '@emotion/styled'
 import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
-import { HeroSection } from './HeroSection'
 import { FeaturedProductSection } from './FeaturedProductSection'
+import { HeroSection } from './HeroSection'
 
 const S = {
   CategoryCardListSection: styled.section`

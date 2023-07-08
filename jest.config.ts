@@ -1,4 +1,5 @@
 import nextJest from 'next/jest.js'
+
 import type { Config } from '@jest/types'
 
 const customJestConfig: Config.InitialOptions = {

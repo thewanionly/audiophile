@@ -7,11 +7,11 @@ import styled from '@emotion/styled'
 import { AboutTheBrandSection, Button, ButtonVariant, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
-import { MainDetailSection } from './MainDetailSection'
-import { FeaturesSection } from './FeaturesSection/FeaturesSection'
-import { InTheBoxSection } from './InTheBoxSection'
-import { GallerySection } from './GallerySection'
 import { GO_BACK } from '../utils/constants'
+import { FeaturesSection } from './FeaturesSection/FeaturesSection'
+import { GallerySection } from './GallerySection'
+import { InTheBoxSection } from './InTheBoxSection'
+import { MainDetailSection } from './MainDetailSection'
 
 const S = {
   BackButtonContainer: styled.div`

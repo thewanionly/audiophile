@@ -1,7 +1,8 @@
 'use client'
 
-import styled from '@emotion/styled'
 import Link from 'next/link'
+
+import styled from '@emotion/styled'
 
 import { Icon, IconName } from '@/components'
 import { ResponsiveImage } from '@/components/ResponsiveImage'

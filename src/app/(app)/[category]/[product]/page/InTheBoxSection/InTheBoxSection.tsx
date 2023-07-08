@@ -1,7 +1,8 @@
 'use client'
 
-import { mediaQuery } from '@/styles/utils'
 import styled from '@emotion/styled'
+
+import { mediaQuery } from '@/styles/utils'
 
 import { IN_THE_BOX_SECTION_HEADING } from '../../utils/constants'
 

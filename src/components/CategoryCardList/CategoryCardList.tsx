@@ -2,8 +2,9 @@
 
 import styled from '@emotion/styled'
 
-import { CategoryCard } from './CategoryCard'
 import { mediaQuery } from '@/styles/utils'
+
+import { CategoryCard } from './CategoryCard'
 
 const S = {
   CategoryCardList: styled.div`

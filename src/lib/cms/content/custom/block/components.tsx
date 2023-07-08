@@ -1,7 +1,8 @@
 'use client'
 
-import { theme } from '@/styles'
 import styled from '@emotion/styled'
+
+import { theme } from '@/styles'
 
 const S = {
   PrimaryDecoratorIcon: styled.span`

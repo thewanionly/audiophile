@@ -2,15 +2,15 @@ import { toPlainText } from '@portabletext/react'
 
 import { render, screen } from '@/tests'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
-
-import { Home } from './Home'
+import { mockedCategories } from '@/tests/__mocks__/data/category'
 import {
   mockedHeroSectionData,
   mockedPrimaryFPData,
   mockedSecondaryFPData,
   mockedTertiaryFPData,
 } from '@/tests/__mocks__/data/home'
-import { mockedCategories } from '@/tests/__mocks__/data/category'
+
+import { Home } from './Home'
 
 const setup = () => {
   render(

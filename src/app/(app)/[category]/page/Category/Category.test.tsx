@@ -1,8 +1,10 @@
 import { toPlainText } from '@portabletext/react'
+
 import { render, screen } from '@/tests'
-import { Category } from './Category'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { mockedCategories, mockedCategoryProducts } from '@/tests/__mocks__/data/category'
+
+import { Category } from './Category'
 
 const mockedCategory = mockedCategories[0]
 

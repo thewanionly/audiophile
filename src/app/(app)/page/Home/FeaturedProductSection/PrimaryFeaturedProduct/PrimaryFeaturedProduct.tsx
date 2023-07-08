@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 
 import { Button, ButtonColor } from '@/components'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
-import { SEE_PRODUCT } from '@/utils/constants'
 import { mediaQuery } from '@/styles/utils'
+import { SEE_PRODUCT } from '@/utils/constants'
 
 const S = {
   PrimaryFeaturedProduct: styled.article`

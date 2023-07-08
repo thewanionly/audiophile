@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 
 import { AboutTheBrandSection, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+
 import { CategoryProductsSection } from './CategoryProductsSection'
 
 const S = {

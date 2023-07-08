@@ -1,5 +1,4 @@
 import { render, screen } from '@/tests'
-
 import { mockedProduct } from '@/tests/__mocks__/data/product'
 
 import { GallerySection } from './GallerySection'

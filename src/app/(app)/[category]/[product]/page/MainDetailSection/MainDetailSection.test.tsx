@@ -1,9 +1,9 @@
 import { render, screen } from '@/tests'
-
-import { MainDetailSection } from './MainDetailSection'
 import { mockedProduct } from '@/tests/__mocks__/data/product'
 import { NEW_PRODUCT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
+
+import { MainDetailSection } from './MainDetailSection'
 
 const { slug, name, image, category, new: isNew, price, description } = mockedProduct
 

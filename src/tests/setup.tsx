@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 
 import { StyleRegistry } from '@/lib/styleRegistry'

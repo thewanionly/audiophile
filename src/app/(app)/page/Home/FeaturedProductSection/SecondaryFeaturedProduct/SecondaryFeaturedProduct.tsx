@@ -3,9 +3,9 @@
 import styled from '@emotion/styled'
 
 import { Button, ButtonColor, ButtonVariant } from '@/components'
-import { SEE_PRODUCT } from '@/utils/constants'
-import { mediaQuery } from '@/styles/utils'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { mediaQuery } from '@/styles/utils'
+import { SEE_PRODUCT } from '@/utils/constants'
 
 const S = {
   SecondaryFeaturedProduct: styled.article`

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-
 import ArrowRight from 'public/icons/arrow-right.svg'
 import CartIcon from 'public/icons/cart.svg'
 import FacebookIcon from 'public/icons/facebook.svg'

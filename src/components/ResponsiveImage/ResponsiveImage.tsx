@@ -1,6 +1,7 @@
 'use client'
 
 import Image, { ImageProps } from 'next/image'
+
 import styled from '@emotion/styled'
 
 import { theme } from '@/styles'

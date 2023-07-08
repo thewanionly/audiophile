@@ -1,10 +1,11 @@
 'use client'
 
-import Modal from '@mui/material/Modal'
 import styled from '@emotion/styled'
+import Modal from '@mui/material/Modal'
 
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CategoryCardList } from '@/components'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
+
 import { useLayoutContext } from '../Layout.context'
 
 const S = {

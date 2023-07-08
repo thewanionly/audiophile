@@ -2,8 +2,8 @@
 
 import styled from '@emotion/styled'
 
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
   GallerySection: styled.section`

@@ -1,12 +1,12 @@
 import { toPlainText } from '@portabletext/react'
-import { render, screen } from '@/tests'
 
+import { render, screen } from '@/tests'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
 import { mockedProduct } from '@/tests/__mocks__/data/product'
 
-import { ProductDetail } from './ProductDetail'
 import { FEATURES_SECTION_HEADING, GO_BACK, IN_THE_BOX_SECTION_HEADING } from '../utils/constants'
+import { ProductDetail } from './ProductDetail'
 
 jest.mock('next/navigation', () => {
   return {

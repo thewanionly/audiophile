@@ -2,8 +2,8 @@
 
 import styled from '@emotion/styled'
 
-import { NOT_FOUND_PRIMARY_MESSAGE, NOT_FOUND_SECONDARY_MESSAGE } from '@/utils/constants'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { NOT_FOUND_PRIMARY_MESSAGE, NOT_FOUND_SECONDARY_MESSAGE } from '@/utils/constants'
 
 const S = {
   PageNotFound: styled.section`

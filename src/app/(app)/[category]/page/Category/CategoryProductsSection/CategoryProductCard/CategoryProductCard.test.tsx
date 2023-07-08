@@ -1,8 +1,8 @@
 import { render, screen } from '@/tests'
 import { mockedCategoryProducts } from '@/tests/__mocks__/data/category'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
 import { CategoryProductCard } from './CategoryProductCard'
-import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
 const { name, description, new: isNew, category, slug, categoryImage } = mockedCategoryProducts[0]
 

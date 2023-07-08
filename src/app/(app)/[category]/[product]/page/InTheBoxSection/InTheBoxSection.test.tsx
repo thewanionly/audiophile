@@ -1,9 +1,8 @@
 import { render, screen } from '@/tests'
-
 import { mockedProduct } from '@/tests/__mocks__/data/product'
-import { InTheBoxSection } from './InTheBoxSection'
 
 import { IN_THE_BOX_SECTION_HEADING } from '../../utils/constants'
+import { InTheBoxSection } from './InTheBoxSection'
 
 const setup = () => {
   render(<InTheBoxSection data={mockedProduct.includes} />)

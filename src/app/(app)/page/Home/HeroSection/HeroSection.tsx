@@ -1,14 +1,15 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+
 import styled from '@emotion/styled'
 
+import { LayoutProvider, useLayoutContext } from '@/app/(app)/layout/Layout.context'
 import { Button } from '@/components'
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { useIntersectionObserver } from '@/hooks'
-import { LayoutProvider, useLayoutContext } from '@/app/(app)/layout/Layout.context'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
 
 const S = {
   HeroSection: styled.section`

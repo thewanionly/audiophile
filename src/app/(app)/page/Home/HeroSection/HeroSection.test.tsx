@@ -1,8 +1,8 @@
 import { render, screen } from '@/tests'
-
-import { HeroSection } from './HeroSection'
 import { mockedHeroSectionData } from '@/tests/__mocks__/data/home'
 import { NEW_PRODUCT, SEE_PRODUCT } from '@/utils/constants'
+
+import { HeroSection } from './HeroSection'
 
 const setup = () => {
   render(

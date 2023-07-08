@@ -1,9 +1,8 @@
 import { render, screen } from '@/tests'
-
 import { mockedProduct } from '@/tests/__mocks__/data/product'
-import { FeaturesSection } from './FeaturesSection'
 
 import { FEATURES_SECTION_HEADING } from '../../utils/constants'
+import { FeaturesSection } from './FeaturesSection'
 
 const setup = () => {
   render(<FeaturesSection data={mockedProduct.features} />)

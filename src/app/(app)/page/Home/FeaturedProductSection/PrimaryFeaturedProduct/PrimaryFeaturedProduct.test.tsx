@@ -1,7 +1,7 @@
 import { render, screen } from '@/tests'
-
 import { mockedPrimaryFPData } from '@/tests/__mocks__/data/home'
 import { SEE_PRODUCT } from '@/utils/constants'
+
 import { PrimaryFeaturedProduct } from './PrimaryFeaturedProduct'
 
 const setup = () => {

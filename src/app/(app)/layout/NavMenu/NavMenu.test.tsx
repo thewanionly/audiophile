@@ -1,6 +1,7 @@
 import { render, screen } from '@/tests'
-import { NavMenu } from './NavMenu'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
+
+import { NavMenu } from './NavMenu'
 
 // Mock "useLayoutContext"
 jest.mock('../Layout.context', () => ({

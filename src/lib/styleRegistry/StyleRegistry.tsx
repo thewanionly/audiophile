@@ -1,6 +1,7 @@
 'use client'
 
 import { useServerInsertedHTML } from 'next/navigation'
+
 import createCache from '@emotion/cache'
 import { CacheProvider, ThemeProvider } from '@emotion/react'
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles'

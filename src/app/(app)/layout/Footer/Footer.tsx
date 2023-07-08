@@ -4,8 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styled from '@emotion/styled'
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
+
 import { Icon, IconName, NavBar, NavItem } from '@/components'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
   Footer: styled.footer`

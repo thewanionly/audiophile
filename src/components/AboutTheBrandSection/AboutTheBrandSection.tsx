@@ -2,8 +2,9 @@
 
 import styled from '@emotion/styled'
 
-import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
+
 import { BrandHeadingPortableText } from './BrandHeadingPortableText'
 
 const S = {

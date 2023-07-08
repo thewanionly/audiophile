@@ -1,8 +1,9 @@
 import { toPlainText } from '@portabletext/react'
 
 import { render, screen } from '@/tests'
-import { AboutTheBrandSection } from './AboutTheBrandSection'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
+
+import { AboutTheBrandSection } from './AboutTheBrandSection'
 
 const setup = () => {
   render(

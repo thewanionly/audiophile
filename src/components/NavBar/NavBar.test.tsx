@@ -1,4 +1,5 @@
 import { render, screen } from '@/tests'
+
 import { NavBar, NavItem } from './NavBar'
 
 const navItems: NavItem[] = [

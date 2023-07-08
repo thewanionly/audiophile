@@ -1,6 +1,6 @@
 import { render, screen } from '@/tests'
-
 import { mockedCategoryProducts } from '@/tests/__mocks__/data/category'
+
 import { CategoryProductsSection } from './CategoryProductsSection'
 
 describe('CategoryProductsSection', () => {
