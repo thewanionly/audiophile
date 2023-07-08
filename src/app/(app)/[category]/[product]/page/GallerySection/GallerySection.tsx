@@ -2,7 +2,7 @@
 
 import styled from '@emotion/styled'
 
-import { appSectionContainer } from '@/styles/utils'
+import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 
 const S = {
@@ -14,6 +14,19 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      display: grid;
+      grid-template-columns: 40% 2fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 2rem;
+
+      aspect-ratio: 1.875;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      gap: 3.2rem;
+    }
   `,
   FirstImage: styled(ResponsiveImage)`
     position: relative;
@@ -22,7 +35,14 @@ const S = {
 
     .image {
       border-radius: 0.8rem;
-      object-fit: contain;
+      object-fit: cover;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      grid-area: 1 / 1 / span 1 / span 1;
+
+      height: 100%;
+      aspect-ratio: unset;
     }
   `,
   SecondImage: styled(ResponsiveImage)`
@@ -32,7 +52,14 @@ const S = {
 
     .image {
       border-radius: 0.8rem;
-      object-fit: contain;
+      object-fit: cover;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      grid-area: 2 / 1 / span 1 / span 1;
+
+      height: 100%;
+      aspect-ratio: unset;
     }
   `,
   ThirdImage: styled(ResponsiveImage)`
@@ -42,7 +69,14 @@ const S = {
 
     .image {
       border-radius: 0.8rem;
-      object-fit: contain;
+      object-fit: cover;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      grid-area: 1 / 2 / span 2 / span 1;
+
+      height: 100%;
+      aspect-ratio: unset;
     }
   `,
 }
