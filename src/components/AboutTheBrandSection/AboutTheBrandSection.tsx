@@ -82,6 +82,7 @@ const S = {
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin: 0;
       height: 58.8rem;
       width: 54rem;
     }
