@@ -7,17 +7,11 @@ import { mediaQuery } from '@/styles/utils'
 import { CategoryCard } from './CategoryCard'
 
 const S = {
-  CategoryCardList: styled.div`
+  CategoryCardList: styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.6rem;
-
-    .category-card {
-      flex: 1;
-      width: min(100%, 32.7rem);
-      min-width: 24.5rem;
-    }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       flex-direction: row;
@@ -32,6 +26,11 @@ const S = {
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       gap: 3rem;
     }
+  `,
+  CategoryCardListItem: styled.li`
+    flex: 1;
+    width: min(100%, 32.7rem);
+    min-width: 24.5rem;
   `,
 }
 
@@ -53,13 +52,9 @@ export const CategoryCardList = ({ className = '', categories }: CategoryCardLis
             item1DisplayOrder - item2DisplayOrder
         )
         .map(({ image, name, slug, onLinkClick }) => (
-          <CategoryCard
-            key={name}
-            image={image}
-            name={name}
-            href={slug}
-            onLinkClick={onLinkClick}
-          />
+          <S.CategoryCardListItem key={name}>
+            <CategoryCard image={image} name={name} href={slug} onLinkClick={onLinkClick} />
+          </S.CategoryCardListItem>
         ))}
     </S.CategoryCardList>
   )

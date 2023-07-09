@@ -9,7 +9,7 @@ import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { mediaQuery } from '@/styles/utils'
 
 const S = {
-  CategoryCard: styled.div`
+  CategoryCard: styled.article`
     display: grid;
     justify-items: center;
   `,
