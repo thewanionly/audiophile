@@ -12,6 +12,7 @@ export const globalStyles = (theme: Theme) => css`
   html {
     background-color: ${theme.colors.appBg};
     box-sizing: border-box;
+    min-width: 24.5rem;
 
     /**
      * Set root font-size to 10px.
