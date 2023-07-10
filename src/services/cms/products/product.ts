@@ -126,3 +126,39 @@ export const getCategoryProducts = async (category: string): Promise<CategoryPro
     throw error
   }
 }
+
+// Get a single product to be presented in "You may also like" section
+const getSuggestedProduct = async (slug: string): Promise<SuggestedProduct | null> => {
+  try {
+    const results: SuggestedProduct = await getProduct(slug, [
+      'id',
+      'slug',
+      'name',
+      'category',
+      'thumbnailImage',
+    ])
+
+    return {
+      ...results,
+      ...(results?.thumbnailImage
+        ? { thumbnailImage: postProcessImage(results.thumbnailImage, urlForImage) }
+        : {}),
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
+// Get all suggested products
+export const getSuggestedProducts = async (
+  slugs: string[]
+): Promise<(SuggestedProduct | null)[]> => {
+  try {
+    const results = await Promise.allSettled(slugs.map((slug) => getSuggestedProduct(slug)))
+    return results
+      .map((res) => (res.status === 'fulfilled' ? res.value : null))
+      .filter((res) => res)
+  } catch (error) {
+    throw error
+  }
+}

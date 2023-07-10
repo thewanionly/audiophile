@@ -38,6 +38,8 @@ type OtherProductDetail = Pick<ProductDetail, 'features' | 'includes' | 'gallery
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
   Partial<Pick<Product, 'image' | 'new' | 'description'>>
 
+type SuggestedProduct = Pick<Product, 'id' | 'name' | 'slug' | 'category' | 'thumbnailImage'>
+
 interface Category {
   name: string
   slug: string
