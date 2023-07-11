@@ -150,14 +150,12 @@ const getSuggestedProduct = async (slug: string): Promise<SuggestedProduct | nul
 }
 
 // Get all suggested products
-export const getSuggestedProducts = async (
-  slugs: string[]
-): Promise<(SuggestedProduct | null)[]> => {
+export const getSuggestedProducts = async (slugs: string[]): Promise<SuggestedProduct[]> => {
   try {
     const results = await Promise.allSettled(slugs.map((slug) => getSuggestedProduct(slug)))
     return results
       .map((res) => (res.status === 'fulfilled' ? res.value : null))
-      .filter((res) => res)
+      .filter((res) => res) as SuggestedProduct[]
   } catch (error) {
     throw error
   }
