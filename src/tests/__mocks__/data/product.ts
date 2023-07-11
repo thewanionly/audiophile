@@ -65,3 +65,48 @@ export const mockedProduct: ProductDetail = {
   },
   others: ['one-headphones', 'two-headphones', 'three-headphones'],
 }
+
+export const mockedSuggestedProducts = [
+  {
+    id: 5,
+    slug: 'zx7-speaker',
+    name: 'ZX7 Speaker',
+    category: 'speakers',
+    thumbnailImage: {
+      src: {
+        mobile: '/suggested-product-1-image.jpg',
+        tablet: '/suggested-product-1-image.jpg',
+        desktop: '/suggested-product-1-image.jpg',
+      },
+      alt: 'suggested-product-1 alt',
+    },
+  },
+  {
+    id: 6,
+    slug: 'zx9-speaker',
+    name: 'ZX9 Speaker M',
+    category: 'speakers',
+    thumbnailImage: {
+      src: {
+        mobile: '/suggested-product-2-image.jpg',
+        tablet: '/suggested-product-2-image.jpg',
+        desktop: '/suggested-product-2-image.jpg',
+      },
+      alt: 'suggested-product-2 alt',
+    },
+  },
+  {
+    id: 1,
+    slug: 'yx1-earphones',
+    name: 'YX1 Wireless Earphones',
+    category: 'earphones',
+    thumbnailImage: {
+      src: {
+        mobile: '/suggested-product-3-image.jpg',
+        tablet: '/suggested-product-3-image.jpg',
+        desktop: '/suggested-product-3-image.jpg',
+      },
+      alt: 'suggested-product-3 alt',
+    },
+  },
+]
