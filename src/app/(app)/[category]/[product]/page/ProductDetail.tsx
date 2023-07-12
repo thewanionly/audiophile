@@ -12,6 +12,7 @@ import { FeaturesSection } from './FeaturesSection/FeaturesSection'
 import { GallerySection } from './GallerySection'
 import { InTheBoxSection } from './InTheBoxSection'
 import { MainDetailSection } from './MainDetailSection'
+import { YouMayAlsoLikeSection } from './YouMayAlsoLikeSection'
 
 const S = {
   BackButtonContainer: styled.div`
@@ -77,9 +78,15 @@ type ProductDetailProps = {
   product: ProductDetail
   aboutTheBrand: AboutTheBrand
   categories: Category[]
+  suggestedProducts: SuggestedProduct[]
 }
 
-export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDetailProps) => {
+export const ProductDetail = ({
+  product,
+  suggestedProducts,
+  aboutTheBrand,
+  categories,
+}: ProductDetailProps) => {
   const router = useRouter()
   const {
     slug,
@@ -119,6 +126,7 @@ export const ProductDetail = ({ product, aboutTheBrand, categories }: ProductDet
         <InTheBoxSection data={includes} />
       </S.FeaturesInTheBoxContainer>
       <GallerySection data={gallery} />
+      <YouMayAlsoLikeSection data={suggestedProducts} />
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>

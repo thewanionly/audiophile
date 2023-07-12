@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { getAboutTheBrand } from '@/services/cms/content'
-import { getCategories, getProductDetail } from '@/services/cms/products'
+import { getCategories, getProductDetail, getSuggestedProducts } from '@/services/cms/products'
 
 import { ProductDetail } from './page/ProductDetail'
 
@@ -17,10 +17,16 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound()
   }
 
+  const suggestedProducts = await getSuggestedProducts(productDetail.others)
   const categories = await getCategories()
   const aboutTheBrand = await getAboutTheBrand()
 
   return (
-    <ProductDetail product={productDetail} aboutTheBrand={aboutTheBrand} categories={categories} />
+    <ProductDetail
+      product={productDetail}
+      suggestedProducts={suggestedProducts}
+      aboutTheBrand={aboutTheBrand}
+      categories={categories}
+    />
   )
 }

@@ -3,7 +3,7 @@ import { toPlainText } from '@portabletext/react'
 import { render, screen } from '@/tests'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
-import { mockedProduct } from '@/tests/__mocks__/data/product'
+import { mockedProduct, mockedSuggestedProducts } from '@/tests/__mocks__/data/product'
 
 import { FEATURES_SECTION_HEADING, GO_BACK, IN_THE_BOX_SECTION_HEADING } from '../utils/constants'
 import { ProductDetail } from './ProductDetail'
@@ -21,6 +21,7 @@ const setup = () => {
   render(
     <ProductDetail
       product={mockedProduct}
+      suggestedProducts={mockedSuggestedProducts}
       aboutTheBrand={mockedBrandDetails}
       categories={mockedCategories}
     />
