@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { YOU_MAY_ALSO_LIKE } from '../../utils/constants'
-import { SuggestedProductList } from './SuggestedProductList'
+import { SuggestedProductCard } from './SuggestedProductCard'
 
 const S = {
   YouMayAlsoLikeSection: styled.section`
@@ -31,6 +31,28 @@ const S = {
       letter-spacing: 0.1143rem;
     }
   `,
+  YouMakeAlsoLikeProductList: styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 5.6rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      flex-direction: row;
+      gap: 1.1rem;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      gap: 3rem;
+    }
+  `,
+  YouMakeAlsoLikeProductListItem: styled.li`
+    flex: 1;
+    width: 100%;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      width: min(100%, 32.7rem);
+    }
+  `,
 }
 
 type YouMayAlsoLikeSectionProps = {
@@ -41,7 +63,18 @@ export const YouMayAlsoLikeSection = ({ data }: YouMayAlsoLikeSectionProps) => {
   return (
     <S.YouMayAlsoLikeSection>
       <S.YouMayAlsoLikeHeading>{YOU_MAY_ALSO_LIKE}</S.YouMayAlsoLikeHeading>
-      <SuggestedProductList data={data} />
+      <S.YouMakeAlsoLikeProductList>
+        {data.map(({ id, name, category, slug, thumbnailImage }) => (
+          <S.YouMakeAlsoLikeProductListItem key={id}>
+            <SuggestedProductCard
+              name={name}
+              category={category}
+              slug={slug}
+              image={thumbnailImage}
+            />
+          </S.YouMakeAlsoLikeProductListItem>
+        ))}
+      </S.YouMakeAlsoLikeProductList>
     </S.YouMayAlsoLikeSection>
   )
 }
