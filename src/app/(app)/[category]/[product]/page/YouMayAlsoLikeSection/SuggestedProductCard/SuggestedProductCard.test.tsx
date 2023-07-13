@@ -29,7 +29,7 @@ describe('SuggestedProductCard', () => {
     expect(productName).toBeInTheDocument()
   })
 
-  xit(`displays ${SEE_PRODUCT} button with link to the product detail page`, () => {
+  it(`displays ${SEE_PRODUCT} button with link to the product detail page`, () => {
     setup()
 
     const seeProductButton = screen.getByRole('link', { name: SEE_PRODUCT })

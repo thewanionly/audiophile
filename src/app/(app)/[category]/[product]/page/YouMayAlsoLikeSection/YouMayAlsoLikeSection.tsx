@@ -50,7 +50,7 @@ const S = {
     width: 100%;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      width: min(100%, 32.7rem);
+      width: 30%;
     }
   `,
 }

@@ -2,8 +2,10 @@
 
 import styled from '@emotion/styled'
 
+import { Button } from '@/components/Button'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { mediaQuery } from '@/styles/utils'
+import { SEE_PRODUCT } from '@/utils/constants'
 
 const S = {
   SuggestedProductCard: styled.article`
@@ -44,6 +46,11 @@ const S = {
     text-transform: uppercase;
     text-align: center;
     color: ${({ theme }) => theme.colors.darkTitle};
+
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `,
 }
 
@@ -64,6 +71,9 @@ export const SuggestedProductCard = ({
     <S.SuggestedProductCard data-testid="suggsted-product-card">
       <S.ProductImage src={image.src} alt={image.alt} fill />
       <S.ProductName>{name}</S.ProductName>
+      <Button asLink href={`${category}/${slug}`}>
+        {SEE_PRODUCT}
+      </Button>
     </S.SuggestedProductCard>
   )
 }
