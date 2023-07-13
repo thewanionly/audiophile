@@ -2,11 +2,36 @@
 
 import styled from '@emotion/styled'
 
+import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { mediaQuery } from '@/styles/utils'
+
 const S = {
   SuggestedProductCard: styled.article`
     display: flex;
     flex-direction: column;
     align-items: center;
+  `,
+  ProductImage: styled(ResponsiveImage)`
+    margin-bottom: 3.2rem;
+
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2.725;
+
+    .image {
+      border-radius: 0.8rem;
+      object-fit: cover;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-bottom: 4rem;
+
+      aspect-ratio: 0.7;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      aspect-ratio: 1.1;
+    }
   `,
   ProductName: styled.span`
     display: block;
@@ -37,6 +62,7 @@ export const SuggestedProductCard = ({
 }: SuggestedProductCardProps) => {
   return (
     <S.SuggestedProductCard data-testid="suggsted-product-card">
+      <S.ProductImage src={image.src} alt={image.alt} fill />
       <S.ProductName>{name}</S.ProductName>
     </S.SuggestedProductCard>
   )

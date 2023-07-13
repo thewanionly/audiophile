@@ -13,7 +13,7 @@ const setup = () => {
 }
 
 describe('SuggestedProductCard', () => {
-  xit('displays product image', () => {
+  it('displays product image', () => {
     setup()
 
     const productImage = screen.getByAltText(thumbnailImage.alt)
