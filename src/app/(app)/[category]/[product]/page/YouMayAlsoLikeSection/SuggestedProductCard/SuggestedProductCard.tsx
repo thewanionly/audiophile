@@ -47,10 +47,12 @@ const S = {
     text-align: center;
     color: ${({ theme }) => theme.colors.darkTitle};
 
-    width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      width: 90%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   `,
 }
 
