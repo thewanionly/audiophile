@@ -1,11 +1,11 @@
 import { render, screen } from '@/tests'
-import { mockedSuggestedProducts } from '@/tests/__mocks__/data/product'
+import { mockedYouMayAlsoLikeProducts } from '@/tests/__mocks__/data/product'
 
 import { YOU_MAY_ALSO_LIKE } from '../../utils/constants'
 import { YouMayAlsoLikeSection } from './YouMayAlsoLikeSection'
 
 const setup = async () => {
-  render(<YouMayAlsoLikeSection data={mockedSuggestedProducts} />)
+  render(<YouMayAlsoLikeSection data={mockedYouMayAlsoLikeProducts} />)
 }
 
 describe('YouMayAlsoLikeSection', () => {
@@ -18,11 +18,11 @@ describe('YouMayAlsoLikeSection', () => {
     expect(sectionHeading).toBeInTheDocument()
   })
 
-  it(`displays ${mockedSuggestedProducts.length} suggested product cards`, async () => {
+  it(`displays ${mockedYouMayAlsoLikeProducts.length} product cards`, async () => {
     await setup()
 
     const productCards = screen.getAllByTestId('suggsted-product-card')
 
-    expect(productCards).toHaveLength(mockedSuggestedProducts.length)
+    expect(productCards).toHaveLength(mockedYouMayAlsoLikeProducts.length)
   })
 })

@@ -8,7 +8,7 @@ import { mediaQuery } from '@/styles/utils'
 import { SEE_PRODUCT } from '@/utils/constants'
 
 const S = {
-  SuggestedProductCard: styled.article`
+  YouMayAlsoLikeProductCard: styled.article`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,26 +56,26 @@ const S = {
   `,
 }
 
-type SuggestedProductCardProps = {
+type YouMayAlsoLikeProductCardProps = {
   name: string
   category: string
   slug: string
   image: ResponsiveImageType
 }
 
-export const SuggestedProductCard = ({
+export const YouMayAlsoLikeProductCard = ({
   name,
   category,
   slug,
   image,
-}: SuggestedProductCardProps) => {
+}: YouMayAlsoLikeProductCardProps) => {
   return (
-    <S.SuggestedProductCard data-testid="suggsted-product-card">
+    <S.YouMayAlsoLikeProductCard data-testid="suggsted-product-card">
       <S.ProductImage src={image.src} alt={image.alt} fill />
       <S.ProductName>{name}</S.ProductName>
       <Button asLink href={`${category}/${slug}`}>
         {SEE_PRODUCT}
       </Button>
-    </S.SuggestedProductCard>
+    </S.YouMayAlsoLikeProductCard>
   )
 }

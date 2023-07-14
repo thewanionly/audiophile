@@ -3,7 +3,7 @@ import { toPlainText } from '@portabletext/react'
 import { render, screen } from '@/tests'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
-import { mockedProduct, mockedSuggestedProducts } from '@/tests/__mocks__/data/product'
+import { mockedProduct, mockedYouMayAlsoLikeProducts } from '@/tests/__mocks__/data/product'
 
 import {
   FEATURES_SECTION_HEADING,
@@ -26,7 +26,7 @@ const setup = () => {
   render(
     <ProductDetail
       product={mockedProduct}
-      suggestedProducts={mockedSuggestedProducts}
+      youMayAlsoLikeProducts={mockedYouMayAlsoLikeProducts}
       aboutTheBrand={mockedBrandDetails}
       categories={mockedCategories}
     />

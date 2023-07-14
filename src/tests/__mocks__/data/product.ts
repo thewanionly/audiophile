@@ -66,7 +66,7 @@ export const mockedProduct: ProductDetail = {
   others: ['one-headphones', 'two-headphones', 'three-headphones'],
 }
 
-export const mockedSuggestedProducts = [
+export const mockedYouMayAlsoLikeProducts = [
   {
     id: 5,
     slug: 'zx7-speaker',
@@ -74,11 +74,11 @@ export const mockedSuggestedProducts = [
     category: 'speakers',
     thumbnailImage: {
       src: {
-        mobile: '/suggested-product-1-image.jpg',
-        tablet: '/suggested-product-1-image.jpg',
-        desktop: '/suggested-product-1-image.jpg',
+        mobile: '/product-1-image.jpg',
+        tablet: '/product-1-image.jpg',
+        desktop: '/product-1-image.jpg',
       },
-      alt: 'suggested-product-1 alt',
+      alt: 'product-1 alt',
     },
   },
   {
@@ -88,11 +88,11 @@ export const mockedSuggestedProducts = [
     category: 'speakers',
     thumbnailImage: {
       src: {
-        mobile: '/suggested-product-2-image.jpg',
-        tablet: '/suggested-product-2-image.jpg',
-        desktop: '/suggested-product-2-image.jpg',
+        mobile: '/product-2-image.jpg',
+        tablet: '/product-2-image.jpg',
+        desktop: '/product-2-image.jpg',
       },
-      alt: 'suggested-product-2 alt',
+      alt: 'product-2 alt',
     },
   },
   {
@@ -102,11 +102,11 @@ export const mockedSuggestedProducts = [
     category: 'earphones',
     thumbnailImage: {
       src: {
-        mobile: '/suggested-product-3-image.jpg',
-        tablet: '/suggested-product-3-image.jpg',
-        desktop: '/suggested-product-3-image.jpg',
+        mobile: '/product-3-image.jpg',
+        tablet: '/product-3-image.jpg',
+        desktop: '/product-3-image.jpg',
       },
-      alt: 'suggested-product-3 alt',
+      alt: 'product-3 alt',
     },
   },
 ]

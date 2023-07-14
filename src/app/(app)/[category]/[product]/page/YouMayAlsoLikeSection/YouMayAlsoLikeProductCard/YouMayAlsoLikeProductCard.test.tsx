@@ -1,18 +1,18 @@
 import { render, screen } from '@/tests'
-import { mockedSuggestedProducts } from '@/tests/__mocks__/data/product'
+import { mockedYouMayAlsoLikeProducts } from '@/tests/__mocks__/data/product'
 import { SEE_PRODUCT } from '@/utils/constants'
 
-import { SuggestedProductCard } from './SuggestedProductCard'
+import { YouMayAlsoLikeProductCard } from './YouMayAlsoLikeProductCard'
 
-const { name, category, slug, thumbnailImage } = mockedSuggestedProducts[0]
+const { name, category, slug, thumbnailImage } = mockedYouMayAlsoLikeProducts[0]
 
 const setup = () => {
   render(
-    <SuggestedProductCard name={name} category={category} slug={slug} image={thumbnailImage} />
+    <YouMayAlsoLikeProductCard name={name} category={category} slug={slug} image={thumbnailImage} />
   )
 }
 
-describe('SuggestedProductCard', () => {
+describe('YouMayAlsoLikeProductCard', () => {
   it('displays product image', () => {
     setup()
 

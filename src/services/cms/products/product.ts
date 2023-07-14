@@ -128,9 +128,9 @@ export const getCategoryProducts = async (category: string): Promise<CategoryPro
 }
 
 // Get a single product to be presented in "You may also like" section
-const getSuggestedProduct = async (slug: string): Promise<SuggestedProduct | null> => {
+const getYouMayAlsoLikeProduct = async (slug: string): Promise<YouMayAlsoLikeProduct | null> => {
   try {
-    const results: SuggestedProduct = await getProduct(slug, [
+    const results: YouMayAlsoLikeProduct = await getProduct(slug, [
       'id',
       'slug',
       'name',
@@ -149,13 +149,15 @@ const getSuggestedProduct = async (slug: string): Promise<SuggestedProduct | nul
   }
 }
 
-// Get all suggested products
-export const getSuggestedProducts = async (slugs: string[]): Promise<SuggestedProduct[]> => {
+// Get all you may also like products
+export const getYouMayAlsoLikeProducts = async (
+  slugs: string[]
+): Promise<YouMayAlsoLikeProduct[]> => {
   try {
-    const results = await Promise.allSettled(slugs.map((slug) => getSuggestedProduct(slug)))
+    const results = await Promise.allSettled(slugs.map((slug) => getYouMayAlsoLikeProduct(slug)))
     return results
       .map((res) => (res.status === 'fulfilled' ? res.value : null))
-      .filter((res) => res) as SuggestedProduct[]
+      .filter((res) => res) as YouMayAlsoLikeProduct[]
   } catch (error) {
     throw error
   }

@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { YOU_MAY_ALSO_LIKE } from '../../utils/constants'
-import { SuggestedProductCard } from './SuggestedProductCard'
+import { YouMayAlsoLikeProductCard } from './YouMayAlsoLikeProductCard'
 
 const S = {
   YouMayAlsoLikeSection: styled.section`
@@ -56,7 +56,7 @@ const S = {
 }
 
 type YouMayAlsoLikeSectionProps = {
-  data: SuggestedProduct[]
+  data: YouMayAlsoLikeProduct[]
 }
 
 export const YouMayAlsoLikeSection = ({ data }: YouMayAlsoLikeSectionProps) => {
@@ -66,7 +66,7 @@ export const YouMayAlsoLikeSection = ({ data }: YouMayAlsoLikeSectionProps) => {
       <S.YouMakeAlsoLikeProductList>
         {data.map(({ id, name, category, slug, thumbnailImage }) => (
           <S.YouMakeAlsoLikeProductListItem key={id}>
-            <SuggestedProductCard
+            <YouMayAlsoLikeProductCard
               name={name}
               category={category}
               slug={slug}

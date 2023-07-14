@@ -78,12 +78,12 @@ type ProductDetailProps = {
   product: ProductDetail
   aboutTheBrand: AboutTheBrand
   categories: Category[]
-  suggestedProducts: SuggestedProduct[]
+  youMayAlsoLikeProducts: YouMayAlsoLikeProduct[]
 }
 
 export const ProductDetail = ({
   product,
-  suggestedProducts,
+  youMayAlsoLikeProducts,
   aboutTheBrand,
   categories,
 }: ProductDetailProps) => {
@@ -126,7 +126,7 @@ export const ProductDetail = ({
         <InTheBoxSection data={includes} />
       </S.FeaturesInTheBoxContainer>
       <GallerySection data={gallery} />
-      <YouMayAlsoLikeSection data={suggestedProducts} />
+      <YouMayAlsoLikeSection data={youMayAlsoLikeProducts} />
       <S.CategoryCardListSection>
         <CategoryCardList categories={categories} />
       </S.CategoryCardListSection>
