@@ -12,6 +12,7 @@ An e-commerce web application built with NextJS13 using the app directory.
 6. Jest
 7. RTL
 8. Sanity (for CMS)
+9. Zustand (for State Management)
 
 ## Running the app
 
