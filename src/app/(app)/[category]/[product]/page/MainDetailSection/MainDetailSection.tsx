@@ -2,10 +2,14 @@
 
 import styled from '@emotion/styled'
 
+import { Button } from '@/components/Button'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { useCartStore } from '@/store'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { NEW_PRODUCT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
+
+import { ADD_TO_CART } from '../../utils/constants'
 
 const S = {
   MainDetailSection: styled.section`
@@ -151,7 +155,10 @@ export const MainDetailSection = ({
   new: isNew,
   description,
   price,
+  slug,
 }: MainDetailSectionProps) => {
+  const { items, addItem } = useCartStore((state) => state)
+
   return (
     <S.MainDetailSection data-testid="main-detail-section">
       <S.ProductImage src={image.src} alt={image.alt} fill priority />
@@ -160,6 +167,7 @@ export const MainDetailSection = ({
         <S.ProductName>{name}</S.ProductName>
         <S.ProductDescription>{description}</S.ProductDescription>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
+        <Button onClick={() => addItem(slug, 1)}>{ADD_TO_CART}</Button>
       </S.ContentContainer>
     </S.MainDetailSection>
   )

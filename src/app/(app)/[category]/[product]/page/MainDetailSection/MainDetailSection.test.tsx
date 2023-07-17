@@ -3,6 +3,7 @@ import { mockedProduct } from '@/tests/__mocks__/data/product'
 import { NEW_PRODUCT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
+import { ADD_TO_CART } from '../../utils/constants'
 import { MainDetailSection } from './MainDetailSection'
 
 const { slug, name, image, category, new: isNew, price, description } = mockedProduct
@@ -62,5 +63,12 @@ describe('Main Detail Section', () => {
 
     const productPrice = screen.getByText(formatPrice(price))
     expect(productPrice).toBeInTheDocument()
+  })
+
+  it('displays add to cart button', () => {
+    setup()
+
+    const addToCartButton = screen.getByRole('button', { name: ADD_TO_CART })
+    expect(addToCartButton).toBeInTheDocument()
   })
 })
