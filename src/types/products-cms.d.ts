@@ -34,6 +34,7 @@ type MainProductDetail = Pick<
   'slug' | 'name' | 'image' | 'category' | 'new' | 'price' | 'description'
 >
 type OtherProductDetail = Pick<ProductDetail, 'features' | 'includes' | 'gallery'>
+type CartItemProduct = Pick<ProductDetail, 'id' | 'name' | 'slug' | 'category' | 'price' | 'image'>
 
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
   Partial<Pick<Product, 'image' | 'new' | 'description'>>

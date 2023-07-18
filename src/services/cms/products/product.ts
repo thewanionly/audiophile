@@ -146,3 +146,24 @@ export const getYouMayAlsoLikeProducts = async (
     throw error
   }
 }
+
+// Get cart item product
+export const getCartItemProduct = async (slug: string): Promise<CartItemProduct | null> => {
+  try {
+    const results: CartItemProduct = await getProduct(slug, [
+      'id',
+      'slug',
+      'name',
+      'category',
+      'price',
+      'image',
+    ])
+
+    return {
+      ...results,
+      ...(results?.image ? { image: postProcessImage(results.image, urlForImage) } : {}),
+    }
+  } catch (error) {
+    throw error
+  }
+}
