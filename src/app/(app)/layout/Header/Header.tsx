@@ -4,9 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styled from '@emotion/styled'
+import { Badge } from '@mui/base'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { Icon, IconName, NavBar, NavItem } from '@/components'
+import { useCartStore } from '@/store'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
@@ -89,6 +91,27 @@ const S = {
       color: ${({ theme }) => theme.colors.primary};
     }
   `,
+  CartIconBadge: styled(Badge)`
+    .MuiBadge-badge {
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+
+      padding: 0 0.6rem;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 1.2rem;
+      background-color: ${({ theme }) => theme.colors.primary};
+
+      font-size: ${({ theme }) => theme.fontSizes.xs};
+      font-weight: ${({ theme }) => theme.fontWeights.bold};
+      line-height: 2.2rem;
+
+      &.MuiBadge-invisible {
+        background-color: transparent;
+      }
+    }
+  `,
 }
 
 type HeaderStyleProps = {
@@ -100,6 +123,7 @@ type HeaderProps = {
 }
 
 export const Header = ({ navItems }: HeaderProps) => {
+  const { totalItems } = useCartStore((state) => state)
   const { isNavMenuOpen, isHeroSectionVisible, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
@@ -114,7 +138,9 @@ export const Header = ({ navItems }: HeaderProps) => {
         </S.HeaderLogo>
         {isDesktop && <S.HeaderNavBar items={navItems} />}
         <S.HeaderCartIconContainer>
-          <Icon name={IconName.Cart} />
+          <S.CartIconBadge badgeContent={totalItems}>
+            <Icon name={IconName.Cart} />
+          </S.CartIconBadge>
         </S.HeaderCartIconContainer>
       </S.HeaderContainer>
     </S.Header>

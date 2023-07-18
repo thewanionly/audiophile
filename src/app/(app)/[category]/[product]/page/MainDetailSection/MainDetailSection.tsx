@@ -157,7 +157,7 @@ export const MainDetailSection = ({
   price,
   slug,
 }: MainDetailSectionProps) => {
-  const { items, addItem } = useCartStore((state) => state)
+  const { addItem } = useCartStore((state) => state)
 
   return (
     <S.MainDetailSection data-testid="main-detail-section">
