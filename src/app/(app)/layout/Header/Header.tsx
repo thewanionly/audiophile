@@ -8,7 +8,7 @@ import { Badge } from '@mui/base'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { Icon, IconName, NavBar, NavItem } from '@/components'
-import { useCartStore } from '@/store'
+import { useCartState } from '@/store/cart'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
@@ -123,7 +123,7 @@ type HeaderProps = {
 }
 
 export const Header = ({ navItems }: HeaderProps) => {
-  const { totalItems } = useCartStore((state) => state)
+  const { totalItems } = useCartState()
   const { isNavMenuOpen, isHeroSectionVisible, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
