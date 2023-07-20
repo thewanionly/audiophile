@@ -90,3 +90,7 @@ export const useCartState = (): CartState => {
     totalItems: items.reduce((total, { quantity }) => total + quantity, INITIAL_TOTAL_ITEMS),
   }
 }
+
+// Cart actions
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const useCartActions = (): CartActions => useCartStore(({ items: _, ...actions }) => actions)

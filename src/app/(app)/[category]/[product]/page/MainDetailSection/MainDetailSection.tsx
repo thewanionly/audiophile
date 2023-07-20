@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 
 import { Button } from '@/components/Button'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
-import { useCartStore } from '@/store/cart'
+import { useCartActions } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { NEW_PRODUCT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
@@ -157,7 +157,7 @@ export const MainDetailSection = ({
   price,
   slug,
 }: MainDetailSectionProps) => {
-  const { addItem } = useCartStore((state) => state)
+  const { addItem } = useCartActions()
 
   return (
     <S.MainDetailSection data-testid="main-detail-section">
