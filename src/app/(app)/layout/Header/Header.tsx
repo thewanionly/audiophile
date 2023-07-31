@@ -108,7 +108,7 @@ const S = {
       line-height: 2.2rem;
 
       &.MuiBadge-invisible {
-        background-color: transparent;
+        display: none;
       }
     }
   `,
