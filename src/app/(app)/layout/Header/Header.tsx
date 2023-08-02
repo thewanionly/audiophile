@@ -102,6 +102,7 @@ const S = {
       height: 22px;
       border-radius: 1.2rem;
       background-color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.cartIcon};
 
       font-size: ${({ theme }) => theme.fontSizes.xs};
       font-weight: ${({ theme }) => theme.fontWeights.bold};
