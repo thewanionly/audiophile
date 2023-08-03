@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styled from '@emotion/styled'
-import { Badge } from '@mui/base'
+import Badge from '@mui/base/Badge'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { Icon, IconName, NavBar, NavItem } from '@/components'

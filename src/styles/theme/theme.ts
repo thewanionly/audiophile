@@ -25,6 +25,10 @@ export const theme: Theme = {
     buttonTertiaryHover: COLORS.rawSienna,
     buttonTertiaryDisabled: rgba(COLORS.black, 0.3),
 
+    // Input Stepper
+    inputStepper: COLORS.seaShell,
+    stepperButton: rgba(COLORS.black, 0.25),
+
     // Modal
     modalBg: COLORS.white,
 

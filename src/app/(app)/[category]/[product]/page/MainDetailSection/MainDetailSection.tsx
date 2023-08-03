@@ -3,6 +3,7 @@
 import styled from '@emotion/styled'
 
 import { Button } from '@/components/Button'
+import { InputStepper } from '@/components/InputStepper'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { useCartActions } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
@@ -167,6 +168,7 @@ export const MainDetailSection = ({
         <S.ProductName>{name}</S.ProductName>
         <S.ProductDescription>{description}</S.ProductDescription>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
+        <InputStepper />
         <Button onClick={() => addItem(slug, 1)}>{ADD_TO_CART}</Button>
       </S.ContentContainer>
     </S.MainDetailSection>
