@@ -146,6 +146,10 @@ const S = {
       margin-bottom: 4.7rem;
     }
   `,
+  AddToCartContainer: styled.div`
+    display: flex;
+    gap: 1.6rem;
+  `,
 }
 
 type MainDetailSectionProps = MainProductDetail
@@ -168,8 +172,10 @@ export const MainDetailSection = ({
         <S.ProductName>{name}</S.ProductName>
         <S.ProductDescription>{description}</S.ProductDescription>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
-        <InputStepper />
-        <Button onClick={() => addItem(slug, 1)}>{ADD_TO_CART}</Button>
+        <S.AddToCartContainer>
+          <InputStepper />
+          <Button onClick={() => addItem(slug, 1)}>{ADD_TO_CART}</Button>
+        </S.AddToCartContainer>
       </S.ContentContainer>
     </S.MainDetailSection>
   )
