@@ -24,6 +24,7 @@ export const globalStyles = (theme: Theme) => css`
     font-size: 62.5%;
 
     & * {
+      font-family: inherit;
       font-size: ${theme.fontSizes.regular};
       font-weight: ${theme.fontWeights.regular};
     }
