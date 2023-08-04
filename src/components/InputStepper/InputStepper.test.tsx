@@ -2,34 +2,38 @@ import { render, screen } from '@/tests'
 
 import { InputStepper, MINIMUM_VALUE } from './InputStepper'
 
+const setup = () => {
+  render(<InputStepper />)
+}
+
 describe('InputStepper', () => {
   describe('Layout', () => {
     it('displays increment button', () => {
-      render(<InputStepper />)
+      setup()
 
       const incrementButton = screen.getByRole('button', { name: 'increment' })
       expect(incrementButton).toBeInTheDocument()
     })
 
     it('displays decrement button', () => {
-      render(<InputStepper />)
+      setup()
 
       const decrementButton = screen.getByRole('button', { name: 'decrement' })
       expect(decrementButton).toBeInTheDocument()
     })
 
     it('displays input box', () => {
-      render(<InputStepper />)
+      setup()
 
-      const inputBox = screen.getByRole('spinbutton', { name: 'input value' })
+      const inputBox = screen.getByRole('textbox', { name: 'input value' })
       expect(inputBox).toBeInTheDocument()
     })
 
     it(`displays ${MINIMUM_VALUE} as default value of the input box`, () => {
-      render(<InputStepper />)
+      setup()
 
-      const inputBox = screen.getByRole('spinbutton', { name: 'input value' })
-      expect(inputBox).toHaveValue(MINIMUM_VALUE)
+      const inputBox = screen.getByRole('textbox', { name: 'input value' })
+      expect(inputBox).toHaveValue(`${MINIMUM_VALUE}`)
     })
   })
 })

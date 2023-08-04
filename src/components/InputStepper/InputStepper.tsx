@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import styled from '@emotion/styled'
 import Button from '@mui/base/Button'
@@ -64,17 +64,44 @@ const S = {
 
 type InputStepperProps = {
   className?: string
+  // value: number
+  // onChange: () => void
 }
 
 export const MINIMUM_VALUE = 1
 
-export const InputStepper = ({ className = '' }: InputStepperProps) => {
-  const [value, setValue] = useState(MINIMUM_VALUE)
+export const InputStepper = ({
+  className = '',
+}: // value,
+// onChange: updateValue,
+InputStepperProps) => {
+  const [inputValue, setInputValue] = useState(MINIMUM_VALUE.toString())
+
+  const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
+    // Allow only numeric values and limit input to numbers
+    const newValue = event.target.value.replace(/[^0-9]/g, '')
+
+    setInputValue(newValue)
+  }
+
+  // TODO:
+  // const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
+  //   if (!event.target.value) {
+  //     setInputValue(inputValue)
+  //   }
+  // }
 
   return (
     <S.InputStepper className={className}>
       <S.StepperButton aria-label="decrement">-</S.StepperButton>
-      <S.InputBox aria-label="input value" type="number" value={value} />
+      <S.InputBox
+        aria-label="input value"
+        type="text"
+        inputMode="numeric"
+        value={inputValue}
+        onChange={handleChangeValue}
+        // onBlur={handleInputBlur}
+      />
       <S.StepperButton aria-label="increment">+</S.StepperButton>
     </S.InputStepper>
   )
