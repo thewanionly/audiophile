@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, FocusEvent, useState } from 'react'
 
 import styled from '@emotion/styled'
 import Button from '@mui/base/Button'
@@ -82,12 +82,15 @@ export const InputStepper = ({
     setInputValue(event.target.value.replace(NON_NUMERIC_REGEX, ''))
   }
 
-  // TODO:
-  // const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
-  //   if (!event.target.value) {
-  //     setInputValue(inputValue)
-  //   }
-  // }
+  const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
+    if (!event.target.value) {
+      // If current input is empty (user deletes the input value), when input loses focus, revert `inputValue` to previous value
+      setInputValue(value.toString())
+    } else {
+      // Update `value` prop only when there's an input value and user is out of focus from the input
+      updateValue(Number(event.target.value))
+    }
+  }
 
   return (
     <S.InputStepper className={className}>
@@ -98,7 +101,7 @@ export const InputStepper = ({
         inputMode="numeric"
         value={inputValue}
         onChange={handleChangeValue}
-        // onBlur={handleInputBlur}
+        onBlur={handleInputBlur}
       />
       <S.StepperButton aria-label="increment">+</S.StepperButton>
     </S.InputStepper>
