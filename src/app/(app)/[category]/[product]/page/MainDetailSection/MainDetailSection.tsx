@@ -176,7 +176,11 @@ export const MainDetailSection = ({
         <S.ProductDescription>{description}</S.ProductDescription>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
         <S.AddToCartContainer>
-          <InputStepper value={quantity} onChange={(value: number) => setQuantity(value)} />
+          <InputStepper
+            value={quantity}
+            min={MIN_QUANTITY}
+            onChange={(value: number) => setQuantity(value)}
+          />
           <Button onClick={() => addItem(slug, 1)}>{ADD_TO_CART}</Button>
         </S.AddToCartContainer>
       </S.ContentContainer>

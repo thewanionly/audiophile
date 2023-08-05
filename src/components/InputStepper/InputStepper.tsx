@@ -62,9 +62,10 @@ const S = {
   `,
 }
 
-type InputStepperProps = {
+export type InputStepperProps = {
   className?: string
   value: number
+  min?: number
   onChange: (value: number) => void
 }
 
@@ -73,6 +74,7 @@ const NON_NUMERIC_REGEX = /[^0-9]/g
 export const InputStepper = ({
   className = '',
   value,
+  min,
   onChange: updateValue,
 }: InputStepperProps) => {
   const [inputValue, setInputValue] = useState(value.toString())
@@ -87,8 +89,16 @@ export const InputStepper = ({
       // If current input is empty (user deletes the input value), when input loses focus, revert `inputValue` to previous value
       setInputValue(value.toString())
     } else {
-      // Update `value` prop only when there's an input value and user is out of focus from the input
-      updateValue(Number(event.target.value))
+      const inputtedNumber = Number(event.target.value)
+      let newValue = inputtedNumber
+
+      if (min && inputtedNumber < min) {
+        newValue = min
+
+        setInputValue(newValue.toString())
+      }
+
+      updateValue(newValue)
     }
   }
 
