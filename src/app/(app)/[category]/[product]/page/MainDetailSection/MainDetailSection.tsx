@@ -167,6 +167,10 @@ export const MainDetailSection = ({
   const [quantity, setQuantity] = useState(MIN_QUANTITY)
   const { addItem } = useCartActions()
 
+  const handleAddToCart = () => {
+    addItem(slug, quantity)
+  }
+
   return (
     <S.MainDetailSection data-testid="main-detail-section">
       <S.ProductImage src={image.src} alt={image.alt} fill priority />
@@ -181,7 +185,7 @@ export const MainDetailSection = ({
             min={MIN_QUANTITY}
             onChange={(value: number) => setQuantity(value)}
           />
-          <Button onClick={() => addItem(slug, 1)}>{ADD_TO_CART}</Button>
+          <Button onClick={handleAddToCart}>{ADD_TO_CART}</Button>
         </S.AddToCartContainer>
       </S.ContentContainer>
     </S.MainDetailSection>
