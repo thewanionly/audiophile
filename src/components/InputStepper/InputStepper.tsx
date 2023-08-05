@@ -64,24 +64,22 @@ const S = {
 
 type InputStepperProps = {
   className?: string
-  // value: number
-  // onChange: () => void
+  value: number
+  onChange: (value: number) => void
 }
 
-export const MINIMUM_VALUE = 1
+const NON_NUMERIC_REGEX = /[^0-9]/g
 
 export const InputStepper = ({
   className = '',
-}: // value,
-// onChange: updateValue,
-InputStepperProps) => {
-  const [inputValue, setInputValue] = useState(MINIMUM_VALUE.toString())
+  value,
+  onChange: updateValue,
+}: InputStepperProps) => {
+  const [inputValue, setInputValue] = useState(value.toString())
 
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     // Allow only numeric values and limit input to numbers
-    const newValue = event.target.value.replace(/[^0-9]/g, '')
-
-    setInputValue(newValue)
+    setInputValue(event.target.value.replace(NON_NUMERIC_REGEX, ''))
   }
 
   // TODO:
