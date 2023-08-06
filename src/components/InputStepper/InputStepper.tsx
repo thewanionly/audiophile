@@ -59,6 +59,15 @@ const S = {
     &:hover {
       color: ${({ theme }) => theme.colors.primary};
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: ${({ theme }) => theme.colors.stepperButtonDisabled};
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.stepperButtonDisabled};
+      }
+    }
   `,
 }
 
@@ -104,7 +113,12 @@ export const InputStepper = ({
 
   return (
     <S.InputStepper className={className}>
-      <S.StepperButton aria-label="decrement">-</S.StepperButton>
+      <S.StepperButton
+        aria-label="decrement"
+        disabled={Boolean(min && inputValue <= min.toString())}
+      >
+        -
+      </S.StepperButton>
       <S.InputBox
         aria-label="input value"
         type="text"

@@ -27,7 +27,8 @@ export const theme: Theme = {
 
     // Input Stepper
     inputStepper: COLORS.seaShell,
-    stepperButton: rgba(COLORS.black, 0.25),
+    stepperButton: rgba(COLORS.black, 0.35),
+    stepperButtonDisabled: rgba(COLORS.black, 0.15),
 
     // Modal
     modalBg: COLORS.white,

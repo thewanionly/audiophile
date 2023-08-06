@@ -40,6 +40,16 @@ describe('InputStepper', () => {
       const inputBox = screen.getByRole('textbox', { name: 'input value' })
       expect(inputBox).toHaveValue(`${MIN_QUANTITY}`)
     })
+
+    it(`disables the decrement button if input box's value is less than or equal to ${MIN_QUANTITY}`, () => {
+      setup({ min: MIN_QUANTITY })
+
+      const inputBox = screen.getByRole('textbox', { name: 'input value' })
+      expect(inputBox).toHaveValue(`${MIN_QUANTITY}`)
+
+      const decrementButton = screen.getByRole('button', { name: 'decrement' })
+      expect(decrementButton).toBeDisabled()
+    })
   })
 
   describe('Interactions', () => {

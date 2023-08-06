@@ -23,6 +23,7 @@ declare module '@emotion/react' {
       buttonTertiaryDisabled: string
       inputStepper: string
       stepperButton: string
+      stepperButtonDisabled: string
       modalBg: string
       headerBg: string
       headerHeroBg: string
