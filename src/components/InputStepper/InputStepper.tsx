@@ -89,8 +89,10 @@ export const InputStepper = ({
   const [inputValue, setInputValue] = useState(value.toString())
 
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
-    // Allow only numeric values and limit input to numbers
-    setInputValue(event.target.value.replace(NON_NUMERIC_REGEX, ''))
+    if (event.target.value !== '0') {
+      // Allow only numeric values and limit input to numbers
+      setInputValue(event.target.value.replace(NON_NUMERIC_REGEX, ''))
+    }
   }
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {

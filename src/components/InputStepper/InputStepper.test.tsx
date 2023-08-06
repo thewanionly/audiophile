@@ -53,7 +53,7 @@ describe('InputStepper', () => {
   })
 
   describe('Interactions', () => {
-    it(`can only input numeric values`, async () => {
+    it(`can only input numeric values except zero`, async () => {
       setup()
 
       const inputBox = screen.getByRole('textbox', { name: 'input value' })
@@ -61,15 +61,16 @@ describe('InputStepper', () => {
       // Simulate user entering non-numeric values
       userEvent.clear(inputBox)
       await userEvent.type(inputBox, 'abc')
+      expect(inputBox).toHaveValue('')
 
-      // Assert that the input value should remain empty or unchanged
+      // Simulate user entering zero
+      userEvent.clear(inputBox)
+      await userEvent.type(inputBox, '0')
       expect(inputBox).toHaveValue('')
 
       // Simulate user entering a numeric value
       userEvent.clear(inputBox)
       await userEvent.type(inputBox, '123')
-
-      // Assert that the input value should be the entered numeric value
       expect(inputBox).toHaveValue('123')
     })
 
