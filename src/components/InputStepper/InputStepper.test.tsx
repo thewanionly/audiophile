@@ -111,5 +111,29 @@ describe('InputStepper', () => {
 
       expect(inputBox).toHaveValue(MIN_QUANTITY.toString())
     })
+
+    it(`can increment the input value by 1 when clicking the increment button`, async () => {
+      const defaultValue = 2
+      setup({ value: defaultValue })
+
+      const inputBox = screen.getByRole('textbox', { name: 'input value' })
+      expect(inputBox).toHaveValue(defaultValue.toString())
+
+      const incrementButton = screen.getByRole('button', { name: 'increment' })
+      await userEvent.click(incrementButton)
+      expect(inputBox).toHaveValue((defaultValue + 1).toString())
+    })
+
+    it(`can decrement the input value by 1 when clicking the decrement button`, async () => {
+      const defaultValue = 2
+      setup({ value: defaultValue })
+
+      const inputBox = screen.getByRole('textbox', { name: 'input value' })
+      expect(inputBox).toHaveValue(defaultValue.toString())
+
+      const decrementButton = screen.getByRole('button', { name: 'decrement' })
+      await userEvent.click(decrementButton)
+      expect(inputBox).toHaveValue((defaultValue - 1).toString())
+    })
   })
 })

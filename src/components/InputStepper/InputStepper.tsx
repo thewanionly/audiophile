@@ -111,10 +111,25 @@ export const InputStepper = ({
     }
   }
 
+  const handleDecrementValue = () => {
+    const newValue = Number(inputValue) - 1
+
+    setInputValue(newValue.toString())
+    updateValue(newValue)
+  }
+
+  const handleIncrementValue = () => {
+    const newValue = Number(inputValue) + 1
+
+    setInputValue(newValue.toString())
+    updateValue(newValue)
+  }
+
   return (
     <S.InputStepper className={className}>
       <S.StepperButton
         aria-label="decrement"
+        onClick={handleDecrementValue}
         disabled={Boolean(min && inputValue <= min.toString())}
       >
         -
@@ -127,7 +142,9 @@ export const InputStepper = ({
         onChange={handleChangeValue}
         onBlur={handleInputBlur}
       />
-      <S.StepperButton aria-label="increment">+</S.StepperButton>
+      <S.StepperButton aria-label="increment" onClick={handleIncrementValue}>
+        +
+      </S.StepperButton>
     </S.InputStepper>
   )
 }
