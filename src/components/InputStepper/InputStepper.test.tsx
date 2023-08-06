@@ -136,5 +136,18 @@ describe('InputStepper', () => {
       await userEvent.click(decrementButton)
       expect(inputBox).toHaveValue((defaultValue - 1).toString())
     })
+
+    it(`disables increment and decrement buttons if inputValue is empty`, async () => {
+      setup()
+
+      const inputBox = screen.getByRole('textbox', { name: 'input value' })
+      userEvent.clear(inputBox)
+
+      const incrementButton = screen.getByRole('button', { name: 'increment' })
+      const decrementButton = screen.getByRole('button', { name: 'decrement' })
+
+      expect(incrementButton).toBeDisabled()
+      expect(decrementButton).toBeDisabled()
+    })
   })
 })

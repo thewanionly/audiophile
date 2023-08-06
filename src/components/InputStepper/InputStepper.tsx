@@ -132,7 +132,7 @@ export const InputStepper = ({
       <S.StepperButton
         aria-label="decrement"
         onClick={handleDecrementValue}
-        disabled={Boolean(min && inputValue <= min.toString())}
+        disabled={Boolean(!inputValue || (min && inputValue <= min.toString()))}
       >
         -
       </S.StepperButton>
@@ -144,7 +144,7 @@ export const InputStepper = ({
         onChange={handleChangeValue}
         onBlur={handleInputBlur}
       />
-      <S.StepperButton aria-label="increment" onClick={handleIncrementValue}>
+      <S.StepperButton aria-label="increment" onClick={handleIncrementValue} disabled={!inputValue}>
         +
       </S.StepperButton>
     </S.InputStepper>
