@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,6 +10,7 @@ import Badge from '@mui/base/Badge'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { Icon, IconName, NavBar, NavItem } from '@/components'
+import { CartModal } from '@/components/CartModal'
 import { useCartState } from '@/store/cart'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
@@ -125,6 +128,7 @@ type HeaderProps = {
 
 export const Header = ({ navItems }: HeaderProps) => {
   const { totalItems } = useCartState()
+  const [showCartModal, setShowCartModal] = useState(false)
   const { isNavMenuOpen, isHeroSectionVisible, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
 
@@ -138,12 +142,13 @@ export const Header = ({ navItems }: HeaderProps) => {
           </S.HeaderLogoContainer>
         </S.HeaderLogo>
         {isDesktop && <S.HeaderNavBar items={navItems} />}
-        <S.HeaderCartIconContainer>
+        <S.HeaderCartIconContainer onClick={() => setShowCartModal((prev) => !prev)}>
           <S.CartIconBadge badgeContent={totalItems}>
             <Icon name={IconName.Cart} />
           </S.CartIconBadge>
         </S.HeaderCartIconContainer>
       </S.HeaderContainer>
+      <CartModal open={showCartModal} />
     </S.Header>
   )
 }
