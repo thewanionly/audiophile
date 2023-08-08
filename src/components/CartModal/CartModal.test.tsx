@@ -16,5 +16,12 @@ describe('CartModal', () => {
       const cartTitle = screen.getByRole('heading', { name: /cart/i })
       expect(cartTitle).toBeInTheDocument()
     })
+
+    it('displays number of items in the cart', () => {
+      setup()
+
+      const cartItemsCount = screen.getByTestId('cart-items-count')
+      expect(cartItemsCount).toBeInTheDocument()
+    })
   })
 })

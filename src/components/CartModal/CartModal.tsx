@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
+import { useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
@@ -29,12 +30,15 @@ const S = {
     }
   `,
   CartTitle: styled.h2`
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
-    font-size: ${({ theme }) => theme.fontSizes.med1};
-    line-height: normal;
-    letter-spacing: 0.1286rem;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.darkTitle};
+    &,
+    span {
+      font-weight: ${({ theme }) => theme.fontWeights.bold};
+      font-size: ${({ theme }) => theme.fontSizes.med1};
+      line-height: normal;
+      letter-spacing: 0.1286rem;
+      text-transform: uppercase;
+      color: ${({ theme }) => theme.colors.darkTitle};
+    }
   `,
 }
 
@@ -43,10 +47,15 @@ type CartModalProps = {
 }
 
 export const CartModal = ({ open = false }: CartModalProps) => {
+  const { totalItems } = useCartState()
+
   return (
     <S.Modal open={open}>
       <S.ModalContent>
-        <S.CartTitle>Cart</S.CartTitle>
+        <S.CartTitle>
+          Cart
+          <span data-testid="cart-items-count">{` (${totalItems})`}</span>
+        </S.CartTitle>
       </S.ModalContent>
     </S.Modal>
   )
