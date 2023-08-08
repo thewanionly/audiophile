@@ -6,6 +6,7 @@ interface CartItem {
 type CartState = {
   items: CartItem[]
   totalItems: number
+  totalPrice: number
 }
 
 type CartActions = {

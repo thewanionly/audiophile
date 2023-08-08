@@ -3,6 +3,7 @@ import MUIModal from '@mui/material/Modal'
 
 import { useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { formatPrice } from '@/utils/helpers'
 
 import { CartItem } from './CartItem/CartItem'
 
@@ -50,6 +51,26 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
+
+    margin-bottom: 3.2rem;
+  `,
+  CartItemTotalPriceContainer: styled.div`
+    display: flex;
+    justify-content: space-between;
+  `,
+  CartItemTotalPriceLabel: styled.span`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+  `,
+  CartItemTotalPriceValue: styled.span`
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.med1};
+    line-height: normal;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.darkTitle};
   `,
 }
 
@@ -58,7 +79,7 @@ type CartModalProps = {
 }
 
 export const CartModal = ({ open = false }: CartModalProps) => {
-  const { items, totalItems } = useCartState()
+  const { items, totalItems, totalPrice } = useCartState()
 
   return (
     <S.Modal open={open}>
@@ -84,6 +105,10 @@ export const CartModal = ({ open = false }: CartModalProps) => {
               </li>
             ))}
           </S.CartItemList>
+          <S.CartItemTotalPriceContainer>
+            <S.CartItemTotalPriceLabel>Total</S.CartItemTotalPriceLabel>
+            <S.CartItemTotalPriceValue>{formatPrice(totalPrice)}</S.CartItemTotalPriceValue>
+          </S.CartItemTotalPriceContainer>
         </S.CartBody>
       </S.ModalContent>
     </S.Modal>
