@@ -4,6 +4,8 @@ import MUIModal from '@mui/material/Modal'
 import { useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
+import { CartItem } from './CartItem/CartItem'
+
 const S = {
   Modal: styled(MUIModal)`
     ${({ theme }) => appSectionContainer(theme)}
@@ -29,6 +31,9 @@ const S = {
       margin-right: 0;
     }
   `,
+  CartHeader: styled.section`
+    margin-bottom: 3.1rem;
+  `,
   CartTitle: styled.h2`
     &,
     span {
@@ -40,6 +45,12 @@ const S = {
       color: ${({ theme }) => theme.colors.darkTitle};
     }
   `,
+  CartBody: styled.section``,
+  CartItemList: styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  `,
 }
 
 type CartModalProps = {
@@ -47,15 +58,33 @@ type CartModalProps = {
 }
 
 export const CartModal = ({ open = false }: CartModalProps) => {
-  const { totalItems } = useCartState()
+  const { items, totalItems } = useCartState()
 
   return (
     <S.Modal open={open}>
       <S.ModalContent>
-        <S.CartTitle>
-          Cart
-          <span data-testid="cart-items-count">{` (${totalItems})`}</span>
-        </S.CartTitle>
+        <S.CartHeader>
+          <S.CartTitle>
+            Cart
+            <span data-testid="cart-items-count">{` (${totalItems})`}</span>
+          </S.CartTitle>
+        </S.CartHeader>
+        <S.CartBody>
+          <S.CartItemList>
+            {items.map(({ product, quantity }) => (
+              <li key={product.slug}>
+                <CartItem
+                  image={product.image}
+                  name={product.name}
+                  slug={product.slug}
+                  category={product.category}
+                  price={product.price}
+                  quantity={quantity}
+                />
+              </li>
+            ))}
+          </S.CartItemList>
+        </S.CartBody>
       </S.ModalContent>
     </S.Modal>
   )
