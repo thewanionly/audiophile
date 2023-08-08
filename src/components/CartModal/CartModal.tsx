@@ -44,7 +44,7 @@ type CartModalProps = {
 
 export const CartModal = ({ open = false }: CartModalProps) => {
   return (
-    <S.Modal open={open} disablePortal>
+    <S.Modal open={open}>
       <S.ModalContent>
         <S.CartTitle>Cart</S.CartTitle>
       </S.ModalContent>

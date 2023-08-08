@@ -10,10 +10,10 @@ const setup = () => {
 
 describe('CartModal', () => {
   describe('Layout', () => {
-    xit('displays cart title', () => {
+    it('displays cart title', () => {
       setup()
 
-      const cartTitle = screen.getByRole('heading', { name: 'Cart' })
+      const cartTitle = screen.getByRole('heading', { name: /cart/i })
       expect(cartTitle).toBeInTheDocument()
     })
   })
