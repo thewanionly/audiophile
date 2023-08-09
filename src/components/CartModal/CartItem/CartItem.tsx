@@ -40,6 +40,11 @@ const S = {
     font-size: ${({ theme }) => theme.fontSizes.regular};
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.darkTitle};
+
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
   `,
   ProductPrice: styled.span`
     grid-area: 2 / 2 / 3 / 3;
