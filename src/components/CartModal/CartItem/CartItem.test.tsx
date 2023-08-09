@@ -22,39 +22,37 @@ const setup = () => {
 }
 
 describe('CartItem', () => {
-  describe('Layout', () => {
-    it('displays product image', () => {
-      setup()
+  it('displays product image', () => {
+    setup()
 
-      const productImg = screen.getByAltText(product.image.alt)
+    const productImg = screen.getByAltText(product.image.alt)
 
-      expect(productImg).toBeInTheDocument()
-      expect(productImg).toHaveAttribute('src', product.image.src.desktop)
-    })
+    expect(productImg).toBeInTheDocument()
+    expect(productImg).toHaveAttribute('src', product.image.src.desktop)
+  })
 
-    it('displays product short name', () => {
-      setup()
+  it('displays product short name', () => {
+    setup()
 
-      const productShortName = screen.getByText(product.name)
+    const productShortName = screen.getByText(product.name)
 
-      expect(productShortName).toBeInTheDocument()
-    })
+    expect(productShortName).toBeInTheDocument()
+  })
 
-    it('displays product price', () => {
-      setup()
+  it('displays product price', () => {
+    setup()
 
-      const productPrice = screen.getByText(formatPrice(product.price))
+    const productPrice = screen.getByText(formatPrice(product.price))
 
-      expect(productPrice).toBeInTheDocument()
-    })
+    expect(productPrice).toBeInTheDocument()
+  })
 
-    it('displays input stepper with quantity as value', () => {
-      setup()
+  it('displays input stepper with quantity as value', () => {
+    setup()
 
-      const inputStepper = screen.getByRole('textbox')
+    const inputStepper = screen.getByRole('textbox')
 
-      expect(inputStepper).toBeInTheDocument()
-      expect(inputStepper).toHaveValue(quantity.toString())
-    })
+    expect(inputStepper).toBeInTheDocument()
+    expect(inputStepper).toHaveValue(quantity.toString())
   })
 })
