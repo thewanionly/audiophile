@@ -24,6 +24,13 @@ describe('CartModal', () => {
       expect(cartItemsCount).toBeInTheDocument()
     })
 
+    it('displays remove all button', () => {
+      setup()
+
+      const removeAllBtn = screen.getByRole('button', { name: /remove all/i })
+      expect(removeAllBtn).toBeInTheDocument()
+    })
+
     it('displays total amount of all items in the cart', () => {
       setup()
 

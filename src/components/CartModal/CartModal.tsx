@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
-import { useCartState } from '@/store/cart'
+import { Button, ButtonVariant } from '@/components'
+import { useCartActions, useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { formatPrice } from '@/utils/helpers'
 
@@ -34,6 +35,9 @@ const S = {
   `,
   CartHeader: styled.section`
     margin-bottom: 3.1rem;
+
+    display: flex;
+    justify-content: space-between;
   `,
   CartTitle: styled.h2`
     &,
@@ -45,6 +49,14 @@ const S = {
       text-transform: uppercase;
       color: ${({ theme }) => theme.colors.darkTitle};
     }
+  `,
+  RemoveAllButton: styled(Button)`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    letter-spacing: normal;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+    text-decoration: underline;
   `,
   CartBody: styled.section``,
   CartItemList: styled.ul`
@@ -80,6 +92,11 @@ type CartModalProps = {
 
 export const CartModal = ({ open = false }: CartModalProps) => {
   const { items, totalItems, totalPrice } = useCartState()
+  const { removeAllItems } = useCartActions()
+
+  const handleRemoveAllItems = () => {
+    removeAllItems()
+  }
 
   return (
     <S.Modal open={open}>
@@ -89,6 +106,9 @@ export const CartModal = ({ open = false }: CartModalProps) => {
             Cart
             <span data-testid="cart-items-count">{` (${totalItems})`}</span>
           </S.CartTitle>
+          <S.RemoveAllButton variant={ButtonVariant.TERTIARY} onClick={handleRemoveAllItems}>
+            Remove all
+          </S.RemoveAllButton>
         </S.CartHeader>
         <S.CartBody>
           <S.CartItemList>

@@ -2,20 +2,6 @@ import { getCartItemProduct } from '@/services/cms/products'
 
 import { useAppStore } from '../store'
 
-// TODO:
-// removeItem: (slug: string) =>
-//   set((state) => ({ items: state.items.filter((cartItem) => cartItem.product.slug !== slug) })),
-// removeAllItems: () => set({ items: [] }),
-
-// Updates quantity of an item
-const updateItemQuantity = (slug: string, quantity: number) => {
-  useAppStore.setState((state) => ({
-    items: state.items.map((cartItem) =>
-      cartItem.product.slug === slug ? { ...cartItem, quantity } : cartItem
-    ),
-  }))
-}
-
 // Adds an item to cart
 const addItem = async (slug: string, quantity: number) => {
   try {
@@ -48,7 +34,23 @@ const addItem = async (slug: string, quantity: number) => {
   }
 }
 
+// Updates quantity of an item
+const updateItemQuantity = (slug: string, quantity: number) =>
+  useAppStore.setState((state) => ({
+    items: state.items.map((cartItem) =>
+      cartItem.product.slug === slug ? { ...cartItem, quantity } : cartItem
+    ),
+  }))
+
+// TODO:
+// removeItem: (slug: string) =>
+//   set((state) => ({ items: state.items.filter((cartItem) => cartItem.product.slug !== slug) })),
+
+// Removes all items from the cart
+const removeAllItems = () => useAppStore.setState({ items: [] })
+
 export const useCartActions = (): CartActions => ({
   addItem,
   updateItemQuantity,
+  removeAllItems,
 })
