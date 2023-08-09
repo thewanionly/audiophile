@@ -107,7 +107,9 @@ export const CartModal = ({ open = false }: CartModalProps) => {
           </S.CartItemList>
           <S.CartItemTotalPriceContainer>
             <S.CartItemTotalPriceLabel>Total</S.CartItemTotalPriceLabel>
-            <S.CartItemTotalPriceValue>{formatPrice(totalPrice)}</S.CartItemTotalPriceValue>
+            <S.CartItemTotalPriceValue data-testid="cart-items-total-amount">
+              {formatPrice(totalPrice)}
+            </S.CartItemTotalPriceValue>
           </S.CartItemTotalPriceContainer>
         </S.CartBody>
       </S.ModalContent>

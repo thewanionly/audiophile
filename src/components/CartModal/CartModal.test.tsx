@@ -23,5 +23,12 @@ describe('CartModal', () => {
       const cartItemsCount = screen.getByTestId('cart-items-count')
       expect(cartItemsCount).toBeInTheDocument()
     })
+
+    it('displays total amount of all items in the cart', () => {
+      setup()
+
+      const cartItemsTotalAmount = screen.getByTestId('cart-items-total-amount')
+      expect(cartItemsTotalAmount).toBeInTheDocument()
+    })
   })
 })
