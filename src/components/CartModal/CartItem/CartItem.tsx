@@ -1,10 +1,14 @@
 'use client'
 
+import { useState } from 'react'
+
 import Link from 'next/link'
 
 import styled from '@emotion/styled'
 
+import { InputStepper } from '@/components/InputStepper'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { MIN_QUANTITY } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
 const S = {
@@ -46,6 +50,12 @@ const S = {
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
+  ProductQuantityStepper: styled(InputStepper)`
+    align-self: center;
+
+    width: 9.6rem;
+    padding: 0.7rem 1.15rem;
+  `,
 }
 
 type CartItemProps = {
@@ -58,6 +68,8 @@ type CartItemProps = {
 }
 
 export const CartItem = ({ image, name, slug, category, price, quantity }: CartItemProps) => {
+  const [qtyValue, setQtyValue] = useState(quantity)
+
   return (
     <S.CartItem>
       <S.ProductDetails>
@@ -65,6 +77,11 @@ export const CartItem = ({ image, name, slug, category, price, quantity }: CartI
         <S.ProductShortName>{name}</S.ProductShortName>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
       </S.ProductDetails>
+      <S.ProductQuantityStepper
+        value={qtyValue}
+        min={MIN_QUANTITY}
+        onChange={(value: number) => setQtyValue(value)}
+      />
     </S.CartItem>
   )
 }

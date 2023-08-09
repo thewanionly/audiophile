@@ -6,17 +6,17 @@ import { formatPrice } from '@/utils/helpers'
 
 import { CartItem } from './CartItem'
 
-const mockedCartItem = mockedCartItems[0]
+const { product, quantity } = mockedCartItems[0]
 
 const setup = () => {
   render(
     <CartItem
-      image={mockedCartItem.image}
-      name={mockedCartItem.name}
-      slug={mockedCartItem.slug}
-      category={mockedCartItem.category}
-      price={mockedCartItem.price}
-      quantity={1}
+      image={product.image}
+      name={product.name}
+      slug={product.slug}
+      category={product.category}
+      price={product.price}
+      quantity={quantity}
     />
   )
 }
@@ -26,16 +26,16 @@ describe('CartItem', () => {
     it('displays product image', () => {
       setup()
 
-      const productImg = screen.getByAltText(mockedCartItem.image.alt)
+      const productImg = screen.getByAltText(product.image.alt)
 
       expect(productImg).toBeInTheDocument()
-      expect(productImg).toHaveAttribute('src', mockedCartItem.image.src.desktop)
+      expect(productImg).toHaveAttribute('src', product.image.src.desktop)
     })
 
     it('displays product short name', () => {
       setup()
 
-      const productShortName = screen.getByText(mockedCartItem.name)
+      const productShortName = screen.getByText(product.name)
 
       expect(productShortName).toBeInTheDocument()
     })
@@ -43,9 +43,18 @@ describe('CartItem', () => {
     it('displays product price', () => {
       setup()
 
-      const productPrice = screen.getByText(formatPrice(mockedCartItem.price))
+      const productPrice = screen.getByText(formatPrice(product.price))
 
       expect(productPrice).toBeInTheDocument()
+    })
+
+    it('displays input stepper with quantity as value', () => {
+      setup()
+
+      const inputStepper = screen.getByRole('textbox')
+
+      expect(inputStepper).toBeInTheDocument()
+      expect(inputStepper).toHaveValue(quantity.toString())
     })
   })
 })
