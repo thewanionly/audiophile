@@ -57,6 +57,7 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
   ProductQuantityStepper: styled(InputStepper)`
+    flex-shrink: 0;
     align-self: center;
 
     width: 9.6rem;
