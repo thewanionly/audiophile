@@ -11,9 +11,7 @@ type CartState = {
 
 type CartActions = {
   addItem: (slug: string, quantity: number) => void
-  // updateItemQuantity: (slug: string, quantity: number) => void
-  // incrementItemQuantity: (slug: string) => void
-  // decrementItemQuantity: (slug: string) => void
+  updateItemQuantity: (slug: string, quantity: number) => void
   // removeItem: (slug: string) => void
   // removeAllItems: () => void
 }

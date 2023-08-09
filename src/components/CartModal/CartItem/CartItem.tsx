@@ -8,6 +8,7 @@ import styled from '@emotion/styled'
 
 import { InputStepper } from '@/components/InputStepper'
 import { ResponsiveImage } from '@/components/ResponsiveImage'
+import { useCartActions } from '@/store/cart'
 import { MIN_QUANTITY } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
@@ -74,6 +75,12 @@ type CartItemProps = {
 
 export const CartItem = ({ image, name, slug, category, price, quantity }: CartItemProps) => {
   const [qtyValue, setQtyValue] = useState(quantity)
+  const { updateItemQuantity } = useCartActions()
+
+  const handleUpdateQuantity = (value: number) => {
+    setQtyValue(value)
+    updateItemQuantity(slug, value)
+  }
 
   return (
     <S.CartItem>
@@ -85,7 +92,7 @@ export const CartItem = ({ image, name, slug, category, price, quantity }: CartI
       <S.ProductQuantityStepper
         value={qtyValue}
         min={MIN_QUANTITY}
-        onChange={(value: number) => setQtyValue(value)}
+        onChange={handleUpdateQuantity}
       />
     </S.CartItem>
   )
