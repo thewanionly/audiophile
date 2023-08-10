@@ -2,12 +2,12 @@
 
 import { useState } from 'react'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import styled from '@emotion/styled'
 
 import { InputStepper } from '@/components/InputStepper'
-import { ResponsiveImage } from '@/components/ResponsiveImage'
 import { useCartActions } from '@/store/cart'
 import { MIN_QUANTITY } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
@@ -25,14 +25,13 @@ const S = {
   ProductImageLink: styled(Link)`
     grid-area: 1 / 1 / 3 / 2;
   `,
-  ProductImage: styled(ResponsiveImage)`
+  ProductImageContainer: styled.div`
+    position: relative;
     width: 6.4rem;
     height: 6.4rem;
-    position: relative;
-
-    .image {
-      border-radius: 0.8rem;
-    }
+  `,
+  ProductImage: styled(Image)`
+    border-radius: 0.8rem;
   `,
   ProductShortNameLink: styled(Link)`
     grid-area: 1 / 2 / 2 / 3;
@@ -100,7 +99,9 @@ export const CartItem = ({
     <S.CartItem>
       <S.ProductDetails>
         <S.ProductImageLink href={productHref} onClick={closeModal}>
-          <S.ProductImage src={image.src} alt={image.alt} fill />
+          <S.ProductImageContainer>
+            <S.ProductImage src={image.src.mobile} alt={image.alt} fill />
+          </S.ProductImageContainer>
         </S.ProductImageLink>
         <S.ProductShortNameLink href={productHref} onClick={closeModal}>
           <S.ProductShortName>{name}</S.ProductShortName>
