@@ -148,7 +148,7 @@ export const Header = ({ navItems }: HeaderProps) => {
           </S.CartIconBadge>
         </S.HeaderCartIconContainer>
       </S.HeaderContainer>
-      <CartModal open={showCartModal} />
+      <CartModal open={showCartModal} closeModal={() => setShowCartModal(false)} />
     </S.Header>
   )
 }

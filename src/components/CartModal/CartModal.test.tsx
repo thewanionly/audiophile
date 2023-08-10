@@ -5,7 +5,7 @@ import { render, screen } from '@/tests'
 import { CartModal } from './CartModal'
 
 const setup = () => {
-  render(<CartModal open={true} />)
+  render(<CartModal open={true} closeModal={() => jest.fn()} />)
 }
 
 describe('CartModal', () => {

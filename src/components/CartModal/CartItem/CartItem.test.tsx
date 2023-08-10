@@ -7,6 +7,7 @@ import { formatPrice } from '@/utils/helpers'
 import { CartItem } from './CartItem'
 
 const { product, quantity } = mockedCartItems[0]
+const productHref = `/${product.category}/${product.slug}`
 
 const setup = () => {
   render(
@@ -17,6 +18,8 @@ const setup = () => {
       category={product.category}
       price={product.price}
       quantity={quantity}
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      closeModal={() => {}}
     />
   )
 }
@@ -31,12 +34,26 @@ describe('CartItem', () => {
     expect(productImg).toHaveAttribute('src', product.image.src.desktop)
   })
 
+  it('contains link to the product detail page in the product image', () => {
+    setup()
+
+    const productImgLink = screen.getByRole('link', { name: product.image.alt })
+    expect(productImgLink).toHaveAttribute('href', productHref)
+  })
+
   it('displays product short name', () => {
     setup()
 
     const productShortName = screen.getByText(product.name)
 
     expect(productShortName).toBeInTheDocument()
+  })
+
+  it('contains link to the product detail page in the product short name', () => {
+    setup()
+
+    const productNameLink = screen.getByRole('link', { name: product.name })
+    expect(productNameLink).toHaveAttribute('href', productHref)
   })
 
   it('displays product price', () => {

@@ -22,9 +22,10 @@ const S = {
     display: grid;
     column-gap: 1.6rem;
   `,
-  ProductImage: styled(ResponsiveImage)`
+  ProductImageLink: styled(Link)`
     grid-area: 1 / 1 / 3 / 2;
-
+  `,
+  ProductImage: styled(ResponsiveImage)`
     width: 6.4rem;
     height: 6.4rem;
     position: relative;
@@ -33,19 +34,20 @@ const S = {
       border-radius: 0.8rem;
     }
   `,
-  ProductShortName: styled.span`
+  ProductShortNameLink: styled(Link)`
     grid-area: 1 / 2 / 2 / 3;
     align-self: flex-end;
-
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
-    font-size: ${({ theme }) => theme.fontSizes.regular};
-    line-height: 2.5rem;
-    color: ${({ theme }) => theme.colors.darkTitle};
 
     white-space: nowrap;
     overflow: hidden;
     display: block;
     text-overflow: ellipsis;
+  `,
+  ProductShortName: styled.span`
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    color: ${({ theme }) => theme.colors.darkTitle};
   `,
   ProductPrice: styled.span`
     grid-area: 2 / 2 / 3 / 3;
@@ -72,11 +74,22 @@ type CartItemProps = {
   category: string
   price: number
   quantity: number
+  closeModal: () => void
 }
 
-export const CartItem = ({ image, name, slug, category, price, quantity }: CartItemProps) => {
+export const CartItem = ({
+  image,
+  name,
+  slug,
+  category,
+  price,
+  quantity,
+  closeModal,
+}: CartItemProps) => {
   const [qtyValue, setQtyValue] = useState(quantity)
   const { updateItemQuantity } = useCartActions()
+
+  const productHref = `/${category}/${slug}`
 
   const handleUpdateQuantity = (value: number) => {
     setQtyValue(value)
@@ -86,8 +99,12 @@ export const CartItem = ({ image, name, slug, category, price, quantity }: CartI
   return (
     <S.CartItem>
       <S.ProductDetails>
-        <S.ProductImage src={image.src} alt={image.alt} fill />
-        <S.ProductShortName>{name}</S.ProductShortName>
+        <S.ProductImageLink href={productHref} onClick={closeModal}>
+          <S.ProductImage src={image.src} alt={image.alt} fill />
+        </S.ProductImageLink>
+        <S.ProductShortNameLink href={productHref} onClick={closeModal}>
+          <S.ProductShortName>{name}</S.ProductShortName>
+        </S.ProductShortNameLink>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
       </S.ProductDetails>
       <S.ProductQuantityStepper

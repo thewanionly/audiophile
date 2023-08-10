@@ -88,9 +88,10 @@ const S = {
 
 type CartModalProps = {
   open: boolean
+  closeModal: () => void
 }
 
-export const CartModal = ({ open = false }: CartModalProps) => {
+export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
   const { items, totalItems, totalPrice } = useCartState()
   const { removeAllItems } = useCartActions()
 
@@ -121,6 +122,7 @@ export const CartModal = ({ open = false }: CartModalProps) => {
                   category={product.category}
                   price={product.price}
                   quantity={quantity}
+                  closeModal={closeModal}
                 />
               </li>
             ))}
