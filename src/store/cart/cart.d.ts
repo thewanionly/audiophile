@@ -12,7 +12,7 @@ type CartState = {
 type CartActions = {
   addItem: (slug: string, quantity: number) => void
   updateItemQuantity: (slug: string, quantity: number) => void
-  // removeItem: (slug: string) => void
+  removeItem: (slug: string) => void
   removeAllItems: () => void
 }
 

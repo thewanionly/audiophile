@@ -42,9 +42,11 @@ const updateItemQuantity = (slug: string, quantity: number) =>
     ),
   }))
 
-// TODO:
-// removeItem: (slug: string) =>
-//   set((state) => ({ items: state.items.filter((cartItem) => cartItem.product.slug !== slug) })),
+// Removes an item from the cart
+const removeItem = (slug: string) =>
+  useAppStore.setState((state) => ({
+    items: state.items.filter((cartItem) => cartItem.product.slug !== slug),
+  }))
 
 // Removes all items from the cart
 const removeAllItems = () => useAppStore.setState({ items: [] })
@@ -52,5 +54,6 @@ const removeAllItems = () => useAppStore.setState({ items: [] })
 export const useCartActions = (): CartActions => ({
   addItem,
   updateItemQuantity,
+  removeItem,
   removeAllItems,
 })

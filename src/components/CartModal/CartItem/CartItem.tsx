@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 import styled from '@emotion/styled'
 
+import { Button, ButtonVariant, Icon, IconName } from '@/components'
 import { InputStepper } from '@/components/InputStepper'
 import { useCartActions } from '@/store/cart'
 import { MIN_QUANTITY } from '@/utils/constants'
@@ -57,12 +58,22 @@ const S = {
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
+  ProductActions: styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  `,
   ProductQuantityStepper: styled(InputStepper)`
     flex-shrink: 0;
     align-self: center;
 
-    width: 9.6rem;
+    width: 9rem;
     padding: 0.7rem 1.15rem;
+  `,
+  DeleteIconButton: styled(Button)``,
+  DeleteIcon: styled(Icon)`
+    width: 1.5rem;
+    height: 1.5rem;
   `,
 }
 
@@ -86,7 +97,7 @@ export const CartItem = ({
   closeModal,
 }: CartItemProps) => {
   const [qtyValue, setQtyValue] = useState(quantity)
-  const { updateItemQuantity } = useCartActions()
+  const { updateItemQuantity, removeItem } = useCartActions()
 
   const productHref = `/${category}/${slug}`
 
@@ -108,11 +119,16 @@ export const CartItem = ({
         </S.ProductShortNameLink>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
       </S.ProductDetails>
-      <S.ProductQuantityStepper
-        value={qtyValue}
-        min={MIN_QUANTITY}
-        onChange={handleUpdateQuantity}
-      />
+      <S.ProductActions>
+        <S.ProductQuantityStepper
+          value={qtyValue}
+          min={MIN_QUANTITY}
+          onChange={handleUpdateQuantity}
+        />
+        <S.DeleteIconButton variant={ButtonVariant.TERTIARY} onClick={() => removeItem(slug)}>
+          <S.DeleteIcon name={IconName.Trash} />
+        </S.DeleteIconButton>
+      </S.ProductActions>
     </S.CartItem>
   )
 }
