@@ -1,8 +1,25 @@
 import userEvent from '@testing-library/user-event'
 
 import { render, screen } from '@/tests'
+import { mockedCartItems } from '@/tests/__mocks__/data/cart'
 
 import { CartModal } from './CartModal'
+
+// Mock "useLayoutContext"
+jest.mock('@/store/cart', () => ({
+  __esModule: true,
+  useCartState: jest.fn(() => ({
+    items: mockedCartItems,
+    totalItems: mockedCartItems.length,
+    totalPrice: mockedCartItems.reduce(
+      (total, { quantity, product }) => total + quantity * product.price,
+      0
+    ),
+  })),
+  useCartActions: jest.fn(() => ({
+    removeAllItems: jest.fn(),
+  })),
+}))
 
 const setup = () => {
   render(<CartModal open={true} closeModal={() => jest.fn()} />)

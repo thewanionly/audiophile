@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
@@ -84,6 +86,24 @@ const S = {
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.darkTitle};
   `,
+  EmptyCartContainer: styled.div``,
+  EmptyCartImageContainer: styled.div`
+    margin: 3rem auto;
+    position: relative;
+
+    width: 50%;
+    aspect-ratio: 1.2;
+  `,
+  EmptyCartImage: styled(Image)``,
+  EmptyCartMessage: styled.p`
+    margin-top: 2rem;
+
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+  `,
 }
 
 type CartModalProps = {
@@ -107,32 +127,45 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
             Cart
             <span data-testid="cart-items-count">{` (${totalItems})`}</span>
           </S.CartTitle>
-          <S.RemoveAllButton variant={ButtonVariant.TERTIARY} onClick={handleRemoveAllItems}>
-            Remove all
-          </S.RemoveAllButton>
+          {totalItems > 0 && (
+            <S.RemoveAllButton variant={ButtonVariant.TERTIARY} onClick={handleRemoveAllItems}>
+              Remove all
+            </S.RemoveAllButton>
+          )}
         </S.CartHeader>
         <S.CartBody>
-          <S.CartItemList>
-            {items.map(({ product, quantity }) => (
-              <li key={product.slug}>
-                <CartItem
-                  image={product.image}
-                  name={product.name}
-                  slug={product.slug}
-                  category={product.category}
-                  price={product.price}
-                  quantity={quantity}
-                  closeModal={closeModal}
-                />
-              </li>
-            ))}
-          </S.CartItemList>
-          <S.CartItemTotalPriceContainer>
-            <S.CartItemTotalPriceLabel>Total</S.CartItemTotalPriceLabel>
-            <S.CartItemTotalPriceValue data-testid="cart-items-total-amount">
-              {formatPrice(totalPrice)}
-            </S.CartItemTotalPriceValue>
-          </S.CartItemTotalPriceContainer>
+          {totalItems === 0 ? (
+            <S.EmptyCartContainer>
+              <S.EmptyCartImageContainer>
+                <S.EmptyCartImage src="/icons/empty-cart.svg" alt="empty cart" fill />
+              </S.EmptyCartImageContainer>
+              <S.EmptyCartMessage>You have no items in your cart.</S.EmptyCartMessage>
+            </S.EmptyCartContainer>
+          ) : (
+            <S.CartItemList>
+              {items.map(({ product, quantity }) => (
+                <li key={product.slug}>
+                  <CartItem
+                    image={product.image}
+                    name={product.name}
+                    slug={product.slug}
+                    category={product.category}
+                    price={product.price}
+                    quantity={quantity}
+                    closeModal={closeModal}
+                  />
+                </li>
+              ))}
+            </S.CartItemList>
+          )}
+          {totalItems > 0 && (
+            <S.CartItemTotalPriceContainer>
+              <S.CartItemTotalPriceLabel>Total</S.CartItemTotalPriceLabel>
+              <S.CartItemTotalPriceValue data-testid="cart-items-total-amount">
+                {formatPrice(totalPrice)}
+              </S.CartItemTotalPriceValue>
+            </S.CartItemTotalPriceContainer>
+          )}
         </S.CartBody>
       </S.ModalContent>
     </S.Modal>
