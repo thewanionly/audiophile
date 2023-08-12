@@ -5,3 +5,5 @@ export const NOT_FOUND_PRIMARY_MESSAGE = `Sorry, we can't find the page you are 
 export const NOT_FOUND_SECONDARY_MESSAGE = 'Please re-check the URL or return to the home page.'
 
 export const MIN_QUANTITY = 1
+
+export const GO_BACK = 'Go Back'

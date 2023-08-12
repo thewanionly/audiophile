@@ -6,8 +6,8 @@ import styled from '@emotion/styled'
 
 import { AboutTheBrandSection, Button, ButtonVariant, CategoryCardList } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { GO_BACK } from '@/utils/constants'
 
-import { GO_BACK } from '../utils/constants'
 import { FeaturesSection } from './FeaturesSection/FeaturesSection'
 import { GallerySection } from './GallerySection'
 import { InTheBoxSection } from './InTheBoxSection'

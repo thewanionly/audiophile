@@ -4,10 +4,10 @@ import { render, screen } from '@/tests'
 import { mockedBrandDetails } from '@/tests/__mocks__/data'
 import { mockedCategories } from '@/tests/__mocks__/data/category'
 import { mockedProduct, mockedYouMayAlsoLikeProducts } from '@/tests/__mocks__/data/product'
+import { GO_BACK } from '@/utils/constants'
 
 import {
   FEATURES_SECTION_HEADING,
-  GO_BACK,
   IN_THE_BOX_SECTION_HEADING,
   YOU_MAY_ALSO_LIKE,
 } from '../utils/constants'
