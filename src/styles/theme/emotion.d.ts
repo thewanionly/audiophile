@@ -41,6 +41,7 @@ declare module '@emotion/react' {
       categoryHeaderBg: string
       imageBg: string
       price: string
+      checkoutSectionBg: string
       fieldError: string
     }
     fontSizes: {

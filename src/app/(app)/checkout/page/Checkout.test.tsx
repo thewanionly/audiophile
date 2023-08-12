@@ -24,7 +24,7 @@ describe('Checkout', () => {
     expect(backButton).toBeInTheDocument()
   })
 
-  xit('displays checkout heading', () => {
+  it('displays checkout heading', () => {
     setup()
 
     const checkoutHeading = screen.getByRole('heading', { name: /checkout/i })

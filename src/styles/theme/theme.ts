@@ -60,6 +60,9 @@ export const theme: Theme = {
     imageBg: COLORS.seaShell,
     price: COLORS.black,
 
+    // Checkout
+    checkoutSectionBg: COLORS.white,
+
     fieldError: COLORS.persianRed,
   },
   fontSizes: {
