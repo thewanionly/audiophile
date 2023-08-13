@@ -30,4 +30,11 @@ describe('Checkout', () => {
     const checkoutHeading = screen.getByRole('heading', { name: /checkout/i })
     expect(checkoutHeading).toBeInTheDocument()
   })
+
+  it('displays checkout form', () => {
+    setup()
+
+    const checkoutForm = screen.getByRole('form', { name: /checkout form/i })
+    expect(checkoutForm).toBeInTheDocument()
+  })
 })

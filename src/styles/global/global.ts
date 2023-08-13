@@ -89,4 +89,15 @@ export const globalStyles = (theme: Theme) => css`
     text-decoration: none;
     color: inherit;
   }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+
+  legend {
+    padding: 0;
+  }
 `

@@ -8,6 +8,8 @@ import { Button, ButtonVariant } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { GO_BACK } from '@/utils/constants'
 
+import { CheckoutForm } from './CheckoutForm/CheckoutForm'
+
 const S = {
   BackButtonContainer: styled.div`
     ${({ theme }) => appSectionContainer(theme)}
@@ -45,6 +47,8 @@ const S = {
     }
   `,
   CheckoutHeading: styled.h1`
+    margin-bottom: 3.2rem;
+
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.med3};
     line-height: normal;
@@ -76,6 +80,7 @@ export const Checkout = () => {
       </S.BackButtonContainer>
       <S.CheckoutSection>
         <S.CheckoutHeading>Checkout</S.CheckoutHeading>
+        <CheckoutForm />
       </S.CheckoutSection>
     </>
   )
