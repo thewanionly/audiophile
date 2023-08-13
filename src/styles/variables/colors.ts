@@ -11,6 +11,7 @@ export const COLORS = {
   black: 'hsl(0, 0%, 0%)', // #000000
   codGray: 'hsl(0, 0%, 10%)', // #191919
   liver: 'hsl(0, 0%, 30%)', // #4C4C4C
+  greyGoose: 'hsl(0, 0%, 81%)', // #CFCFCF
 
   /* Utility colors */
   persianRed: 'hsl(0, 65%, 49%)', // #CD2C2C

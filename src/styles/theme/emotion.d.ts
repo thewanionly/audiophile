@@ -21,6 +21,12 @@ declare module '@emotion/react' {
       buttonTertiary: string
       buttonTertiaryHover: string
       buttonTertiaryDisabled: string
+      inputBorder: string
+      inputBg: string
+      inputText: string
+      inputLabel: string
+      inputPlaceholder: string
+      inputError: string
       inputStepper: string
       stepperButton: string
       stepperButtonDisabled: string
@@ -42,7 +48,6 @@ declare module '@emotion/react' {
       imageBg: string
       price: string
       checkoutSectionBg: string
-      fieldError: string
     }
     fontSizes: {
       xs: string

@@ -25,6 +25,14 @@ export const theme: Theme = {
     buttonTertiaryHover: COLORS.rawSienna,
     buttonTertiaryDisabled: rgba(COLORS.black, 0.3),
 
+    // Input
+    inputBorder: COLORS.greyGoose,
+    inputBg: COLORS.white,
+    inputText: COLORS.black,
+    inputLabel: COLORS.black,
+    inputPlaceholder: rgba(COLORS.black, 0.4),
+    inputError: COLORS.persianRed,
+
     // Input Stepper
     inputStepper: COLORS.seaShell,
     stepperButton: rgba(COLORS.black, 0.35),
@@ -62,8 +70,6 @@ export const theme: Theme = {
 
     // Checkout
     checkoutSectionBg: COLORS.white,
-
-    fieldError: COLORS.persianRed,
   },
   fontSizes: {
     xs: TYPOGRAPHY.fontSizeXs,
