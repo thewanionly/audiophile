@@ -10,7 +10,7 @@ const S = {
     display: grid;
     row-gap: 0.9rem;
   `,
-  InputLabel: styled.label`
+  InputLabel: styled.label<{ isError: boolean }>`
     grid-area: 1 / 1 / 2 / 2;
     display: inline-block;
 
@@ -18,7 +18,7 @@ const S = {
     font-size: ${({ theme }) => theme.fontSizes.xs};
     line-height: normal;
     letter-spacing: -0.0214rem;
-    color: ${({ theme }) => theme.colors.inputLabel};
+    color: ${({ theme, isError }) => (isError ? theme.colors.inputError : theme.colors.inputLabel)};
   `,
   InputError: styled.span`
     justify-self: flex-end;
@@ -81,7 +81,7 @@ export const Input = forwardRef(function CustomInput(
 ) {
   return (
     <S.InputContainer>
-      <S.InputLabel data-testid="input-label" htmlFor={inputProps.id}>
+      <S.InputLabel data-testid="input-label" htmlFor={inputProps.id} isError={inputProps.error}>
         {label}
       </S.InputLabel>
       <S.Input {...inputProps} ref={ref} />

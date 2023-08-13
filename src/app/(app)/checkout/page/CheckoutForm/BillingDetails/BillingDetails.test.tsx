@@ -3,20 +3,20 @@ import { useForm } from 'react-hook-form'
 import { render, screen } from '@/tests'
 
 import { BILLING_DETAILS } from '../../../utils/constants'
+import { CheckoutSchema } from '../../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
 
-type Inputs = {
-  name: string
-}
+const BillingDetailsForm = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useForm<CheckoutSchema>()
 
-const TestEnv = () => {
-  const { register } = useForm<Inputs>()
-
-  return <BillingDetails register={register} />
+  return <BillingDetails register={register} errors={errors} />
 }
 
 const setup = () => {
-  render(<TestEnv />)
+  render(<BillingDetailsForm />)
 }
 
 describe('BillingDetails', () => {
