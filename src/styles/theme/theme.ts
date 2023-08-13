@@ -28,7 +28,8 @@ export const theme: Theme = {
     // Input
     inputBorder: COLORS.greyGoose,
     inputBg: COLORS.white,
-    inputText: COLORS.black,
+    inputText: rgba(COLORS.black, 0.4),
+    inputTextActive: COLORS.black,
     inputLabel: COLORS.black,
     inputPlaceholder: rgba(COLORS.black, 0.4),
     inputError: COLORS.persianRed,
