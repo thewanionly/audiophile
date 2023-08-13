@@ -14,7 +14,7 @@ An e-commerce web application built with NextJS13 using the app directory.
 8. Sanity (for CMS)
 9. Zustand (for State Management)
 10. React Hook Form (for handling forms)
-11. Zod or Yup (for handling form validation)
+11. Zod (for handling form validation)
 
 ## Running the app
 
