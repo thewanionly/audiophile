@@ -81,7 +81,11 @@ export const Input = forwardRef(function CustomInput(
 ) {
   return (
     <S.InputContainer>
-      <S.InputLabel data-testid="input-label" htmlFor={inputProps.id} isError={inputProps.error}>
+      <S.InputLabel
+        data-testid="input-label"
+        htmlFor={inputProps.id}
+        isError={Boolean(inputProps.error)}
+      >
         {label}
       </S.InputLabel>
       <S.Input {...inputProps} ref={ref} />
