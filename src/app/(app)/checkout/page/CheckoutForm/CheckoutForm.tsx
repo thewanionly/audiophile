@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { CheckoutSchema, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
+import { ShippingInfo } from './ShippingInfo'
 
 const S = {
   CheckoutForm: styled.form`
@@ -20,7 +21,6 @@ export const CheckoutForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<CheckoutSchema>({
     mode: 'onTouched',
@@ -32,6 +32,7 @@ export const CheckoutForm = () => {
   return (
     <S.CheckoutForm id="checkout-form" aria-label="Checkout form" onSubmit={handleSubmit(onSubmit)}>
       <BillingDetails register={register} errors={errors} />
+      <ShippingInfo register={register} errors={errors} />
     </S.CheckoutForm>
   )
 }

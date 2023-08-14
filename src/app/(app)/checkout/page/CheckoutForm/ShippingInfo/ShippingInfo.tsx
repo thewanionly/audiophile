@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { Input } from '@/components'
 import { mediaQuery } from '@/styles/utils'
 
-import { BILLING_DETAILS } from '../../../utils/constants'
+import { SHIPPING_INFO } from '../../../utils/constants'
 import { CheckoutSchema } from '../../Checkout.schema'
 
 const S = {
@@ -33,40 +33,48 @@ const S = {
       width: calc((100% - 1.6rem) / 2);
     }
   `,
+  AddressFormInput: styled(Input)`
+    width: 100%;
+  `,
 }
 
-type BillingDetailsProps = {
+type ShippingInfoProps = {
   register: UseFormRegister<CheckoutSchema>
   errors: FieldErrors<CheckoutSchema>
 }
 
-export const BillingDetails = ({ register, errors }: BillingDetailsProps) => {
+export const ShippingInfo = ({ register, errors }: ShippingInfoProps) => {
   return (
     <S.FormSection>
-      <S.FormSectionHeading>{BILLING_DETAILS}</S.FormSectionHeading>
+      <S.FormSectionHeading>{SHIPPING_INFO}</S.FormSectionHeading>
       <S.FormFieldsContainer>
-        <S.FormInput
-          label="Name"
-          id="name"
-          {...register('name')}
-          error={Boolean(errors.name)}
-          errorMessage={errors.name?.message}
+        <S.AddressFormInput
+          label="Your Address"
+          id="address"
+          {...register('address', { required: true, maxLength: 10 })}
+          error={Boolean(errors.address)}
+          errorMessage={errors.address?.message}
         />
         <S.FormInput
-          label="Email Address"
-          id="email"
-          type="email"
-          {...register('email')}
-          error={Boolean(errors.email)}
-          errorMessage={errors.email?.message}
+          label="ZIP Code"
+          id="zipCode"
+          {...register('zipCode')}
+          error={Boolean(errors.zipCode)}
+          errorMessage={errors.zipCode?.message}
         />
         <S.FormInput
-          label="Phone Number"
-          id="phoneNumber"
-          type="tel"
-          {...register('phoneNumber')}
-          error={Boolean(errors.phoneNumber)}
-          errorMessage={errors.phoneNumber?.message}
+          label="City"
+          id="city"
+          {...register('city')}
+          error={Boolean(errors.city)}
+          errorMessage={errors.city?.message}
+        />
+        <S.FormInput
+          label="Country"
+          id="country"
+          {...register('country')}
+          error={Boolean(errors.country)}
+          errorMessage={errors.country?.message}
         />
       </S.FormFieldsContainer>
     </S.FormSection>

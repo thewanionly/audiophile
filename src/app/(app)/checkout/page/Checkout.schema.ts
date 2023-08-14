@@ -6,6 +6,10 @@ export const checkoutSchema = z.object({
     message: 'Wrong format',
   }),
   phoneNumber: z.string().min(1, { message: 'Required' }),
+  address: z.string().min(1, { message: 'Required' }),
+  zipCode: z.string().min(1, { message: 'Required' }),
+  city: z.string().min(1, { message: 'Required' }),
+  country: z.string().min(1, { message: 'Required' }),
 })
 
 // extracting the type
