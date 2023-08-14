@@ -71,16 +71,17 @@ const S = {
 }
 
 type InputProps = BaseInputProps & {
+  className?: string
   label: string
   errorMessage?: string
 }
 
 export const Input = forwardRef(function CustomInput(
-  { label, errorMessage, ...inputProps }: InputProps,
+  { className, label, errorMessage, ...inputProps }: InputProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
-    <S.InputContainer>
+    <S.InputContainer className={className}>
       <S.InputLabel
         data-testid="input-label"
         htmlFor={inputProps.id}

@@ -3,6 +3,7 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import styled from '@emotion/styled'
 
 import { Input } from '@/components'
+import { mediaQuery } from '@/styles/utils'
 
 import { BILLING_DETAILS } from '../../../utils/constants'
 import { CheckoutSchema } from '../../Checkout.schema'
@@ -21,8 +22,16 @@ const S = {
   `,
   FormFieldsContainer: styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
+    flex-wrap: wrap;
+    column-gap: 1.6rem;
+    row-gap: 2.4rem;
+  `,
+  FormInput: styled(Input)`
+    width: 100%;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      width: calc((100% - 1.6rem) / 2);
+    }
   `,
 }
 
@@ -36,14 +45,14 @@ export const BillingDetails = ({ register, errors }: BillingDetailsProps) => {
     <S.FormSection>
       <S.FormSectionHeading>{BILLING_DETAILS}</S.FormSectionHeading>
       <S.FormFieldsContainer>
-        <Input
+        <S.FormInput
           label="Name"
           id="name"
           {...register('name', { required: true, maxLength: 10 })}
           error={Boolean(errors.name)}
           errorMessage={errors.name?.message}
         />
-        <Input
+        <S.FormInput
           label="Email Address"
           id="email"
           type="email"
@@ -51,7 +60,7 @@ export const BillingDetails = ({ register, errors }: BillingDetailsProps) => {
           error={Boolean(errors.email)}
           errorMessage={errors.email?.message}
         />
-        <Input
+        <S.FormInput
           label="Phone Number"
           id="phoneNumber"
           type="tel"
