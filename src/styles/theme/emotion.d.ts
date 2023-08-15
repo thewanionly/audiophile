@@ -24,7 +24,6 @@ declare module '@emotion/react' {
       inputBorder: string
       inputBg: string
       inputText: string
-      inputTextActive: string
       inputLabel: string
       inputPlaceholder: string
       inputError: string

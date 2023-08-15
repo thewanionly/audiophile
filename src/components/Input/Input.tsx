@@ -53,7 +53,6 @@ const S = {
       }
 
       &:focus {
-        color: ${({ theme }) => theme.colors.inputTextActive};
         border-color: ${({ theme }) => theme.colors.primary};
         box-shadow: 0 0 0 0.1rem ${({ theme }) => theme.colors.primary};
       }
