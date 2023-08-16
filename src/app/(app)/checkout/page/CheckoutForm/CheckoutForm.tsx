@@ -5,7 +5,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import styled from '@emotion/styled'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CheckoutSchema, checkoutSchema } from '../Checkout.schema'
+import { RadioGroup } from '@/components'
+
+import { CheckoutSchema, PAYMENT_METHODS, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
 import { ShippingInfo } from './ShippingInfo'
 
@@ -27,12 +29,22 @@ export const CheckoutForm = () => {
     resolver: zodResolver(checkoutSchema),
   })
 
-  const onSubmit: SubmitHandler<CheckoutSchema> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<CheckoutSchema> = (data) => console.log('### data', data)
 
+  console.log('### errors', errors)
   return (
     <S.CheckoutForm id="checkout-form" aria-label="Checkout form" onSubmit={handleSubmit(onSubmit)}>
       <BillingDetails register={register} errors={errors} />
       <ShippingInfo register={register} errors={errors} />
+      <RadioGroup
+        label="Payment Method"
+        id="paymentMethod"
+        {...register('paymentMethod')}
+        options={PAYMENT_METHODS}
+        error={Boolean(errors.paymentMethod)}
+        errorMessage={errors.paymentMethod?.message}
+      />
+      <button type="submit">Submit</button>
     </S.CheckoutForm>
   )
 }
