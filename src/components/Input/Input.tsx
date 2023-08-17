@@ -77,7 +77,7 @@ type InputProps = BaseInputProps & {
 
 export const Input = forwardRef(function CustomInput(
   { className, label, errorMessage, ...inputProps }: InputProps,
-  ref: React.ForwardedRef<HTMLDivElement>
+  ref: React.ForwardedRef<HTMLInputElement>
 ) {
   return (
     <S.InputContainer className={className}>

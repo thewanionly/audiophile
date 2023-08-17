@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import styled from '@emotion/styled'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { RadioGroup } from '@/components'
+import { RadioGroup, RadioInput } from '@/components'
 
 import { CheckoutSchema, PAYMENT_METHODS, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
@@ -21,6 +21,7 @@ const S = {
 
 export const CheckoutForm = () => {
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors },
@@ -32,18 +33,21 @@ export const CheckoutForm = () => {
   const onSubmit: SubmitHandler<CheckoutSchema> = (data) => console.log('### data', data)
 
   console.log('### errors', errors)
+  console.log('### watch paymentMethod', watch('paymentMethod'))
+
   return (
     <S.CheckoutForm id="checkout-form" aria-label="Checkout form" onSubmit={handleSubmit(onSubmit)}>
       <BillingDetails register={register} errors={errors} />
       <ShippingInfo register={register} errors={errors} />
       <RadioGroup
         label="Payment Method"
-        id="paymentMethod"
-        {...register('paymentMethod')}
-        options={PAYMENT_METHODS}
         error={Boolean(errors.paymentMethod)}
         errorMessage={errors.paymentMethod?.message}
-      />
+      >
+        {PAYMENT_METHODS.map(({ label, value }) => (
+          <RadioInput key={value} label={label} value={value} {...register('paymentMethod')} />
+        ))}
+      </RadioGroup>
       <button type="submit">Submit</button>
     </S.CheckoutForm>
   )

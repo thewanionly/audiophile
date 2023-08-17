@@ -1,24 +1,13 @@
-import styled from '@emotion/styled'
-import {
-  Radio,
-  RadioGroup as MUIRadioGroup,
-  RadioGroupProps as MUIRadioGroupProps,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-} from '@mui/material'
+import React, { forwardRef } from 'react'
 
-interface RadioGroupOption {
-  label: string
-  value: string
-}
+import BaseInput, { InputProps as BaseInputProps } from '@mui/base/Input'
 
-type RadioGroupProps = MUIRadioGroupProps & {
+type RadioGroupProps = {
   className?: string
   label: string
   error?: boolean
   errorMessage?: string
-  options: RadioGroupOption[]
+  children: React.ReactNode
 }
 
 export const RadioGroup = ({
@@ -26,17 +15,29 @@ export const RadioGroup = ({
   label,
   error = false,
   errorMessage,
-  options,
-  ...radioGroupProps
+  children,
 }: RadioGroupProps) => {
   return (
-    <FormControl className={className}>
-      <label htmlFor={radioGroupProps.id}>{label}</label>
-      <MUIRadioGroup {...radioGroupProps}>
-        {options.map(({ label, value }) => (
-          <FormControlLabel key={value} label={label} value={value} control={<Radio />} />
-        ))}
-      </MUIRadioGroup>
-    </FormControl>
+    <fieldset className={className}>
+      <legend>{label}</legend>
+      {children}
+    </fieldset>
   )
 }
+
+type RadioInputProps = BaseInputProps & {
+  label: string
+  value: string
+}
+
+export const RadioInput = forwardRef(function CustomRadioInput(
+  { label, value, name, onChange }: RadioInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) {
+  return (
+    <div>
+      <BaseInput ref={ref} type="radio" id={value} name={name} value={value} onChange={onChange} />
+      <label htmlFor={value}>{label}</label>
+    </div>
+  )
+})
