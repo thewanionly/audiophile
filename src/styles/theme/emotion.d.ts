@@ -27,6 +27,10 @@ declare module '@emotion/react' {
       inputLabel: string
       inputPlaceholder: string
       inputError: string
+      radioButtonBg: string
+      radioButtonDotDefault: string
+      radioButtonDotChecked: string
+      radioButtonBorder: string
       inputStepper: string
       stepperButton: string
       stepperButtonDisabled: string

@@ -21,7 +21,6 @@ const S = {
 
 export const CheckoutForm = () => {
   const {
-    watch,
     register,
     handleSubmit,
     formState: { errors },
@@ -31,9 +30,6 @@ export const CheckoutForm = () => {
   })
 
   const onSubmit: SubmitHandler<CheckoutSchema> = (data) => console.log('### data', data)
-
-  console.log('### errors', errors)
-  console.log('### watch paymentMethod', watch('paymentMethod'))
 
   return (
     <S.CheckoutForm id="checkout-form" aria-label="Checkout form" onSubmit={handleSubmit(onSubmit)}>

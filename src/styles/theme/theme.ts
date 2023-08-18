@@ -33,6 +33,12 @@ export const theme: Theme = {
     inputPlaceholder: rgba(COLORS.black, 0.4),
     inputError: COLORS.persianRed,
 
+    // Radio button
+    radioButtonBg: COLORS.white,
+    radioButtonDotDefault: COLORS.white,
+    radioButtonDotChecked: COLORS.rawSienna,
+    radioButtonBorder: COLORS.greyGoose,
+
     // Input Stepper
     inputStepper: COLORS.seaShell,
     stepperButton: rgba(COLORS.black, 0.35),

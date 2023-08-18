@@ -22,7 +22,7 @@ export const checkoutSchema = z.object({
   city: z.string().min(1, { message: 'Required' }),
   country: z.string().min(1, { message: 'Required' }),
   paymentMethod: z
-    .string({ invalid_type_error: 'Please select a payment method.' })
+    .string({ invalid_type_error: 'Required' })
     .refine((val) => PAYMENT_METHODS.map(({ value }) => value).includes(val)),
 })
 
