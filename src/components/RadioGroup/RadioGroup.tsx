@@ -3,11 +3,19 @@ import { ForwardedRef, ReactNode, forwardRef } from 'react'
 import styled from '@emotion/styled'
 import BaseInput, { InputProps as BaseInputProps } from '@mui/base/Input'
 
+import { mediaQuery } from '@/styles/utils'
+
 const S = {
   RadioGroup: styled.fieldset``,
   RadioGroupContainer: styled.div`
     display: grid;
     row-gap: 1.7rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 0.7rem;
+      column-gap: 1.6rem;
+    }
   `,
   RadioGroupLabel: styled.legend<{ isError: boolean }>`
     grid-area: 1 / 1 / 2 / 2;
@@ -28,6 +36,11 @@ const S = {
     line-height: normal;
     letter-spacing: -0.0214rem;
     color: ${({ theme }) => theme.colors.inputError};
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      justify-self: flex-start;
+      grid-area: 2 / 1 / 3 / 2;
+    }
   `,
   RadioGroupInputs: styled.div`
     grid-area: 2 / 1 / 3 / 3;
@@ -35,6 +48,10 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      grid-area: 1 / 2 / 4 / 3;
+    }
   `,
   RadioInputContainer: styled.label`
     border-radius: 0.8rem;
