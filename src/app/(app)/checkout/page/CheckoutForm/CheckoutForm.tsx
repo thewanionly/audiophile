@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 import styled from '@emotion/styled'
@@ -22,6 +23,7 @@ const S = {
 export const CheckoutForm = () => {
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<CheckoutSchema>({
@@ -30,6 +32,11 @@ export const CheckoutForm = () => {
   })
 
   const onSubmit: SubmitHandler<CheckoutSchema> = (data) => console.log('### data', data)
+
+  useEffect(() => {
+    // Set default selected option of "paymentMethod" field
+    setValue('paymentMethod', PAYMENT_METHODS[0].value)
+  }, [setValue])
 
   return (
     <S.CheckoutForm id="checkout-form" aria-label="Checkout form" onSubmit={handleSubmit(onSubmit)}>
