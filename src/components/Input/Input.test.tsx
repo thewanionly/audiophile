@@ -11,6 +11,7 @@ describe('Input', () => {
 
     const labelText = screen.getByTestId('input-label')
     expect(labelText).toBeInTheDocument()
+    expect(labelText).toHaveTextContent(labelValue)
   })
 
   it('displays no error message when error is false and errorMessage prop is not defined', () => {
@@ -34,7 +35,7 @@ describe('Input', () => {
     expect(errorMessage).not.toBeInTheDocument()
   })
 
-  it('displays no error message when error is true and errorMessage prop is defined', () => {
+  it('displays error message when error is true and errorMessage prop is defined', () => {
     const errorMessageValue = 'test error'
     render(<Input label="Test" error errorMessage="test error" />)
 

@@ -118,7 +118,7 @@ const S = {
   `,
 }
 
-type RadioGroupProps = {
+export type RadioGroupProps = {
   className?: string
   label: string
   error?: boolean
@@ -136,7 +136,9 @@ export const RadioGroup = ({
   return (
     <S.RadioGroup className={className}>
       <S.RadioGroupContainer>
-        <S.RadioGroupLabel isError={error}>{label}</S.RadioGroupLabel>
+        <S.RadioGroupLabel data-testid="radio-group-label" isError={error}>
+          {label}
+        </S.RadioGroupLabel>
         {error && errorMessage && (
           <S.RadioGroupError data-testid="radio-group-error">{errorMessage}</S.RadioGroupError>
         )}
