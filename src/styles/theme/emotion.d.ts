@@ -31,6 +31,7 @@ declare module '@emotion/react' {
       radioButtonDotDefault: string
       radioButtonDotChecked: string
       radioButtonBorder: string
+      radioButtonBorderActive: string
       inputStepper: string
       stepperButton: string
       stepperButtonDisabled: string

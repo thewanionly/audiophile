@@ -53,7 +53,7 @@ const S = {
       grid-area: 1 / 2 / 4 / 3;
     }
   `,
-  RadioInputContainer: styled.label`
+  RadioInputContainer: styled.label<{ isError: boolean }>`
     border-radius: 0.8rem;
     border: 0.1rem solid ${({ theme }) => theme.colors.inputBorder};
     padding: 1.8rem;
@@ -68,15 +68,17 @@ const S = {
 
     &:focus,
     &:focus-within {
-      border-color: ${({ theme }) => theme.colors.primary};
-      box-shadow: 0 0 0 0.1rem ${({ theme }) => theme.colors.primary};
+      border-color: ${({ theme, isError }) =>
+        isError ? theme.colors.inputError : theme.colors.primary};
+      box-shadow: 0 0 0 0.1rem
+        ${({ theme, isError }) => (isError ? theme.colors.inputError : theme.colors.primary)};
     }
 
     &:focus-visible {
       outline: 0;
     }
   `,
-  RadioInput: styled(BaseInput)`
+  RadioInput: styled(BaseInput)<{ isError: boolean }>`
     width: 2rem;
     height: 2rem;
 
@@ -101,7 +103,9 @@ const S = {
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.2rem ${({ theme }) => theme.colors.primary};
+        box-shadow: 0 0 0 0.2rem
+          ${({ theme, isError }) =>
+            isError ? theme.colors.inputError : theme.colors.radioButtonBorderActive};
       }
 
       &:focus-visible {
@@ -151,14 +155,15 @@ export const RadioGroup = ({
 type RadioInputProps = BaseInputProps & {
   label: string
   value: string
+  error?: boolean
 }
 
 export const RadioInput = forwardRef(function CustomRadioInput(
-  { label, value, name, onChange }: RadioInputProps,
+  { label, value, name, onChange, error = false }: RadioInputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
   return (
-    <S.RadioInputContainer htmlFor={value}>
+    <S.RadioInputContainer htmlFor={value} isError={error}>
       <S.RadioInput
         ref={ref}
         type="radio"
@@ -166,6 +171,7 @@ export const RadioInput = forwardRef(function CustomRadioInput(
         name={name}
         value={value}
         onChange={onChange}
+        isError={error}
       />
       <S.RadioInputLabel>{label}</S.RadioInputLabel>
     </S.RadioInputContainer>

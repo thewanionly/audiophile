@@ -38,6 +38,7 @@ export const theme: Theme = {
     radioButtonDotDefault: COLORS.white,
     radioButtonDotChecked: COLORS.rawSienna,
     radioButtonBorder: COLORS.greyGoose,
+    radioButtonBorderActive: COLORS.rawSienna,
 
     // Input Stepper
     inputStepper: COLORS.seaShell,

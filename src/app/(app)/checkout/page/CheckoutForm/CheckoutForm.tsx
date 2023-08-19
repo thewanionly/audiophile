@@ -41,7 +41,13 @@ export const CheckoutForm = () => {
         errorMessage={errors.paymentMethod?.message}
       >
         {PAYMENT_METHODS.map(({ label, value }) => (
-          <RadioInput key={value} label={label} value={value} {...register('paymentMethod')} />
+          <RadioInput
+            key={value}
+            label={label}
+            value={value}
+            error={Boolean(errors.paymentMethod)}
+            {...register('paymentMethod')}
+          />
         ))}
       </RadioGroup>
       <button type="submit">Submit</button>
