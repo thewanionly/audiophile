@@ -38,7 +38,6 @@ export const CheckoutForm = () => {
       <BillingDetails register={register} errors={errors} />
       <ShippingInfo register={register} errors={errors} />
       <PaymentDetails register={register} errors={errors} />
-      <button type="submit">Submit</button>
     </S.CheckoutForm>
   )
 }
