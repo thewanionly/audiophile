@@ -18,6 +18,7 @@ const S = {
 export const CheckoutForm = () => {
   const {
     register,
+    watch,
     setValue,
     handleSubmit,
     formState: { errors },
@@ -37,7 +38,7 @@ export const CheckoutForm = () => {
     <S.CheckoutForm id="checkout-form" aria-label="Checkout form" onSubmit={handleSubmit(onSubmit)}>
       <BillingDetails register={register} errors={errors} />
       <ShippingInfo register={register} errors={errors} />
-      <PaymentDetails register={register} errors={errors} />
+      <PaymentDetails register={register} errors={errors} watch={watch} />
     </S.CheckoutForm>
   )
 }
