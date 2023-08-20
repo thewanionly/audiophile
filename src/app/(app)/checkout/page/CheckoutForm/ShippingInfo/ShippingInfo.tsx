@@ -1,13 +1,20 @@
 import styled from '@emotion/styled'
 
 import { Input } from '@/components'
+import { mediaQuery } from '@/styles/utils'
 
 import { SHIPPING_INFO } from '../../../utils/constants'
 import { formSectionHeading, formFieldsContainer, formInput } from '../CheckoutForm.styles'
 import { FormSectionProps } from '../CheckoutForm.types'
 
 const S = {
-  FormSection: styled.fieldset``,
+  FormSection: styled.fieldset`
+    margin-bottom: 3.2rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-bottom: 6.1rem;
+    }
+  `,
   FormSectionHeading: styled.legend`
     ${({ theme }) => formSectionHeading(theme)}
   `,
