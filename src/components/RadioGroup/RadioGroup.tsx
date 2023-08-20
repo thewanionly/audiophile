@@ -1,7 +1,7 @@
 import { ForwardedRef, ReactNode, forwardRef } from 'react'
 
 import styled from '@emotion/styled'
-import BaseInput, { InputProps as BaseInputProps } from '@mui/base/Input'
+import { Input as BaseInput, InputProps as BaseInputProps } from '@mui/base/Input'
 
 import { mediaQuery } from '@/styles/utils'
 

@@ -3,8 +3,8 @@
 import { ChangeEvent, FocusEvent, useState } from 'react'
 
 import styled from '@emotion/styled'
-import Button from '@mui/base/Button'
-import Input from '@mui/base/Input'
+import { Button } from '@mui/base/Button'
+import { Input } from '@mui/base/Input'
 
 const S = {
   InputStepper: styled.div`
