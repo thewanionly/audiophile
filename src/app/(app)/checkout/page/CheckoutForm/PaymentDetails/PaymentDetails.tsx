@@ -7,7 +7,7 @@ import { mediaQuery } from '@/styles/utils'
 
 import { COD_MESSAGE, PAYMENT_DETAILS } from '../../../utils/constants'
 import { PAYMENT_METHODS, PAYMENT_METHODS_OPTIONS } from '../../Checkout.schema'
-import { formSectionHeading, formInput } from '../CheckoutForm.styles'
+import { formSectionHeading, formFieldsContainer, formInput } from '../CheckoutForm.styles'
 import { FormSectionProps } from '../CheckoutForm.types'
 
 const S = {
@@ -15,9 +15,16 @@ const S = {
   FormSectionHeading: styled.legend`
     ${({ theme }) => formSectionHeading(theme)}
   `,
-  FormFieldsContainer: styled.div``,
   FormInput: styled(Input)`
     ${({ theme }) => formInput(theme)}
+  `,
+  EMoneySection: styled.div`
+    ${({ theme }) => formFieldsContainer(theme)}
+    margin-top: 3.2rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 2.4rem;
+    }
   `,
   CODSection: styled.div`
     margin-top: 3rem;
@@ -64,31 +71,47 @@ export const PaymentDetails = ({ register, errors, watch }: PaymentDetailsProps)
   return (
     <S.FormSection>
       <S.FormSectionHeading>{PAYMENT_DETAILS}</S.FormSectionHeading>
-      <S.FormFieldsContainer>
-        <RadioGroup
-          label="Payment Method"
-          error={Boolean(errors.paymentMethod)}
-          errorMessage={errors.paymentMethod?.message}
-        >
-          {PAYMENT_METHODS_OPTIONS.map(({ label, value }) => (
-            <RadioInput
-              key={value}
-              label={label}
-              value={value}
-              error={Boolean(errors.paymentMethod)}
-              {...register('paymentMethod')}
-            />
-          ))}
-        </RadioGroup>
-        {currPaymentMethod === PAYMENT_METHODS.cod.value && (
-          <S.CODSection>
-            <S.CODImageContainer>
-              <S.CODImage src="/icons/cod.svg" alt="cash on delivery" fill />
-            </S.CODImageContainer>
-            <S.CODMessage>{COD_MESSAGE}</S.CODMessage>
-          </S.CODSection>
-        )}
-      </S.FormFieldsContainer>
+      <RadioGroup
+        label="Payment Method"
+        error={Boolean(errors.paymentMethod)}
+        errorMessage={errors.paymentMethod?.message}
+      >
+        {PAYMENT_METHODS_OPTIONS.map(({ label, value }) => (
+          <RadioInput
+            key={value}
+            label={label}
+            value={value}
+            error={Boolean(errors.paymentMethod)}
+            {...register('paymentMethod')}
+          />
+        ))}
+      </RadioGroup>
+      {currPaymentMethod === PAYMENT_METHODS.eMoney.value && (
+        <S.EMoneySection>
+          <S.FormInput
+            label="e-Money Number"
+            id="eMoneyNumber"
+            {...register('eMoneyNumber')}
+            error={Boolean(errors.eMoneyNumber)}
+            errorMessage={errors.eMoneyNumber?.message}
+          />
+          <S.FormInput
+            label="e-Money PIN"
+            id="eMoneyPIN"
+            {...register('eMoneyPIN')}
+            error={Boolean(errors.eMoneyPIN)}
+            errorMessage={errors.eMoneyPIN?.message}
+          />
+        </S.EMoneySection>
+      )}
+      {currPaymentMethod === PAYMENT_METHODS.cod.value && (
+        <S.CODSection>
+          <S.CODImageContainer>
+            <S.CODImage src="/icons/cod.svg" alt="cash on delivery" fill />
+          </S.CODImageContainer>
+          <S.CODMessage>{COD_MESSAGE}</S.CODMessage>
+        </S.CODSection>
+      )}
     </S.FormSection>
   )
 }

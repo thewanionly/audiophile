@@ -13,7 +13,7 @@ export const PAYMENT_METHODS = {
 
 export const PAYMENT_METHODS_OPTIONS = Object.values(PAYMENT_METHODS)
 
-export const checkoutSchema = z.object({
+const base = z.object({
   name: z.string().min(1, { message: 'Required' }),
   email: z.string().min(1, { message: 'Required' }).email({
     message: 'Wrong format',
@@ -23,10 +23,25 @@ export const checkoutSchema = z.object({
   zipCode: z.string().min(1, { message: 'Required' }),
   city: z.string().min(1, { message: 'Required' }),
   country: z.string().min(1, { message: 'Required' }),
-  paymentMethod: z
-    .string({ invalid_type_error: 'Required' })
-    .refine((val) => PAYMENT_METHODS_OPTIONS.map(({ value }) => value).includes(val)),
 })
+
+// Conditionally require eMoney fields depending on paymentMethod field's value
+export const checkoutSchema = z.discriminatedUnion('paymentMethod', [
+  z
+    .object({
+      paymentMethod: z.literal(PAYMENT_METHODS.eMoney.value),
+      eMoneyNumber: z.string().min(1, { message: 'Required' }),
+      eMoneyPIN: z.string().min(1, { message: 'Required' }),
+    })
+    .merge(base),
+  z
+    .object({
+      paymentMethod: z.literal(PAYMENT_METHODS.cod.value),
+      eMoneyNumber: z.string(),
+      eMoneyPIN: z.string(),
+    })
+    .merge(base),
+])
 
 // extracting the type
 export type CheckoutSchema = z.infer<typeof checkoutSchema>

@@ -29,6 +29,17 @@ describe('PaymentDetails', () => {
       })
     })
 
+    it.each`
+      field
+      ${'e-Money Number'}
+      ${'e-Money PIN'}
+    `(`displays $field field when selected payment method is e-Money`, async ({ field }) => {
+      setup()
+
+      const fieldElement = screen.getByRole('textbox', { name: field })
+      expect(fieldElement).toBeInTheDocument()
+    })
+
     it('displays COD section when selected payment method is Cash on Delivery', async () => {
       setup()
 
