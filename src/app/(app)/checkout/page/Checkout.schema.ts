@@ -1,15 +1,17 @@
 import { z } from 'zod'
 
-export const PAYMENT_METHODS = [
-  {
+export const PAYMENT_METHODS = {
+  eMoney: {
     label: 'e-Money',
     value: 'e-money',
   },
-  {
+  cod: {
     label: 'Cash on Delivery',
     value: 'cod',
   },
-]
+}
+
+export const PAYMENT_METHODS_OPTIONS = Object.values(PAYMENT_METHODS)
 
 export const checkoutSchema = z.object({
   name: z.string().min(1, { message: 'Required' }),
@@ -23,7 +25,7 @@ export const checkoutSchema = z.object({
   country: z.string().min(1, { message: 'Required' }),
   paymentMethod: z
     .string({ invalid_type_error: 'Required' })
-    .refine((val) => PAYMENT_METHODS.map(({ value }) => value).includes(val)),
+    .refine((val) => PAYMENT_METHODS_OPTIONS.map(({ value }) => value).includes(val)),
 })
 
 // extracting the type

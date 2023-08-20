@@ -5,8 +5,8 @@ import styled from '@emotion/styled'
 import { Input, RadioGroup, RadioInput } from '@/components'
 import { mediaQuery } from '@/styles/utils'
 
-import { PAYMENT_DETAILS } from '../../../utils/constants'
-import { PAYMENT_METHODS } from '../../Checkout.schema'
+import { COD_MESSAGE, PAYMENT_DETAILS } from '../../../utils/constants'
+import { PAYMENT_METHODS, PAYMENT_METHODS_OPTIONS } from '../../Checkout.schema'
 import { formSectionHeading, formInput } from '../CheckoutForm.styles'
 import { FormSectionProps } from '../CheckoutForm.types'
 
@@ -70,7 +70,7 @@ export const PaymentDetails = ({ register, errors, watch }: PaymentDetailsProps)
           error={Boolean(errors.paymentMethod)}
           errorMessage={errors.paymentMethod?.message}
         >
-          {PAYMENT_METHODS.map(({ label, value }) => (
+          {PAYMENT_METHODS_OPTIONS.map(({ label, value }) => (
             <RadioInput
               key={value}
               label={label}
@@ -80,16 +80,12 @@ export const PaymentDetails = ({ register, errors, watch }: PaymentDetailsProps)
             />
           ))}
         </RadioGroup>
-        {currPaymentMethod === 'cod' && (
+        {currPaymentMethod === PAYMENT_METHODS.cod.value && (
           <S.CODSection>
             <S.CODImageContainer>
               <S.CODImage src="/icons/cod.svg" alt="cash on delivery" fill />
             </S.CODImageContainer>
-            <S.CODMessage>
-              The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier
-              arrives at your residence. Just make sure your address is correct so that your order
-              will not be cancelled.
-            </S.CODMessage>
+            <S.CODMessage>{COD_MESSAGE}</S.CODMessage>
           </S.CODSection>
         )}
       </S.FormFieldsContainer>

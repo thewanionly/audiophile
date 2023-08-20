@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import styled from '@emotion/styled'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { CheckoutSchema, PAYMENT_METHODS, checkoutSchema } from '../Checkout.schema'
+import { CheckoutSchema, PAYMENT_METHODS_OPTIONS, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
 import { PaymentDetails } from './PaymentDetails'
 import { ShippingInfo } from './ShippingInfo'
@@ -31,7 +31,7 @@ export const CheckoutForm = () => {
 
   useEffect(() => {
     // Set default selected option of "paymentMethod" field
-    setValue('paymentMethod', PAYMENT_METHODS[0].value)
+    setValue('paymentMethod', PAYMENT_METHODS_OPTIONS[0].value)
   }, [setValue])
 
   return (
