@@ -6,6 +6,8 @@ import styled from '@emotion/styled'
 import { Button } from '@mui/base/Button'
 import { Input } from '@mui/base/Input'
 
+import { NON_NUMERIC_REGEX } from '@/utils/constants'
+
 const S = {
   InputStepper: styled.div`
     background-color: ${({ theme }) => theme.colors.inputStepper};
@@ -77,8 +79,6 @@ export type InputStepperProps = {
   min?: number
   onChange: (value: number) => void
 }
-
-const NON_NUMERIC_REGEX = /[^0-9]/g
 
 export const InputStepper = ({
   className = '',

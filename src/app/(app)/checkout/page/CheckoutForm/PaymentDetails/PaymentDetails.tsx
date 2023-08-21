@@ -1,9 +1,12 @@
+import { ChangeEvent } from 'react'
+
 import Image from 'next/image'
 
 import styled from '@emotion/styled'
 
 import { Input, RadioGroup, RadioInput } from '@/components'
 import { mediaQuery } from '@/styles/utils'
+import { NON_NUMERIC_REGEX } from '@/utils/constants'
 
 import { COD_MESSAGE, PAYMENT_DETAILS } from '../../../utils/constants'
 import { PAYMENT_METHODS, PAYMENT_METHODS_OPTIONS } from '../../Checkout.schema'
@@ -65,8 +68,15 @@ const S = {
 
 type PaymentDetailsProps = FormSectionProps
 
-export const PaymentDetails = ({ register, errors, watch }: PaymentDetailsProps) => {
+export const PaymentDetails = ({ register, errors, watch, setValue }: PaymentDetailsProps) => {
   const currPaymentMethod = watch?.('paymentMethod')
+
+  const handleEMoneyFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target as { name: 'eMoneyNumber' | 'eMoneyPIN'; value: string }
+
+    // Allow only numeric values and limit input to numbers
+    setValue?.(name, value.replace(NON_NUMERIC_REGEX, ''))
+  }
 
   return (
     <S.FormSection>
@@ -91,14 +101,14 @@ export const PaymentDetails = ({ register, errors, watch }: PaymentDetailsProps)
           <S.FormInput
             label="e-Money Number"
             id="eMoneyNumber"
-            {...register('eMoneyNumber')}
+            {...register('eMoneyNumber', { onChange: handleEMoneyFieldChange })}
             error={Boolean(errors.eMoneyNumber)}
             errorMessage={errors.eMoneyNumber?.message}
           />
           <S.FormInput
             label="e-Money PIN"
             id="eMoneyPIN"
-            {...register('eMoneyPIN')}
+            {...register('eMoneyPIN', { onChange: handleEMoneyFieldChange })}
             error={Boolean(errors.eMoneyPIN)}
             errorMessage={errors.eMoneyPIN?.message}
           />

@@ -4,6 +4,7 @@ export const SEE_PRODUCT = 'See Product'
 export const NOT_FOUND_PRIMARY_MESSAGE = `Sorry, we can't find the page you are looking for.`
 export const NOT_FOUND_SECONDARY_MESSAGE = 'Please re-check the URL or return to the home page.'
 
+export const NON_NUMERIC_REGEX = /[^0-9]/g
 export const MIN_QUANTITY = 1
 
 export const GO_BACK = 'Go Back'
