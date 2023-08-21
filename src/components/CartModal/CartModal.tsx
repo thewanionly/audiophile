@@ -6,6 +6,7 @@ import MUIModal from '@mui/material/Modal'
 import { Button, ButtonVariant } from '@/components'
 import { useCartActions, useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { CHECKOUT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
 import { CartItem } from './CartItem/CartItem'
@@ -60,7 +61,9 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
     text-decoration: underline;
   `,
-  CartBody: styled.section``,
+  CartBody: styled.section`
+    margin-bottom: 2.4rem;
+  `,
   CartItemList: styled.ul`
     display: flex;
     flex-direction: column;
@@ -103,6 +106,10 @@ const S = {
     line-height: 2.5rem;
     text-align: center;
     color: ${({ theme }) => theme.colors.bodyTextDark};
+  `,
+  CheckoutButton: styled(Button)`
+    width: 100%;
+    text-align: center;
   `,
 }
 
@@ -167,6 +174,11 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
             </S.CartItemTotalPriceContainer>
           )}
         </S.CartBody>
+        {totalItems > 0 && (
+          <S.CheckoutButton asLink href="/checkout" onClick={closeModal}>
+            {CHECKOUT}
+          </S.CheckoutButton>
+        )}
       </S.ModalContent>
     </S.Modal>
   )

@@ -8,3 +8,4 @@ export const NON_NUMERIC_REGEX = /[^0-9]/g
 export const MIN_QUANTITY = 1
 
 export const GO_BACK = 'Go Back'
+export const CHECKOUT = 'Checkout'

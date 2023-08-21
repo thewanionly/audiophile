@@ -1,5 +1,5 @@
 import { render, screen } from '@/tests'
-import { GO_BACK } from '@/utils/constants'
+import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
 import { Checkout } from './Checkout'
 
@@ -27,7 +27,7 @@ describe('Checkout', () => {
   it('displays checkout heading', () => {
     setup()
 
-    const checkoutHeading = screen.getByRole('heading', { name: /checkout/i })
+    const checkoutHeading = screen.getByRole('heading', { name: CHECKOUT })
     expect(checkoutHeading).toBeInTheDocument()
   })
 

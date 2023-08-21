@@ -162,6 +162,7 @@ type ButtonProps = {
   openLinkInNewTab?: boolean
   variant?: ButtonVariant
   type?: 'submit' | 'button' | 'reset'
+  form?: string
 }
 
 export const Button = ({
@@ -177,6 +178,7 @@ export const Button = ({
   openLinkInNewTab = false,
   variant = ButtonVariant.CONTAINED,
   type = 'button',
+  form,
 }: ButtonProps) => {
   const buttonProps = {
     className,
@@ -184,9 +186,10 @@ export const Button = ({
     variant,
     disabled,
     ...(!asLink
-      ? { onClick, type }
+      ? { onClick, type, form }
       : {
           as: S.Link,
+          onClick,
           href: !disabled ? href : '',
           role: 'link',
           target: openLinkInNewTab ? '_blank' : '',

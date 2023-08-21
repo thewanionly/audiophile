@@ -6,7 +6,7 @@ import styled from '@emotion/styled'
 
 import { Button, ButtonVariant } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { GO_BACK } from '@/utils/constants'
+import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
 import { CheckoutForm } from './CheckoutForm/CheckoutForm'
 import { OrderSummary } from './OrderSummary'
@@ -94,7 +94,7 @@ export const Checkout = () => {
         </S.BackButton>
       </S.BackButtonContainer>
       <S.CheckoutSection>
-        <S.CheckoutHeading>Checkout</S.CheckoutHeading>
+        <S.CheckoutHeading>{CHECKOUT}</S.CheckoutHeading>
         <CheckoutForm />
       </S.CheckoutSection>
       <S.OrderSummary />
