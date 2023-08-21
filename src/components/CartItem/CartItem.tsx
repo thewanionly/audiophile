@@ -74,7 +74,9 @@ const S = {
     height: 1.5rem;
   `,
   QuantityValue: styled.span`
-    align-self: center;
+    margin-top: 0.7rem;
+    flex-shrink: 0;
+
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.regular};
     line-height: 2.5rem;

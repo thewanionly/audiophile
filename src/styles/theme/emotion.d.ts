@@ -52,6 +52,7 @@ declare module '@emotion/react' {
       categoryHeaderBg: string
       imageBg: string
       price: string
+      grandPrice: string
       checkoutSectionBg: string
       orderSummaryBg: string
     }
