@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 
+import { Button } from '@/components'
 import { mediaQuery } from '@/styles/utils'
 
-import { ORDER_SUMMARY } from '../../utils/constants'
+import { ORDER_SUMMARY, SUBMIT_BUTTON } from '../../utils/constants'
 
 const S = {
   OrderSummary: styled.section`
@@ -27,6 +28,9 @@ const S = {
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.darkTitle};
   `,
+  OrderSummarySubmitButton: styled(Button)`
+    width: 100%;
+  `,
 }
 
 type OrderSummaryProps = {
@@ -37,9 +41,9 @@ export const OrderSummary = ({ className }: OrderSummaryProps) => {
   return (
     <S.OrderSummary className={className}>
       <S.OrderSummaryHeading>{ORDER_SUMMARY}</S.OrderSummaryHeading>
-      <button type="submit" form="checkout-form">
-        Submit
-      </button>
+      <S.OrderSummarySubmitButton type="submit" form="checkout-form">
+        {SUBMIT_BUTTON}
+      </S.OrderSummarySubmitButton>
     </S.OrderSummary>
   )
 }
