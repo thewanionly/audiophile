@@ -9,19 +9,30 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { GO_BACK } from '@/utils/constants'
 
 import { CheckoutForm } from './CheckoutForm/CheckoutForm'
+import { OrderSummary } from './OrderSummary'
 
 const S = {
-  BackButtonContainer: styled.div`
+  CheckoutContainer: styled.div`
     ${({ theme }) => appSectionContainer(theme)}
 
-    margin: 1.6rem auto 2.4rem;
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      display: grid;
+      column-gap: 3rem;
+      grid-template-columns: 2fr 1fr;
+      /* grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr); */
+    }
+  `,
+  BackButtonContainer: styled.div`
+    margin: 1.6rem 0 2.4rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      margin: 4.8rem auto 2.4rem;
+      margin: 4.8rem 0 2.4rem;
     }
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-      margin: 7.9rem auto 3.8rem;
+      margin: 7.9rem 0 3.8rem;
+      grid-area: 1 / 1 / 2 / 3;
     }
   `,
   BackButton: styled(Button)`
@@ -31,8 +42,6 @@ const S = {
     letter-spacing: normal;
   `,
   CheckoutSection: styled.section`
-    ${({ theme }) => appSectionContainer(theme)}
-
     background-color: ${({ theme }) => theme.colors.checkoutSectionBg};
     border-radius: 0.8rem;
     padding: 2.4rem;
@@ -44,6 +53,7 @@ const S = {
 
     ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
       padding: 5.4rem 4.8rem;
+      grid-area: 2 / 1 / 3 / 2;
     }
   `,
   CheckoutHeading: styled.h1`
@@ -62,6 +72,11 @@ const S = {
       letter-spacing: 0.1143rem;
     }
   `,
+  OrderSummary: styled(OrderSummary)`
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+  `,
 }
 
 export const Checkout = () => {
@@ -72,7 +87,7 @@ export const Checkout = () => {
   }
 
   return (
-    <>
+    <S.CheckoutContainer>
       <S.BackButtonContainer>
         <S.BackButton variant={ButtonVariant.TERTIARY} onClick={handleGoBack}>
           {GO_BACK}
@@ -82,6 +97,7 @@ export const Checkout = () => {
         <S.CheckoutHeading>Checkout</S.CheckoutHeading>
         <CheckoutForm />
       </S.CheckoutSection>
-    </>
+      <S.OrderSummary />
+    </S.CheckoutContainer>
   )
 }

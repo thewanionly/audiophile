@@ -53,6 +53,7 @@ declare module '@emotion/react' {
       imageBg: string
       price: string
       checkoutSectionBg: string
+      orderSummaryBg: string
     }
     fontSizes: {
       xs: string

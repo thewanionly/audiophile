@@ -77,6 +77,7 @@ export const theme: Theme = {
 
     // Checkout
     checkoutSectionBg: COLORS.white,
+    orderSummaryBg: COLORS.white,
   },
   fontSizes: {
     xs: TYPOGRAPHY.fontSizeXs,
