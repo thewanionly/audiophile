@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 
 import Image from 'next/image'
@@ -75,16 +73,24 @@ const S = {
     width: 1.5rem;
     height: 1.5rem;
   `,
+  QuantityValue: styled.span`
+    align-self: center;
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+  `,
 }
 
-type CartItemProps = {
+export type CartItemProps = {
   image: ResponsiveImageType
   name: string
   slug: string
   category: string
   price: number
   quantity: number
-  closeModal: () => void
+  onClick?: () => void
+  withActions?: boolean
 }
 
 export const CartItem = ({
@@ -94,7 +100,8 @@ export const CartItem = ({
   category,
   price,
   quantity,
-  closeModal,
+  onClick,
+  withActions = true,
 }: CartItemProps) => {
   const [qtyValue, setQtyValue] = useState(quantity)
   const { updateItemQuantity, removeItem } = useCartActions()
@@ -109,26 +116,34 @@ export const CartItem = ({
   return (
     <S.CartItem>
       <S.ProductDetails>
-        <S.ProductImageLink href={productHref} onClick={closeModal}>
+        <S.ProductImageLink href={productHref} onClick={onClick}>
           <S.ProductImageContainer>
             <S.ProductImage src={image.src.mobile} alt={image.alt} fill />
           </S.ProductImageContainer>
         </S.ProductImageLink>
-        <S.ProductShortNameLink href={productHref} onClick={closeModal}>
+        <S.ProductShortNameLink href={productHref} onClick={onClick}>
           <S.ProductShortName>{name}</S.ProductShortName>
         </S.ProductShortNameLink>
         <S.ProductPrice>{formatPrice(price)}</S.ProductPrice>
       </S.ProductDetails>
-      <S.ProductActions>
-        <S.ProductQuantityStepper
-          value={qtyValue}
-          min={MIN_QUANTITY}
-          onChange={handleUpdateQuantity}
-        />
-        <S.DeleteIconButton variant={ButtonVariant.TERTIARY} onClick={() => removeItem(slug)}>
-          <S.DeleteIcon name={IconName.Trash} />
-        </S.DeleteIconButton>
-      </S.ProductActions>
+      {withActions ? (
+        <S.ProductActions>
+          <S.ProductQuantityStepper
+            value={qtyValue}
+            min={MIN_QUANTITY}
+            onChange={handleUpdateQuantity}
+          />
+          <S.DeleteIconButton
+            variant={ButtonVariant.TERTIARY}
+            onClick={() => removeItem(slug)}
+            aria-label="delete item"
+          >
+            <S.DeleteIcon name={IconName.Trash} />
+          </S.DeleteIconButton>
+        </S.ProductActions>
+      ) : (
+        <S.QuantityValue data-testid="quantity-value">x {quantity}</S.QuantityValue>
+      )}
     </S.CartItem>
   )
 }

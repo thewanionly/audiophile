@@ -1,15 +1,15 @@
-import userEvent from '@testing-library/user-event'
-
 import { render, screen } from '@/tests'
 import { mockedCartItems } from '@/tests/__mocks__/data/cart'
 import { formatPrice } from '@/utils/helpers'
 
-import { CartItem } from './CartItem'
+import { CartItem, CartItemProps } from './CartItem'
 
 const { product, quantity } = mockedCartItems[0]
 const productHref = `/${product.category}/${product.slug}`
 
-const setup = () => {
+const setup = (params?: Partial<CartItemProps>) => {
+  const { withActions = true } = params || {}
+
   render(
     <CartItem
       image={product.image}
@@ -18,8 +18,7 @@ const setup = () => {
       category={product.category}
       price={product.price}
       quantity={quantity}
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      closeModal={() => {}}
+      withActions={withActions}
     />
   )
 }
@@ -64,12 +63,27 @@ describe('CartItem', () => {
     expect(productPrice).toBeInTheDocument()
   })
 
-  it('displays input stepper with quantity as value', () => {
+  it('displays input stepper with quantity as value if withActions is true', () => {
     setup()
 
     const inputStepper = screen.getByRole('textbox')
 
     expect(inputStepper).toBeInTheDocument()
     expect(inputStepper).toHaveValue(quantity.toString())
+  })
+
+  it('displays delete button icon if withActions is true', () => {
+    setup()
+
+    const deleteButtonIcon = screen.getByRole('button', { name: /trash icon/i })
+    expect(deleteButtonIcon).toBeInTheDocument()
+  })
+
+  it('displays quantity value text (no input stepper) if withActions is false', () => {
+    setup({ withActions: false })
+
+    const quantityValue = screen.getByTestId('quantity-value')
+    expect(quantityValue).toBeInTheDocument()
+    expect(quantityValue).toHaveTextContent(`x ${quantity}`)
   })
 })

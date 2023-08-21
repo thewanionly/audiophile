@@ -9,7 +9,7 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
-import { CartItem } from './CartItem/CartItem'
+import { CartItem } from '../CartItem'
 
 const S = {
   Modal: styled(MUIModal)`
