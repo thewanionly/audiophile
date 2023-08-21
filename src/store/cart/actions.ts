@@ -28,7 +28,7 @@ const addItem = async (slug: string, quantity: number) => {
 
     useAppStore.setState(() => ({ items: updatedCardItems }))
   } catch (error) {
-    console.log(
+    console.error(
       `There's a problem adding your item to cart. Please refresh the page and try again.`
     )
   }
