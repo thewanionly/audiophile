@@ -159,7 +159,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
                     category={product.category}
                     price={product.price}
                     quantity={quantity}
-                    closeModal={closeModal}
+                    onClick={closeModal}
                   />
                 </li>
               ))}
