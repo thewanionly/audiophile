@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
-import { Icon, IconName } from '@/components'
+import { Button, Icon, IconName } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import {
+  BACK_TO_HOME,
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
 } from '../../utils/constants'
@@ -61,6 +62,16 @@ const S = {
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
+  BackToHomeButton: styled(Button)`
+    width: 100%;
+    text-align: center;
+
+    margin-top: 2.3rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-top: 4.6rem;
+    }
+  `,
 }
 
 type OrderConfirmationModalProps = {
@@ -82,6 +93,9 @@ export const OrderConfirmationModal = ({
         </S.CheckCircle>
         <S.PrimaryMessage>{ORDER_CONFIRMATION_PRIMARY_MESSAGE}</S.PrimaryMessage>
         <S.SecondaryMessage>{ORDER_CONFIRMATION_SECONDARY_MESSAGE}</S.SecondaryMessage>
+        <S.BackToHomeButton asLink href="/">
+          {BACK_TO_HOME}
+        </S.BackToHomeButton>
       </S.OrderConfirmationModalContent>
     </S.OrderConfirmationModal>
   )

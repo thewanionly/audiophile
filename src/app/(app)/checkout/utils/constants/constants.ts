@@ -11,3 +11,4 @@ export const VAT_PERCENTAGE = 0.2
 export const ORDER_CONFIRMATION_PRIMARY_MESSAGE = 'Thank you for your order'
 export const ORDER_CONFIRMATION_SECONDARY_MESSAGE =
   'You will receive an email confirmation shortly.'
+export const BACK_TO_HOME = 'Back to home'

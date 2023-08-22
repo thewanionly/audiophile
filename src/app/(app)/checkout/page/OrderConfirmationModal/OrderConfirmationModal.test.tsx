@@ -2,6 +2,7 @@ import { IconName } from '@/components'
 import { render, screen } from '@/tests'
 
 import {
+  BACK_TO_HOME,
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
 } from '../../utils/constants'
@@ -33,5 +34,12 @@ describe('OrderConfirmationModal', () => {
 
     const secondaryMessage = screen.getByText(ORDER_CONFIRMATION_SECONDARY_MESSAGE)
     expect(secondaryMessage).toBeInTheDocument()
+  })
+
+  it('displays home link', () => {
+    setup()
+
+    const homeLink = screen.getByRole('link', { name: BACK_TO_HOME })
+    expect(homeLink).toHaveAttribute('href', '/')
   })
 })
