@@ -7,3 +7,7 @@ export const SUBMIT_BUTTON = 'Continue & Pay'
 
 export const SHIPPING_FEE = 50
 export const VAT_PERCENTAGE = 0.2
+
+export const ORDER_CONFIRMATION_PRIMARY_MESSAGE = 'Thank you for your order'
+export const ORDER_CONFIRMATION_SECONDARY_MESSAGE =
+  'You will receive an email confirmation shortly.'

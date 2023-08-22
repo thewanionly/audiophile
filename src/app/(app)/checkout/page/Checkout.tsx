@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useRouter } from 'next/navigation'
 
 import styled from '@emotion/styled'
@@ -9,6 +11,7 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
 import { CheckoutForm } from './CheckoutForm/CheckoutForm'
+import { OrderConfirmationModal } from './OrderConfirmationModal'
 import { OrderSummary } from './OrderSummary'
 
 const S = {
@@ -80,6 +83,7 @@ const S = {
 }
 
 export const Checkout = () => {
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
   const router = useRouter()
 
   const handleGoBack = () => {
@@ -95,9 +99,15 @@ export const Checkout = () => {
       </S.BackButtonContainer>
       <S.CheckoutSection>
         <S.CheckoutHeading>{CHECKOUT}</S.CheckoutHeading>
-        <CheckoutForm />
+        <CheckoutForm openConfirmationModal={() => setShowConfirmationModal(true)} />
       </S.CheckoutSection>
+      {/* TODO: Remove this button. For testing purposes only */}
+      <button onClick={() => setShowConfirmationModal(true)}>Open</button>
       <S.OrderSummary />
+      <OrderConfirmationModal
+        open={showConfirmationModal}
+        closeConfirmationModal={() => setShowConfirmationModal(false)}
+      />
     </S.CheckoutContainer>
   )
 }

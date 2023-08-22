@@ -15,7 +15,11 @@ const S = {
   CheckoutForm: styled.form``,
 }
 
-export const CheckoutForm = () => {
+type CheckoutFormProps = {
+  openConfirmationModal: () => void
+}
+
+export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
   const {
     register,
     watch,
@@ -27,7 +31,10 @@ export const CheckoutForm = () => {
     resolver: zodResolver(checkoutSchema),
   })
 
-  const onSubmit: SubmitHandler<CheckoutSchema> = (data) => console.log('### data', data)
+  const onSubmit: SubmitHandler<CheckoutSchema> = (data) => {
+    console.log('### data', data)
+    openConfirmationModal()
+  }
 
   useEffect(() => {
     // Set default selected option of "paymentMethod" field
