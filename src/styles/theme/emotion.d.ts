@@ -57,6 +57,8 @@ declare module '@emotion/react' {
       orderSummaryBg: string
       orderedItemsBg: string
       orderedItemsSeparator: string
+      grandTotalBg: string
+      grandTotalValue: string
     }
     fontSizes: {
       xs: string

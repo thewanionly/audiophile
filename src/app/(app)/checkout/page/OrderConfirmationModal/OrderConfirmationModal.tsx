@@ -4,12 +4,15 @@ import MUIModal from '@mui/material/Modal'
 import { Button, CartItem, Icon, IconName } from '@/components'
 import { useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
+import { formatPrice } from '@/utils/helpers'
 
 import {
   BACK_TO_HOME,
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
+  SHIPPING_FEE,
 } from '../../utils/constants'
+import { ORDER_COMPUTATIONS } from '../OrderSummary'
 
 const S = {
   OrderConfirmationModal: styled(MUIModal)`
@@ -27,6 +30,10 @@ const S = {
     padding: 3.2rem;
     max-width: 54rem;
     margin: 0 auto;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      padding: 4.8rem;
+    }
   `,
   CheckCircle: styled.div`
     border-radius: 50%;
@@ -71,18 +78,19 @@ const S = {
   `,
   OrderSummarySection: styled.section`
     border-radius: 0.8rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      display: flex;
+    }
   `,
   OrderedItemsContainer: styled.div`
-    border-radius: 0.8rem;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-
+    border-radius: 0.8rem 0.8rem 0 0;
     background-color: ${({ theme }) => theme.colors.orderedItemsBg};
     padding: 2.4rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      border-bottom-left-radius: 0.8rem;
-      border-top-right-radius: 0;
+      border-radius: 0.8rem 0 0 0.8rem;
+      width: 55%;
     }
   `,
   OrderedItemsSeparator: styled.div`
@@ -101,6 +109,38 @@ const S = {
 
     text-align: center;
     margin-top: 1.2rem;
+  `,
+  GrandTotalContainer: styled.div`
+    border-radius: 0 0 0.8rem 0.8rem;
+    background-color: ${({ theme }) => theme.colors.grandTotalBg};
+    padding: 1.5rem 2.4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      border-radius: 0 0.8rem 0.8rem 0;
+      width: 45%;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      padding: 1.5rem 3.2rem;
+    }
+  `,
+  GrandTotalLabel: styled.span`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.regular};
+    line-height: 2.5rem;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.colors.bodyTextLight};
+  `,
+  GrandTotalValue: styled.span`
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.med1};
+    line-height: normal;
+    color: ${({ theme }) => theme.colors.grandTotalValue};
   `,
   BackToHomeButton: styled(Button)`
     width: 100%;
@@ -123,7 +163,7 @@ export const OrderConfirmationModal = ({
   open = false,
   closeConfirmationModal,
 }: OrderConfirmationModalProps) => {
-  const { items } = useCartState()
+  const { items, totalPrice } = useCartState()
 
   const firstProduct = items[0]
   const otherItemsCount = items.length - 1
@@ -138,7 +178,7 @@ export const OrderConfirmationModal = ({
         </S.CheckCircle>
         <S.PrimaryMessage>{ORDER_CONFIRMATION_PRIMARY_MESSAGE}</S.PrimaryMessage>
         <S.SecondaryMessage>{ORDER_CONFIRMATION_SECONDARY_MESSAGE}</S.SecondaryMessage>
-        {firstProduct && (
+        {firstProduct && totalPrice && (
           <S.OrderSummarySection>
             <S.OrderedItemsContainer>
               <S.CartItem
@@ -157,6 +197,14 @@ export const OrderConfirmationModal = ({
                 </>
               )}
             </S.OrderedItemsContainer>
+            <S.GrandTotalContainer>
+              <S.GrandTotalLabel id={ORDER_COMPUTATIONS.grandTotal.id}>
+                {ORDER_COMPUTATIONS.grandTotal.label}
+              </S.GrandTotalLabel>
+              <S.GrandTotalValue aria-labelledby={ORDER_COMPUTATIONS.grandTotal.id}>
+                {formatPrice(totalPrice + SHIPPING_FEE)}
+              </S.GrandTotalValue>
+            </S.GrandTotalContainer>
           </S.OrderSummarySection>
         )}
         <S.BackToHomeButton asLink href="/">

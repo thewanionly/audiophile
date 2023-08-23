@@ -81,6 +81,8 @@ export const theme: Theme = {
     orderSummaryBg: COLORS.white,
     orderedItemsBg: COLORS.seaShell,
     orderedItemsSeparator: rgba(COLORS.black, 0.08),
+    grandTotalBg: COLORS.black,
+    grandTotalValue: COLORS.white,
   },
   fontSizes: {
     xs: TYPOGRAPHY.fontSizeXs,

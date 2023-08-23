@@ -6,6 +6,7 @@ import {
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
 } from '../../utils/constants'
+import { ORDER_COMPUTATIONS } from '../OrderSummary'
 import { OrderConfirmationModal } from './OrderConfirmationModal'
 
 const setup = () => {
@@ -34,6 +35,13 @@ describe('OrderConfirmationModal', () => {
 
     const secondaryMessage = screen.getByText(ORDER_CONFIRMATION_SECONDARY_MESSAGE)
     expect(secondaryMessage).toBeInTheDocument()
+  })
+
+  xit(`displays ${ORDER_COMPUTATIONS.grandTotal.label} value`, () => {
+    setup()
+
+    const valueText = screen.getByLabelText(ORDER_COMPUTATIONS.grandTotal.label)
+    expect(valueText).toBeInTheDocument()
   })
 
   it('displays home link', () => {
