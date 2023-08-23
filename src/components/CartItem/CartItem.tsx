@@ -85,6 +85,7 @@ const S = {
 }
 
 export type CartItemProps = {
+  className?: string
   image: ResponsiveImageType
   name: string
   slug: string
@@ -96,6 +97,7 @@ export type CartItemProps = {
 }
 
 export const CartItem = ({
+  className,
   image,
   name,
   slug,
@@ -116,7 +118,7 @@ export const CartItem = ({
   }
 
   return (
-    <S.CartItem>
+    <S.CartItem className={className}>
       <S.ProductDetails>
         <S.ProductImageLink href={productHref} onClick={onClick}>
           <S.ProductImageContainer>

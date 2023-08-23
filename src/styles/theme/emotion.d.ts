@@ -55,6 +55,8 @@ declare module '@emotion/react' {
       grandPrice: string
       checkoutSectionBg: string
       orderSummaryBg: string
+      orderedItemsBg: string
+      orderedItemsSeparator: string
     }
     fontSizes: {
       xs: string

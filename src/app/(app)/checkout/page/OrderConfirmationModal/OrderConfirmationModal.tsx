@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
-import { Button, Icon, IconName } from '@/components'
+import { Button, CartItem, Icon, IconName } from '@/components'
+import { useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import {
@@ -61,6 +62,45 @@ const S = {
     font-size: ${({ theme }) => theme.fontSizes.regular};
     line-height: 2.5rem;
     color: ${({ theme }) => theme.colors.bodyTextDark};
+
+    margin-bottom: 2.4rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-bottom: 3.3rem;
+    }
+  `,
+  OrderSummarySection: styled.section`
+    border-radius: 0.8rem;
+  `,
+  OrderedItemsContainer: styled.div`
+    border-radius: 0.8rem;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+    background-color: ${({ theme }) => theme.colors.orderedItemsBg};
+    padding: 2.4rem;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      border-bottom-left-radius: 0.8rem;
+      border-top-right-radius: 0;
+    }
+  `,
+  OrderedItemsSeparator: styled.div`
+    height: 0.1rem;
+    background-color: ${({ theme }) => theme.colors.orderedItemsSeparator};
+  `,
+  CartItem: styled(CartItem)`
+    margin-bottom: 1.2rem;
+  `,
+  OtherItemsCount: styled.p`
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+    line-height: normal;
+    letter-spacing: -0.0214rem;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+
+    text-align: center;
+    margin-top: 1.2rem;
   `,
   BackToHomeButton: styled(Button)`
     width: 100%;
@@ -83,6 +123,11 @@ export const OrderConfirmationModal = ({
   open = false,
   closeConfirmationModal,
 }: OrderConfirmationModalProps) => {
+  const { items } = useCartState()
+
+  const firstProduct = items[0]
+  const otherItemsCount = items.length - 1
+
   return (
     <S.OrderConfirmationModal open={open}>
       <S.OrderConfirmationModalContent>
@@ -93,6 +138,27 @@ export const OrderConfirmationModal = ({
         </S.CheckCircle>
         <S.PrimaryMessage>{ORDER_CONFIRMATION_PRIMARY_MESSAGE}</S.PrimaryMessage>
         <S.SecondaryMessage>{ORDER_CONFIRMATION_SECONDARY_MESSAGE}</S.SecondaryMessage>
+        {firstProduct && (
+          <S.OrderSummarySection>
+            <S.OrderedItemsContainer>
+              <S.CartItem
+                image={firstProduct.product.image}
+                name={firstProduct.product.name}
+                slug={firstProduct.product.slug}
+                category={firstProduct.product.category}
+                price={firstProduct.product.price}
+                quantity={firstProduct.quantity}
+                withActions={false}
+              />
+              {otherItemsCount > 0 && (
+                <>
+                  <S.OrderedItemsSeparator />
+                  <S.OtherItemsCount>and {otherItemsCount} other item(s)</S.OtherItemsCount>
+                </>
+              )}
+            </S.OrderedItemsContainer>
+          </S.OrderSummarySection>
+        )}
         <S.BackToHomeButton asLink href="/">
           {BACK_TO_HOME}
         </S.BackToHomeButton>
