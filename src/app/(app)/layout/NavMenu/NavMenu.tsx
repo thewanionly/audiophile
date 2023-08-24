@@ -36,8 +36,6 @@ type NavMenuProps = {
 export const NavMenu = ({ categories }: NavMenuProps) => {
   const { isNavMenuOpen, closeNavMenu } = useLayoutContext()
 
-  console.log('### process.env', process.env.NODE_ENV)
-
   return (
     <S.Modal open={isNavMenuOpen} onClose={closeNavMenu}>
       <S.ModalContent>
