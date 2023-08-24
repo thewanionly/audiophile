@@ -6,6 +6,10 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import styled from '@emotion/styled'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { OrderSummary, placeOrder } from '@/services/checkout'
+import { useCartState } from '@/store/cart'
+
+import { SHIPPING_FEE, VAT_PERCENTAGE } from '../../utils/constants'
 import { CheckoutSchema, PAYMENT_METHODS_OPTIONS, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
 import { PaymentDetails } from './PaymentDetails'
@@ -20,20 +24,41 @@ type CheckoutFormProps = {
 }
 
 export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
+  const { items, totalPrice } = useCartState()
   const {
     register,
     watch,
     setValue,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<CheckoutSchema>({
     mode: 'onTouched',
     resolver: zodResolver(checkoutSchema),
   })
 
-  const onSubmit: SubmitHandler<CheckoutSchema> = (data) => {
-    console.log('### data', data)
-    openConfirmationModal()
+  const onSubmit: SubmitHandler<CheckoutSchema> = async (data) => {
+    try {
+      const orderSummary: OrderSummary = {
+        items,
+        total: totalPrice,
+        shipping: SHIPPING_FEE,
+        vat: totalPrice * VAT_PERCENTAGE,
+        grandTotal: totalPrice + SHIPPING_FEE,
+      }
+
+      const { data: responseData } = await placeOrder(data, orderSummary)
+
+      if (!responseData.ok) throw Error
+
+      // Reset form
+      reset()
+
+      // Open confirmation modal
+      openConfirmationModal()
+    } catch (error) {
+      console.error(`Sorry, there's a problem placing your order. Please try again.`)
+    }
   }
 
   useEffect(() => {
