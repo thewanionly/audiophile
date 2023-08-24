@@ -127,7 +127,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
   }
 
   return (
-    <S.Modal open={open}>
+    <S.Modal open={open} onClose={closeModal}>
       <S.ModalContent>
         <S.CartHeader>
           <S.CartTitle>

@@ -37,7 +37,7 @@ export const NavMenu = ({ categories }: NavMenuProps) => {
   const { isNavMenuOpen, closeNavMenu } = useLayoutContext()
 
   return (
-    <S.Modal open={isNavMenuOpen}>
+    <S.Modal open={isNavMenuOpen} onClose={closeNavMenu}>
       <S.ModalContent>
         <S.CategoryCardListSection>
           <CategoryCardList
