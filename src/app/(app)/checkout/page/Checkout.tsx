@@ -106,7 +106,7 @@ export const Checkout = () => {
       <S.OrderSummary />
       <OrderConfirmationModal
         open={showConfirmationModal}
-        closeConfirmationModal={() => setShowConfirmationModal(false)}
+        onClose={() => setShowConfirmationModal(false)}
       />
     </S.CheckoutContainer>
   )

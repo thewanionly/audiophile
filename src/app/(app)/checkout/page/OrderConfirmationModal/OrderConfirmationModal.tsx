@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import MUIModal from '@mui/material/Modal'
+import MUIModal, { ModalProps } from '@mui/material/Modal'
 
 import { Button, CartItem, Icon, IconName } from '@/components'
 import { useCartState } from '@/store/cart'
@@ -152,25 +152,17 @@ const S = {
   `,
 }
 
-type OrderConfirmationModalProps = {
-  open?: boolean
-  closeConfirmationModal: () => void
-}
+type OrderConfirmationModalProps = Partial<ModalProps>
 
-export const OrderConfirmationModal = ({
-  open = false,
-  closeConfirmationModal,
-}: OrderConfirmationModalProps) => {
+export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmationModalProps) => {
   const { items, totalPrice } = useCartState()
 
   const firstProduct = items[0]
   const otherItemsCount = items.length - 1
 
   return (
-    <S.OrderConfirmationModal open={open}>
+    <S.OrderConfirmationModal open={open} onClose={onClose}>
       <S.OrderConfirmationModalContent>
-        {/* TODO: Remove this button. For testing purposes only */}
-        <span onClick={closeConfirmationModal}>X</span>
         <S.CheckCircle>
           <Icon name={IconName.Check} />
         </S.CheckCircle>
