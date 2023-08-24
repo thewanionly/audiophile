@@ -18,11 +18,9 @@ const S = {
   OrderConfirmationModal: styled(MUIModal)`
     ${({ theme }) => appSectionContainer(theme)}
 
-    margin-top: 22.4rem;
-
-    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
-      margin-top: 22.2rem;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `,
   OrderConfirmationModalContent: styled.div`
     background-color: ${({ theme }) => theme.colors.modalBg};
