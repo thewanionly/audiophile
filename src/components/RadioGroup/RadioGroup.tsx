@@ -56,7 +56,7 @@ const S = {
   RadioInputContainer: styled.label<{ isError: boolean }>`
     border-radius: 0.8rem;
     border: 0.1rem solid ${({ theme }) => theme.colors.inputBorder};
-    padding: 1.8rem;
+    padding: 1.9rem 1.8rem;
 
     display: flex;
     gap: 1.6rem;

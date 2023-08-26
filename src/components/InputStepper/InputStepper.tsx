@@ -26,7 +26,7 @@ const S = {
       width: 100%;
 
       font-weight: ${({ theme }) => theme.fontWeights.bold};
-      font-size: ${({ theme }) => theme.fontSizes.sm1};
+      font-size: ${({ theme }) => theme.fontSizes.regular2};
       line-height: normal;
       letter-spacing: 0.1rem;
       text-align: center;

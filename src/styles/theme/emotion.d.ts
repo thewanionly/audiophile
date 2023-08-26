@@ -66,6 +66,7 @@ declare module '@emotion/react' {
       sm1: string
       sm2: string
       regular: string
+      regular2: string
       med1: string
       med2: string
       med3: string

@@ -15,7 +15,7 @@ const S = {
     display: inline-block;
 
     font-weight: ${({ theme }) => theme.fontWeights.bold};
-    font-size: ${({ theme }) => theme.fontSizes.xs};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
     line-height: normal;
     letter-spacing: -0.0214rem;
     color: ${({ theme, isError }) => (isError ? theme.colors.inputError : theme.colors.inputLabel)};
@@ -25,7 +25,7 @@ const S = {
     grid-area: 1 / 2 / 2 / 3;
 
     font-weight: ${({ theme }) => theme.fontWeights.medium};
-    font-size: ${({ theme }) => theme.fontSizes.xs};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
     line-height: normal;
     letter-spacing: -0.0214rem;
     color: ${({ theme }) => theme.colors.inputError};
@@ -44,7 +44,7 @@ const S = {
       caret-color: ${({ theme }) => theme.colors.primary};
 
       font-weight: ${({ theme }) => theme.fontWeights.bold};
-      font-size: ${({ theme }) => theme.fontSizes.sm2};
+      font-size: ${({ theme }) => theme.fontSizes.regular2};
       line-height: normal;
       letter-spacing: -0.025rem;
 

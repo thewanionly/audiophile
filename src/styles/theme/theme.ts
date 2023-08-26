@@ -90,6 +90,7 @@ export const theme: Theme = {
     sm1: TYPOGRAPHY.fontSizeSm1,
     sm2: TYPOGRAPHY.fontSizeSm2,
     regular: TYPOGRAPHY.fontSizeRegular,
+    regular2: TYPOGRAPHY.fontSizeRegular2,
     med1: TYPOGRAPHY.fontSizeMed1,
     med2: TYPOGRAPHY.fontSizeMed2,
     med3: TYPOGRAPHY.fontSizeMed3,

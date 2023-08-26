@@ -4,6 +4,7 @@ export const TYPOGRAPHY = {
   fontSizeSm1: '1.3rem',
   fontSizeSm2: '1.4rem',
   fontSizeRegular: '1.5rem',
+  fontSizeRegular2: '1.6rem',
   fontSizeMed1: '1.8rem',
   fontSizeMed2: '2.4rem',
   fontSizeMed3: '2.8rem',

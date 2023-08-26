@@ -66,7 +66,7 @@ const S = {
     align-self: center;
 
     width: 9rem;
-    padding: 0.7rem 1.15rem;
+    padding: 0.9rem 1.15rem;
   `,
   DeleteIconButton: styled(Button)``,
   DeleteIcon: styled(Icon)`
