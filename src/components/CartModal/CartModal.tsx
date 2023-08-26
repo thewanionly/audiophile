@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
-import { Button, ButtonVariant } from '@/components'
+import { Button, ButtonVariant, EmptyCart } from '@/components'
 import { useCartActions, useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT } from '@/utils/constants'
@@ -61,9 +62,7 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
     text-decoration: underline;
   `,
-  CartBody: styled.section`
-    margin-bottom: 2.4rem;
-  `,
+  CartBody: styled.section``,
   CartItemList: styled.ul`
     display: flex;
     flex-direction: column;
@@ -108,8 +107,29 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
   `,
   CheckoutButton: styled(Button)`
+    margin-top: 2.4rem;
+
     width: 100%;
     text-align: center;
+  `,
+  EmptyCartActionMessage: styled.p`
+    margin-top: 1.5rem;
+
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
+    line-height: 2rem;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+  `,
+  HomePageLink: styled(Link)`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
+    line-height: 2rem;
+    color: ${({ theme }) => theme.colors.bodyLinkText};
+
+    &:hover {
+      text-decoration: underline;
+    }
   `,
 }
 
@@ -142,12 +162,17 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
         </S.CartHeader>
         <S.CartBody>
           {totalItems === 0 ? (
-            <S.EmptyCartContainer>
-              <S.EmptyCartImageContainer>
-                <S.EmptyCartImage src="/icons/empty-cart.svg" alt="empty cart" fill />
-              </S.EmptyCartImageContainer>
-              <S.EmptyCartMessage>You have no items in your cart.</S.EmptyCartMessage>
-            </S.EmptyCartContainer>
+            <EmptyCart
+              actionMessage={
+                <S.EmptyCartActionMessage>
+                  Browse our store and find products you like,{' '}
+                  <S.HomePageLink href="/" onClick={closeModal}>
+                    start shopping now
+                  </S.HomePageLink>
+                  !
+                </S.EmptyCartActionMessage>
+              }
+            />
           ) : (
             <S.CartItemList>
               {items.map(({ product, quantity }) => (

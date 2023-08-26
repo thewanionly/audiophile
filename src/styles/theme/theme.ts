@@ -19,6 +19,7 @@ export const theme: Theme = {
     bodyTextLight: rgba(COLORS.white, 0.5),
     bodyTextLighter: rgba(COLORS.white, 0.75),
     bodyTextDark: rgba(COLORS.black, 0.5),
+    bodyLinkText: rgba(COLORS.rawSienna, 0.8),
 
     // Button
     buttonTertiary: rgba(COLORS.black, 0.5),
