@@ -40,7 +40,9 @@ export const EmptyCart = ({ className, actionMessage }: EmptyCartProps) => {
       <S.EmptyCartImageContainer>
         <S.EmptyCartImage src={EMPTY_CART_IMG_SRC} alt={EMPTY_CART_ALT_TEXT} fill />
       </S.EmptyCartImageContainer>
-      <S.EmptyCartPrimaryMessage>{EMPTY_CART_PRIMARY_MESSAGE}</S.EmptyCartPrimaryMessage>
+      <S.EmptyCartPrimaryMessage className="empty-cart__primary-message">
+        {EMPTY_CART_PRIMARY_MESSAGE}
+      </S.EmptyCartPrimaryMessage>
       {actionMessage}
     </S.EmptyCartContainer>
   )

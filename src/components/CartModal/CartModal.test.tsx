@@ -5,7 +5,7 @@ import { mockedCartItems } from '@/tests/__mocks__/data/cart'
 
 import { CartModal } from './CartModal'
 
-// Mock "useLayoutContext"
+// Mock "useCartState"
 jest.mock('@/store/cart', () => ({
   __esModule: true,
   useCartState: jest.fn(() => ({

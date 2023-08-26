@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import styled from '@emotion/styled'
 
-import { Button, ButtonVariant } from '@/components'
+import { Button, ButtonVariant, EmptyCart } from '@/components'
+import { useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
@@ -80,10 +82,62 @@ const S = {
       grid-area: 2 / 2 / 3 / 3;
     }
   `,
+  EmptyCart: styled(EmptyCart)`
+    ${({ theme }) => appSectionContainer(theme)}
+    margin: 9.7rem auto;
+
+    .empty-cart__primary-message {
+      font-weight: ${({ theme }) => theme.fontWeights.bold};
+      font-size: ${({ theme }) => theme.fontSizes.med2};
+      line-height: normal;
+      letter-spacing: 0.1rem;
+      color: ${({ theme }) => theme.colors.darkTitle};
+
+      ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+        margin-top: 8rem;
+
+        font-size: ${({ theme }) => theme.fontSizes.lg1};
+        line-height: 3.6rem;
+        letter-spacing: 0.1143rem;
+      }
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      margin-bottom: 11.6rem;
+    }
+  `,
+  EmptyCartActionMessage: styled.p`
+    margin-top: 2rem;
+
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.sm2};
+    line-height: 2.5rem;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.bodyTextDark};
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      font-size: ${({ theme }) => theme.fontSizes.regular};
+    }
+  `,
+  HomePageLink: styled(Link)`
+    font-weight: ${({ theme }) => theme.fontWeights.medium};
+    font-size: ${({ theme }) => theme.fontSizes.sm2};
+    line-height: 2.5rem;
+    color: ${({ theme }) => theme.colors.bodyLinkText};
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
+      font-size: ${({ theme }) => theme.fontSizes.regular};
+    }
+  `,
 }
 
 export const Checkout = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+  const { totalItems } = useCartState()
   const router = useRouter()
 
   const handleGoBack = () => {
@@ -91,25 +145,40 @@ export const Checkout = () => {
   }
 
   return (
-    <S.CheckoutContainer>
-      <S.BackButtonContainer>
-        <S.BackButton variant={ButtonVariant.TERTIARY} onClick={handleGoBack}>
-          {GO_BACK}
-        </S.BackButton>
-      </S.BackButtonContainer>
-      <S.CheckoutSection>
-        <S.CheckoutHeading>{CHECKOUT}</S.CheckoutHeading>
-        <CheckoutForm openConfirmationModal={() => setShowConfirmationModal(true)} />
-      </S.CheckoutSection>
-      {/* TODO: Remove this button. For testing purposes only */}
-      {process.env.NODE_ENV === 'development' && (
-        <button onClick={() => setShowConfirmationModal(true)}>Open modal for testing</button>
+    <>
+      {totalItems > 0 ? (
+        <S.CheckoutContainer>
+          <S.BackButtonContainer>
+            <S.BackButton variant={ButtonVariant.TERTIARY} onClick={handleGoBack}>
+              {GO_BACK}
+            </S.BackButton>
+          </S.BackButtonContainer>
+          <S.CheckoutSection>
+            <S.CheckoutHeading>{CHECKOUT}</S.CheckoutHeading>
+            <CheckoutForm openConfirmationModal={() => setShowConfirmationModal(true)} />
+          </S.CheckoutSection>
+          {/* TODO: Remove this button. For testing purposes only */}
+          {process.env.NODE_ENV === 'development' && (
+            <button onClick={() => setShowConfirmationModal(true)}>Open modal for testing</button>
+          )}
+          <S.OrderSummary />
+          <OrderConfirmationModal
+            open={showConfirmationModal}
+            onClose={() => setShowConfirmationModal(false)}
+          />
+        </S.CheckoutContainer>
+      ) : (
+        <>
+          <S.EmptyCart
+            actionMessage={
+              <S.EmptyCartActionMessage>
+                Browse our store and find products you like,{' '}
+                <S.HomePageLink href="/">start shopping now</S.HomePageLink>!
+              </S.EmptyCartActionMessage>
+            }
+          />
+        </>
       )}
-      <S.OrderSummary />
-      <OrderConfirmationModal
-        open={showConfirmationModal}
-        onClose={() => setShowConfirmationModal(false)}
-      />
-    </S.CheckoutContainer>
+    </>
   )
 }

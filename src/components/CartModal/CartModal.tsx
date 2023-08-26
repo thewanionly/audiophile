@@ -161,19 +161,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
           )}
         </S.CartHeader>
         <S.CartBody>
-          {totalItems === 0 ? (
-            <EmptyCart
-              actionMessage={
-                <S.EmptyCartActionMessage>
-                  Browse our store and find products you like,{' '}
-                  <S.HomePageLink href="/" onClick={closeModal}>
-                    start shopping now
-                  </S.HomePageLink>
-                  !
-                </S.EmptyCartActionMessage>
-              }
-            />
-          ) : (
+          {totalItems > 0 ? (
             <S.CartItemList>
               {items.map(({ product, quantity }) => (
                 <li key={product.slug}>
@@ -189,6 +177,18 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
                 </li>
               ))}
             </S.CartItemList>
+          ) : (
+            <EmptyCart
+              actionMessage={
+                <S.EmptyCartActionMessage>
+                  Browse our store and find products you like,{' '}
+                  <S.HomePageLink href="/" onClick={closeModal}>
+                    start shopping now
+                  </S.HomePageLink>
+                  !
+                </S.EmptyCartActionMessage>
+              }
+            />
           )}
           {totalItems > 0 && (
             <S.CartItemTotalPriceContainer>

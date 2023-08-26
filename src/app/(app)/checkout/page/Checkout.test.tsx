@@ -1,4 +1,5 @@
 import { render, screen } from '@/tests'
+import { mockedCartItems } from '@/tests/__mocks__/data/cart'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
 import { Checkout } from './Checkout'
@@ -11,6 +12,22 @@ jest.mock('next/navigation', () => {
     useServerInsertedHTML: jest.fn(),
   }
 })
+
+// Mock "useCartState"
+jest.mock('@/store/cart', () => ({
+  __esModule: true,
+  useCartState: jest.fn(() => ({
+    items: mockedCartItems,
+    totalItems: mockedCartItems.length,
+    totalPrice: mockedCartItems.reduce(
+      (total, { quantity, product }) => total + quantity * product.price,
+      0
+    ),
+  })),
+  useCartActions: jest.fn(() => ({
+    removeAllItems: jest.fn(),
+  })),
+}))
 
 const setup = () => {
   render(<Checkout />)
