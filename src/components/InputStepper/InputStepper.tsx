@@ -30,18 +30,6 @@ const S = {
       line-height: normal;
       letter-spacing: 0.1rem;
       text-align: center;
-
-      /* For Chrome and Safari  */
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      /* For Firefox  */
-      & {
-        -moz-appearance: textfield;
-      }
     }
   `,
   StepperButton: styled(Button)`

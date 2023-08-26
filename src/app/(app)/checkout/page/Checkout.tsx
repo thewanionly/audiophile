@@ -24,8 +24,6 @@ const S = {
       display: grid;
       column-gap: 3rem;
       grid-template-columns: 2fr 1fr;
-      /* grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr); */
     }
   `,
   BackButtonContainer: styled.div`
