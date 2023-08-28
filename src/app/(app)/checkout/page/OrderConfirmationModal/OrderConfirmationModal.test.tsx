@@ -10,7 +10,7 @@ import { ORDER_COMPUTATIONS } from '../OrderSummary'
 import { OrderConfirmationModal } from './OrderConfirmationModal'
 
 const setup = () => {
-  render(<OrderConfirmationModal open closeConfirmationModal={jest.fn()} />)
+  render(<OrderConfirmationModal open onClose={jest.fn()} />)
 }
 
 describe('OrderConfirmationModal', () => {

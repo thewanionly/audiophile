@@ -7,7 +7,7 @@ import { PAYMENT_METHODS_OPTIONS, PAYMENT_METHODS } from '../../Checkout.schema'
 import { CheckoutForm } from '../CheckoutForm'
 
 const setup = () => {
-  render(<CheckoutForm />)
+  render(<CheckoutForm openConfirmationModal={jest.fn()} />)
 }
 
 describe('PaymentDetails', () => {

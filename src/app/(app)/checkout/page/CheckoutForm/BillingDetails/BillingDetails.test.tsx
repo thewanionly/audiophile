@@ -6,7 +6,7 @@ import { BILLING_DETAILS } from '../../../utils/constants'
 import { CheckoutForm } from '../CheckoutForm'
 
 const setup = () => {
-  render(<CheckoutForm />)
+  render(<CheckoutForm openConfirmationModal={jest.fn()} />)
 }
 
 describe('BillingDetails', () => {

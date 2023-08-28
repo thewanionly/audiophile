@@ -6,7 +6,7 @@ import { SHIPPING_INFO } from '../../../utils/constants'
 import { CheckoutForm } from '../CheckoutForm'
 
 const setup = () => {
-  render(<CheckoutForm />)
+  render(<CheckoutForm openConfirmationModal={jest.fn()} />)
 }
 
 describe('ShippingInfo', () => {
