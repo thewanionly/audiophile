@@ -1,13 +1,34 @@
 import { IconName } from '@/components'
 import { render, screen } from '@/tests'
+import { mockedCartItems } from '@/tests/__mocks__/data/cart'
+import { formatPrice } from '@/utils/helpers'
 
 import {
   BACK_TO_HOME,
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
+  SHIPPING_FEE,
 } from '../../utils/constants'
 import { ORDER_COMPUTATIONS } from '../OrderSummary'
 import { OrderConfirmationModal } from './OrderConfirmationModal'
+
+const cartState = () => ({
+  items: mockedCartItems,
+  totalItems: mockedCartItems.length,
+  totalPrice: mockedCartItems.reduce(
+    (total, { quantity, product }) => total + quantity * product.price,
+    0
+  ),
+})
+
+// Mock "useCartState"
+jest.mock('@/store/cart', () => ({
+  __esModule: true,
+  useCartState: jest.fn(() => cartState()),
+  useCartActions: jest.fn(() => ({
+    removeAllItems: jest.fn(),
+  })),
+}))
 
 const setup = () => {
   render(<OrderConfirmationModal open onClose={jest.fn()} />)
@@ -37,11 +58,12 @@ describe('OrderConfirmationModal', () => {
     expect(secondaryMessage).toBeInTheDocument()
   })
 
-  xit(`displays ${ORDER_COMPUTATIONS.grandTotal.label} value`, () => {
+  it(`displays ${ORDER_COMPUTATIONS.grandTotal.label} value`, () => {
     setup()
 
     const valueText = screen.getByLabelText(ORDER_COMPUTATIONS.grandTotal.label)
     expect(valueText).toBeInTheDocument()
+    expect(valueText).toHaveTextContent(formatPrice(cartState().totalPrice + SHIPPING_FEE))
   })
 
   it('displays home link', () => {
