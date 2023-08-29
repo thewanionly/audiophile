@@ -155,10 +155,6 @@ export const Checkout = () => {
             <S.CheckoutHeading>{CHECKOUT}</S.CheckoutHeading>
             <CheckoutForm openConfirmationModal={() => setShowConfirmationModal(true)} />
           </S.CheckoutSection>
-          {/* TODO: Remove this button. For testing purposes only */}
-          {process.env.NODE_ENV === 'development' && (
-            <button onClick={() => setShowConfirmationModal(true)}>Open modal for testing</button>
-          )}
           <S.OrderSummary />
           <OrderConfirmationModal
             open={showConfirmationModal}
