@@ -152,7 +152,10 @@ const S = {
   `,
 }
 
-type OrderConfirmationModalProps = Partial<ModalProps>
+type OrderConfirmationModalProps = {
+  open: boolean
+  onClose: () => void
+}
 
 export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmationModalProps) => {
   const { items, totalPrice } = useCartState()
@@ -199,7 +202,7 @@ export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmat
             </S.GrandTotalContainer>
           </S.OrderSummarySection>
         )}
-        <S.BackToHomeButton asLink href="/">
+        <S.BackToHomeButton asLink href="/" onClick={onClose}>
           {BACK_TO_HOME}
         </S.BackToHomeButton>
       </S.OrderConfirmationModalContent>

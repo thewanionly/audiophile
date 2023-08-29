@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import styled from '@emotion/styled'
 
 import { Button, ButtonVariant, EmptyCart } from '@/components'
-import { useCartState } from '@/store/cart'
+import { useCartActions, useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
@@ -136,10 +136,19 @@ const S = {
 export const Checkout = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
   const { totalItems } = useCartState()
+  const { removeAllItems } = useCartActions()
   const router = useRouter()
 
   const handleGoBack = () => {
     router.back()
+  }
+
+  const handleCloseOrderConfirmationModal = () => {
+    // Remove all cart items
+    removeAllItems()
+
+    // Close modal
+    setShowConfirmationModal(false)
   }
 
   return (
@@ -158,7 +167,7 @@ export const Checkout = () => {
           <S.OrderSummary />
           <OrderConfirmationModal
             open={showConfirmationModal}
-            onClose={() => setShowConfirmationModal(false)}
+            onClose={handleCloseOrderConfirmationModal}
           />
         </S.CheckoutContainer>
       ) : (
