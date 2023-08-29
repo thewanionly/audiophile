@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import styled from '@emotion/styled'
 
 import { Button, ButtonVariant, EmptyCart } from '@/components'
+import { OrderSummary as OrderSummaryType } from '@/services/checkout'
 import { useCartActions, useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
@@ -135,12 +136,21 @@ const S = {
 
 export const Checkout = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+  const [order, setOrder] = useState<OrderSummaryType>()
   const { totalItems } = useCartState()
   const { removeAllItems } = useCartActions()
   const router = useRouter()
 
   const handleGoBack = () => {
     router.back()
+  }
+
+  const handleOpenOrderConfirmationModal = (order: OrderSummaryType) => {
+    // Open modal
+    setShowConfirmationModal(true)
+
+    // Set order
+    setOrder(order)
   }
 
   const handleCloseOrderConfirmationModal = () => {
@@ -162,13 +172,16 @@ export const Checkout = () => {
           </S.BackButtonContainer>
           <S.CheckoutSection>
             <S.CheckoutHeading>{CHECKOUT}</S.CheckoutHeading>
-            <CheckoutForm openConfirmationModal={() => setShowConfirmationModal(true)} />
+            <CheckoutForm openConfirmationModal={handleOpenOrderConfirmationModal} />
           </S.CheckoutSection>
           <S.OrderSummary />
-          <OrderConfirmationModal
-            open={showConfirmationModal}
-            onClose={handleCloseOrderConfirmationModal}
-          />
+          {order && (
+            <OrderConfirmationModal
+              order={order}
+              open={showConfirmationModal}
+              onClose={handleCloseOrderConfirmationModal}
+            />
+          )}
         </S.CheckoutContainer>
       ) : (
         <>

@@ -20,7 +20,7 @@ const S = {
 }
 
 type CheckoutFormProps = {
-  openConfirmationModal: () => void
+  openConfirmationModal: (order: OrderSummary) => void
 }
 
 export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
@@ -55,7 +55,7 @@ export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
       reset()
 
       // Open confirmation modal
-      openConfirmationModal()
+      openConfirmationModal(orderSummary)
     } catch (error) {
       console.error(`Sorry, there's a problem placing your order. Please try again.`)
     }

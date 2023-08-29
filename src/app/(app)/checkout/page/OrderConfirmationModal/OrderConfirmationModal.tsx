@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
-import MUIModal, { ModalProps } from '@mui/material/Modal'
+import MUIModal from '@mui/material/Modal'
 
 import { Button, CartItem, Icon, IconName } from '@/components'
-import { useCartState } from '@/store/cart'
+import { OrderSummary } from '@/services/checkout'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { formatPrice } from '@/utils/helpers'
 
@@ -10,7 +10,6 @@ import {
   BACK_TO_HOME,
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
-  SHIPPING_FEE,
 } from '../../utils/constants'
 import { ORDER_COMPUTATIONS } from '../OrderSummary'
 
@@ -153,12 +152,17 @@ const S = {
 }
 
 type OrderConfirmationModalProps = {
+  order: OrderSummary
   open: boolean
   onClose: () => void
 }
 
-export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmationModalProps) => {
-  const { items, totalPrice } = useCartState()
+export const OrderConfirmationModal = ({
+  order,
+  open = false,
+  onClose,
+}: OrderConfirmationModalProps) => {
+  const { items, total, grandTotal } = order
 
   const firstProduct = items[0]
   const otherItemsCount = items.length - 1
@@ -171,7 +175,7 @@ export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmat
         </S.CheckCircle>
         <S.PrimaryMessage>{ORDER_CONFIRMATION_PRIMARY_MESSAGE}</S.PrimaryMessage>
         <S.SecondaryMessage>{ORDER_CONFIRMATION_SECONDARY_MESSAGE}</S.SecondaryMessage>
-        {firstProduct && totalPrice && (
+        {firstProduct && total && (
           <S.OrderSummarySection>
             <S.OrderedItemsContainer>
               <S.CartItem
@@ -197,7 +201,7 @@ export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmat
                 {ORDER_COMPUTATIONS.grandTotal.label}
               </S.GrandTotalLabel>
               <S.GrandTotalValue aria-labelledby={ORDER_COMPUTATIONS.grandTotal.id}>
-                {formatPrice(totalPrice + SHIPPING_FEE)}
+                {formatPrice(grandTotal)}
               </S.GrandTotalValue>
             </S.GrandTotalContainer>
           </S.OrderSummarySection>
