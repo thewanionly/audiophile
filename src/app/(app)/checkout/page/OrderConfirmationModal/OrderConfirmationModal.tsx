@@ -183,7 +183,9 @@ export const OrderConfirmationModal = ({ open = false, onClose }: OrderConfirmat
               {otherItemsCount > 0 && (
                 <>
                   <S.OrderedItemsSeparator />
-                  <S.OtherItemsCount>and {otherItemsCount} other item(s)</S.OtherItemsCount>
+                  <S.OtherItemsCount data-testid="other-items-count">
+                    and {otherItemsCount} other item(s)
+                  </S.OtherItemsCount>
                 </>
               )}
             </S.OrderedItemsContainer>

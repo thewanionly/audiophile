@@ -58,6 +58,21 @@ describe('OrderConfirmationModal', () => {
     expect(secondaryMessage).toBeInTheDocument()
   })
 
+  it('displays first ordered cart item', () => {
+    setup()
+
+    const firstOrderedCartItem = screen.getByText(mockedCartItems[0].product.name)
+    expect(firstOrderedCartItem).toBeInTheDocument()
+  })
+
+  it('displays other items count', () => {
+    setup()
+
+    const otherItemsCount = mockedCartItems.length - 1
+    const otherItemsCountEl = screen.getByTestId('other-items-count')
+    expect(otherItemsCountEl).toHaveTextContent(`${otherItemsCount}`)
+  })
+
   it(`displays ${ORDER_COMPUTATIONS.grandTotal.label} value`, () => {
     setup()
 
