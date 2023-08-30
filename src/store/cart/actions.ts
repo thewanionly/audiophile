@@ -31,6 +31,8 @@ const addItem = async (slug: string, quantity: number) => {
     console.error(
       `There's a problem adding your item to cart. Please refresh the page and try again.`
     )
+
+    throw error
   }
 }
 

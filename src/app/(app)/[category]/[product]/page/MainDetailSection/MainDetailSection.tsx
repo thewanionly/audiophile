@@ -12,7 +12,7 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { MIN_QUANTITY, NEW_PRODUCT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
-import { ADD_TO_CART } from '../../utils/constants'
+import { ADDING_TO_CART, ADD_TO_CART } from '../../utils/constants'
 
 const S = {
   MainDetailSection: styled.section`
@@ -164,11 +164,20 @@ export const MainDetailSection = ({
   price,
   slug,
 }: MainDetailSectionProps) => {
+  const [isCartAdding, setIsCartAdding] = useState(false)
   const [quantity, setQuantity] = useState(MIN_QUANTITY)
   const { addItem } = useCartActions()
 
-  const handleAddToCart = () => {
-    addItem(slug, quantity)
+  const handleAddToCart = async () => {
+    setIsCartAdding(true)
+
+    try {
+      await addItem(slug, quantity)
+
+      setIsCartAdding(false)
+    } catch (error) {
+      setIsCartAdding(false)
+    }
   }
 
   return (
@@ -185,7 +194,9 @@ export const MainDetailSection = ({
             min={MIN_QUANTITY}
             onChange={(value: number) => setQuantity(value)}
           />
-          <Button onClick={handleAddToCart}>{ADD_TO_CART}</Button>
+          <Button onClick={handleAddToCart} disabled={isCartAdding}>
+            {isCartAdding ? ADDING_TO_CART : ADD_TO_CART}
+          </Button>
         </S.AddToCartContainer>
       </S.ContentContainer>
     </S.MainDetailSection>
