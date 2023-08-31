@@ -10,7 +10,8 @@ const colorVariantStyles = (
   theme: Theme,
   color: ButtonColor = ButtonColor.PRIMARY,
   variant: ButtonVariant = ButtonVariant.CONTAINED,
-  disabled = false
+  disabled = false,
+  isLoading = false
 ) =>
   ({
     [ButtonColor.PRIMARY]: {
@@ -22,11 +23,11 @@ const colorVariantStyles = (
           background-color: ${theme.colors.primaryLight};
         }
 
-        ${disabled &&
+        ${(disabled || isLoading) &&
         css`
           background-color: ${theme.colors.primaryLight};
           opacity: 0.7;
-          cursor: not-allowed;
+          cursor: ${isLoading ? 'wait' : 'not-allowed'};
 
           &:hover {
             background-color: ${theme.colors.primaryLight};
@@ -42,12 +43,12 @@ const colorVariantStyles = (
           background-color: ${theme.colors.primaryLight};
         }
 
-        ${disabled &&
+        ${(disabled || isLoading) &&
         css`
           background-color: ${theme.colors.primaryLight};
           border-color: ${theme.colors.primaryLight};
           opacity: 0.7;
-          cursor: not-allowed;
+          cursor: ${isLoading ? 'wait' : 'not-allowed'};
 
           &:hover {
             background-color: ${theme.colors.primaryLight};
@@ -66,10 +67,10 @@ const colorVariantStyles = (
           color: ${theme.colors.buttonTertiaryHover};
         }
 
-        ${disabled &&
+        ${(disabled || isLoading) &&
         css`
           color: ${theme.colors.buttonTertiaryDisabled};
-          cursor: not-allowed;
+          cursor: ${isLoading ? 'wait' : 'not-allowed'};
 
           &:hover {
             color: ${theme.colors.buttonTertiaryDisabled};
@@ -108,10 +109,10 @@ const colorVariantStyles = (
           color: ${theme.colors.buttonTertiaryHover};
         }
 
-        ${disabled &&
+        ${(disabled || isLoading) &&
         css`
           color: ${theme.colors.buttonTertiaryDisabled};
-          cursor: not-allowed;
+          cursor: ${isLoading ? 'wait' : 'not-allowed'};
 
           &:hover {
             color: ${theme.colors.buttonTertiaryDisabled};
@@ -133,7 +134,8 @@ const S = {
 
     transition: all 0.3s;
 
-    ${({ theme, color, variant, disabled }) => colorVariantStyles(theme, color, variant, disabled)}
+    ${({ theme, color, variant, disabled, isLoading }) =>
+      colorVariantStyles(theme, color, variant, disabled, isLoading)}
   `,
   Link: styled(Link)``, // work around because passing Link directly in "as" will throw some TypeScript warnings
 }
@@ -156,6 +158,7 @@ type ButtonProps = {
   color?: ButtonColor
   download?: string
   disabled?: boolean
+  isLoading?: boolean
   href?: string
   label?: string
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
@@ -172,6 +175,7 @@ export const Button = ({
   color = ButtonColor.PRIMARY,
   download,
   disabled = false,
+  isLoading = false,
   href = '',
   label,
   onClick,
@@ -184,16 +188,17 @@ export const Button = ({
     className,
     color,
     variant,
-    disabled,
+    disabled: disabled || isLoading,
+    isLoading,
     ...(!asLink
       ? { onClick, type, form }
       : {
           as: S.Link,
           onClick,
-          href: !disabled ? href : '',
+          href: disabled || isLoading ? '' : href,
           role: 'link',
           target: openLinkInNewTab ? '_blank' : '',
-          ['aria-disabled']: disabled,
+          ['aria-disabled']: disabled || isLoading,
           download,
         }),
   }

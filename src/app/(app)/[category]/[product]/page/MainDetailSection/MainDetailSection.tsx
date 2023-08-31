@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import styled from '@emotion/styled'
+import CircularProgress from '@mui/material/CircularProgress'
 
 import { Button } from '@/components/Button'
 import { InputStepper } from '@/components/InputStepper'
@@ -12,7 +13,7 @@ import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { MIN_QUANTITY, NEW_PRODUCT } from '@/utils/constants'
 import { formatPrice } from '@/utils/helpers'
 
-import { ADDING_TO_CART, ADD_TO_CART } from '../../utils/constants'
+import { ADD_TO_CART } from '../../utils/constants'
 
 const S = {
   MainDetailSection: styled.section`
@@ -152,6 +153,24 @@ const S = {
     display: flex;
     gap: 1.6rem;
   `,
+  AddToCartButton: styled(Button)`
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  `,
+  AddToCartButtonLabel: styled.span`
+    grid-area: 1 / 1 / 2 / 2;
+
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
+    letter-spacing: 0.1rem;
+    line-height: normal;
+    text-transform: uppercase;
+  `,
+  LoadingSpinner: styled(CircularProgress)`
+    grid-area: 1 / 1 / 2 / 2;
+    color: ${({ theme }) => theme.colors.secondary};
+  `,
 }
 
 type MainDetailSectionProps = MainProductDetail
@@ -194,9 +213,10 @@ export const MainDetailSection = ({
             min={MIN_QUANTITY}
             onChange={(value: number) => setQuantity(value)}
           />
-          <Button onClick={handleAddToCart} disabled={isCartAdding}>
-            {isCartAdding ? ADDING_TO_CART : ADD_TO_CART}
-          </Button>
+          <S.AddToCartButton onClick={handleAddToCart} isLoading={isCartAdding}>
+            <S.AddToCartButtonLabel>{ADD_TO_CART}</S.AddToCartButtonLabel>
+            {isCartAdding && <S.LoadingSpinner size={21} />}
+          </S.AddToCartButton>
         </S.AddToCartContainer>
       </S.ContentContainer>
     </S.MainDetailSection>
