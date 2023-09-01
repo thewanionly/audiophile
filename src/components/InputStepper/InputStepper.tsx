@@ -12,11 +12,11 @@ const S = {
   InputStepper: styled.div`
     background-color: ${({ theme }) => theme.colors.inputStepper};
     width: 12rem;
-    padding: 1.5rem;
+    height: 5.2rem;
 
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.2rem;
   `,
   InputBox: styled(Input)`
     .MuiInput-input {
@@ -39,8 +39,8 @@ const S = {
     letter-spacing: 0.1rem;
     text-align: center;
 
-    width: 1.6rem;
-    height: 1.8rem;
+    width: 30rem;
+    height: 100%;
     color: ${({ theme }) => theme.colors.stepperButton};
     background-color: transparent;
 
