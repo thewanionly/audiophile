@@ -1,6 +1,7 @@
 'use client'
 
 import { NavItem } from '@/components'
+import { useRehydrateAppStore } from '@/store/store'
 
 import { Footer } from '../Footer'
 import { Header } from '../Header'
@@ -15,6 +16,8 @@ type LayoutProps = {
 }
 
 export const Layout = ({ categories, navLinks, footer, children }: LayoutProps) => {
+  useRehydrateAppStore()
+
   return (
     <LayoutProvider>
       <Header navItems={navLinks} />
