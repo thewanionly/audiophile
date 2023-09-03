@@ -3,7 +3,7 @@ import { ForwardedRef, ReactNode, forwardRef } from 'react'
 import styled from '@emotion/styled'
 import { Input as BaseInput, InputProps as BaseInputProps } from '@mui/base/Input'
 
-import { mediaQuery } from '@/styles/utils'
+import { mediaQuery, transientOptions } from '@/styles/utils'
 
 const S = {
   RadioGroup: styled.fieldset``,
@@ -17,7 +17,7 @@ const S = {
       column-gap: 1.6rem;
     }
   `,
-  RadioGroupLabel: styled.legend<{ isError: boolean }>`
+  RadioGroupLabel: styled('legend', transientOptions)<{ $isError: boolean }>`
     grid-area: 1 / 1 / 2 / 2;
     display: inline-block;
 
@@ -25,7 +25,8 @@ const S = {
     font-size: ${({ theme }) => theme.fontSizes.xs};
     line-height: normal;
     letter-spacing: -0.0214rem;
-    color: ${({ theme, isError }) => (isError ? theme.colors.inputError : theme.colors.inputLabel)};
+    color: ${({ theme, $isError }) =>
+      $isError ? theme.colors.inputError : theme.colors.inputLabel};
   `,
   RadioGroupError: styled.span`
     justify-self: flex-end;
@@ -53,7 +54,7 @@ const S = {
       grid-area: 1 / 2 / 4 / 3;
     }
   `,
-  RadioInputContainer: styled.label<{ isError: boolean }>`
+  RadioInputContainer: styled('label', transientOptions)<{ $isError: boolean }>`
     border-radius: 0.8rem;
     border: 0.1rem solid ${({ theme }) => theme.colors.inputBorder};
     padding: 1.9rem 1.8rem;
@@ -68,17 +69,17 @@ const S = {
 
     &:focus,
     &:focus-within {
-      border-color: ${({ theme, isError }) =>
-        isError ? theme.colors.inputError : theme.colors.primary};
+      border-color: ${({ theme, $isError }) =>
+        $isError ? theme.colors.inputError : theme.colors.primary};
       box-shadow: 0 0 0 0.1rem
-        ${({ theme, isError }) => (isError ? theme.colors.inputError : theme.colors.primary)};
+        ${({ theme, $isError }) => ($isError ? theme.colors.inputError : theme.colors.primary)};
     }
 
     &:focus-visible {
       outline: 0;
     }
   `,
-  RadioInput: styled(BaseInput)<{ isError: boolean }>`
+  RadioInput: styled(BaseInput, transientOptions)<{ $isError: boolean }>`
     width: 2rem;
     height: 2rem;
 
@@ -104,8 +105,8 @@ const S = {
 
       &:focus {
         box-shadow: 0 0 0 0.2rem
-          ${({ theme, isError }) =>
-            isError ? theme.colors.inputError : theme.colors.radioButtonBorderActive};
+          ${({ theme, $isError }) =>
+            $isError ? theme.colors.inputError : theme.colors.radioButtonBorderActive};
       }
 
       &:focus-visible {
@@ -140,7 +141,7 @@ export const RadioGroup = ({
   return (
     <S.RadioGroup className={className}>
       <S.RadioGroupContainer>
-        <S.RadioGroupLabel data-testid="radio-group-label" isError={error}>
+        <S.RadioGroupLabel data-testid="radio-group-label" $isError={error}>
           {label}
         </S.RadioGroupLabel>
         {error && errorMessage && (
@@ -163,7 +164,7 @@ export const RadioInput = forwardRef(function CustomRadioInput(
   ref: ForwardedRef<HTMLInputElement>
 ) {
   return (
-    <S.RadioInputContainer htmlFor={value} isError={error}>
+    <S.RadioInputContainer htmlFor={value} $isError={error}>
       <S.RadioInput
         ref={ref}
         type="radio"
@@ -171,7 +172,7 @@ export const RadioInput = forwardRef(function CustomRadioInput(
         name={name}
         value={value}
         onChange={onChange}
-        isError={error}
+        $isError={error}
       />
       <S.RadioInputLabel>{label}</S.RadioInputLabel>
     </S.RadioInputContainer>

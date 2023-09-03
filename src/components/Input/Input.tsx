@@ -5,12 +5,14 @@ import { forwardRef } from 'react'
 import styled from '@emotion/styled'
 import { Input as BaseInput, InputProps as BaseInputProps } from '@mui/base/Input'
 
+import { transientOptions } from '@/styles/utils'
+
 const S = {
   InputContainer: styled.div`
     display: grid;
     row-gap: 0.9rem;
   `,
-  InputLabel: styled.label<{ isError: boolean }>`
+  InputLabel: styled('label', transientOptions)<{ $isError: boolean }>`
     grid-area: 1 / 1 / 2 / 2;
     display: inline-block;
 
@@ -18,7 +20,8 @@ const S = {
     font-size: ${({ theme }) => theme.fontSizes.sm1};
     line-height: normal;
     letter-spacing: -0.0214rem;
-    color: ${({ theme, isError }) => (isError ? theme.colors.inputError : theme.colors.inputLabel)};
+    color: ${({ theme, $isError }) =>
+      $isError ? theme.colors.inputError : theme.colors.inputLabel};
   `,
   InputError: styled.span`
     justify-self: flex-end;
@@ -84,7 +87,7 @@ export const Input = forwardRef(function CustomInput(
       <S.InputLabel
         data-testid="input-label"
         htmlFor={inputProps.id}
-        isError={Boolean(inputProps.error)}
+        $isError={Boolean(inputProps.error)}
       >
         {label}
       </S.InputLabel>
