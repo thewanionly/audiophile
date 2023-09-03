@@ -5,18 +5,38 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Theme, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Badge } from '@mui/base/Badge'
+import Skeleton from '@mui/material/Skeleton'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 import { Icon, IconName, NavBar, NavItem } from '@/components'
 import { CartModal } from '@/components/CartModal'
 import { useCartState } from '@/store/cart'
+import { useIsStoreHydrated } from '@/store/hydration'
 import { theme } from '@/styles'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 import { useLayoutContext } from '../Layout.context'
 import { HeaderMenuIcon } from './HeaderMenuIcon'
+
+const badgeStyles = (theme: Theme, isLoading = false) => css`
+  position: absolute;
+  top: -1.5rem;
+  right: -1.5rem;
+
+  padding: 0 0.6rem;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 1.2rem;
+  background-color: ${isLoading ? theme.colors.loadingBg : theme.colors.primary};
+  color: ${theme.colors.cartIcon};
+
+  font-size: ${theme.fontSizes.xs};
+  font-weight: ${theme.fontWeights.bold};
+  line-height: 2.2rem;
+`
 
 const S = {
   Header: styled.header<HeaderStyleProps>`
@@ -96,25 +116,15 @@ const S = {
   `,
   CartIconBadge: styled(Badge)`
     .MuiBadge-badge {
-      position: absolute;
-      top: -1.5rem;
-      right: -1.5rem;
-
-      padding: 0 0.6rem;
-      min-width: 22px;
-      height: 22px;
-      border-radius: 1.2rem;
-      background-color: ${({ theme }) => theme.colors.primary};
-      color: ${({ theme }) => theme.colors.cartIcon};
-
-      font-size: ${({ theme }) => theme.fontSizes.xs};
-      font-weight: ${({ theme }) => theme.fontWeights.bold};
-      line-height: 2.2rem;
+      ${({ theme }) => badgeStyles(theme)}
 
       &.MuiBadge-invisible {
         display: none;
       }
     }
+  `,
+  BadgeLoading: styled(Skeleton)`
+    ${({ theme }) => badgeStyles(theme, true)}
   `,
 }
 
@@ -128,6 +138,7 @@ type HeaderProps = {
 
 export const Header = ({ navItems }: HeaderProps) => {
   const { totalItems } = useCartState()
+  const isHydrated = useIsStoreHydrated()
   const [showCartModal, setShowCartModal] = useState(false)
   const { isNavMenuOpen, isHeroSectionVisible, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
@@ -143,7 +154,14 @@ export const Header = ({ navItems }: HeaderProps) => {
         </S.HeaderLogo>
         {isDesktop && <S.HeaderNavBar items={navItems} />}
         <S.HeaderCartIconContainer onClick={() => setShowCartModal((prev) => !prev)}>
-          <S.CartIconBadge badgeContent={totalItems}>
+          <S.CartIconBadge
+            badgeContent={totalItems}
+            slots={{
+              badge: isHydrated
+                ? 'span'
+                : () => <S.BadgeLoading variant="circular" width={22} height={22} />,
+            }}
+          >
             <Icon name={IconName.Cart} />
           </S.CartIconBadge>
         </S.HeaderCartIconContainer>

@@ -21,6 +21,9 @@ export const theme: Theme = {
     bodyTextDark: rgba(COLORS.black, 0.5),
     bodyLinkText: rgba(COLORS.rawSienna, 0.8),
 
+    // Skeleton loading bg
+    loadingBg: rgba(COLORS.greyGoose, 0.8),
+
     // Button
     buttonTertiary: rgba(COLORS.black, 0.5),
     buttonTertiaryHover: COLORS.rawSienna,

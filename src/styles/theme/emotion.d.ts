@@ -19,6 +19,7 @@ declare module '@emotion/react' {
       bodyTextLighter: string
       bodyTextDark: string
       bodyLinkText: string
+      loadingBg: string
       buttonTertiary: string
       buttonTertiaryHover: string
       buttonTertiaryDisabled: string
