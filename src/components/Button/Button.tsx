@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { Theme, css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { transientOptions } from '@/styles/utils'
+
 // Generates button styles depending on the `color` and `variant` props
 const colorVariantStyles = (
   theme: Theme,
@@ -122,22 +124,42 @@ const colorVariantStyles = (
     },
   }[color][variant])
 
+const buttonStyles = (
+  theme: Theme,
+  { color, variant, disabled, $isLoading }: ButtonStyleProps
+) => css`
+  display: inline-block;
+  padding: 1.5rem 3rem;
+
+  font-weight: ${theme.fontWeights.bold};
+  font-size: ${theme.fontSizes.sm1};
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+
+  transition: all 0.3s;
+
+  ${colorVariantStyles(theme, color, variant, disabled, $isLoading)}
+`
+
 const S = {
-  Button: styled.button<ButtonProps>`
-    display: inline-block;
-    padding: 1.5rem 3rem;
-
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
-    font-size: ${({ theme }) => theme.fontSizes.sm1};
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-
-    transition: all 0.3s;
-
-    ${({ theme, color, variant, disabled, isLoading }) =>
-      colorVariantStyles(theme, color, variant, disabled, isLoading)}
+  Button: styled('button', transientOptions)<ButtonStyleProps>`
+    ${({ theme, color, variant, disabled, $isLoading }) =>
+      buttonStyles(theme, {
+        color,
+        variant,
+        disabled,
+        $isLoading,
+      })}
   `,
-  Link: styled(Link)``, // work around because passing Link directly in "as" will throw some TypeScript warnings
+  Link: styled(Link, transientOptions)<ButtonStyleProps>`
+    ${({ theme, color, variant, disabled, $isLoading }) =>
+      buttonStyles(theme, {
+        color,
+        variant,
+        disabled,
+        $isLoading,
+      })}
+  `,
 }
 
 export enum ButtonColor {
@@ -161,12 +183,14 @@ type ButtonProps = {
   isLoading?: boolean
   href?: string
   label?: string
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
   openLinkInNewTab?: boolean
   variant?: ButtonVariant
   type?: 'submit' | 'button' | 'reset'
   form?: string
 }
+
+type ButtonStyleProps = Omit<ButtonProps, 'isLoading'> & { $isLoading?: boolean }
 
 export const Button = ({
   asLink = false,
@@ -184,24 +208,33 @@ export const Button = ({
   type = 'button',
   form,
 }: ButtonProps) => {
-  const buttonProps = {
+  const commonProps = {
     className,
     color,
     variant,
     disabled: disabled || isLoading,
-    isLoading,
-    ...(!asLink
-      ? { onClick, type, form }
-      : {
-          as: S.Link,
-          onClick,
-          href: disabled || isLoading ? '' : href,
-          role: 'link',
-          target: openLinkInNewTab ? '_blank' : '',
-          ['aria-disabled']: disabled || isLoading,
-          download,
-        }),
+    $isLoading: isLoading,
+    onClick,
   }
 
-  return <S.Button {...buttonProps}>{label || children}</S.Button>
+  if (asLink) {
+    return (
+      <S.Link
+        {...commonProps}
+        href={disabled || isLoading ? '' : href}
+        role="link"
+        target={openLinkInNewTab ? '_blank' : ''}
+        aria-disabled={disabled || isLoading}
+        download={download}
+      >
+        {label || children}
+      </S.Link>
+    )
+  }
+
+  return (
+    <S.Button {...commonProps} type={type} form={form}>
+      {label || children}
+    </S.Button>
+  )
 }
