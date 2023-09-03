@@ -1,7 +1,7 @@
 'use client'
 
 import { NavItem } from '@/components'
-import { useRehydrateAppStore } from '@/store/store'
+import { useRehydrateAppStore } from '@/store/hydration'
 
 import { Footer } from '../Footer'
 import { Header } from '../Header'

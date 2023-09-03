@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -18,10 +16,3 @@ export const useAppStore = create<AppStore>()(
     }
   )
 )
-
-// Re-hydrate app store on mount
-export const useRehydrateAppStore = () => {
-  useEffect(() => {
-    useAppStore.persist.rehydrate()
-  }, [])
-}
