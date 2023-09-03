@@ -7,6 +7,7 @@ type CartState = {
   items: CartItem[]
   totalItems: number
   totalPrice: number
+  isEmpty: boolean
 }
 
 type CartActions = {

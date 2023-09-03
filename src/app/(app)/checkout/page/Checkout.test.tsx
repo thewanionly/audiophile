@@ -13,7 +13,7 @@ jest.mock('next/navigation', () => {
   }
 })
 
-// Mock "useCartState"
+// Mock "useCartState" and "useCartActions"
 jest.mock('@/store/cart', () => ({
   __esModule: true,
   useCartState: jest.fn(() => ({
@@ -27,6 +27,12 @@ jest.mock('@/store/cart', () => ({
   useCartActions: jest.fn(() => ({
     removeAllItems: jest.fn(),
   })),
+}))
+
+// Mock "useIsStoreHydrated"
+jest.mock('@/store/hydration', () => ({
+  __esModule: true,
+  useIsStoreHydrated: jest.fn(() => true),
 }))
 
 const setup = () => {

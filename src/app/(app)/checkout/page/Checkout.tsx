@@ -10,6 +10,7 @@ import styled from '@emotion/styled'
 import { Button, ButtonVariant, EmptyCart } from '@/components'
 import { OrderSummary as OrderSummaryType } from '@/services/checkout'
 import { useCartActions, useCartState } from '@/store/cart'
+import { useIsStoreHydrated } from '@/store/hydration'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
@@ -137,9 +138,14 @@ const S = {
 export const Checkout = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
   const [order, setOrder] = useState<OrderSummaryType>()
-  const { totalItems } = useCartState()
+  const { isEmpty } = useCartState()
+  const isHydrated = useIsStoreHydrated()
   const { removeAllItems } = useCartActions()
   const router = useRouter()
+
+  const showLoadingState = !isHydrated
+  const showEmptyState = isHydrated && isEmpty
+  const showCheckoutContent = isHydrated && !isEmpty
 
   const handleGoBack = () => {
     router.back()
@@ -163,7 +169,23 @@ export const Checkout = () => {
 
   return (
     <>
-      {totalItems > 0 ? (
+      {/* Hydration Loading state */}
+      {showLoadingState && <p>Loading...</p>}
+
+      {/* Empty state */}
+      {showEmptyState && (
+        <S.EmptyCart
+          actionMessage={
+            <S.EmptyCartActionMessage>
+              Browse our store and find products you like,{' '}
+              <S.HomePageLink href="/">start shopping now</S.HomePageLink>!
+            </S.EmptyCartActionMessage>
+          }
+        />
+      )}
+
+      {/* Checkout page content */}
+      {showCheckoutContent && (
         <S.CheckoutContainer>
           <S.BackButtonContainer>
             <S.BackButton variant={ButtonVariant.TERTIARY} onClick={handleGoBack}>
@@ -183,17 +205,6 @@ export const Checkout = () => {
             />
           )}
         </S.CheckoutContainer>
-      ) : (
-        <>
-          <S.EmptyCart
-            actionMessage={
-              <S.EmptyCartActionMessage>
-                Browse our store and find products you like,{' '}
-                <S.HomePageLink href="/">start shopping now</S.HomePageLink>!
-              </S.EmptyCartActionMessage>
-            }
-          />
-        </>
       )}
     </>
   )
