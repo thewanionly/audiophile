@@ -14,15 +14,18 @@ jest.mock('next/navigation', () => {
 })
 
 // Mock "useCartState" and "useCartActions"
+const mockedTotalItems = mockedCartItems.reduce((total, { quantity }) => total + quantity, 0)
+
 jest.mock('@/store/cart', () => ({
   __esModule: true,
   useCartState: jest.fn(() => ({
     items: mockedCartItems,
-    totalItems: mockedCartItems.length,
+    totalItems: mockedTotalItems,
     totalPrice: mockedCartItems.reduce(
       (total, { quantity, product }) => total + quantity * product.price,
       0
     ),
+    isEmpty: mockedTotalItems <= 0,
   })),
   useCartActions: jest.fn(() => ({
     removeAllItems: jest.fn(),
