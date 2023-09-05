@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import CircularProgress from '@mui/material/CircularProgress'
 
 import { Button, CartItem } from '@/components'
 import { useCartState } from '@/store/cart'
@@ -6,6 +7,7 @@ import { mediaQuery } from '@/styles/utils'
 import { formatPrice } from '@/utils/helpers'
 
 import { ORDER_SUMMARY, SHIPPING_FEE, SUBMIT_BUTTON, VAT_PERCENTAGE } from '../../utils/constants'
+import { useCheckoutContext } from '../Checkout.context'
 
 const S = {
   OrderSummary: styled.section`
@@ -65,7 +67,26 @@ const S = {
     margin: 2.4rem 0 3.2rem;
   `,
   OrderSummarySubmitButton: styled(Button)`
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    padding: 0 3rem;
     width: 100%;
+    height: 4.8rem;
+  `,
+  OrderSummarySubmitButtonLabel: styled.span`
+    grid-area: 1 / 1 / 2 / 2;
+
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.sm1};
+    letter-spacing: 0.1rem;
+    line-height: normal;
+    text-transform: uppercase;
+  `,
+  LoadingSpinner: styled(CircularProgress)`
+    grid-area: 1 / 1 / 2 / 2;
+    color: ${({ theme }) => theme.colors.secondary};
   `,
 }
 
@@ -124,6 +145,7 @@ const OrderSummaryComputationRow = ({
 
 export const OrderSummary = ({ className }: OrderSummaryProps) => {
   const { items, totalPrice } = useCartState()
+  const { isCheckingOut } = useCheckoutContext()
 
   return (
     <S.OrderSummary className={className}>
@@ -158,8 +180,9 @@ export const OrderSummary = ({ className }: OrderSummaryProps) => {
           isGrandTotal
         />
       </S.OrderSummaryGrandTotal>
-      <S.OrderSummarySubmitButton type="submit" form="checkout-form">
-        {SUBMIT_BUTTON}
+      <S.OrderSummarySubmitButton type="submit" form="checkout-form" isLoading={isCheckingOut}>
+        <S.OrderSummarySubmitButtonLabel>{SUBMIT_BUTTON}</S.OrderSummarySubmitButtonLabel>
+        {isCheckingOut && <S.LoadingSpinner size={22} />}
       </S.OrderSummarySubmitButton>
     </S.OrderSummary>
   )

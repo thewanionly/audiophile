@@ -15,6 +15,7 @@ import { useIsStoreHydrated } from '@/store/hydration'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT, GO_BACK } from '@/utils/constants'
 
+import { CheckoutProvider } from './Checkout.context'
 import { CheckoutForm } from './CheckoutForm/CheckoutForm'
 import { OrderConfirmationModal } from './OrderConfirmationModal'
 import { OrderSummary } from './OrderSummary'
@@ -181,7 +182,7 @@ export const Checkout = () => {
   }
 
   return (
-    <>
+    <CheckoutProvider>
       {showLoadingState && (
         <S.LoadingContainer>
           <S.LoadingSpinner size={100} disableShrink />
@@ -220,6 +221,6 @@ export const Checkout = () => {
           )}
         </S.CheckoutContainer>
       )}
-    </>
+    </CheckoutProvider>
   )
 }

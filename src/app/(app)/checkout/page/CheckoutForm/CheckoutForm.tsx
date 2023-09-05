@@ -10,6 +10,7 @@ import { OrderSummary, placeOrder } from '@/services/checkout'
 import { useCartState } from '@/store/cart'
 
 import { SHIPPING_FEE, VAT_PERCENTAGE } from '../../utils/constants'
+import { useCheckoutContext } from '../Checkout.context'
 import { CheckoutSchema, PAYMENT_METHODS_OPTIONS, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
 import { PaymentDetails } from './PaymentDetails'
@@ -25,6 +26,8 @@ type CheckoutFormProps = {
 
 export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
   const { items, totalPrice } = useCartState()
+  const { setIsCheckingOut } = useCheckoutContext()
+
   const {
     register,
     watch,
@@ -39,6 +42,8 @@ export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
 
   const onSubmit: SubmitHandler<CheckoutSchema> = async (data) => {
     try {
+      setIsCheckingOut(true)
+
       const orderSummary: OrderSummary = {
         items,
         total: totalPrice,
@@ -58,6 +63,8 @@ export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
       openConfirmationModal(orderSummary)
     } catch (error) {
       console.error(`Sorry, there's a problem placing your order. Please try again.`)
+    } finally {
+      setIsCheckingOut(false)
     }
   }
 
