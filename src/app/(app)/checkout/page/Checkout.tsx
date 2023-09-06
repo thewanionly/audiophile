@@ -6,9 +6,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import styled from '@emotion/styled'
-import CircularProgress from '@mui/material/CircularProgress'
 
-import { Button, ButtonVariant, EmptyCart } from '@/components'
+import { Button, ButtonVariant, EmptyCart, Loading } from '@/components'
 import { OrderSummary as OrderSummaryType } from '@/services/checkout'
 import { useCartActions, useCartState } from '@/store/cart'
 import { useIsStoreHydrated } from '@/store/hydration'
@@ -135,18 +134,6 @@ const S = {
       font-size: ${({ theme }) => theme.fontSizes.regular};
     }
   `,
-  LoadingContainer: styled.div`
-    ${({ theme }) => appSectionContainer(theme)}
-
-    margin: 9.7rem auto;
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `,
-  LoadingSpinner: styled(CircularProgress)`
-    color: ${({ theme }) => theme.colors.primary};
-  `,
 }
 
 export const Checkout = () => {
@@ -183,11 +170,7 @@ export const Checkout = () => {
 
   return (
     <CheckoutProvider>
-      {showLoadingState && (
-        <S.LoadingContainer>
-          <S.LoadingSpinner size={100} disableShrink />
-        </S.LoadingContainer>
-      )}
+      {showLoadingState && <Loading />}
 
       {showEmptyState && (
         <S.EmptyCart
