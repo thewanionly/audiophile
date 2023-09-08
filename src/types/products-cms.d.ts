@@ -13,6 +13,7 @@ interface Product {
   id: number
   slug: string
   name: string
+  short_name: string
   image: ResponsiveImageType
   category: string
   categoryImage: ResponsiveImageType
@@ -34,7 +35,10 @@ type MainProductDetail = Pick<
   'slug' | 'name' | 'image' | 'category' | 'new' | 'price' | 'description'
 >
 type OtherProductDetail = Pick<ProductDetail, 'features' | 'includes' | 'gallery'>
-type CartItemProduct = Pick<ProductDetail, 'id' | 'name' | 'slug' | 'category' | 'price' | 'image'>
+type CartItemProduct = Pick<
+  ProductDetail,
+  'id' | 'name' | 'short_name' | 'slug' | 'category' | 'price' | 'image'
+>
 
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &
   Partial<Pick<Product, 'image' | 'new' | 'description'>>

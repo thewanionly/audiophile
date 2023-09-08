@@ -21,6 +21,11 @@ export const product = {
       type: 'string',
     },
     {
+      title: 'Short name',
+      name: 'short_name',
+      type: 'string',
+    },
+    {
       title: 'Image',
       name: 'image',
       type: 'object',

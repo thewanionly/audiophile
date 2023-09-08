@@ -13,7 +13,7 @@ const setup = (params?: Partial<CartItemProps>) => {
   render(
     <CartItem
       image={product.image}
-      name={product.name}
+      name={product.short_name}
       slug={product.slug}
       category={product.category}
       price={product.price}
@@ -43,7 +43,7 @@ describe('CartItem', () => {
   it('displays product short name', () => {
     setup()
 
-    const productShortName = screen.getByText(product.name)
+    const productShortName = screen.getByText(product.short_name)
 
     expect(productShortName).toBeInTheDocument()
   })
@@ -51,7 +51,7 @@ describe('CartItem', () => {
   it('contains link to the product detail page in the product short name', () => {
     setup()
 
-    const productNameLink = screen.getByRole('link', { name: product.name })
+    const productNameLink = screen.getByRole('link', { name: product.short_name })
     expect(productNameLink).toHaveAttribute('href', productHref)
   })
 

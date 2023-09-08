@@ -4,6 +4,7 @@ export const mockedCartItems: CartItem[] = [
       id: 5,
       slug: 'zx7-speaker',
       name: 'ZX7 Speaker',
+      short_name: 'ZX7',
       category: 'speakers',
       price: 3500,
       image: {
@@ -22,6 +23,7 @@ export const mockedCartItems: CartItem[] = [
       id: 6,
       slug: 'zx9-speaker',
       name: 'ZX9 Speaker M',
+      short_name: 'ZX9',
       category: 'speakers',
       price: 4500,
       image: {

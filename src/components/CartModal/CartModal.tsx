@@ -167,7 +167,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
                 <li key={product.slug}>
                   <CartItem
                     image={product.image}
-                    name={product.name}
+                    name={product.short_name}
                     slug={product.slug}
                     category={product.category}
                     price={product.price}
