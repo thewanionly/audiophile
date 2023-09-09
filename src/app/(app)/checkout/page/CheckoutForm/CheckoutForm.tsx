@@ -8,10 +8,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { OrderSummary, placeOrder } from '@/services/checkout'
 import { useCartState } from '@/store/cart'
+import { CheckoutSchema, PAYMENT_METHODS_OPTIONS, checkoutSchema } from '@/utils/schema/checkout'
 
 import { SHIPPING_FEE, VAT_PERCENTAGE } from '../../utils/constants'
 import { useCheckoutContext } from '../Checkout.context'
-import { CheckoutSchema, PAYMENT_METHODS_OPTIONS, checkoutSchema } from '../Checkout.schema'
 import { BillingDetails } from './BillingDetails'
 import { PaymentDetails } from './PaymentDetails'
 import { ShippingInfo } from './ShippingInfo'

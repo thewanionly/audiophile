@@ -7,9 +7,9 @@ import styled from '@emotion/styled'
 import { Input, RadioGroup, RadioInput } from '@/components'
 import { mediaQuery } from '@/styles/utils'
 import { NON_NUMERIC_REGEX } from '@/utils/constants'
+import { PAYMENT_METHODS, PAYMENT_METHODS_OPTIONS } from '@/utils/schema/checkout'
 
 import { COD_MESSAGE, PAYMENT_DETAILS } from '../../../utils/constants'
-import { PAYMENT_METHODS, PAYMENT_METHODS_OPTIONS } from '../../Checkout.schema'
 import { formSectionHeading, formFieldsContainer, formInput } from '../CheckoutForm.styles'
 import { FormSectionProps } from '../CheckoutForm.types'
 

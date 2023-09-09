@@ -1,9 +1,9 @@
 import userEvent from '@testing-library/user-event'
 
 import { render, screen } from '@/tests'
+import { PAYMENT_METHODS, PAYMENT_METHODS_OPTIONS } from '@/utils/schema/checkout'
 
 import { COD_MESSAGE, PAYMENT_DETAILS } from '../../../utils/constants'
-import { PAYMENT_METHODS_OPTIONS, PAYMENT_METHODS } from '../../Checkout.schema'
 import { CheckoutForm } from '../CheckoutForm'
 
 const setup = () => {

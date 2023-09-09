@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 
-import { CheckoutSchema } from '@/app/(app)/checkout/page/Checkout.schema'
+import { CheckoutSchema } from '@/utils/schema/checkout'
 
 const FORMSPREE_API = 'https://formspree.io/f/xyyqwnoz'
 
