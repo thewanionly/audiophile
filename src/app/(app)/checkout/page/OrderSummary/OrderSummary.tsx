@@ -155,7 +155,7 @@ export const OrderSummary = ({ className }: OrderSummaryProps) => {
           <li key={product.slug}>
             <CartItem
               image={product.image}
-              name={product.short_name}
+              name={product.shortName}
               slug={product.slug}
               category={product.category}
               price={product.price}

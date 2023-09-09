@@ -57,7 +57,7 @@ describe('OrderConfirmationModal', () => {
   it('displays first ordered cart item', () => {
     setup()
 
-    const firstOrderedCartItem = screen.getByText(mockedCartItems[0].product.short_name)
+    const firstOrderedCartItem = screen.getByText(mockedCartItems[0].product.shortName)
     expect(firstOrderedCartItem).toBeInTheDocument()
   })
 

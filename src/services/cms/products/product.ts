@@ -154,7 +154,7 @@ export const getCartItemProduct = async (slug: string): Promise<CartItemProduct 
       'id',
       'slug',
       'name',
-      'short_name',
+      'shortName',
       'category',
       'price',
       'image',

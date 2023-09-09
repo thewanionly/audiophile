@@ -180,7 +180,7 @@ export const OrderConfirmationModal = ({
             <S.OrderedItemsContainer>
               <S.CartItem
                 image={firstProduct.product.image}
-                name={firstProduct.product.short_name}
+                name={firstProduct.product.shortName}
                 slug={firstProduct.product.slug}
                 category={firstProduct.product.category}
                 price={firstProduct.product.price}

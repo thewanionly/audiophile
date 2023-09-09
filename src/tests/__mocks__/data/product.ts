@@ -2,7 +2,7 @@ export const mockedProduct: ProductDetail = {
   id: 4,
   slug: 'xx99-mark-two-headphones',
   name: 'XX99 Mark II Headphones',
-  short_name: 'XX99 MK II',
+  shortName: 'XX99 MK II',
   image: {
     src: {
       mobile: '/headphones-image.jpg',

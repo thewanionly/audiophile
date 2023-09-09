@@ -13,7 +13,7 @@ interface Product {
   id: number
   slug: string
   name: string
-  short_name: string
+  shortName: string
   image: ResponsiveImageType
   category: string
   categoryImage: ResponsiveImageType
@@ -37,7 +37,7 @@ type MainProductDetail = Pick<
 type OtherProductDetail = Pick<ProductDetail, 'features' | 'includes' | 'gallery'>
 type CartItemProduct = Pick<
   ProductDetail,
-  'id' | 'name' | 'short_name' | 'slug' | 'category' | 'price' | 'image'
+  'id' | 'name' | 'shortName' | 'slug' | 'category' | 'price' | 'image'
 >
 
 type ProductLite = Pick<Product, 'id' | 'name' | 'slug' | 'category'> &

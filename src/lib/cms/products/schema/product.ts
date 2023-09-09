@@ -22,7 +22,7 @@ export const product = {
     },
     {
       title: 'Short name',
-      name: 'short_name',
+      name: 'shortName',
       type: 'string',
     },
     {
