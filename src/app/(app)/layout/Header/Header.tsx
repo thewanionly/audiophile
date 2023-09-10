@@ -147,7 +147,7 @@ export const Header = ({ navItems }: HeaderProps) => {
     if (isDesktop) {
       closeNavMenu()
     }
-  }, [isDesktop])
+  }, [closeNavMenu, isDesktop])
 
   return (
     <S.Header heroSectionVisible={isHeroSectionVisible}>
