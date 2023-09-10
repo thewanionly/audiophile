@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -142,6 +142,12 @@ export const Header = ({ navItems }: HeaderProps) => {
   const [showCartModal, setShowCartModal] = useState(false)
   const { isNavMenuOpen, isHeroSectionVisible, closeNavMenu, toggleNavMenu } = useLayoutContext()
   const isDesktop = useMediaQuery(theme.breakPoints.desktop)
+
+  useEffect(() => {
+    if (isDesktop) {
+      closeNavMenu()
+    }
+  }, [isDesktop])
 
   return (
     <S.Header heroSectionVisible={isHeroSectionVisible}>
