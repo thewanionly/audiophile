@@ -30,6 +30,12 @@ export const globalStyles = (theme: Theme) => css`
     }
   }
 
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
   h1,
   h2,
   h3,
