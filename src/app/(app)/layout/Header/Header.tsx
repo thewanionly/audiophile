@@ -96,9 +96,14 @@ const S = {
     position: relative;
   `,
   HeaderNavBar: styled(NavBar)`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none;
+
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   `,
   HeaderCartIconContainer: styled.button`
     position: absolute;
@@ -152,13 +157,13 @@ export const Header = ({ navItems }: HeaderProps) => {
   return (
     <S.Header heroSectionVisible={isHeroSectionVisible}>
       <S.HeaderContainer>
-        <S.HeaderMenuIcon isOpen={isNavMenuOpen} isVisible={!isDesktop} onClick={toggleNavMenu} />
+        <S.HeaderMenuIcon isOpen={isNavMenuOpen} onClick={toggleNavMenu} />
         <S.HeaderLogo href="/" onClick={closeNavMenu}>
           <S.HeaderLogoContainer>
             <Image src="/icons/logo.svg" alt="logo of audiophile" fill priority />
           </S.HeaderLogoContainer>
         </S.HeaderLogo>
-        {isDesktop && <S.HeaderNavBar items={navItems} />}
+        <S.HeaderNavBar items={navItems} />
         <S.HeaderCartIconContainer onClick={() => setShowCartModal((prev) => !prev)}>
           <S.CartIconBadge
             badgeContent={totalItems}

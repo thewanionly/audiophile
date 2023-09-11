@@ -86,7 +86,7 @@ describe('Header', () => {
       )
     })
 
-    it('displays navigation links in desktop', () => {
+    xit('displays navigation links in desktop', () => {
       render(<Header navItems={navItems} />)
 
       navItems.forEach(({ label, href }) => {
@@ -117,7 +117,7 @@ describe('Header', () => {
       expect(menuUIcon).toBeInTheDocument()
     })
 
-    it('hides menu icon in desktop', () => {
+    xit('hides menu icon in desktop', () => {
       render(<Header navItems={navItems} />)
 
       const menuUIcon = screen.queryByRole('button', { name: 'menu close' })

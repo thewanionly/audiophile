@@ -3,6 +3,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { mediaQuery } from '@/styles/utils'
+
 const S = {
   HeaderMenuButton: styled.button<HeaderMenuIconProps>`
     background: transparent;
@@ -25,11 +27,9 @@ const S = {
       }
     }
 
-    ${({ isVisible }) =>
-      !isVisible &&
-      css`
-        display: none;
-      `}
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      display: none;
+    }
   `,
   HeaderMenuIcon: styled.span<{ isOpen: boolean }>`
     position: relative;
@@ -80,7 +80,6 @@ const S = {
 }
 
 type HeaderMenuIconStyleProps = {
-  isVisible: boolean
   isOpen: boolean
 }
 
@@ -89,18 +88,12 @@ type HeaderMenuIconProps = HeaderMenuIconStyleProps & {
   onClick: () => void
 }
 
-export const HeaderMenuIcon = ({
-  className = '',
-  isVisible,
-  isOpen,
-  onClick,
-}: HeaderMenuIconProps) => {
+export const HeaderMenuIcon = ({ className = '', isOpen, onClick }: HeaderMenuIconProps) => {
   return (
     <S.HeaderMenuButton
       aria-label={isOpen ? 'menu open' : 'menu close'}
       className={className}
       isOpen={isOpen}
-      isVisible={isVisible}
       onClick={onClick}
     >
       <S.HeaderMenuIcon className="header-menu-icon" isOpen={isOpen} />
