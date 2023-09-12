@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 import styled from '@emotion/styled'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -192,9 +193,10 @@ export const MainDetailSection = ({
 
     try {
       await addItem(slug, quantity)
-
-      setIsCartAdding(false)
+      toast.success('Added item to cart')
     } catch (error) {
+      toast.error(`There's a problem adding item to cart`)
+    } finally {
       setIsCartAdding(false)
     }
   }

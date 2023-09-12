@@ -1,6 +1,9 @@
 import { getCartItemProduct } from '@/services/cms/products'
+import { timeoutPromise } from '@/utils/helpers'
 
 import { useAppStore } from '../store'
+
+const ADD_TO_CART_MIN_LOADING = 1000
 
 // Adds an item to cart
 const addItem = async (slug: string, quantity: number) => {
@@ -10,6 +13,8 @@ const addItem = async (slug: string, quantity: number) => {
 
     // If product is already in cart, update quantity
     if (cartitems.some((cartItem) => cartItem.product.slug === slug)) {
+      await timeoutPromise(ADD_TO_CART_MIN_LOADING)
+
       updatedCardItems = updatedCardItems.map((cartItem) =>
         cartItem.product.slug === slug
           ? { ...cartItem, quantity: cartItem.quantity + quantity }
@@ -20,7 +25,10 @@ const addItem = async (slug: string, quantity: number) => {
     }
 
     // If product is not yet in cart, append the product to the cart
-    const productDetail = await getCartItemProduct(slug)
+    const [productDetail] = await Promise.all([
+      getCartItemProduct(slug),
+      timeoutPromise(ADD_TO_CART_MIN_LOADING),
+    ])
 
     if (!productDetail) throw new Error()
 
