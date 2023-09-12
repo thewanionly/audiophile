@@ -87,6 +87,11 @@ export const theme: Theme = {
     orderedItemsSeparator: rgba(COLORS.black, 0.08),
     grandTotalBg: COLORS.black,
     grandTotalValue: COLORS.white,
+
+    // Toast
+    toasterText: COLORS.white,
+    toasterSuccessBg: COLORS.rawSienna,
+    toasterErrorBg: COLORS.persianRed,
   },
   fontSizes: {
     xs: TYPOGRAPHY.fontSizeXs,

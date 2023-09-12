@@ -61,6 +61,9 @@ declare module '@emotion/react' {
       orderedItemsSeparator: string
       grandTotalBg: string
       grandTotalValue: string
+      toasterText: string
+      toasterSuccessBg: string
+      toasterErrorBg: string
     }
     fontSizes: {
       xs: string

@@ -3,6 +3,7 @@
 import styled from '@emotion/styled'
 
 import { NavItem } from '@/components'
+import { Toaster } from '@/components/Toaster'
 import { useRehydrateAppStore } from '@/store/hydration'
 
 import { Footer } from '../Footer'
@@ -28,6 +29,7 @@ export const Layout = ({ categories, navLinks, footer, children }: LayoutProps) 
 
   return (
     <LayoutProvider>
+      <Toaster />
       <Header navItems={navLinks} />
       <NavMenu categories={categories} />
       <S.Main>{children}</S.Main>
