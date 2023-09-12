@@ -16,13 +16,10 @@ const S = {
   Modal: styled(MUIModal)`
     ${({ theme }) => appSectionContainer(theme)}
 
-    &,
-    .MuiBackdrop-root {
-      margin-top: 9rem;
+    margin-top: 9rem;
 
-      ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
-        margin-top: 9.6rem;
-      }
+    ${({ theme }) => mediaQuery(theme.breakPoints.desktop)} {
+      margin-top: 9.6rem;
     }
   `,
   ModalContent: styled.div`
