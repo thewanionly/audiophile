@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 import styled from '@emotion/styled'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -56,13 +57,16 @@ export const CheckoutForm = ({ openConfirmationModal }: CheckoutFormProps) => {
 
       if (!responseData.ok) throw Error
 
+      toast.success('Order placed successfully!')
+
       // Reset form
       reset()
 
       // Open confirmation modal
       openConfirmationModal(orderSummary)
     } catch (error) {
-      console.error(`Sorry, there's a problem placing your order. Please try again.`)
+      toast.error(`There's a problem placing your order.`)
+      console.error(error)
     } finally {
       setIsCheckingOut(false)
     }
