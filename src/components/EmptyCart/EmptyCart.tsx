@@ -17,10 +17,11 @@ const S = {
     position: relative;
 
     width: 50%;
+    min-width: 24rem;
     aspect-ratio: 1.2;
   `,
   EmptyCartImage: styled(Image)``,
-  EmptyCartPrimaryMessage: styled.p`
+  EmptyCartPrimaryMessage: styled.h1`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.med1};
     line-height: normal;

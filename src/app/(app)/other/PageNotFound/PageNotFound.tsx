@@ -1,9 +1,16 @@
 'use client'
 
+import Image from 'next/image'
+
 import styled from '@emotion/styled'
 
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
-import { NOT_FOUND_PRIMARY_MESSAGE, NOT_FOUND_SECONDARY_MESSAGE } from '@/utils/constants'
+import {
+  NOT_FOUND_ALT_TEXT,
+  NOT_FOUND_IMG_SRC,
+  NOT_FOUND_PRIMARY_MESSAGE,
+  NOT_FOUND_SECONDARY_MESSAGE,
+} from '@/utils/constants'
 
 const S = {
   PageNotFound: styled.section`
@@ -12,10 +19,16 @@ const S = {
     padding: 10rem 0;
     text-align: center;
   `,
-  PageNotFoundContainer: styled.div`
-    max-width: 60rem;
-    margin: 0 auto;
+
+  PageNotFoundImageContainer: styled.div`
+    margin: 3rem auto 5rem;
+    position: relative;
+
+    width: 50%;
+    min-width: 24rem;
+    aspect-ratio: 1.2;
   `,
+  PageNotFoundImage: styled(Image)``,
   PrimaryMessage: styled.h1`
     font-weight: ${({ theme }) => theme.fontWeights.bold};
     font-size: ${({ theme }) => theme.fontSizes.med3};
@@ -47,10 +60,11 @@ const S = {
 export const PageNotFound = () => {
   return (
     <S.PageNotFound>
-      <S.PageNotFoundContainer>
-        <S.PrimaryMessage>{NOT_FOUND_PRIMARY_MESSAGE}</S.PrimaryMessage>
-        <S.SecondaryMessage>{NOT_FOUND_SECONDARY_MESSAGE}</S.SecondaryMessage>
-      </S.PageNotFoundContainer>
+      <S.PageNotFoundImageContainer>
+        <S.PageNotFoundImage src={NOT_FOUND_IMG_SRC} alt={NOT_FOUND_ALT_TEXT} fill />
+      </S.PageNotFoundImageContainer>
+      <S.PrimaryMessage>{NOT_FOUND_PRIMARY_MESSAGE}</S.PrimaryMessage>
+      <S.SecondaryMessage>{NOT_FOUND_SECONDARY_MESSAGE}</S.SecondaryMessage>
     </S.PageNotFound>
   )
 }
