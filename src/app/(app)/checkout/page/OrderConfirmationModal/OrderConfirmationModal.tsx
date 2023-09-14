@@ -11,7 +11,7 @@ import {
   ORDER_CONFIRMATION_PRIMARY_MESSAGE,
   ORDER_CONFIRMATION_SECONDARY_MESSAGE,
 } from '../../utils/constants'
-import { ORDER_COMPUTATIONS } from '../OrderSummary'
+import { getOrderComputations } from '../../utils/helpers'
 
 const S = {
   OrderConfirmationModal: styled(MUIModal)`
@@ -167,6 +167,8 @@ export const OrderConfirmationModal = ({
   const firstProduct = items[0]
   const otherItemsCount = items.length - 1
 
+  const orderComputation = getOrderComputations(total)
+
   return (
     <S.OrderConfirmationModal open={open} onClose={onClose}>
       <S.OrderConfirmationModalContent>
@@ -197,10 +199,10 @@ export const OrderConfirmationModal = ({
               )}
             </S.OrderedItemsContainer>
             <S.GrandTotalContainer>
-              <S.GrandTotalLabel id={ORDER_COMPUTATIONS.grandTotal.id}>
-                {ORDER_COMPUTATIONS.grandTotal.label}
+              <S.GrandTotalLabel id={orderComputation.grandTotal.id}>
+                {orderComputation.grandTotal.label}
               </S.GrandTotalLabel>
-              <S.GrandTotalValue aria-labelledby={ORDER_COMPUTATIONS.grandTotal.id}>
+              <S.GrandTotalValue aria-labelledby={orderComputation.grandTotal.id}>
                 {formatPrice(grandTotal)}
               </S.GrandTotalValue>
             </S.GrandTotalContainer>

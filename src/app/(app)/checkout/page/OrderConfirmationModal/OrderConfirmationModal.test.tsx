@@ -10,13 +10,15 @@ import {
   SHIPPING_FEE,
   VAT_PERCENTAGE,
 } from '../../utils/constants'
-import { ORDER_COMPUTATIONS } from '../OrderSummary'
+import { getOrderComputations } from '../../utils/helpers'
 import { OrderConfirmationModal } from './OrderConfirmationModal'
 
 const totalPrice = mockedCartItems.reduce(
   (total, { quantity, product }) => total + quantity * product.price,
   0
 )
+
+const { grandTotal } = getOrderComputations(totalPrice)
 
 const order = {
   items: mockedCartItems,
@@ -69,10 +71,10 @@ describe('OrderConfirmationModal', () => {
     expect(otherItemsCountEl).toHaveTextContent(`${otherItemsCount}`)
   })
 
-  it(`displays ${ORDER_COMPUTATIONS.grandTotal.label} value`, () => {
+  it(`displays ${grandTotal.label} value`, () => {
     setup()
 
-    const valueText = screen.getByLabelText(ORDER_COMPUTATIONS.grandTotal.label)
+    const valueText = screen.getByLabelText(grandTotal.label)
     expect(valueText).toBeInTheDocument()
     expect(valueText).toHaveTextContent(formatPrice(order.grandTotal))
   })

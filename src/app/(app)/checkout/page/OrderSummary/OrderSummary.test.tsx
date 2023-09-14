@@ -1,7 +1,10 @@
 import { render, screen } from '@/tests'
 
 import { ORDER_SUMMARY, SUBMIT_BUTTON } from '../../utils/constants'
-import { ORDER_COMPUTATIONS, OrderSummary } from './OrderSummary'
+import { getOrderComputations } from '../../utils/helpers'
+import { OrderSummary } from './OrderSummary'
+
+const orderComputation = getOrderComputations(0)
 
 const setup = () => {
   render(<OrderSummary />)
@@ -17,10 +20,10 @@ describe('OrderSummary', () => {
 
   it.each`
     label
-    ${ORDER_COMPUTATIONS.total.label}
-    ${ORDER_COMPUTATIONS.shipping.label}
-    ${ORDER_COMPUTATIONS.vat.label}
-    ${ORDER_COMPUTATIONS.grandTotal.label}
+    ${orderComputation.total.label}
+    ${orderComputation.shipping.label}
+    ${orderComputation.vat.label}
+    ${orderComputation.grandTotal.label}
   `('displays $label value', async ({ label }) => {
     setup()
 

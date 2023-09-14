@@ -4,9 +4,9 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { Button, CartItem } from '@/components'
 import { useCartState } from '@/store/cart'
 import { mediaQuery } from '@/styles/utils'
-import { formatPrice } from '@/utils/helpers'
 
-import { ORDER_SUMMARY, SHIPPING_FEE, SUBMIT_BUTTON, VAT_PERCENTAGE } from '../../utils/constants'
+import { ORDER_SUMMARY, SUBMIT_BUTTON } from '../../utils/constants'
+import { OrderComputationItem, getOrderComputations } from '../../utils/helpers'
 import { useCheckoutContext } from '../Checkout.context'
 
 const S = {
@@ -94,51 +94,20 @@ type OrderSummaryProps = {
   className?: string
 }
 
-interface OrderComputationItem {
-  id: string
-  label: string
-  value: string | ((price: number) => string)
-}
-
 type OrderSummaryComputationRowProps = OrderComputationItem & {
-  totalPrice: number
   isGrandTotal?: boolean
-}
-
-export const ORDER_COMPUTATIONS: Record<string, OrderComputationItem> = {
-  total: {
-    id: 'total',
-    label: 'Total',
-    value: (price: number) => formatPrice(price),
-  },
-  shipping: {
-    id: 'shipping',
-    label: 'Shipping',
-    value: formatPrice(SHIPPING_FEE),
-  },
-  vat: {
-    id: 'vat',
-    label: 'VAT (Included)',
-    value: (price: number) => formatPrice(price * VAT_PERCENTAGE),
-  },
-  grandTotal: {
-    id: 'grandTotal',
-    label: 'Grand Total',
-    value: (price: number) => formatPrice(price + SHIPPING_FEE),
-  },
 }
 
 const OrderSummaryComputationRow = ({
   id,
   label,
   value,
-  totalPrice,
   isGrandTotal = false,
 }: OrderSummaryComputationRowProps) => (
   <S.OrderSummaryComputationRow key={id}>
     <S.OrderSummaryComputationRowLabel id={id}>{label}</S.OrderSummaryComputationRowLabel>
     <S.OrderSummaryComputationRowValue aria-labelledby={id} isGrandTotal={isGrandTotal}>
-      {typeof value === 'function' ? value(totalPrice) : value}
+      {value}
     </S.OrderSummaryComputationRowValue>
   </S.OrderSummaryComputationRow>
 )
@@ -146,6 +115,8 @@ const OrderSummaryComputationRow = ({
 export const OrderSummary = ({ className }: OrderSummaryProps) => {
   const { items, totalPrice } = useCartState()
   const { isCheckingOut } = useCheckoutContext()
+
+  const { grandTotal, ...otherOrderComputation } = getOrderComputations(totalPrice)
 
   return (
     <S.OrderSummary className={className}>
@@ -166,19 +137,12 @@ export const OrderSummary = ({ className }: OrderSummaryProps) => {
         ))}
       </S.OrderSummaryCartItems>
       <S.OrderSummaryComputation>
-        {Object.values(ORDER_COMPUTATIONS)
-          .filter(({ id }) => id !== ORDER_COMPUTATIONS.grandTotal.id)
-          .map((row) => (
-            <OrderSummaryComputationRow key={row.id} {...row} totalPrice={totalPrice} />
-          ))}
+        {Object.values(otherOrderComputation).map((row) => (
+          <OrderSummaryComputationRow key={row.id} {...row} />
+        ))}
       </S.OrderSummaryComputation>
       <S.OrderSummaryGrandTotal>
-        <OrderSummaryComputationRow
-          key={ORDER_COMPUTATIONS.grandTotal.id}
-          {...ORDER_COMPUTATIONS.grandTotal}
-          totalPrice={totalPrice}
-          isGrandTotal
-        />
+        <OrderSummaryComputationRow key={grandTotal.id} {...grandTotal} isGrandTotal />
       </S.OrderSummaryGrandTotal>
       <S.OrderSummarySubmitButton type="submit" form="checkout-form" isLoading={isCheckingOut}>
         <S.OrderSummarySubmitButtonLabel>{SUBMIT_BUTTON}</S.OrderSummarySubmitButtonLabel>
