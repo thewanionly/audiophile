@@ -27,16 +27,17 @@ const S = {
     background-color: ${({ theme }) => theme.colors.modalBg};
     border-radius: 0.8rem;
     padding: 3.2rem 2.8rem;
-
     max-width: 37.7rem;
+    max-height: 49rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
 
     ${({ theme }) => mediaQuery(theme.breakPoints.tabletLandscape)} {
       margin-right: 0;
     }
   `,
   CartHeader: styled.section`
-    margin-bottom: 3.1rem;
-
     display: flex;
     justify-content: space-between;
   `,
@@ -59,14 +60,16 @@ const S = {
     color: ${({ theme }) => theme.colors.bodyTextDark};
     text-decoration: underline;
   `,
-  CartBody: styled.section``,
+  CartBody: styled.section`
+    flex-shrink: 1;
+    overflow: auto;
+  `,
   CartItemList: styled.ul`
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
-
-    margin-bottom: 3.2rem;
   `,
+  CartFooter: styled.section``,
   CartItemTotalPriceContainer: styled.div`
     display: flex;
     justify-content: space-between;
@@ -187,19 +190,19 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
               }
             />
           )}
-          {totalItems > 0 && (
+        </S.CartBody>
+        {totalItems > 0 && (
+          <S.CartFooter>
             <S.CartItemTotalPriceContainer>
               <S.CartItemTotalPriceLabel>Total</S.CartItemTotalPriceLabel>
               <S.CartItemTotalPriceValue data-testid="cart-items-total-amount">
                 {formatPrice(totalPrice)}
               </S.CartItemTotalPriceValue>
             </S.CartItemTotalPriceContainer>
-          )}
-        </S.CartBody>
-        {totalItems > 0 && (
-          <S.CheckoutButton asLink href="/checkout" onClick={closeModal}>
-            {CHECKOUT}
-          </S.CheckoutButton>
+            <S.CheckoutButton asLink href="/checkout" onClick={closeModal}>
+              {CHECKOUT}
+            </S.CheckoutButton>
+          </S.CartFooter>
         )}
       </S.ModalContent>
     </S.Modal>
