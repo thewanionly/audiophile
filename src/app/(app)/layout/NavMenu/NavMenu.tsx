@@ -23,6 +23,9 @@ const S = {
     background-color: ${({ theme }) => theme.colors.modalBg};
     border-radius: 0 0 0.8rem 0.8rem;
     padding: 3.2rem 0 3.5rem;
+
+    overflow: auto;
+    max-height: calc(100vh - 15.4rem);
   `,
   CategoryCardListSection: styled.section`
     ${({ theme }) => appSectionContainer(theme)}
