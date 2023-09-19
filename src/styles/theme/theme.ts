@@ -92,6 +92,10 @@ export const theme: Theme = {
     toasterText: COLORS.white,
     toasterSuccessBg: COLORS.rawSienna,
     toasterErrorBg: COLORS.persianRed,
+
+    // Delete confirmation
+    deleteConfirmationContentBg: COLORS.white,
+    deleteConfirmationOverlay: rgba(COLORS.black, 0.3),
   },
   fontSizes: {
     xs: TYPOGRAPHY.fontSizeXs,

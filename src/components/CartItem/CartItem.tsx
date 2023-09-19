@@ -92,6 +92,7 @@ export type CartItemProps = {
   price: number
   quantity: number
   onClick?: () => void
+  onRemove?: (name: string, slug: string) => void
   withActions?: boolean
 }
 
@@ -104,16 +105,21 @@ export const CartItem = ({
   price,
   quantity,
   onClick,
+  onRemove,
   withActions = true,
 }: CartItemProps) => {
   const [qtyValue, setQtyValue] = useState(quantity)
-  const { updateItemQuantity, removeItem } = useCartActions()
+  const { updateItemQuantity } = useCartActions()
 
   const productHref = `/${category}/${slug}`
 
   const handleUpdateQuantity = (value: number) => {
     setQtyValue(value)
     updateItemQuantity(slug, value)
+  }
+
+  const handleRemoveItem = () => {
+    onRemove?.(name, slug)
   }
 
   return (
@@ -138,7 +144,7 @@ export const CartItem = ({
           />
           <S.DeleteIconButton
             variant={ButtonVariant.TERTIARY}
-            onClick={() => removeItem(slug)}
+            onClick={handleRemoveItem}
             aria-label="delete item"
           >
             <S.DeleteIcon name={IconName.Trash} />

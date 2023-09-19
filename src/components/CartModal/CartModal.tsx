@@ -1,10 +1,12 @@
+import { useState } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
 import styled from '@emotion/styled'
 import MUIModal from '@mui/material/Modal'
 
-import { Button, ButtonVariant, EmptyCart } from '@/components'
+import { Button, ButtonColor, ButtonVariant, EmptyCart } from '@/components'
 import { useCartActions, useCartState } from '@/store/cart'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 import { CHECKOUT } from '@/utils/constants'
@@ -23,6 +25,7 @@ const S = {
     }
   `,
   ModalContent: styled.div`
+    position: relative;
     margin: 2.4rem auto;
     background-color: ${({ theme }) => theme.colors.modalBg};
     border-radius: 0.8rem;
@@ -131,6 +134,43 @@ const S = {
       text-decoration: underline;
     }
   `,
+  ConfirmDeletionOverlay: styled.div`
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: ${({ theme }) => theme.colors.deleteConfirmationOverlay};
+    border-radius: 0.8rem;
+  `,
+  ConfirmDeletionContent: styled.div`
+    position: absolute;
+    bottom: 0;
+    border-radius: 1.5rem 1.5rem 0.8rem 0.8rem;
+    background-color: ${({ theme }) => theme.colors.deleteConfirmationContentBg};
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  `,
+  ConfirmDeletionOverlayMessage: styled.span`
+    font-weight: ${({ theme }) => theme.fontWeights.bold};
+    font-size: ${({ theme }) => theme.fontSizes.med1};
+    line-height: normal;
+    text-align: center;
+    color: ${({ theme }) => theme.colors.darkTitle};
+  `,
+  ConfirmDeletionOverlayButtonsContainer: styled.div`
+    display: flex;
+    gap: 1rem;
+  `,
+  ConfirmDeleteButton: styled(Button)`
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+  `,
 }
 
 type CartModalProps = {
@@ -139,15 +179,47 @@ type CartModalProps = {
 }
 
 export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+  const [itemToDelete, setItemToDelete] = useState<Pick<Product, 'shortName' | 'slug'> | null>()
   const { items, totalItems, totalPrice } = useCartState()
-  const { removeAllItems } = useCartActions()
+  const { removeItem, removeAllItems } = useCartActions()
 
-  const handleRemoveAllItems = () => {
-    removeAllItems()
+  const handleOnRemoveItemClick = (name: string, slug: string) => {
+    setItemToDelete({ shortName: name, slug })
+    setShowDeleteConfirmation(true)
+  }
+
+  const handleOnRemoveAllClick = () => {
+    setItemToDelete(null)
+    setShowDeleteConfirmation(true)
+  }
+
+  const resetDeleteState = () => {
+    setItemToDelete(null)
+    setShowDeleteConfirmation(false)
+  }
+
+  const handleModalClose = () => {
+    resetDeleteState()
+    closeModal()
+  }
+
+  const handleRemove = () => {
+    if (itemToDelete) {
+      removeItem(itemToDelete.slug)
+    } else {
+      removeAllItems()
+    }
+
+    resetDeleteState()
+  }
+
+  const handleKeepIt = () => {
+    setShowDeleteConfirmation(false)
   }
 
   return (
-    <S.Modal open={open} onClose={closeModal}>
+    <S.Modal open={open} onClose={handleModalClose}>
       <S.ModalContent>
         <S.CartHeader>
           <S.CartTitle>
@@ -155,7 +227,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
             <span data-testid="cart-items-count">{` (${totalItems})`}</span>
           </S.CartTitle>
           {totalItems > 0 && (
-            <S.RemoveAllButton variant={ButtonVariant.TERTIARY} onClick={handleRemoveAllItems}>
+            <S.RemoveAllButton variant={ButtonVariant.TERTIARY} onClick={handleOnRemoveAllClick}>
               Remove all
             </S.RemoveAllButton>
           )}
@@ -172,7 +244,8 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
                     category={product.category}
                     price={product.price}
                     quantity={quantity}
-                    onClick={closeModal}
+                    onClick={handleModalClose}
+                    onRemove={handleOnRemoveItemClick}
                   />
                 </li>
               ))}
@@ -182,7 +255,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
               actionMessage={
                 <S.EmptyCartActionMessage>
                   Browse our store and find products you like,{' '}
-                  <S.HomePageLink href="/" onClick={closeModal}>
+                  <S.HomePageLink href="/" onClick={handleModalClose}>
                     start shopping now
                   </S.HomePageLink>
                   !
@@ -199,10 +272,32 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
                 {formatPrice(totalPrice)}
               </S.CartItemTotalPriceValue>
             </S.CartItemTotalPriceContainer>
-            <S.CheckoutButton asLink href="/checkout" onClick={closeModal}>
+            <S.CheckoutButton asLink href="/checkout" onClick={handleModalClose}>
               {CHECKOUT}
             </S.CheckoutButton>
           </S.CartFooter>
+        )}
+
+        {showDeleteConfirmation && (
+          <S.ConfirmDeletionOverlay>
+            <S.ConfirmDeletionContent>
+              <S.ConfirmDeletionOverlayMessage>
+                Remove {itemToDelete ? `${itemToDelete?.shortName}` : 'all items'}?
+              </S.ConfirmDeletionOverlayMessage>
+              <S.ConfirmDeletionOverlayButtonsContainer>
+                <S.ConfirmDeleteButton
+                  variant={ButtonVariant.OUTLINED}
+                  color={ButtonColor.SECONDARY}
+                  onClick={handleKeepIt}
+                >
+                  Keep it
+                </S.ConfirmDeleteButton>
+                <S.ConfirmDeleteButton color={ButtonColor.SECONDARY} onClick={handleRemove}>
+                  Remove
+                </S.ConfirmDeleteButton>
+              </S.ConfirmDeletionOverlayButtonsContainer>
+            </S.ConfirmDeletionContent>
+          </S.ConfirmDeletionOverlay>
         )}
       </S.ModalContent>
     </S.Modal>

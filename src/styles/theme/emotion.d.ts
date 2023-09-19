@@ -64,6 +64,8 @@ declare module '@emotion/react' {
       toasterText: string
       toasterSuccessBg: string
       toasterErrorBg: string
+      deleteConfirmationContentBg: string
+      deleteConfirmationOverlay: string
     }
     fontSizes: {
       xs: string
