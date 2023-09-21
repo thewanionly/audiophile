@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { MouseEvent } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -149,7 +150,7 @@ const S = {
     border-radius: 1.5rem 1.5rem 0.8rem 0.8rem;
     background-color: ${({ theme }) => theme.colors.deleteConfirmationContentBg};
     width: 100%;
-    height: 50%;
+    height: 17rem;
 
     display: flex;
     flex-direction: column;
@@ -190,7 +191,6 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
   }
 
   const handleOnRemoveAllClick = () => {
-    setItemToDelete(null)
     setShowDeleteConfirmation(true)
   }
 
@@ -204,7 +204,8 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
     closeModal()
   }
 
-  const handleRemove = () => {
+  const handleRemove = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    event.stopPropagation()
     if (itemToDelete) {
       removeItem(itemToDelete.slug)
     } else {
@@ -214,8 +215,13 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
     resetDeleteState()
   }
 
-  const handleKeepIt = () => {
-    setShowDeleteConfirmation(false)
+  const handleKeepIt = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    event.stopPropagation()
+    resetDeleteState()
+  }
+
+  const handleOverlayClick = () => {
+    resetDeleteState()
   }
 
   return (
@@ -279,7 +285,7 @@ export const CartModal = ({ open = false, closeModal }: CartModalProps) => {
         )}
 
         {showDeleteConfirmation && (
-          <S.ConfirmDeletionOverlay>
+          <S.ConfirmDeletionOverlay onClick={handleOverlayClick}>
             <S.ConfirmDeletionContent>
               <S.ConfirmDeletionOverlayMessage>
                 Remove {itemToDelete ? `${itemToDelete?.shortName}` : 'all items'}?
