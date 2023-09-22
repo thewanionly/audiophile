@@ -2,8 +2,7 @@ import { ReactElement } from 'react'
 
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 
-import { StyleRegistry } from '@/lib/styleRegistry'
-import { GlobalStyles } from '@/styles'
+import { GlobalStyles, StyleRegistry } from '@/styles'
 
 type RootWrapperProps = {
   children?: React.ReactNode
