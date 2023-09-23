@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import styled from '@emotion/styled'
 
-import { Icon, IconName, NavBar, NavItem } from '@/components'
+import { Icon, NavBar, NavItem } from '@/components'
 import { appSectionContainer, mediaQuery } from '@/styles/utils'
 
 const S = {
@@ -69,8 +69,8 @@ const S = {
     user-select: none;
     cursor: pointer;
 
-    height: 2.5rem;
     width: 14.3rem;
+    aspect-ratio: 5.72;
     position: relative;
   `,
   FooterNavBar: styled(NavBar)`

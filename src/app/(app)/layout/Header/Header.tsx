@@ -91,8 +91,8 @@ const S = {
     user-select: none;
     cursor: pointer;
 
-    height: 2.5rem;
     width: 14.3rem;
+    aspect-ratio: 5.72;
     position: relative;
   `,
   HeaderNavBar: styled(NavBar)`

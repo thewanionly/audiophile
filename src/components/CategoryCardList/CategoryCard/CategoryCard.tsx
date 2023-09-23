@@ -16,7 +16,7 @@ const S = {
   CategoryCardImage: styled(ResponsiveImage)`
     top: 2rem;
     width: 14rem;
-    height: 14rem;
+    aspect-ratio: 1;
     position: relative;
     grid-area: 1 / 1 / 3 / 2;
 
