@@ -5,9 +5,11 @@ import { getCategories } from '@/services/cms/products'
 import { Home } from './page/Home'
 
 export default async function HomePage() {
-  const home = await getHomeData()
-  const categories = await getCategories()
-  const aboutTheBrand = await getAboutTheBrand()
+  const [home, categories, aboutTheBrand] = await Promise.all([
+    getHomeData(),
+    getCategories(),
+    getAboutTheBrand(),
+  ])
 
   return (
     <Home
