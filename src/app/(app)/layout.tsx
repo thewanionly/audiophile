@@ -37,9 +37,11 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const categories = await getCategories()
-  const navLinks = await getNavLinks()
-  const footer = await getFooter()
+  const [categories, navLinks, footer] = await Promise.all([
+    getCategories(),
+    getNavLinks(),
+    getFooter(),
+  ])
 
   return (
     <html lang="en">

@@ -17,9 +17,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound()
   }
 
-  const youMayAlsoLikeProducts = await getYouMayAlsoLikeProducts(productDetail.others)
-  const categories = await getCategories()
-  const aboutTheBrand = await getAboutTheBrand()
+  const [youMayAlsoLikeProducts, categories, aboutTheBrand] = await Promise.all([
+    getYouMayAlsoLikeProducts(productDetail.others),
+    getCategories(),
+    getAboutTheBrand(),
+  ])
 
   return (
     <ProductDetail

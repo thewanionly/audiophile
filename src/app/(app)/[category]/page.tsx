@@ -17,8 +17,10 @@ export default async function CategoryPage({ params: { category } }: CategoryPag
     notFound()
   }
 
-  const aboutTheBrand = await getAboutTheBrand()
-  const categoryProducts = await getCategoryProducts(category)
+  const [aboutTheBrand, categoryProducts] = await Promise.all([
+    getAboutTheBrand(),
+    getCategoryProducts(category),
+  ])
 
   return (
     <Category
